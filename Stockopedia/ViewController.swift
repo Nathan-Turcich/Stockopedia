@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Hello")
+        print("Hello Joey")
         let hstock = HStock()
         hstock.delegate = self
         hstock.downloadItems()
