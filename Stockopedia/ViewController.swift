@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func itemsDownloaded(items: [String]) {
         stocks = items
         self.tableView.reloadData()
+        
     }
     
     @IBOutlet var tableView: UITableView!
@@ -22,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Hello")
         let hstock = HStock()
         hstock.delegate = self
         hstock.downloadItems()
