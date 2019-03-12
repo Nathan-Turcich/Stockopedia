@@ -14,6 +14,8 @@
 		91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C629282235C6D100543EF0 /* LaunchScreen.storyboard */; };
 		91C6294F2235C80B00543EF0 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */; };
 		91C629522235C88600543EF0 /* HStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C629512235C88600543EF0 /* HStock.swift */; };
+		BCB29D6D2238522A0007DC22 /* csv_to_mysql.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */; };
+		BCB29D6E2238522A0007DC22 /* service.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6C2238522A0007DC22 /* service.php */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,8 @@
 		91C6293B2235C6D100543EF0 /* StockopediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockopediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		91C629512235C88600543EF0 /* HStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStock.swift; sourceTree = "<group>"; };
+		BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = csv_to_mysql.php; sourceTree = "<group>"; };
+		BCB29D6C2238522A0007DC22 /* service.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = service.php; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +97,7 @@
 		91C6291E2235C6CC00543EF0 /* Stockopedia */ = {
 			isa = PBXGroup;
 			children = (
+				BCB29D6A223852060007DC22 /* Back End */,
 				91C629502235C87700543EF0 /* Classes */,
 				91C6294D2235C7F400543EF0 /* Cells */,
 				91C6291F2235C6CC00543EF0 /* AppDelegate.swift */,
@@ -119,6 +124,15 @@
 				91C629512235C88600543EF0 /* HStock.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		BCB29D6A223852060007DC22 /* Back End */ = {
+			isa = PBXGroup;
+			children = (
+				BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */,
+				BCB29D6C2238522A0007DC22 /* service.php */,
+			);
+			path = "Back End";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +239,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCB29D6E2238522A0007DC22 /* service.php in Resources */,
 				91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */,
+				BCB29D6D2238522A0007DC22 /* csv_to_mysql.php in Resources */,
 				91C629272235C6D100543EF0 /* Assets.xcassets in Resources */,
 				91C629252235C6CC00543EF0 /* Main.storyboard in Resources */,
 			);
