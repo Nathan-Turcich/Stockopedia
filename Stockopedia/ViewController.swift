@@ -8,16 +8,17 @@
 
 import UIKit
 
+//Tab View Controller with
+//Real Time Stock Data
+//Historical of all stocks
+//Favorited List tab
+//Profile  Tab
+//Search Tab
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HStockProtocol {
     
-    func itemsDownloaded(items: [String]) {
-        stocks = items
-        self.tableView.reloadData()
-        
-    }
-    
+    //MARK: - Variables
     @IBOutlet var tableView: UITableView!
-    
     var stocks: [String] = []
     
     override func viewDidLoad() {
@@ -28,24 +29,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         hstock.downloadItems()
         
     }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocks.count
-    }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
+    //MARK: - Tableview Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return stocks.count }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell") as! StockTableViewCell
-        
         cell.stockNameLabel.text = stocks[indexPath.row]
-        
         return cell
     }
     
-    
-
+    func itemsDownloaded(items: [String]) {
+        stocks = items
+        self.tableView.reloadData()
+    }
 }
 
