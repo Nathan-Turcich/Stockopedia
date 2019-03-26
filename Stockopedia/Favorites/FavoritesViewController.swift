@@ -15,27 +15,17 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     //MARK: - Variables
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
     
+    //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
-
-        if favoritesList.count == 0 || favoritesList[0] == "" {
-            favoritesList.append("")
-            favoritesList.append("")
-            favoritesList.append("You currently have no favorite stocks")
-            tableView.isScrollEnabled = false
-            tableView.rowHeight = 100
-            tableView.separatorStyle = .none
-            tableView.allowsSelection = false
-            noFavorites = true
-            tableView.reloadData()
-        }
-        else {
-            noFavorites = false
-            tableView.reloadData()
-        }
+        enableDisableTableView()
     }
     
     //MARK: - Tableview Methods
@@ -44,12 +34,27 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:FavoritesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell") as! FavoritesTableViewCell
         cell.favoritesStockLabel.text = favoritesList[indexPath.row]
-        
-        if noFavorites == true {
-            cell.favoritesStockLabel.font = UIFont.boldSystemFont(ofSize: 30)
-            cell.favoritesStockLabel.numberOfLines = 2
-            cell.favoritesStockLabel.textAlignment = .center
-        }
+        cell.favoritesStockLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        cell.favoritesStockLabel.numberOfLines = 1
+        cell.favoritesStockLabel.textAlignment = .left
         return cell
+    }
+    
+    func enableDisableTableView(){
+        if favoritesList[0] != "" {
+            if favoritesList[0] == "" { favoritesList.remove(at: 0) }
+            tableView.isHidden = false
+            tableView.isScrollEnabled = true
+            tableView.rowHeight = 30
+            tableView.separatorStyle = .singleLine
+            tableView.allowsSelection = true
+            tableView.reloadData()
+            noFavoritesLabel.isHidden = true
+        }
+        else {
+            tableView.isHidden = true
+            tableView.isScrollEnabled = false
+            noFavoritesLabel.isHidden = false
+        }
     }
 }
