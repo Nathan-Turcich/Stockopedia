@@ -1,16 +1,17 @@
 //
-//  StockTableViewCell.swift
+//  RealTimeStockTableViewCell.swift
 //  Stockopedia
 //
-//  Created by Joey Chung on 3/10/19.
+//  Created by Nathan Turcich on 3/25/19.
 //  Copyright © 2019 Joey Chung. All rights reserved.
 //
 
 import UIKit
 
-class StockTableViewCell: UITableViewCell {
-
-    @IBOutlet var stockNameLabel: UILabel!
+class RealTimeStockTableViewCell: UITableViewCell {
+    
+    //MARK: - Variables
+    @IBOutlet weak var stockNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
