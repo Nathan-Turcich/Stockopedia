@@ -8,11 +8,14 @@
 
 import UIKit
 
-class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, StockCellDelegate, HStockProtocol {
+class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate, HStockProtocol {
     
     //MARK: - Variables
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    
     var stocks: [String] = []
+    var filteredStocks: [String] = []
     let hstock = HStock()
     let activityIndicator = UIActivityIndicatorView()
     
@@ -30,18 +33,46 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     //MARK: - Tableview Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return stocks.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filteredStocks.count }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
-        cell.stockNameLabel.text = stocks[indexPath.row]
+        cell.stockNameLabel.text = filteredStocks[indexPath.row]
         cell.stockNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        if favoritesList.contains(stocks[indexPath.row]) {
+        if favoritesList.contains(filteredStocks[indexPath.row]) {
             cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
         }
         else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
         cell.delegate = self
         return cell
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return filteredStocks
+    }
+    
+    //---------------------Search Bar Methods -------------------
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredStocks = self.stocks.filter { stock in
+            let wordsArray = searchText.split(separator: " ")
+            
+            for word in wordsArray {
+                
+                if(stock.lowercased().contains(word.lowercased())){
+                    return true
+                }
+                
+            }
+            
+            return false
+        }
+        
+        if(searchText.isEmpty) {
+            self.filteredStocks = self.stocks
+        }
+        
+        self.tableView.reloadData()
     }
     
     func btnCloseTapped(cell: StockTableViewCell) {
@@ -66,6 +97,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func itemsDownloaded(items: [String]) {
         stocks = items
+        filteredStocks = items
         self.tableView.reloadData()
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
