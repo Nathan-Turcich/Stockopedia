@@ -20,7 +20,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +39,16 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    //Delete Cells
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            if let index = favoritesList.index(of: favoritesList[indexPath.row]) { favoritesList.remove(at: index) }
+            if favoritesList.count == 0 { favoritesList.append("")}
+            UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
+            enableDisableTableView()
+        }
+    }
+    
     func enableDisableTableView(){
         if favoritesList[0] != "" {
             if favoritesList[0] == "" { favoritesList.remove(at: 0) }
@@ -55,6 +64,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             tableView.isHidden = true
             tableView.isScrollEnabled = false
             noFavoritesLabel.isHidden = false
+        }
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stockDetailSegue" {
+            let destination = segue.destination as! StockDetailViewController
+            destination.stockName = favoritesList[tableView.indexPathForSelectedRow!.row]
         }
     }
 }

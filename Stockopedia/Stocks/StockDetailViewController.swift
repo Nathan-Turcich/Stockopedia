@@ -9,8 +9,14 @@
 import UIKit
 
 class StockDetailViewController: UIViewController {
-
+    
+    //MARK: - Variables
+    
+    var stockName:String!
+    
+    //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = stockName
     }
 }

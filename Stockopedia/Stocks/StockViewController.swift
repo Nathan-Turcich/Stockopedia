@@ -19,9 +19,9 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let hstock = HStock()
     let activityIndicator = UIActivityIndicatorView()
     
+    //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
         hstock.delegate = self
         hstock.downloadItems()
         loadingStarted()
@@ -30,9 +30,13 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(_ animated: Bool) {
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
+        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
+        favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
+        tableView.reloadData()
     }
     
     //MARK: - Tableview Methods
+    func numberOfSections(in tableView: UITableView) -> Int { return 1 }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return filteredStocks.count }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,31 +52,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return filteredStocks
-    }
-    
-    //---------------------Search Bar Methods -------------------
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.filteredStocks = self.stocks.filter { stock in
-            let wordsArray = searchText.split(separator: " ")
-            
-            for word in wordsArray {
-                
-                if(stock.lowercased().contains(word.lowercased())){
-                    return true
-                }
-                
-            }
-            
-            return false
-        }
-        
-        if(searchText.isEmpty) {
-            self.filteredStocks = self.stocks
-        }
-        
-        self.tableView.reloadData()
+        return ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     }
     
     func btnCloseTapped(cell: StockTableViewCell) {
@@ -94,7 +74,24 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if favoritesList.count == 0 { favoritesList.append("")}
         UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
     }
+
+    //MARK: - Search Bar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.filteredStocks = self.stocks.filter { stock in
+            let wordsArray = searchText.split(separator: " ")
+            for word in wordsArray {
+                if(stock.lowercased().contains(word.lowercased())){
+                    return true
+                }
+            }
+            return false
+        }
+        
+        if(searchText.isEmpty) { self.filteredStocks = self.stocks }
+        self.tableView.reloadData()
+    }
     
+    //MARK: - Loading Data
     func itemsDownloaded(items: [String]) {
         stocks = items
         filteredStocks = items
@@ -116,5 +113,13 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "stockDetailSegue" {
+            let destination = segue.destination as! StockDetailViewController
+            destination.stockName = stocks[tableView.indexPathForSelectedRow!.row]
+        }
     }
 }

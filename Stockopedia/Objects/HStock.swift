@@ -47,7 +47,6 @@ public class HStock: NSObject, URLSessionDataDelegate {
             if error != nil {
                 print(error.debugDescription)
             }else {
-                print("Data downloaded")
                 self.parseJSON(data!)
             }
         }

@@ -16,8 +16,6 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 0.5405356288, blue: 0.1210228577, alpha: 1)
     }
     
     //MARK: - Tableview Methods

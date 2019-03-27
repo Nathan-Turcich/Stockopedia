@@ -145,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				BC9B6C722249D7A400F54B9E /* StockViewController.swift */,
-				91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */,
 				BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */,
+				91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */,
 			);
 			path = Stocks;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N4N8XCQ6H7;
+				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -511,7 +511,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N4N8XCQ6H7;
+				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
