@@ -13,13 +13,16 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //MARK: - Variables
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    let activityIndicator = UIActivityIndicatorView()
+    @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
     
     var stocks = [[String]]()
+    var listOfStocks: [String] = []
     var filteredStocks: [String] = []
     let hstock = HStock()
-    let activityIndicator = UIActivityIndicatorView()
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
+    var isSearching:Bool = false
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
@@ -40,23 +43,28 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
         tableView.sectionIndexColor = primaryColor
         tableView.reloadData()
+        searchBarCancelButton.isEnabled = false
+        searchBarCancelButton.title = ""
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     //MARK: - Tableview Methods
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionHeader[section] }
-    func numberOfSections(in tableView: UITableView) -> Int { return 26 }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if isSearching { return 1 }
+        else { return 26 }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionDic[section]!
-//        return filteredStocks.count
+        if isSearching { return filteredStocks.count }
+        else { return sectionDic[section]! }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
-//        cell.stockNameLabel.text = filteredStocks[indexPath.row]
-        cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row]
-        cell.stockNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        if isSearching { cell.stockNameLabel.text = filteredStocks[indexPath.row] }
+        else { cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row] }
+        
 //        if favoritesList.contains(filteredStocks[indexPath.row]) {
 //            cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
 //        }
@@ -68,44 +76,70 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     }
     
-    func btnCloseTapped(cell: StockTableViewCell) {
-//        let indexPath = tableView.indexPath(for: cell)
-//        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
-//            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-//                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-//            if let index = favoritesList.index(of: stocks[indexPath!.row]) {
-//                favoritesList.remove(at: index)
-//            }
-//        }
-//        else{
-//            if favoritesList[0] == "" { favoritesList.remove(at: 0)}
-//            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-//                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-//            favoritesList.append(stocks[indexPath!.row])
-//        }
-//        favoritesList = favoritesList.sorted(by: <)
-//        if favoritesList.count == 0 { favoritesList.append("")}
-//        UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
-    }
-
     //MARK: - Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        self.filteredStocks = self.stocks.filter { stock in
-//            let wordsArray = searchText.split(separator: " ")
-//            for word in wordsArray {
-//                if(stock.lowercased().contains(word.lowercased())){
-//                    return true
-//                }
-//            }
-//            return false
-//        }
-//        if(searchText.isEmpty) { self.filteredStocks = self.stocks }
-//        self.tableView.reloadData()
+        if searchText.isEmpty {
+            isSearching = false
+            searchBarCancelButton.isEnabled = false
+            searchBarCancelButton.title = ""
+        }
+        else{
+            isSearching = true
+            searchBarCancelButton.isEnabled = true
+            searchBarCancelButton.title = "Cancel"
+            filteredStocks = listOfStocks.filter { stock in
+                let wordsArray = searchText.split(separator: " ")
+                for word in wordsArray {
+                    if(stock.lowercased().contains(word.lowercased())){
+                        return true
+                    }
+                }
+                return false
+            }
+        }
+        self.tableView.reloadData()
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBarCancelButton.isEnabled = true
+        searchBarCancelButton.title = "Cancel"
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBarCancelButton.isEnabled = false
+        searchBarCancelButton.title = ""
+    }
+    @IBAction func searchBarCancelButton(_ sender: Any) {
+        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
+        searchBar.text = nil
+        searchBar.endEditing(true)
+        isSearching = false
+        tableView.reloadData()
+    }
+    
+    func btnCloseTapped(cell: StockTableViewCell) {
+        //        let indexPath = tableView.indexPath(for: cell)
+        //        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
+        //            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+        //                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
+        //            if let index = favoritesList.index(of: stocks[indexPath!.row]) {
+        //                favoritesList.remove(at: index)
+        //            }
+        //        }
+        //        else{
+        //            if favoritesList[0] == "" { favoritesList.remove(at: 0)}
+        //            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+        //                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
+        //            favoritesList.append(stocks[indexPath!.row])
+        //        }
+        //        favoritesList = favoritesList.sorted(by: <)
+        //        if favoritesList.count == 0 { favoritesList.append("")}
+        //        UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
+    }
+
     
     //MARK: - Loading Data
     func itemsDownloaded(items: [String]) {
-//        filteredStocks = items
+        listOfStocks = items
         generateSectionDic(items: items)
         self.tableView.reloadData()
         activityIndicator.stopAnimating()
@@ -232,7 +266,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
-            destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row]
+            if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row] }
+            else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row] }
         }
     }
 }

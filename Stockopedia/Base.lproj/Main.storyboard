@@ -39,8 +39,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-An-ssc">
-                                                    <rect key="frame" x="14.999999999999996" y="27" width="41.666666666666657" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="14.999999999999996" y="27" width="51.666666666666657" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -84,9 +84,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Stocks" id="Rxp-eR-4Ea"/>
+                    <navigationItem key="navigationItem" title="Stocks" id="Rxp-eR-4Ea">
+                        <barButtonItem key="rightBarButtonItem" title="&quot;&quot;" id="L5J-uv-SUv">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="searchBarCancelButton:" destination="BYZ-38-t0r" id="YBJ-JX-Vvp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="aHF-HF-ecp" id="6jy-Wj-PFv"/>
+                        <outlet property="searchBarCancelButton" destination="L5J-uv-SUv" id="Rd2-kn-3YG"/>
                         <outlet property="tableView" destination="wCY-J4-Vrc" id="RCJ-U2-rBh"/>
                     </connections>
                 </viewController>
@@ -753,6 +761,6 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nj4-Oy-wsn"/>
+        <segue reference="2GC-oe-rqf"/>
     </inferredMetricsTieBreakers>
 </document>
