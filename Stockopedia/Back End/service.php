@@ -2,7 +2,7 @@
     
     // Create connection
     $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");
-    
+    echo "Connected";
     // Check connection
     if (mysqli_connect_errno())
     {
