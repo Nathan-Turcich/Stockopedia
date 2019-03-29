@@ -41,10 +41,13 @@
                 $tempArray = $row;
                 array_push($resultArray, $tempArray);
             }
+            echo count($resultArray);
+            echo "count";
             
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
+        echo "YO";
     }
     
     function test() {
@@ -70,8 +73,6 @@
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
-        
-        echo "YO";
     }
  
     echo "YO2";
