@@ -70,8 +70,11 @@
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
+        
+        echo "YO";
     }
  
+    echo "YO2";
     // Close connections
     mysqli_close($con);
 ?>
