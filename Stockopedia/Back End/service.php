@@ -1,45 +1,35 @@
 <?php
+    $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");   // Create connection
+
+    if (mysqli_connect_errno()) { echo "Failed to connect to MySQL: " . mysqli_connect_error(); }
     
-    // Create connection
-    $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");
-    echo "IT worked!";
-    // Check connection
-    if (mysqli_connect_errno())
-    {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
+    //All Queries
     
     $sql = "";
     if($_GET["query"] === "test") {
         $sql = "SELECT name
         FROM hstocks
         WHERE name = 'AAPL'";
-    }else if($_GET["query"] === "get_all_stock_names"){
+    }
+    else if($_GET["query"] === "get_all_stock_names"){
         $sql = "SELECT name
         FROM hstocks
         GROUP BY name";
     }
     
-    // Check if there are results
-    if ($result = mysqli_query($con, $sql))
-    {
-        // If so, then create a results array and a temporary one
-        // to hold the data
+    //Result of queries
+    if ($result = mysqli_query($con, $sql)) {     // Check if there are results
+        // If so, then create a results array and a temporary one to hold the data
         $resultArray = array();
         $tempArray = array();
         
-        // Loop through each row in the result set
-        while($row = $result->fetch_object())
-        {
-            // Add each row into our results array
+        while($row = $result->fetch_object()) {     // Loop through each row in the result set
             $tempArray = $row;
-            array_push($resultArray, $tempArray);
+            array_push($resultArray, $tempArray);   // Add each row into our results array
         }
         
-        // Finally, encode the array to JSON and output the results
-        echo json_encode($resultArray);
+        echo json_encode($resultArray);     // Encode the array to JSON and output the results
     }
     
-    // Close connections
-    mysqli_close($con);
+    mysqli_close($con); // Close connections
 ?>
