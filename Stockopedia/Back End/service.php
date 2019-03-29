@@ -1,6 +1,7 @@
 <?php
-    echo "HELLO WORLD"
-    echo $_GET["query"]
+    echo "HELLO WORLD";
+    echo $_GET["query"];
+    
     // Create connection
     $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
 
@@ -8,8 +9,8 @@
     if (mysqli_connect_errno()){
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
- 
-    echo $_GET["query"]
+    
+    echo $_GET["query"];
 
     if($_GET["query"] === ""){
         
