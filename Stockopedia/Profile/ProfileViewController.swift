@@ -14,5 +14,9 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
+
 }

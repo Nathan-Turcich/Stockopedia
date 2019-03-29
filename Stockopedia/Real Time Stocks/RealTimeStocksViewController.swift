@@ -8,6 +8,8 @@
 
 import UIKit
 
+var primaryColor:UIColor = #colorLiteral(red: 1, green: 0.5405356288, blue: 0.1210228577, alpha: 1)
+
 class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: - Variables
@@ -16,7 +18,11 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     //MARK: - Tableview Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return stocks.count }

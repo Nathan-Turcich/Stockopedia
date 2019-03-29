@@ -20,12 +20,16 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
         enableDisableTableView()
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
+
     
     //MARK: - Tableview Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return favoritesList.count }
