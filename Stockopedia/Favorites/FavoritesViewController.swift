@@ -9,7 +9,6 @@
 import UIKit
 
 var favoritesList: [String] = []
-var noFavorites = true
 
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 

@@ -8,18 +8,22 @@
 
 import UIKit
 
-var primaryColor:UIColor = #colorLiteral(red: 1, green: 0.5405356288, blue: 0.1210228577, alpha: 1)
+var primaryColor:UIColor = #colorLiteral(red: 1, green: 0.50186795, blue: 0, alpha: 1)
 
 class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: - Variables
     @IBOutlet var tableView: UITableView!
     var stocks: [String] = []
+    @IBOutlet weak var noStockDataLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        enableDisableTableView()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
@@ -31,5 +35,22 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         let cell: RealTimeStockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "realTimeCell") as! RealTimeStockTableViewCell
         cell.stockNameLabel.text = stocks[indexPath.row]
         return cell
+    }
+    
+    func enableDisableTableView(){
+        if stocks.count != 0 {
+            tableView.isHidden = false
+            tableView.isScrollEnabled = true
+            tableView.rowHeight = 30
+            tableView.separatorStyle = .singleLine
+            tableView.allowsSelection = true
+            tableView.reloadData()
+            noStockDataLabel.isHidden = true
+        }
+        else {
+            tableView.isHidden = true
+            tableView.isScrollEnabled = false
+            noStockDataLabel.isHidden = false
+        }
     }
 }

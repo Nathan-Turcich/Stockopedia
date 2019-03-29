@@ -14,7 +14,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     
-    var stocks: [String] = []
+    var stocks = [[String]]()
     var filteredStocks: [String] = []
     let hstock = HStock()
     let activityIndicator = UIActivityIndicatorView()
@@ -30,6 +30,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         hstock.delegate = self
         hstock.downloadItems()
         loadingStarted()
+        searchBar.barTintColor = primaryColor
         favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
     }
     
@@ -47,19 +48,19 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionHeader[section] }
     func numberOfSections(in tableView: UITableView) -> Int { return 26 }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(sectionDic[section]!)
         return sectionDic[section]!
 //        return filteredStocks.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
-        cell.stockNameLabel.text = filteredStocks[indexPath.row]
+//        cell.stockNameLabel.text = filteredStocks[indexPath.row]
+        cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row]
         cell.stockNameLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        if favoritesList.contains(filteredStocks[indexPath.row]) {
-            cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
-        }
-        else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
+//        if favoritesList.contains(filteredStocks[indexPath.row]) {
+//            cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
+//        }
+//        else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
         cell.delegate = self
         return cell
     }
@@ -68,49 +69,48 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func btnCloseTapped(cell: StockTableViewCell) {
-        let indexPath = tableView.indexPath(for: cell)
-        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
-            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            if let index = favoritesList.index(of: stocks[indexPath!.row]) {
-                favoritesList.remove(at: index)
-            }
-        }
-        else{
-            if favoritesList[0] == "" { favoritesList.remove(at: 0)}
-            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            favoritesList.append(stocks[indexPath!.row])
-        }
-        favoritesList = favoritesList.sorted(by: <)
-        if favoritesList.count == 0 { favoritesList.append("")}
-        UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
+//        let indexPath = tableView.indexPath(for: cell)
+//        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
+//            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
+//            if let index = favoritesList.index(of: stocks[indexPath!.row]) {
+//                favoritesList.remove(at: index)
+//            }
+//        }
+//        else{
+//            if favoritesList[0] == "" { favoritesList.remove(at: 0)}
+//            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+//                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
+//            favoritesList.append(stocks[indexPath!.row])
+//        }
+//        favoritesList = favoritesList.sorted(by: <)
+//        if favoritesList.count == 0 { favoritesList.append("")}
+//        UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
     }
 
     //MARK: - Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.filteredStocks = self.stocks.filter { stock in
-            let wordsArray = searchText.split(separator: " ")
-            for word in wordsArray {
-                if(stock.lowercased().contains(word.lowercased())){
-                    return true
-                }
-            }
-            return false
-        }
-        
-        if(searchText.isEmpty) { self.filteredStocks = self.stocks }
-        self.tableView.reloadData()
+//        self.filteredStocks = self.stocks.filter { stock in
+//            let wordsArray = searchText.split(separator: " ")
+//            for word in wordsArray {
+//                if(stock.lowercased().contains(word.lowercased())){
+//                    return true
+//                }
+//            }
+//            return false
+//        }
+//        if(searchText.isEmpty) { self.filteredStocks = self.stocks }
+//        self.tableView.reloadData()
     }
     
     //MARK: - Loading Data
     func itemsDownloaded(items: [String]) {
-        stocks = items
-        filteredStocks = items
-        generateSectionDic()
+//        filteredStocks = items
+        generateSectionDic(items: items)
         self.tableView.reloadData()
         activityIndicator.stopAnimating()
         activityIndicator.hidesWhenStopped = true
+        tableView.isHidden = false
         tableView.isScrollEnabled = true
         tableView.separatorStyle = .singleLine
         tableView.allowsSelection = true
@@ -123,41 +123,104 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         activityIndicator.style = .gray
         activityIndicator.isHidden = false
         view.addSubview(activityIndicator)
+        tableView.isHidden = true
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
     }
     
-    func generateSectionDic(){
-        for stock in stocks {
+    func generateSectionDic(items: [String]){
+        for _ in 0...25 { stocks.append(["!"]) }
+
+        for stock in items {
             switch stock.prefix(1) {
-            case "A": sectionDic[0] = sectionDic[0]! + 1
-            case "B": sectionDic[1] = sectionDic[1]! + 1
-            case "C": sectionDic[2] = sectionDic[2]! + 1
-            case "D": sectionDic[3] = sectionDic[3]! + 1
-            case "E": sectionDic[4] = sectionDic[4]! + 1
-            case "F": sectionDic[5] = sectionDic[5]! + 1
-            case "G": sectionDic[6] = sectionDic[6]! + 1
-            case "H": sectionDic[7] = sectionDic[7]! + 1
-            case "I": sectionDic[8] = sectionDic[8]! + 1
-            case "J": sectionDic[9] = sectionDic[9]! + 1
-            case "K": sectionDic[10] = sectionDic[10]! + 1
-            case "L": sectionDic[11] = sectionDic[11]! + 1
-            case "M": sectionDic[12] = sectionDic[12]! + 1
-            case "N": sectionDic[13] = sectionDic[13]! + 1
-            case "O": sectionDic[14] = sectionDic[14]! + 1
-            case "P": sectionDic[15] = sectionDic[15]! + 1
-            case "Q": sectionDic[16] = sectionDic[16]! + 1
-            case "R": sectionDic[17] = sectionDic[17]! + 1
-            case "S": sectionDic[18] = sectionDic[18]! + 1
-            case "T": sectionDic[19] = sectionDic[19]! + 1
-            case "U": sectionDic[20] = sectionDic[20]! + 1
-            case "V": sectionDic[21] = sectionDic[21]! + 1
-            case "W": sectionDic[22] = sectionDic[22]! + 1
-            case "X": sectionDic[23] = sectionDic[23]! + 1
-            case "Y": sectionDic[24] = sectionDic[24]! + 1
-            case "Z": sectionDic[25] = sectionDic[25]! + 1
+            case "A":
+                sectionDic[0] = sectionDic[0]! + 1
+                stocks[0].append(stock)
+            case "B":
+                sectionDic[1] = sectionDic[1]! + 1
+                stocks[1].append(stock)
+            case "C":
+                sectionDic[2] = sectionDic[2]! + 1
+                stocks[2].append(stock)
+            case "D":
+                sectionDic[3] = sectionDic[3]! + 1
+                stocks[3].append(stock)
+            case "E":
+                sectionDic[4] = sectionDic[4]! + 1
+                stocks[4].append(stock)
+            case "F":
+                sectionDic[5] = sectionDic[5]! + 1
+                stocks[5].append(stock)
+            case "G":
+                sectionDic[6] = sectionDic[6]! + 1
+                stocks[6].append(stock)
+            case "H":
+                sectionDic[7] = sectionDic[7]! + 1
+                stocks[7].append(stock)
+            case "I":
+                sectionDic[8] = sectionDic[8]! + 1
+                stocks[8].append(stock)
+            case "J":
+                sectionDic[9] = sectionDic[9]! + 1
+                stocks[9].append(stock)
+            case "K":
+                sectionDic[10] = sectionDic[10]! + 1
+                stocks[10].append(stock)
+            case "L":
+                sectionDic[11] = sectionDic[11]! + 1
+                stocks[11].append(stock)
+            case "M":
+                sectionDic[12] = sectionDic[12]! + 1
+                stocks[12].append(stock)
+            case "N":
+                sectionDic[13] = sectionDic[13]! + 1
+                stocks[13].append(stock)
+            case "O":
+                sectionDic[14] = sectionDic[14]! + 1
+                stocks[14].append(stock)
+            case "P":
+                sectionDic[15] = sectionDic[15]! + 1
+                stocks[15].append(stock)
+            case "Q":
+                sectionDic[16] = sectionDic[16]! + 1
+                stocks[16].append(stock)
+            case "R":
+                sectionDic[17] = sectionDic[17]! + 1
+                stocks[17].append(stock)
+            case "S":
+                sectionDic[18] = sectionDic[18]! + 1
+                stocks[18].append(stock)
+            case "T":
+                sectionDic[19] = sectionDic[19]! + 1
+                stocks[19].append(stock)
+            case "U":
+                sectionDic[20] = sectionDic[20]! + 1
+                stocks[20].append(stock)
+            case "V":
+                sectionDic[21] = sectionDic[21]! + 1
+                stocks[21].append(stock)
+            case "W":
+                sectionDic[22] = sectionDic[22]! + 1
+                stocks[22].append(stock)
+            case "X":
+                sectionDic[23] = sectionDic[23]! + 1
+                stocks[23].append(stock)
+            case "Y":
+                sectionDic[24] = sectionDic[24]! + 1
+                stocks[24].append(stock)
+            case "Z":
+                sectionDic[25] = sectionDic[25]! + 1
+                stocks[25].append(stock)
             default: print("") }
+        }
+        
+        for (index, stockArray) in stocks.enumerated() {
+            var tempStocks:[String] = []
+            for stock in stockArray {
+                if stock != "!" { tempStocks.append(stock) }
+            }
+            stocks[index] = tempStocks
         }
     }
     
@@ -169,7 +232,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
-            destination.stockName = stocks[tableView.indexPathForSelectedRow!.row]
+            destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row]
         }
     }
 }

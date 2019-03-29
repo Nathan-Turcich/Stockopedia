@@ -144,7 +144,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xg8-Vp-5Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2093.5999999999999" y="2106.6502463054189"/>
+            <point key="canvasLocation" x="1950" y="2062"/>
         </scene>
         <!--Real Time-->
         <scene sceneID="ggK-iT-I97">
@@ -188,18 +188,29 @@ https://icons8.com/ </string>
                                     <outlet property="delegate" destination="ABs-dx-2im" id="Aeg-68-zv2"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are currently no real time stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMn-du-wyc">
+                                <rect key="frame" x="16" y="317" width="343" height="179"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aMn-du-wyc" firstAttribute="leading" secondItem="3Fe-fd-2HP" secondAttribute="leading" constant="16" id="0Pu-Tk-cSG"/>
                             <constraint firstItem="3Fe-fd-2HP" firstAttribute="trailing" secondItem="5hV-kX-abe" secondAttribute="trailing" id="7HY-QK-Znd"/>
                             <constraint firstItem="5hV-kX-abe" firstAttribute="leading" secondItem="3Fe-fd-2HP" secondAttribute="leading" id="Zp8-9U-jFI"/>
                             <constraint firstItem="3Fe-fd-2HP" firstAttribute="bottom" secondItem="5hV-kX-abe" secondAttribute="bottom" id="aHQ-Of-tCS"/>
+                            <constraint firstItem="3Fe-fd-2HP" firstAttribute="bottom" secondItem="aMn-du-wyc" secondAttribute="bottom" constant="233" id="mcV-a8-Z0i"/>
+                            <constraint firstItem="aMn-du-wyc" firstAttribute="top" secondItem="3Fe-fd-2HP" secondAttribute="top" constant="229" id="o2f-xN-5lU"/>
+                            <constraint firstItem="3Fe-fd-2HP" firstAttribute="trailing" secondItem="aMn-du-wyc" secondAttribute="trailing" constant="16" id="peg-p1-hZ9"/>
                             <constraint firstItem="3Fe-fd-2HP" firstAttribute="top" secondItem="5hV-kX-abe" secondAttribute="top" id="suH-DR-KTL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3Fe-fd-2HP"/>
                     </view>
                     <navigationItem key="navigationItem" title="Real Time Stocks" id="g6f-9C-9bL"/>
                     <connections>
+                        <outlet property="noStockDataLabel" destination="aMn-du-wyc" id="feS-Rg-Cix"/>
                         <outlet property="tableView" destination="5hV-kX-abe" id="Ghy-QJ-VDi"/>
                     </connections>
                 </viewController>
@@ -229,7 +240,7 @@ https://icons8.com/ </string>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-yO-E56">
                                         <rect key="frame" x="135" y="247" width="105" height="55"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94641143080000001" green="0.56464618440000003" blue="0.24303150179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <state key="normal" title="Log In!">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -259,12 +270,15 @@ https://icons8.com/ </string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log out" id="qBB-N5-jjA">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="logOutButtonAction:" destination="rAY-dv-knj" id="roK-AZ-IEk"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL8-vJ-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="1298"/>
+            <point key="canvasLocation" x="1950" y="1298"/>
         </scene>
         <!--Favorties-->
         <scene sceneID="L5V-d0-GXK">
@@ -448,7 +462,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbU-Xr-GrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2956" y="587.4384236453202"/>
+            <point key="canvasLocation" x="2641" y="587"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="iI3-3l-DKv">
@@ -547,7 +561,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nT6-vB-BoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3172" y="1298"/>
+            <point key="canvasLocation" x="2857" y="1296"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2oL-4g-UPc">
@@ -632,7 +646,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6t-TO-uXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3633" y="587"/>
+            <point key="canvasLocation" x="3318" y="586"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F4b-RI-3ho">
@@ -646,19 +660,19 @@ https://icons8.com/ </string>
                     <connections>
                         <segue destination="3tT-Uj-ltP" kind="relationship" relationship="viewControllers" id="9eh-0q-4o9"/>
                         <segue destination="0aY-Qi-gxs" kind="relationship" relationship="viewControllers" id="Vbf-ir-cvB"/>
-                        <segue destination="3Mz-Zu-GJA" kind="relationship" relationship="viewControllers" id="JAB-Mn-lnO"/>
-                        <segue destination="aEU-3J-Bb7" kind="relationship" relationship="viewControllers" id="ls7-e8-2VV"/>
+                        <segue destination="aEU-3J-Bb7" kind="relationship" relationship="viewControllers" id="pQK-oe-bOM"/>
+                        <segue destination="3Mz-Zu-GJA" kind="relationship" relationship="viewControllers" id="S83-PH-Ozr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgc-qK-dw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="782" y="-237"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Real Time-->
         <scene sceneID="qev-zg-hca">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3tT-Uj-ltP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="GXw-Rg-5KK"/>
+                    <tabBarItem key="tabBarItem" title="Real Time" image="realTimeStockImage" id="GXw-Rg-5KK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5aj-03-Ode">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -673,11 +687,11 @@ https://icons8.com/ </string>
             </objects>
             <point key="canvasLocation" x="-297" y="597"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Stocks-->
         <scene sceneID="QNH-f1-Qh2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0aY-Qi-gxs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="E8k-rx-lTr"/>
+                    <tabBarItem key="tabBarItem" title="Stocks" image="stocksImage" id="E8k-rx-lTr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VxT-cC-rD1">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -692,11 +706,11 @@ https://icons8.com/ </string>
             </objects>
             <point key="canvasLocation" x="402" y="597"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="HSQ-LM-Uzk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Mz-Zu-GJA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="M3D-Sv-i5J"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileImage" id="M3D-Sv-i5J"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d2C-2k-fWV">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -709,7 +723,7 @@ https://icons8.com/ </string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Je-0R-fyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="596"/>
+            <point key="canvasLocation" x="1950" y="596"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e2l-y6-wBq">
@@ -733,9 +747,12 @@ https://icons8.com/ </string>
     </scenes>
     <resources>
         <image name="favoritesNotFilled" width="50" height="50"/>
+        <image name="profileImage" width="25" height="25"/>
         <image name="questionMark" width="25" height="25"/>
+        <image name="realTimeStockImage" width="25" height="25"/>
+        <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2GC-oe-rqf"/>
+        <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
 </document>
