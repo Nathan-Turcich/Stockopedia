@@ -14,7 +14,7 @@
         $sql = "SELECT name
         FROM hstocks
         WHERE name = 'AAPL'";
-    }else if($_GET["query"] === "get_all_stocks"){
+    }else if($_GET["query"] === "get_all_stock_names"){
         $sql = "SELECT name
         FROM hstocks
         GROUP BY name";
