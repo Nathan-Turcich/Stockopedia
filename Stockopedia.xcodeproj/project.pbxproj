@@ -8,14 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		91C629202235C6CC00543EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6291F2235C6CC00543EF0 /* AppDelegate.swift */; };
-		91C629222235C6CC00543EF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C629212235C6CC00543EF0 /* ViewController.swift */; };
 		91C629252235C6CC00543EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C629232235C6CC00543EF0 /* Main.storyboard */; };
 		91C629272235C6D100543EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C629262235C6D100543EF0 /* Assets.xcassets */; };
 		91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C629282235C6D100543EF0 /* LaunchScreen.storyboard */; };
 		91C6294F2235C80B00543EF0 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */; };
 		91C629522235C88600543EF0 /* HStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C629512235C88600543EF0 /* HStock.swift */; };
+		BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */; };
+		BC9B6C612249BC9700F54B9E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C602249BC9700F54B9E /* FavoritesViewController.swift */; };
+		BC9B6C672249BD5400F54B9E /* RealTimeStocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */; };
+		BC9B6C6E2249C75200F54B9E /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C6D2249C75200F54B9E /* FavoritesTableViewCell.swift */; };
+		BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */; };
+		BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C722249D7A400F54B9E /* StockViewController.swift */; };
+		BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */; };
 		BCB29D6D2238522A0007DC22 /* csv_to_mysql.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */; };
 		BCB29D6E2238522A0007DC22 /* service.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6C2238522A0007DC22 /* service.php */; };
+		BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC45686224DA9EA004E40B2 /* LoginViewController.swift */; };
+		BCC45689224DACA2004E40B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC45688224DACA2004E40B2 /* SignUpViewController.swift */; };
+		BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */; };
+		BCC4568E224DBFEF004E40B2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568D224DBFEF004E40B2 /* Utils.swift */; };
+		BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568F224DC642004E40B2 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +49,6 @@
 /* Begin PBXFileReference section */
 		91C6291C2235C6CC00543EF0 /* Stockopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6291F2235C6CC00543EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91C629212235C6CC00543EF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		91C629242235C6CC00543EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91C629262235C6D100543EF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91C629292235C6D100543EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,8 +57,20 @@
 		91C6293B2235C6D100543EF0 /* StockopediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockopediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		91C629512235C88600543EF0 /* HStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStock.swift; sourceTree = "<group>"; };
+		BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BC9B6C602249BC9700F54B9E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStocksViewController.swift; sourceTree = "<group>"; };
+		BC9B6C6D2249C75200F54B9E /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStockTableViewCell.swift; sourceTree = "<group>"; };
+		BC9B6C722249D7A400F54B9E /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
+		BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
 		BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = csv_to_mysql.php; sourceTree = "<group>"; };
 		BCB29D6C2238522A0007DC22 /* service.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = service.php; sourceTree = "<group>"; };
+		BCC45686224DA9EA004E40B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BCC45688224DACA2004E40B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		BCC4568D224DBFEF004E40B2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BCC4568F224DC642004E40B2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,33 +119,66 @@
 		91C6291E2235C6CC00543EF0 /* Stockopedia */ = {
 			isa = PBXGroup;
 			children = (
-				BCB29D6A223852060007DC22 /* Back End */,
-				91C629502235C87700543EF0 /* Classes */,
-				91C6294D2235C7F400543EF0 /* Cells */,
 				91C6291F2235C6CC00543EF0 /* AppDelegate.swift */,
-				91C629212235C6CC00543EF0 /* ViewController.swift */,
+				BCC4568D224DBFEF004E40B2 /* Utils.swift */,
 				91C629232235C6CC00543EF0 /* Main.storyboard */,
-				91C629262235C6D100543EF0 /* Assets.xcassets */,
 				91C629282235C6D100543EF0 /* LaunchScreen.storyboard */,
+				BC9B6C652249BD3600F54B9E /* Real Time Stocks */,
+				BC9B6C622249BCA100F54B9E /* Stocks */,
+				BC9B6C5D2249BC5A00F54B9E /* Profile */,
+				BC9B6C5F2249BC6A00F54B9E /* Favorites */,
+				BCC4568A224DACA4004E40B2 /* Login & Signup */,
+				BC9B6C642249BCB600F54B9E /* Objects */,
+				91C629262235C6D100543EF0 /* Assets.xcassets */,
+				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				91C6292B2235C6D100543EF0 /* Info.plist */,
+				BCB29D6A223852060007DC22 /* Back End */,
 			);
 			path = Stockopedia;
 			sourceTree = "<group>";
 		};
-		91C6294D2235C7F400543EF0 /* Cells */ = {
+		BC9B6C5D2249BC5A00F54B9E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */,
+				BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */,
 			);
-			path = Cells;
+			path = Profile;
 			sourceTree = "<group>";
 		};
-		91C629502235C87700543EF0 /* Classes */ = {
+		BC9B6C5F2249BC6A00F54B9E /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B6C602249BC9700F54B9E /* FavoritesViewController.swift */,
+				BC9B6C6D2249C75200F54B9E /* FavoritesTableViewCell.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		BC9B6C622249BCA100F54B9E /* Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B6C722249D7A400F54B9E /* StockViewController.swift */,
+				BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */,
+				91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */,
+			);
+			path = Stocks;
+			sourceTree = "<group>";
+		};
+		BC9B6C642249BCB600F54B9E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
 				91C629512235C88600543EF0 /* HStock.swift */,
 			);
-			path = Classes;
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		BC9B6C652249BD3600F54B9E /* Real Time Stocks */ = {
+			isa = PBXGroup;
+			children = (
+				BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */,
+				BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */,
+			);
+			path = "Real Time Stocks";
 			sourceTree = "<group>";
 		};
 		BCB29D6A223852060007DC22 /* Back End */ = {
@@ -133,6 +188,16 @@
 				BCB29D6C2238522A0007DC22 /* service.php */,
 			);
 			path = "Back End";
+			sourceTree = "<group>";
+		};
+		BCC4568A224DACA4004E40B2 /* Login & Signup */ = {
+			isa = PBXGroup;
+			children = (
+				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
+				BCC45688224DACA2004E40B2 /* SignUpViewController.swift */,
+				BCC45686224DA9EA004E40B2 /* LoginViewController.swift */,
+			);
+			path = "Login & Signup";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,10 +333,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91C629222235C6CC00543EF0 /* ViewController.swift in Sources */,
+				BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */,
+				BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */,
+				BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */,
+				BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */,
+				BCC4568E224DBFEF004E40B2 /* Utils.swift in Sources */,
+				BC9B6C612249BC9700F54B9E /* FavoritesViewController.swift in Sources */,
 				91C6294F2235C80B00543EF0 /* StockTableViewCell.swift in Sources */,
 				91C629202235C6CC00543EF0 /* AppDelegate.swift in Sources */,
+				BCC45689224DACA2004E40B2 /* SignUpViewController.swift in Sources */,
+				BC9B6C672249BD5400F54B9E /* RealTimeStocksViewController.swift in Sources */,
+				BC9B6C6E2249C75200F54B9E /* FavoritesTableViewCell.swift in Sources */,
 				91C629522235C88600543EF0 /* HStock.swift in Sources */,
+				BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */,
+				BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */,
+				BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

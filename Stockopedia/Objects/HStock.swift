@@ -14,12 +14,12 @@ protocol HStockProtocol: class {
 
 public class HStock: NSObject, URLSessionDataDelegate {
     
+    //MARK: - Variables
     weak var delegate: HStockProtocol!
-    
     var data = Data()
-    
     let urlPath: String = "http://sp19-cs411-49.cs.illinois.edu/service.php"
     
+    //MARK: - HStock Variables
     var name: String!
     var date: String!
     var open: Float!
@@ -37,41 +37,29 @@ public class HStock: NSObject, URLSessionDataDelegate {
     }
     
     override init() {
-        
     }
     
     func downloadItems() {
-        
         let url: URL = URL(string: urlPath)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
-            
             if error != nil {
                 print(error.debugDescription)
             }else {
-                print("Data downloaded")
                 self.parseJSON(data!)
             }
-            
         }
-        
         task.resume()
     }
     
     func parseJSON(_ data:Data) {
-        
         var jsonResult = NSArray()
-        
-        do{
+        do {
             jsonResult = try JSONSerialization.jsonObject(with: data, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-            
         } catch let error as NSError {
             print(error)
-            
         }
-        
-        //print(jsonResult)
         
         var jsonElement = NSDictionary()
         var stocks: [String] = []
@@ -79,14 +67,10 @@ public class HStock: NSObject, URLSessionDataDelegate {
         for i in 0 ..< jsonResult.count {
             jsonElement = jsonResult[i] as! NSDictionary
             stocks.append(jsonElement["name"]! as! String)
-            //print(jsonElement["name"]!)
         }
         
         DispatchQueue.main.async(execute: { () -> Void in
-            
             self.delegate.itemsDownloaded(items: stocks)
-            
         })
     }
-    
 }
