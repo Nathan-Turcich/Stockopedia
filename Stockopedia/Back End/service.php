@@ -9,7 +9,7 @@
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     
-    $sql = ""
+    $sql = "";
     if($_GET["query"] === "test") {
         $sql = "SELECT name
         FROM hstocks
