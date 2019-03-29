@@ -28,12 +28,15 @@
         FROM hstocks
         GROUP BY name";
         
+        echo mysqli_query($con, $sql);
+        echo "mysql";
         // Check if there are results
         if ($result = mysqli_query($con, $sql)){
             // If so, then create a results array and a temporary one
             // to hold the data
             $resultArray = array();
             $tempArray = array();
+            
             
             // Loop through each row in the result set
             while($row = $result->fetch_object()){
