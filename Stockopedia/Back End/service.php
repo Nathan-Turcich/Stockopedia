@@ -1,9 +1,9 @@
 <?php
 
 // Create connection
-$con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");
- //Hello
-// Check connection
+$con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
+
+    // Check connection
 if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
