@@ -1,13 +1,14 @@
 <?php
-
-// Create connection
-$con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
+    // Create connection
+    $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
 
     // Check connection
-if (mysqli_connect_errno()){
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+    if (mysqli_connect_errno()){
+      echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
  
+    echo $_GET["query"]
+
     if($_GET["query"] === ""){
         
     }else if($_GET["query"] === "get_all_stock_names"){
@@ -17,7 +18,6 @@ if (mysqli_connect_errno()){
     }
 
     function get_all_stock_names() {
-        
         // This SQL statement selects ALL from the table 'hstocks'
         $sql = "SELECT name
         FROM hstocks
@@ -40,11 +40,9 @@ if (mysqli_connect_errno()){
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
-        
     }
     
     function test() {
-        
         // This SQL statement selects ALL from the table 'hstocks'
         $sql = "SELECT name
         FROM hstocks
@@ -67,9 +65,8 @@ if (mysqli_connect_errno()){
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
-        
     }
  
-// Close connections
-mysqli_close($con);
+    // Close connections
+    mysqli_close($con);
 ?>

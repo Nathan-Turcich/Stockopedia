@@ -130,8 +130,8 @@
 				BCC4568A224DACA4004E40B2 /* Login & Signup */,
 				BC9B6C642249BCB600F54B9E /* Objects */,
 				91C629262235C6D100543EF0 /* Assets.xcassets */,
-				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				91C6292B2235C6D100543EF0 /* Info.plist */,
+				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				BCB29D6A223852060007DC22 /* Back End */,
 			);
 			path = Stockopedia;
