@@ -10,6 +10,13 @@
     }
     
     if($_GET["query"] === "test") {
+        test_query();
+    }
+    else{
+        get_all_stocks_query();
+    }
+    
+    function test_query() {
         // This SQL statement selects ALL from the table 'Locations'
         $sql = "SELECT name
         FROM hstocks
@@ -35,7 +42,8 @@
             echo json_encode($resultArray);
         }
     }
-    else{
+    
+    function get_all_stocks_query() {
         // This SQL statement selects ALL from the table 'Locations'
         $sql = "SELECT name
         FROM hstocks
