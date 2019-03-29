@@ -20,6 +20,9 @@
     }
 
     function get_all_stock_names() {
+        echo "HERE";
+        
+        
         // This SQL statement selects ALL from the table 'hstocks'
         $sql = "SELECT name
         FROM hstocks
