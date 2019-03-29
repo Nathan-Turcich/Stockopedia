@@ -24,6 +24,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
     
+    
+    //BLAH
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
