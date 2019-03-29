@@ -9,8 +9,10 @@
     
     if($_GET["query"] === "get_all_stock_names"){
         get_all_stock_names();
+        echo "ALL STOCKS";
     }else if($_GET["query"] === "test"){
         test();
+        echo "TEST";
     }
     else{
         echo "ERROR";
