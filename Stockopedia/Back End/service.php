@@ -13,7 +13,7 @@
         // This SQL statement selects ALL from the table 'Locations'
         $sql = "SELECT name
         FROM hstocks
-        WHERE name = "AAPL"";
+        WHERE name = 'AAPL'";
         
         // Check if there are results
         if ($result = mysqli_query($con, $sql))
