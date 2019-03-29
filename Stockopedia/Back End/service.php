@@ -1,4 +1,6 @@
 <?php
+    echo "HELLO WORLD"
+    echo $_GET["query"]
     // Create connection
     $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
 
