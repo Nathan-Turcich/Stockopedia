@@ -1,7 +1,4 @@
 <?php
-    echo "HELLO WORLD";
-    echo $_GET["query"];
-    
     // Create connection
     $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu", "root", "374sucks", "Stockopedia");
 
@@ -10,14 +7,14 @@
       echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
     
-    echo $_GET["query"];
-
-    if($_GET["query"] === ""){
-        
-    }else if($_GET["query"] === "get_all_stock_names"){
+    if($_GET["query"] === "get_all_stock_names"){
         get_all_stock_names();
     }else if($_GET["query"] === "test"){
         test();
+    }
+    else{
+        echo "ERROR";
+        echo $_GET["query"];
     }
 
     function get_all_stock_names() {
