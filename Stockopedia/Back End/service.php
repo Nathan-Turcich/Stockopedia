@@ -1,21 +1,5 @@
 <?php
     
-    // Create connection
-    $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");
-    
-    // Check connection
-    if (mysqli_connect_errno())
-    {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    }
-    
-    if($_GET["query"] === "test") {
-        test_query();
-    }
-    else{
-        get_all_stocks_query();
-    }
-    
     function test_query() {
         // This SQL statement selects ALL from the table 'Locations'
         $sql = "SELECT name
@@ -68,6 +52,22 @@
             // Finally, encode the array to JSON and output the results
             echo json_encode($resultArray);
         }
+    }
+    
+    // Create connection
+    $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");
+    
+    // Check connection
+    if (mysqli_connect_errno())
+    {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    
+    if($_GET["query"] === "test") {
+        test_query();
+    }
+    else{
+        get_all_stocks_query();
     }
     
     // Close connections
