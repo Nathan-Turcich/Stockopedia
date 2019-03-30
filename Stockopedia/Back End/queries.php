@@ -10,12 +10,23 @@
         $sql = "SELECT name
         FROM hstocks
         WHERE name = 'AAPL'";
-    }
-//    else if($_GET["query"] === "get_all_stock_names"){
-    else {
+    }else if($_GET["query"] === "get_all_stock_names"){
         $sql = "SELECT name
         FROM hstocks
         GROUP BY name";
+    }else if($_GET["query"] === "create_user"){
+        $key = $_GET["key"]
+        $username = $_GET["username"];
+        $password = $_GET["password"];
+        
+        $sql = "INSERT INTO table_name
+        VALUES ('$key', '$username', '$password')";
+    }else if($_GET["query"] === "get_user"){
+        $key = $_GET["key"]
+        
+        $sql = "SELECT key, username
+        FROM Users
+        WHERE key = '$key'";
     }
     
     //Result of queries

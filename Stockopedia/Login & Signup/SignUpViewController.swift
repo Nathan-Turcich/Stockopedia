@@ -22,7 +22,11 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpButtonAction(_ sender: UIButton) {
+        if(usernameTextField.text != "" && passwordTextField.text != "") {
+            DownloadData.createNewUser(username: usernameTextField.text!, password: passwordTextField.text!)
+        }
     }
+    
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
