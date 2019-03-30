@@ -19,12 +19,12 @@
         $username = $_GET["username"];
         $password = $_GET["password"];
         
-        $sql = "INSERT INTO table_name
+        $sql = "INSERT INTO Users
         VALUES ('$key', '$username', '$password')";
     }else if($_GET["query"] === "get_user"){
         $key = $_GET["key"];
         
-        $sql = "SELECT key, username
+        $sql = "SELECT ID, Username
         FROM Users
         WHERE key = '$key'";
     }
