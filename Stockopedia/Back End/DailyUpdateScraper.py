@@ -10,7 +10,7 @@ def scrapeWebsitesForTopics():
     return [("APPL", "Technology"), ("Ford", "Cars"), ("MCD", "Food")]
 
 def insertTopicsToDB(listOfTopics):
-    mydb = mysql.connector.connect(host, user, password, database)
+    mydb = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
     cursor = mydb.cursor()
     
     for (stock, topic) in listOfTopics:
