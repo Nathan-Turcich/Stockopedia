@@ -19,7 +19,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var stocks = [[String]]()
     var listOfStocks: [String] = []
     var filteredStocks: [String] = []
-    let hstock = HStock()
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
@@ -30,15 +29,22 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
-//        hstock.delegate = self
-//        hstock.downloadItems()
-        loadingStarted()
         searchBar.barTintColor = primaryColor
-        favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
         
+        loadingStarted()
         DownloadData.downloadUniqueStockNames(completion: { stockNames in
             if let names = stockNames {
-                self.itemsDownloaded(items: names)
+                DispatchQueue.main.async {
+                    self.listOfStocks = names
+                    self.generateSectionDic(items: names)
+                    self.tableView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.hidesWhenStopped = true
+                    self.tableView.isHidden = false
+                    self.tableView.isScrollEnabled = true
+                    self.tableView.separatorStyle = .singleLine
+                    self.tableView.allowsSelection = true
+                }
             }
             else { print("Error getting data") }
         })
@@ -47,7 +53,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
-        favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
         tableView.sectionIndexColor = primaryColor
         tableView.reloadData()
         searchBarCancelButton.isEnabled = false
@@ -145,18 +150,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     
     //MARK: - Loading Data
-    func itemsDownloaded(items: [String]) {
-        listOfStocks = items
-        generateSectionDic(items: items)
-        self.tableView.reloadData()
-        activityIndicator.stopAnimating()
-        activityIndicator.hidesWhenStopped = true
-        tableView.isHidden = false
-        tableView.isScrollEnabled = true
-        tableView.separatorStyle = .singleLine
-        tableView.allowsSelection = true
-    }
-    
     func loadingStarted(){
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()

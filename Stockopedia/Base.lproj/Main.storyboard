@@ -353,7 +353,7 @@ https://icons8.com/ </string>
                     </view>
                     <navigationItem key="navigationItem" title="Favorite Stocks" id="p2J-fo-zaU"/>
                     <connections>
-                        <outlet property="noFavoritesLabel" destination="2ac-FV-FCY" id="9xI-fo-R3H"/>
+                        <outlet property="noFavoritesLabel" destination="2ac-FV-FCY" id="osK-zB-f7Q"/>
                         <outlet property="tableView" destination="ZK3-sP-Z1H" id="4QY-1T-edk"/>
                     </connections>
                 </viewController>
@@ -761,6 +761,6 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2GC-oe-rqf"/>
+        <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
 </document>
