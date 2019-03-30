@@ -17,7 +17,7 @@ public class HStock: NSObject, URLSessionDataDelegate {
     //MARK: - Variables
     weak var delegate: HStockProtocol!
     var data = Data()
-    let urlPath: String = "http://sp19-cs411-49.cs.illinois.edu/service.php"
+    let urlPath: String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
     
     //MARK: - HStock Variables
     var name: String!
