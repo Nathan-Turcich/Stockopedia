@@ -22,21 +22,33 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         loadingStarted()
-        DownloadData.downloadFavoritedList(key: "1", completion: { (list) in
+        if currentUserID != "" {
+            downloadFavortiesList()
+        }
+        else {
+            noFavoritesLabel.isHidden = false
+            self.tableView.isHidden = true
+            self.activityIndicator.stopAnimating()
+        }
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
+    
+    func downloadFavortiesList(){
+        DownloadData.downloadFavoritedList(key: currentUserID, completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
-                    self.tableView.isHidden = true
-                    self.activityIndicator.stopAnimating()
-                    self.noFavoritesLabel.isHidden = false
+                    DispatchQueue.main.async {
+                        self.tableView.isHidden = true
+                        self.noFavoritesLabel.isHidden = false
+                        self.noFavoritesLabel.text = "You have not favorited any stocks"
+                        self.activityIndicator.stopAnimating()
+                    }
                 }
                 else{
                     DispatchQueue.main.async {
                         self.favoritesList = favs
                         self.tableView.reloadData()
                         self.tableView.isHidden = false
-                        self.tableView.isScrollEnabled = true
-                        self.tableView.separatorStyle = .singleLine
-                        self.tableView.allowsSelection = true
                         self.noFavoritesLabel.isHidden = true
                         self.activityIndicator.stopAnimating()
                     }
@@ -45,7 +57,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             else { print("Error getting data") }
         })
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     //MARK: - Tableview Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return favoritesList.count }

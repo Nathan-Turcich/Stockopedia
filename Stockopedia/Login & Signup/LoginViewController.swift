@@ -11,17 +11,14 @@ import UIKit
 class LoginViewController: UIViewController {
     
     //MARK: - Variables
-    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
         DownloadData.getUser(username: usernameTextField.text!, password: passwordTextField.text!, completion: { user in
@@ -31,15 +28,12 @@ class LoginViewController: UIViewController {
                 })
             }else{
                 DispatchQueue.main.async(execute: {
+                    currentUserID = user!.key
                     UserDefaults.standard.set(user?.key, forKey: "CurrentUser")
                     self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
                 })
             }
         })
-    }
-    
-    @IBAction func signUpButtonAction(_ sender: UIButton) {
-        
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {

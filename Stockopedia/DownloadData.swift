@@ -37,7 +37,7 @@ class DownloadData {
     }
     
     static func downloadFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=get_favorites&key=" + key)!
+        let url: URL = URL(string: urlPath + "?query=get_user_favorited_list&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {

@@ -29,7 +29,7 @@
     }
     else if($_GET["query"] === "get_user_favorited_list"){
         $key = $_GET["key"];
-
+        
         $sql = "SELECT name
         FROM Favorites
         WHERE ID = '$key'";

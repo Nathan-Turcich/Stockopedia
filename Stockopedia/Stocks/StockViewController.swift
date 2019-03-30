@@ -86,6 +86,25 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
     }
     
+    func btnCloseTapped(cell: StockTableViewCell) {
+        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
+            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+        }
+        else{
+            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
+            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+        }
+        DownloadData.downloadFavoritedList(key: currentUserID, completion: { list in
+            DispatchQueue.main.async {
+                favoritedList = list!
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     //MARK: - Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
@@ -124,22 +143,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         searchBar.endEditing(true)
         isSearching = false
         tableView.reloadData()
-    }
-    
-    func btnCloseTapped(cell: StockTableViewCell) {
-        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
-            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
-        }
-        else{
-            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
-        }
-        DownloadData.downloadFavoritedList(key: currentUserID, completion: { list in
-            favoritedList = list!
-        })
     }
     
     //MARK: - Loading Data

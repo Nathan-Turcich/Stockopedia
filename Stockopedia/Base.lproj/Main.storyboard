@@ -348,7 +348,7 @@ https://icons8.com/ </string>
                                     <outlet property="delegate" destination="gia-c4-24T" id="hgl-Fa-Oon"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have no favorited stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-FV-FCY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You must log in to have favorited stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ac-FV-FCY">
                                 <rect key="frame" x="16" y="297" width="343" height="179"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="37"/>
                                 <nil key="textColor"/>
@@ -419,8 +419,6 @@ https://icons8.com/ </string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButtonAction:" destination="6dT-eM-c7U" eventType="touchUpInside" id="WKw-vH-u4M"/>
-                                    <action selector="signUpButtonAction:" destination="6dT-eM-c7U" eventType="touchUpInside" id="c5v-Rp-aMa"/>
                                     <segue destination="710-9t-E5I" kind="presentation" id="wXr-6K-Sjs"/>
                                 </connections>
                             </button>
@@ -500,7 +498,6 @@ https://icons8.com/ </string>
                     <connections>
                         <outlet property="loginButton" destination="zG2-qK-TN0" id="FkE-m6-6te"/>
                         <outlet property="passwordTextField" destination="iGa-92-Jeq" id="y5V-hH-KY2"/>
-                        <outlet property="signUpButton" destination="gAf-Ec-hgI" id="nGq-8v-OZ8"/>
                         <outlet property="usernameTextField" destination="e2w-fF-K6u" id="aK1-yH-IIm"/>
                         <segue destination="z1N-r8-UGy" kind="show" identifier="fromLoginToMain" id="5V4-Ew-0Kd"/>
                     </connections>
@@ -829,7 +826,7 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4HG-5Y-Uir"/>
-        <segue reference="2GC-oe-rqf"/>
+        <segue reference="5V4-Ew-0Kd"/>
+        <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
 </document>
