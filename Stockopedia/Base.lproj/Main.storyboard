@@ -297,6 +297,9 @@ https://icons8.com/ </string>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL8-vJ-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -499,6 +502,7 @@ https://icons8.com/ </string>
                         <outlet property="passwordTextField" destination="iGa-92-Jeq" id="y5V-hH-KY2"/>
                         <outlet property="signUpButton" destination="gAf-Ec-hgI" id="nGq-8v-OZ8"/>
                         <outlet property="usernameTextField" destination="e2w-fF-K6u" id="aK1-yH-IIm"/>
+                        <segue destination="z1N-r8-UGy" kind="show" identifier="fromLoginToMain" id="5V4-Ew-0Kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbU-Xr-GrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -713,6 +717,7 @@ https://icons8.com/ </string>
                         <outlet property="passwordTextField" destination="07E-Vf-cdB" id="ydq-Vn-fCK"/>
                         <outlet property="signUpButton" destination="RXT-5h-BpN" id="bYm-kQ-WF0"/>
                         <outlet property="usernameTextField" destination="5kl-fW-3Be" id="Fov-F0-NiD"/>
+                        <segue destination="z1N-r8-UGy" kind="show" identifier="fromCreateAccountToMain" id="4HG-5Y-Uir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6t-TO-uXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,6 +829,7 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="4HG-5Y-Uir"/>
         <segue reference="2GC-oe-rqf"/>
     </inferredMetricsTieBreakers>
 </document>
