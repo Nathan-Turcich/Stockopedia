@@ -59,4 +59,37 @@ class DownloadData {
         }
         task.resume()
     }
+    
+    static func createNewUser(username: String, password: String) {
+        let  url: URL = URL(string: urlPath + "?query=create_user?username=" + username + "?password=" + password)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
+    
+    static func getUser(key: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "/?query=get_user?key=" + key)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                /*var jsonElement = NSDictionary()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    stocks.append(jsonElement["name"]! as! String)
+                }
+                completion(stocks)*/
+            }
+        }
+        task.resume()
+    }
+    
 }
