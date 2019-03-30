@@ -11,20 +11,28 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     //MARK: - Variables
+    @IBOutlet var loginView: UIView!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+        
+        if(UserDefaults.standard.string(forKey: "CurrentUser") != "" && UserDefaults.standard.string(forKey: "CurrentUser") != nil) {
+            loginView.isHidden = true
+        }else{
+            loginView.isHidden = false
+        }
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
-
     
     @IBAction func logOutButtonAction(_ sender: UIBarButtonItem) {
         let alert = UIAlertController(title: "Are you sure you want to log out?", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log out", style: .default, handler: { (action: UIAlertAction!) in
-            
+            UserDefaults.standard.set("", forKey: "CurrentUser")
+            self.loginView.isHidden = false
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)

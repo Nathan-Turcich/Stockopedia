@@ -60,8 +60,7 @@ class DownloadData {
         task.resume()
     }
     
-    static func createNewUser(username: String, password: String) {
-        let key = Utils.randomString(length: 15)
+    static func createNewUser(key: String, username: String, password: String) {
         let  url: URL = URL(string: urlPath + "?query=create_user&key=" + key + "&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -89,7 +88,6 @@ class DownloadData {
                     user = User(key: jsonElement["ID"] as! String, username: jsonElement["Username"] as! String)
                 }
                 
-                print("Username: " + user.username + ", Key: " + user.key)
                 completion(user)
             }
         }

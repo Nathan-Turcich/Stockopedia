@@ -26,9 +26,14 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonAction(_ sender: UIButton) {
         DownloadData.getUser(username: usernameTextField.text!, password: passwordTextField.text!, completion: { user in
             if(user == nil) {
-                
+                DispatchQueue.main.async(execute: {
+                    Utils.createAlertWith(message: "Username or Password Incorrect", viewController: self)
+                })
             }else{
-                
+                DispatchQueue.main.async(execute: {
+                    UserDefaults.standard.set(user?.key, forKey: "CurrentUser")
+                    self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
+                })
             }
         })
     }
