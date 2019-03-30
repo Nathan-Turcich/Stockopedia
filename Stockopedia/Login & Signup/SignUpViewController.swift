@@ -18,7 +18,6 @@ class SignUpViewController: UIViewController {
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeBorder()
     }
     
     @IBAction func signUpButtonAction(_ sender: UIButton) {
@@ -31,13 +30,4 @@ class SignUpViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: - Helper Functions
-    fileprivate func makeBorder() {
-        usernameTextField.layer.borderColor = UIColor.black.cgColor
-        usernameTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = UIColor.black.cgColor
-        passwordTextField.layer.borderWidth = 1
-        signUpButton.layer.borderColor = UIColor.black.cgColor
-        signUpButton.layer.borderWidth = 1
-    }
 }

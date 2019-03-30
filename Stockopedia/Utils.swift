@@ -37,4 +37,11 @@ class Utils {
         return randomString
     }
     
+    //Creates a UIAlertView with a specific message to be displayed on a specific UIViewController
+    class func createAlertWith(message: String, viewController: UIViewController) {
+        let alert = UIAlertController(title: "Stockopedia", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
+        viewController.present(alert, animated: true, completion: nil)
+    }
+    
 }

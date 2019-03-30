@@ -22,11 +22,12 @@
         $sql = "INSERT INTO Users
         VALUES ('$key', '$username', '$password')";
     }else if($_GET["query"] === "get_user"){
-        $key = $_GET["key"];
+        $username = $_GET["username"];
+        $password = $_GET["password"];
         
         $sql = "SELECT ID, Username
         FROM Users
-        WHERE ID = '$key'";
+        WHERE Username = '$username' AND Password = '$password'";
     }
     
     //Result of queries
