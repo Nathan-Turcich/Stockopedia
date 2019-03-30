@@ -6,11 +6,7 @@ user = "root"
 password = "374sucks"
 database = 'StockTopics'
 
-if __name__ == '__main__':
-    listOfTopics = scrapWebsitesForTopics()
-    insertTopicsToDB(listOfTopics)
-
-def scrapWebsitesForTopics():
+def scrapeWebsitesForTopics():
     return [("APPL", "Technology"), ("Ford", "Cars"), ("MCD", "Food")]
 
 def insertTopicsToDB(listOfTopics):
@@ -20,6 +16,10 @@ def insertTopicsToDB(listOfTopics):
     for (stock, topic) in listOfTopics:
         sql = "INSERT INTO StockTopics (name, topic) VALUES (%s, %s)"
         mycursor.execute(sql, (stock, topic))
-    
+
     mydb.commit()
     mydb.close()
+
+if __name__ == '__main__':
+    listOfTopics = scrapeWebsitesForTopics()
+    insertTopicsToDB(listOfTopics)
