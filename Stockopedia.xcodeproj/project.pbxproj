@@ -131,7 +131,6 @@
 				BC9B6C642249BCB600F54B9E /* Objects */,
 				91C629262235C6D100543EF0 /* Assets.xcassets */,
 				91C6292B2235C6D100543EF0 /* Info.plist */,
-				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				BCB29D6A223852060007DC22 /* Back End */,
 			);
 			path = Stockopedia;
@@ -193,6 +192,7 @@
 		BCC4568A224DACA4004E40B2 /* Login & Signup */ = {
 			isa = PBXGroup;
 			children = (
+				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
 				BCC45688224DACA2004E40B2 /* SignUpViewController.swift */,
 				BCC45686224DA9EA004E40B2 /* LoginViewController.swift */,
