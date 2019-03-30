@@ -61,7 +61,7 @@ class DownloadData {
     }
     
     static func createNewUser(username: String, password: String) {
-        let  url: URL = URL(string: urlPath + "?query=create_user?username=" + username + "?password=" + password)!
+        let  url: URL = URL(string: urlPath + "?query=create_user&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
@@ -70,7 +70,7 @@ class DownloadData {
     }
     
     static func getUser(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "/?query=get_user?key=" + key)!
+        let url: URL = URL(string: urlPath + "/?query=get_user&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
