@@ -36,8 +36,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadFavoritedList(completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath)!
+    static func downloadFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=get_favorites&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -70,8 +70,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func getUser(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "/?query=get_user&key=" + key)!
+    static func getUser(username: String, password: String, completion:@escaping (User?) -> Void) {
+        let url: URL = URL(string: urlPath + "/?query=get_user&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -82,12 +82,15 @@ class DownloadData {
                 do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
                 } catch let error as NSError { print(error) }
                 
-                /*var jsonElement = NSDictionary()
+                var user: User!
+                var jsonElement = NSDictionary()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    stocks.append(jsonElement["name"]! as! String)
+                    user = User(key: jsonElement["ID"] as! String, username: jsonElement["Username"] as! String)
                 }
-                completion(stocks)*/
+                
+                print("Username: " + user.username + ", Key: " + user.key)
+                completion(user)
             }
         }
         task.resume()

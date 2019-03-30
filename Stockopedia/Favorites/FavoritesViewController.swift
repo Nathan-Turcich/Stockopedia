@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         loadingStarted()
-        DownloadData.downloadFavoritedList(completion: { (list) in
+        DownloadData.downloadFavoritedList(key: "1", completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
                     self.tableView.isHidden = true

@@ -24,7 +24,13 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
-        
+        DownloadData.getUser(username: usernameTextField.text!, password: passwordTextField.text!, completion: { user in
+            if(user == nil) {
+                
+            }else{
+                
+            }
+        })
     }
     
     @IBAction func signUpButtonAction(_ sender: UIButton) {
