@@ -13,7 +13,7 @@ var urlPath:String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
 class DownloadData {
     
     static func downloadUniqueStockNames(completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath)!
+        let url: URL = URL(string: urlPath + "?query=get_all_stock_names")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -61,7 +61,8 @@ class DownloadData {
     }
     
     static func createNewUser(username: String, password: String) {
-        let  url: URL = URL(string: urlPath + "?query=create_user&username=" + username + "&password=" + password)!
+        let key = Utils.randomString(length: 15)
+        let  url: URL = URL(string: urlPath + "?query=create_user&key=" + key + "&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             

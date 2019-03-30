@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91BD1E9E224FF93B00B94DF5 /* DailyUpdateScraper.py in Resources */ = {isa = PBXBuildFile; fileRef = 91BD1E9D224FF93B00B94DF5 /* DailyUpdateScraper.py */; };
 		91C629202235C6CC00543EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6291F2235C6CC00543EF0 /* AppDelegate.swift */; };
 		91C629252235C6CC00543EF0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C629232235C6CC00543EF0 /* Main.storyboard */; };
 		91C629272235C6D100543EF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91C629262235C6D100543EF0 /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		91BD1E9D224FF93B00B94DF5 /* DailyUpdateScraper.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = DailyUpdateScraper.py; sourceTree = "<group>"; };
 		91C6291C2235C6CC00543EF0 /* Stockopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6291F2235C6CC00543EF0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91C629242235C6CC00543EF0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */,
 				BCB29D6C2238522A0007DC22 /* queries.php */,
+				91BD1E9D224FF93B00B94DF5 /* DailyUpdateScraper.py */,
 			);
 			path = "Back End";
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */,
 				BCB29D6D2238522A0007DC22 /* csv_to_mysql.php in Resources */,
 				91C629272235C6D100543EF0 /* Assets.xcassets in Resources */,
+				91BD1E9E224FF93B00B94DF5 /* DailyUpdateScraper.py in Resources */,
 				91C629252235C6CC00543EF0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
