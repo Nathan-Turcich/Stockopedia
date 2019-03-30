@@ -26,7 +26,7 @@
         
         $sql = "SELECT ID, Username
         FROM Users
-        WHERE ID = '$key'";
+        WHERE ID = '1'";
     }
     
     //Result of queries
