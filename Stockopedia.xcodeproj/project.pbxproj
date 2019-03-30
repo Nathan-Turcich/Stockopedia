@@ -20,6 +20,7 @@
 		BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */; };
 		BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C722249D7A400F54B9E /* StockViewController.swift */; };
 		BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */; };
+		BCB00BDC224F05DF008E0C3F /* DownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB00BDB224F05DF008E0C3F /* DownloadData.swift */; };
 		BCB29D6D2238522A0007DC22 /* csv_to_mysql.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */; };
 		BCB29D6E2238522A0007DC22 /* queries.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6C2238522A0007DC22 /* queries.php */; };
 		BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC45686224DA9EA004E40B2 /* LoginViewController.swift */; };
@@ -64,6 +65,7 @@
 		BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStockTableViewCell.swift; sourceTree = "<group>"; };
 		BC9B6C722249D7A400F54B9E /* StockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockViewController.swift; sourceTree = "<group>"; };
 		BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailViewController.swift; sourceTree = "<group>"; };
+		BCB00BDB224F05DF008E0C3F /* DownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadData.swift; sourceTree = "<group>"; };
 		BCB29D6B2238522A0007DC22 /* csv_to_mysql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = csv_to_mysql.php; sourceTree = "<group>"; };
 		BCB29D6C2238522A0007DC22 /* queries.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = queries.php; sourceTree = "<group>"; };
 		BCC45686224DA9EA004E40B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				91C629512235C88600543EF0 /* HStock.swift */,
+				BCB00BDB224F05DF008E0C3F /* DownloadData.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */,
 				BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */,
 				BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */,
+				BCB00BDC224F05DF008E0C3F /* DownloadData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

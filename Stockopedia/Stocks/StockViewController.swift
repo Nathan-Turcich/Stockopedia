@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate, HStockProtocol {
+class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate {
     
     //MARK: - Variables
     @IBOutlet var searchBar: UISearchBar!
@@ -24,19 +24,24 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
     
-    
-    //BLAH
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
-        hstock.delegate = self
-        hstock.downloadItems()
+//        hstock.delegate = self
+//        hstock.downloadItems()
         loadingStarted()
         searchBar.barTintColor = primaryColor
         favoritesList = UserDefaults.standard.stringArray(forKey: "FavoriteList") ?? [""]
+        
+        DownloadData.downloadUniqueStockNames(completion: { stockNames in
+            if let names = stockNames {
+                self.itemsDownloaded(items: names)
+            }
+            else { print("Error getting data") }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
