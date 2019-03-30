@@ -12,7 +12,8 @@
         FROM hstocks
         WHERE name = 'AAPL'";
     }
-    else if($_GET["query"] === "get_all_stock_names"){
+//    else if($_GET["query"] === "get_all_stock_names"){
+    else {
         $sql = "SELECT name
         FROM hstocks
         GROUP BY name";
