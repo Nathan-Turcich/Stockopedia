@@ -16,7 +16,7 @@ $ext = substr($filename, strrpos($filename, "."), (strlen($filename) - strrpos($
   $file = fopen($filename, "r");
          while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
          {
-            $sql = "INSERT into hstocks(date, open, high, low, close, volume, name) values('$emapData[0]', '$emapData[1]', '$emapData[2]', '$emapData[3]', '$emapData[4]', '$emapData[5]', '$emapData[6]')";
+            $sql = "INSERT into Stocks(date, open, high, low, close, volume, name) values('$emapData[0]', '$emapData[1]', '$emapData[2]', '$emapData[3]', '$emapData[4]', '$emapData[5]', '$emapData[6]')";
             mysql_query($sql);
          }
          fclose($file);

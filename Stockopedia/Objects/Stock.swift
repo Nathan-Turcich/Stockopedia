@@ -1,5 +1,5 @@
 //
-//  HStock.swift
+//  Stock.swift
 //  Stockopedia
 //
 //  Created by Joey Chung on 3/10/19.

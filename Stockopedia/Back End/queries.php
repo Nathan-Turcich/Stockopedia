@@ -6,22 +6,20 @@
     //All Queries
     
     $sql = "";
-    if($_GET["query"] === "test") {
+   if($_GET["query"] === "get_all_stock_names"){
         $sql = "SELECT name
-        FROM hstocks
-        WHERE name = 'AAPL'";
-    }else if($_GET["query"] === "get_all_stock_names"){
-        $sql = "SELECT name
-        FROM hstocks
+        FROM Stocks
         GROUP BY name";
-    }else if($_GET["query"] === "create_user"){
+    }
+    else if($_GET["query"] === "create_user"){
         $key = $_GET["key"];
         $username = $_GET["username"];
         $password = $_GET["password"];
         
         $sql = "INSERT INTO Users
         VALUES ('$key', '$username', '$password')";
-    }else if($_GET["query"] === "get_user"){
+    }
+    else if($_GET["query"] === "get_user"){
         $username = $_GET["username"];
         $password = $_GET["password"];
         

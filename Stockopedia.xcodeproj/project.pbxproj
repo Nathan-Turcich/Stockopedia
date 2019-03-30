@@ -126,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				91C6291F2235C6CC00543EF0 /* AppDelegate.swift */,
+				BCB00BDB224F05DF008E0C3F /* DownloadData.swift */,
 				BCC4568D224DBFEF004E40B2 /* Utils.swift */,
 				91C629232235C6CC00543EF0 /* Main.storyboard */,
 				91C629282235C6D100543EF0 /* LaunchScreen.storyboard */,
@@ -173,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				91C629512235C88600543EF0 /* Stock.swift */,
-				BCB00BDB224F05DF008E0C3F /* DownloadData.swift */,
 				91BD1E9F224FFBB900B94DF5 /* User.swift */,
 			);
 			path = Objects;
@@ -203,8 +203,8 @@
 			children = (
 				BCC45686224DA9EA004E40B2 /* LoginViewController.swift */,
 				BCC45688224DACA2004E40B2 /* SignUpViewController.swift */,
-				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
+				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 			);
 			path = "Login & Signup";
 			sourceTree = "<group>";

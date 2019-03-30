@@ -27,6 +27,9 @@ class SignUpViewController: UIViewController {
             UserDefaults.standard.set(key, forKey: "CurrentUser")
             self.performSegue(withIdentifier: "fromCreateAccountToMain", sender: self)
         }
+        else {
+            Utils.createAlertWith(message: "Fill in all fields.", viewController: self)
+        }
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {
