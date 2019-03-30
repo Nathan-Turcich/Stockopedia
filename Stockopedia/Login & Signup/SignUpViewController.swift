@@ -8,6 +8,8 @@
 
 import UIKit
 
+var currentUserID:String = ""
+
 class SignUpViewController: UIViewController {
 
     //MARK: - Variables
@@ -24,6 +26,7 @@ class SignUpViewController: UIViewController {
         if(usernameTextField.text != "" && passwordTextField.text != "") {
             let key = Utils.randomString(length: 15)
             DownloadData.createNewUser(key: key, username: usernameTextField.text!, password: passwordTextField.text!)
+            currentUserID = key
             UserDefaults.standard.set(key, forKey: "CurrentUser")
             self.performSegue(withIdentifier: "fromCreateAccountToMain", sender: self)
         }

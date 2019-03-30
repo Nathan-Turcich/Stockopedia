@@ -94,4 +94,45 @@ class DownloadData {
         task.resume()
     }
     
+    static func getUserFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "/?query=get_user_favorited_list&key=" + key)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var favoritedList:[String] = []
+                var jsonElement = NSDictionary()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    favoritedList.append(jsonElement["name"]! as! String)
+                }
+                completion(favoritedList)
+            }
+        }
+        task.resume()
+    }
+    
+    static func insertNameFavoritedList(key: String, name: String) {
+        let  url: URL = URL(string: urlPath + "?query=insert_name_favorited_list&key=" + key + "&name=" + name)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
+    
+    static func deleteNameFavoritedList(key: String, name: String) {
+        let  url: URL = URL(string: urlPath + "?query=delete_name_favorited_list&key=" + key + "&name=" + name)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
 }

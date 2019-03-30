@@ -59,7 +59,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //Delete Cells
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: favoritedList[indexPath.row])
         }
     }
     

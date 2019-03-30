@@ -8,6 +8,8 @@
 
 import UIKit
 
+var favoritedList:[String] = []
+
 class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate {
     
     //MARK: - Variables
@@ -32,22 +34,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         searchBar.barTintColor = primaryColor
         
         loadingStarted()
-        DownloadData.downloadUniqueStockNames(completion: { stockNames in
-            if let names = stockNames {
-                DispatchQueue.main.async {
-                    self.listOfStocks = names
-                    self.generateSectionDic(items: names)
-                    self.tableView.reloadData()
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.hidesWhenStopped = true
-                    self.tableView.isHidden = false
-                    self.tableView.isScrollEnabled = true
-                    self.tableView.separatorStyle = .singleLine
-                    self.tableView.allowsSelection = true
-                }
-            }
-            else { print("Error getting data") }
-        })
+        downloadStocks()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,11 +63,22 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
         if isSearching { cell.stockNameLabel.text = filteredStocks[indexPath.row] }
         else { cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row] }
-        
-//        if favoritesList.contains(filteredStocks[indexPath.row]) {
-//            cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
-//        }
-//        else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
+        if currentUserID != "" {
+            cell.favoriteButton.isHidden = false; cell.favoriteButton.isEnabled = true
+            if isSearching {
+                if favoritedList.contains(filteredStocks[indexPath.row]) {
+                    cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
+                }
+                else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
+            }
+            else{
+                if favoritedList.contains(listOfStocks[indexPath.row]) {
+                    cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
+                }
+                else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
+            }
+        }
+        else { cell.favoriteButton.isHidden = true; cell.favoriteButton.isEnabled = false }
         cell.delegate = self
         return cell
     }
@@ -129,27 +127,51 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func btnCloseTapped(cell: StockTableViewCell) {
-        //        let indexPath = tableView.indexPath(for: cell)
-        //        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
-        //            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-        //                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-        //            if let index = favoritesList.index(of: stocks[indexPath!.row]) {
-        //                favoritesList.remove(at: index)
-        //            }
-        //        }
-        //        else{
-        //            if favoritesList[0] == "" { favoritesList.remove(at: 0)}
-        //            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
-        //                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-        //            favoritesList.append(stocks[indexPath!.row])
-        //        }
-        //        favoritesList = favoritesList.sorted(by: <)
-        //        if favoritesList.count == 0 { favoritesList.append("")}
-        //        UserDefaults.standard.set(favoritesList, forKey: "FavoriteList")
+        if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
+            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+        }
+        else{
+            UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
+            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+        }
+        DownloadData.downloadFavoritedList(key: currentUserID, completion: { list in
+            favoritedList = list!
+        })
     }
-
     
     //MARK: - Loading Data
+    func downloadStocks(){
+        DownloadData.downloadUniqueStockNames(completion: { stockNames in
+            if let names = stockNames {
+                if currentUserID != "" {
+                    DownloadData.getUserFavoritedList(key: currentUserID, completion: { (favList) in
+                        favoritedList = favList!
+                        self.setData(names: names)
+                    })
+                }
+                else { self.setData(names: names)}
+            }
+            else { print("Error getting data") }
+        })
+    }
+    
+    func setData(names: [String]){
+        DispatchQueue.main.async {
+            self.listOfStocks = names
+            self.generateSectionDic(items: names)
+            self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
+            self.activityIndicator.hidesWhenStopped = true
+            self.tableView.isHidden = false
+            self.tableView.isScrollEnabled = true
+            self.tableView.separatorStyle = .singleLine
+            self.tableView.allowsSelection = true
+        }
+    }
+    
     func loadingStarted(){
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()

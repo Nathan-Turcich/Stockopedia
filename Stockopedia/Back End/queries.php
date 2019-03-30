@@ -27,6 +27,28 @@
         FROM Users
         WHERE Username = '$username' AND Password = '$password'";
     }
+    else if($_GET["query"] === "get_user_favorited_list"){
+        $key = $_GET["key"];
+
+        $sql = "SELECT name
+        FROM Favorites
+        WHERE ID = '$key'";
+    }
+    else if($_GET["query"] === "insert_name_favorited_list"){
+        $key = $_GET["key"];
+        $name = $_GET["name"];
+        
+        $sql = "INSERT INTO Favorites
+        VALUES ('$key', '$name')";
+    }
+    else if($_GET["query"] === "delete_name_favorited_list"){
+        $key = $_GET["key"];
+        $name = $_GET["name"];
+        
+        $sql = "DELETE
+        FROM Favorites
+        WHERE ID = '$key' and name = '$name'";
+    }
     
     //Result of queries
     if ($result = mysqli_query($con, $sql)) {     // Check if there are results
