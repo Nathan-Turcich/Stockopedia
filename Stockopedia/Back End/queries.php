@@ -7,6 +7,7 @@
     
     $sql = "";
     if($_GET["query"] === "test") {
+        echo "TEST";
         $sql = "SELECT name
         FROM hstocks
         WHERE name = 'AAPL'";
