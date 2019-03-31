@@ -55,6 +55,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.tableView.isHidden = false
                         self.tableView.allowsSelection = true
                         self.tableView.separatorStyle = .singleLine
+                        self.tableView.isScrollEnabled = true
                         self.noFavoritesLabel.isHidden = true
                         self.activityIndicator.stopAnimating()
                     }
@@ -76,7 +77,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //Delete Cells
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            print(indexPath.row)
             DownloadData.deleteNameFavoritedList(key: currentUserID, name: favoritedList[indexPath.row])
+            favoritesList.remove(at: indexPath.row)
+            tableView.reloadData()
         }
     }
     

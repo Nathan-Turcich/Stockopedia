@@ -24,22 +24,24 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
+    var lastIndexPath:IndexPath!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-        for i in 0...25 { sectionDic[i] = 0 }
-        generateSectionHeader()
-        searchBar.barTintColor = primaryColor
-        
-        loadingStarted()
-        downloadStocks()
+        lastIndexPath = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        for i in 0...25 { sectionDic[i] = 0 }
+        generateSectionHeader()
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
         tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
+        searchBar.barTintColor = primaryColor
+
+        loadingStarted()
+        downloadStocks()
         tableView.sectionIndexColor = primaryColor
         tableView.reloadData()
         searchBarCancelButton.isEnabled = false
@@ -72,7 +74,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
             }
             else{
-                if favoritedList.contains(listOfStocks[indexPath.row]) {
+                if favoritedList.contains(stocks[indexPath.section][indexPath.row]) {
                     cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
                 }
                 else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
@@ -97,12 +99,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
             DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
         }
-        DownloadData.downloadFavoritedList(key: currentUserID, completion: { list in
-            DispatchQueue.main.async {
-                favoritedList = list!
-                self.tableView.reloadData()
-            }
-        })
     }
     
     //MARK: - Search Bar
@@ -172,6 +168,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.isScrollEnabled = true
             self.tableView.separatorStyle = .singleLine
             self.tableView.allowsSelection = true
+            if self.lastIndexPath != nil { self.tableView.scrollToRow(at: self.lastIndexPath, at: .middle, animated: false) }
         }
     }
     
@@ -291,8 +288,12 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
+            lastIndexPath = tableView.indexPathForSelectedRow!
             if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row] }
             else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row] }
+        }
+        else{
+            lastIndexPath = nil
         }
     }
 }
