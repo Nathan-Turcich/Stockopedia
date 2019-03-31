@@ -20,6 +20,9 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         loadingStarted()
         if currentUserID != "" {
@@ -31,6 +34,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
             self.activityIndicator.stopAnimating()
         }
     }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     func downloadFavortiesList(){
@@ -49,6 +53,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.favoritesList = favs
                         self.tableView.reloadData()
                         self.tableView.isHidden = false
+                        self.tableView.allowsSelection = true
+                        self.tableView.separatorStyle = .singleLine
                         self.noFavoritesLabel.isHidden = true
                         self.activityIndicator.stopAnimating()
                     }
