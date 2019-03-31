@@ -152,7 +152,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xg8-Vp-5Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="2062"/>
+            <point key="canvasLocation" x="3318" y="1295"/>
         </scene>
         <!--Real Time-->
         <scene sceneID="ggK-iT-I97">
@@ -603,7 +603,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nT6-vB-BoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857" y="1296"/>
+            <point key="canvasLocation" x="2641" y="1295"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2oL-4g-UPc">
@@ -826,7 +826,7 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5V4-Ew-0Kd"/>
+        <segue reference="4HG-5Y-Uir"/>
         <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
 </document>
