@@ -26,15 +26,16 @@ def getURLs():
     urls = []
     for name in stockNames:
         url = baseURL + name + "/profile?p=" + name
-    urls.append(url)
+    	urls.append(url)
     return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
     topics = ((),)
     for url in listOfURLs:
-        rawHTML = getURLData(url)
+        print(url)
+	rawHTML = getURLData(url)
         if rawHTML != None:
-            print(rawHTML)
+	    print("Success")
     # Get Topic
     return topics
 
@@ -67,4 +68,4 @@ def insertTopicsToDB(listOfTopics):
 
 if __name__ == '__main__':
     listOfTopics = scrapeWebsitesForTopics(getURLs())
-    insertTopicsToDB(listOfTopics)
+    #insertTopicsToDB(listOfTopics)
