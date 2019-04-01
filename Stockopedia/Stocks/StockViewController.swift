@@ -292,8 +292,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row] }
             else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row] }
         }
-        else{
-            lastIndexPath = nil
-        }
+        else { lastIndexPath = nil }
     }
 }

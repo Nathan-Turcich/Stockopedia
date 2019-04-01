@@ -139,7 +139,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="button1Action:" destination="CE9-T4-vk8" eventType="touchUpInside" id="HFf-Dd-zw0"/>
+                                    <action selector="buttonAction:" destination="CE9-T4-vk8" eventType="touchUpInside" id="OJR-K9-1me"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="27f-tu-WLl">
@@ -156,7 +156,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="button2Action:" destination="CE9-T4-vk8" eventType="touchUpInside" id="lQr-x7-uB8"/>
+                                    <action selector="buttonAction:" destination="CE9-T4-vk8" eventType="touchUpInside" id="uXB-uf-KKM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5b-bm-sZg">
@@ -173,7 +173,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="button3Action:" destination="CE9-T4-vk8" eventType="touchUpInside" id="kXt-1d-tlL"/>
+                                    <action selector="buttonAction:" destination="CE9-T4-vk8" eventType="touchUpInside" id="2y3-3L-S3l"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ftj-Ua-gwb">
@@ -256,6 +256,10 @@
                         <outlet property="button1" destination="qgK-HE-YxH" id="feu-ly-tWR"/>
                         <outlet property="button2" destination="27f-tu-WLl" id="yhb-ZP-AAm"/>
                         <outlet property="button3" destination="M5b-bm-sZg" id="uhX-7X-YXb"/>
+                        <outlet property="catagory1Label" destination="fUh-NJ-TUE" id="Wdd-CY-Fek"/>
+                        <outlet property="catagory2Label" destination="THe-T7-uGo" id="eWX-uv-LFT"/>
+                        <outlet property="catagory3Label" destination="y0L-qw-GXO" id="yUI-cO-m72"/>
+                        <outlet property="mainLabel" destination="gMe-74-gZ4" id="xkM-3Z-D0v"/>
                         <outlet property="tableView" destination="Ftj-Ua-gwb" id="phx-bx-7rg"/>
                     </connections>
                 </viewController>

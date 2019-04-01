@@ -34,7 +34,7 @@
        WHERE ID = '$key' and name = '$name'";
    }
    else if($_GET["query"] === "getTopicData"){
-       $sql = "SELECT name, topic
+       $sql = "SELECT *
        FROM StockTopics
        GROUP BY topic";
    }
