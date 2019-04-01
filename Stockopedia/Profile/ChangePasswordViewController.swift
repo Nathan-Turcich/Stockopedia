@@ -14,9 +14,7 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var oldPasswordTextField: UITextField!
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
-    @IBOutlet weak var saveButton: UIButton!
     
-
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +34,7 @@ class ChangePasswordViewController: UIViewController {
             else {
                 // Update password in SQL
                 DownloadData.updateUserPassword(key: currentUserID, newPassword: newPasswordTextField.text!)
-                dismiss(animated: true, completion: nil)
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }    
@@ -49,7 +47,5 @@ class ChangePasswordViewController: UIViewController {
         newPasswordTextField.layer.borderWidth = 1
         confirmTextField.layer.borderColor = UIColor.black.cgColor
         confirmTextField.layer.borderWidth = 1
-        saveButton.layer.borderColor = UIColor.black.cgColor
-        saveButton.layer.borderWidth = 1
     }
 }

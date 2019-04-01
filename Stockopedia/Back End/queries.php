@@ -57,6 +57,14 @@
         SET Password='$newPassword'
         WHERE ID = '$key'";
     }
+    else if($_GET["query"] === "updateUsername"){
+        $key = $_GET["key"];
+        $newUsername = $_GET["newUsername"];
+        
+        $sql = "UPDATE Users
+        SET Username='$newUsername'
+        WHERE ID = '$key'";
+    }
     
     //Result of queries
     if ($result = mysqli_query($con, $sql)) {     // Check if there are results

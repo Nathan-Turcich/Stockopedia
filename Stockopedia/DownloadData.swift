@@ -122,4 +122,13 @@ class DownloadData {
         }
         task.resume()
     }
+    
+    static func updateUsername(key: String, newUsername: String){
+        let  url: URL = URL(string: urlPath + "?query=updateUsername&key=" + key + "&newUsername=" + newUsername)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
 }

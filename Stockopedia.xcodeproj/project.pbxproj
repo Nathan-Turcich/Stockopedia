@@ -15,6 +15,7 @@
 		91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C629282235C6D100543EF0 /* LaunchScreen.storyboard */; };
 		91C6294F2235C80B00543EF0 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */; };
 		91C629522235C88600543EF0 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C629512235C88600543EF0 /* Stock.swift */; };
+		BC6C6D7B2252B46800825EDA /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */; };
 		BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */; };
 		BC9B6C612249BC9700F54B9E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C602249BC9700F54B9E /* FavoritesViewController.swift */; };
 		BC9B6C672249BD5400F54B9E /* RealTimeStocksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */; };
@@ -64,6 +65,7 @@
 		91C6293B2235C6D100543EF0 /* StockopediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockopediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		91C629512235C88600543EF0 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BC9B6C602249BC9700F54B9E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStocksViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */,
 				BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */,
 				BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */,
+				BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */,
 				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
 			);
 			path = Profile;
@@ -351,6 +354,7 @@
 			files = (
 				BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */,
 				BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */,
+				BC6C6D7B2252B46800825EDA /* ChangeUsernameViewController.swift in Sources */,
 				BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */,
 				BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */,
 				BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */,

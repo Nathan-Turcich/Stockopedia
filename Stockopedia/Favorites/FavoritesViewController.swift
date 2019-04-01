@@ -38,7 +38,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     func downloadFavortiesList(){
-        DownloadData.downloadFavoritedList(key: currentUserID, completion: { (list) in
+        DownloadData.getUserFavoritedList(key: currentUserID, completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
                     DispatchQueue.main.async {
