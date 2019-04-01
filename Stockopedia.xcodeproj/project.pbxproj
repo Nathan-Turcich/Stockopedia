@@ -30,6 +30,8 @@
 		BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */; };
 		BCC4568E224DBFEF004E40B2 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568D224DBFEF004E40B2 /* Utils.swift */; };
 		BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568F224DC642004E40B2 /* AboutViewController.swift */; };
+		BCE4D57722527E1D000DA0E2 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */; };
+		BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		BCC4568D224DBFEF004E40B2 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BCC4568F224DC642004E40B2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
+		BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySellViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */,
+				BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */,
+				BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */,
 				BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */,
 				BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */,
 				BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */,
@@ -358,6 +365,7 @@
 				91C629522235C88600543EF0 /* Stock.swift in Sources */,
 				BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */,
 				BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */,
+				BCE4D57722527E1D000DA0E2 /* RecommendationsViewController.swift in Sources */,
 				BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */,
 				BCB00BDC224F05DF008E0C3F /* DownloadData.swift in Sources */,
 			);
