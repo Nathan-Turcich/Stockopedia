@@ -6,23 +6,27 @@ user = "root"
 password = "374sucks"
 database = 'Stockopedia'
 
-myDB = None
-cursor = None
+myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
+cursor = myDB.cursor()
 
-def initilizeDB():
-    myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
-    cursor = myDB.cursor()
-
-def getURLs(myDB):
+def getURLs():
     cursor.execute("SELECT name FROM Stocks GROUP BY name;")
     data = cursor.fetchall()
-    stocks = []
+    stockNames = []
     for d in data:
-        stocks.append(d)
-    return stocks
+        stockNames.append(d[0])
+    
+    # Sample: https://finance.yahoo.com/quote/AAPL/profile?p=AAPL
+    baseURL = "https://finance.yahoo.com/quote/"
+    urls = []
+    for name in stockNames:
+        url = baseURL + name + "/profile?p=" + name
+	urls.append(url)
+    return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
-    print(listOfURLs)
+    for item in listOfURLs:
+        print(item)   
     return [("APPL", "Technology"), ("Ford", "Cars"), ("MCD", "Food")]
 
 def insertTopicsToDB(listOfTopics):
@@ -30,10 +34,9 @@ def insertTopicsToDB(listOfTopics):
         sql = "INSERT INTO StockTopics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
 
-    mydb.commit()
-    mydb.close()
+    myDB.commit()
+    myDB.close()
 
 if __name__ == '__main__':
-    initilizeDB()
     listOfTopics = scrapeWebsitesForTopics(getURLs())
     insertTopicsToDB(listOfTopics)
