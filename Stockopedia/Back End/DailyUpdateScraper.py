@@ -33,7 +33,7 @@ def scrapeWebsitesForTopics(listOfURLs):
     topics = ((),)
     for url in listOfURLs:
         rawHTML = getURLData(url)
-        if rawHTML(url) != None:
+        if rawHTML != None:
             print(rawHTML)
     # Get Topic
     return topics
