@@ -13,7 +13,7 @@ var urlPath:String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
 class DownloadData {
     
     static func downloadUniqueStockNames(completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=get_all_stock_names")!
+        let url: URL = URL(string: urlPath + "?query=downloadUniqueStockNames")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -36,8 +36,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=get_user_favorited_list&key=" + key)!
+    static func getUserFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getUserFavoritedList&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -60,8 +60,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func createNewUser(key: String, username: String, password: String) {
-        let  url: URL = URL(string: urlPath + "?query=create_user&key=" + key + "&username=" + username + "&password=" + password)!
+    static func createUser(key: String, username: String, password: String) {
+        let  url: URL = URL(string: urlPath + "?query=createUser&key=" + key + "&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
@@ -70,7 +70,7 @@ class DownloadData {
     }
     
     static func getUser(username: String, password: String, completion:@escaping (User?) -> Void) {
-        let url: URL = URL(string: urlPath + "/?query=get_user&username=" + username + "&password=" + password)!
+        let url: URL = URL(string: urlPath + "/?query=getUser&username=" + username + "&password=" + password)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -94,32 +94,10 @@ class DownloadData {
         task.resume()
     }
     
-    static func getUserFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "/?query=get_user_favorited_list&key=" + key)!
-        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        let task = defaultSession.dataTask(with: url) { (data, response, error) in
-            if error != nil {
-                print(error.debugDescription)
-                completion(nil)
-            }else {
-                var jsonResult = NSArray()
-                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
-                } catch let error as NSError { print(error) }
-                
-                var favoritedList:[String] = []
-                var jsonElement = NSDictionary()
-                for i in 0 ..< jsonResult.count {
-                    jsonElement = jsonResult[i] as! NSDictionary
-                    favoritedList.append(jsonElement["name"]! as! String)
-                }
-                completion(favoritedList)
-            }
-        }
-        task.resume()
-    }
+    
     
     static func insertNameFavoritedList(key: String, name: String) {
-        let  url: URL = URL(string: urlPath + "?query=insert_name_favorited_list&key=" + key + "&name=" + name)!
+        let  url: URL = URL(string: urlPath + "?query=insertNameFavoritedList&key=" + key + "&name=" + name)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
@@ -128,7 +106,16 @@ class DownloadData {
     }
     
     static func deleteNameFavoritedList(key: String, name: String) {
-        let  url: URL = URL(string: urlPath + "?query=delete_name_favorited_list&key=" + key + "&name=" + name)!
+        let  url: URL = URL(string: urlPath + "?query=deleteNameFavoritedList&key=" + key + "&name=" + name)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
+    
+    static func updateUserPassword(key: String, newPassword: String) {
+        let  url: URL = URL(string: urlPath + "?query=updateUserPassword&key=" + key + "&newPassword=" + newPassword)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             

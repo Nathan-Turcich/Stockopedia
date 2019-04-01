@@ -167,7 +167,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xg8-Vp-5Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3318" y="1295"/>
+            <point key="canvasLocation" x="3318" y="1298"/>
         </scene>
         <!--Real Time-->
         <scene sceneID="ggK-iT-I97">
@@ -325,6 +325,23 @@ https://icons8.com/ </string>
                                             <segue destination="lCQ-im-HuY" kind="show" id="sFW-NN-HHV"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4G-uh-l5q">
+                                        <rect key="frame" x="8" y="453" width="338" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Change Password">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="58C-b4-3kF" kind="show" id="VMe-k1-eOd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -358,6 +375,7 @@ https://icons8.com/ </string>
                     </navigationItem>
                     <connections>
                         <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
+                        <outlet property="logoutButton" destination="qBB-N5-jjA" id="AFZ-Xu-oqK"/>
                         <outlet property="profileView" destination="uEc-KZ-F5B" id="i70-L8-Jra"/>
                     </connections>
                 </viewController>
@@ -623,33 +641,6 @@ https://icons8.com/ </string>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWJ-uI-xcp">
-                                <rect key="frame" x="153" y="312" width="69" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="saveButtonAction:" destination="58C-b4-3kF" eventType="touchUpInside" id="Gmz-8i-RtX"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-fB-Sx5">
-                                <rect key="frame" x="16" y="44" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="changePasswordAction:" destination="58C-b4-3kF" eventType="touchUpInside" id="Vpi-qf-UKM"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Nvt-oV-ass"/>
@@ -658,12 +649,11 @@ https://icons8.com/ </string>
                         <outlet property="confirmTextField" destination="HBF-sZ-zke" id="qgh-ZI-6UD"/>
                         <outlet property="newPasswordTextField" destination="4Y1-JN-cZE" id="B3F-ne-9d0"/>
                         <outlet property="oldPasswordTextField" destination="z01-YH-bH2" id="hs0-5G-rFt"/>
-                        <outlet property="saveButton" destination="EWJ-uI-xcp" id="cer-f7-g68"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nT6-vB-BoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2641" y="1295"/>
+            <point key="canvasLocation" x="3318" y="2028"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2oL-4g-UPc">

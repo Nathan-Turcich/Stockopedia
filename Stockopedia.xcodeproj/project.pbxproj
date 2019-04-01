@@ -153,6 +153,7 @@
 				BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */,
 				BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */,
 				BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */,
+				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -209,7 +210,6 @@
 			children = (
 				BCC45686224DA9EA004E40B2 /* LoginViewController.swift */,
 				BCC45688224DACA2004E40B2 /* SignUpViewController.swift */,
-				BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */,
 				BCC4568F224DC642004E40B2 /* AboutViewController.swift */,
 			);
 			path = "Login & Signup";

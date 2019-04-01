@@ -6,12 +6,12 @@
     //All Queries
     
     $sql = "";
-   if($_GET["query"] === "get_all_stock_names"){
+   if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name
         FROM Stocks
         GROUP BY name";
     }
-    else if($_GET["query"] === "create_user"){
+    else if($_GET["query"] === "createUser"){
         $key = $_GET["key"];
         $username = $_GET["username"];
         $password = $_GET["password"];
@@ -19,7 +19,7 @@
         $sql = "INSERT INTO Users
         VALUES ('$key', '$username', '$password')";
     }
-    else if($_GET["query"] === "get_user"){
+    else if($_GET["query"] === "getUser"){
         $username = $_GET["username"];
         $password = $_GET["password"];
         
@@ -27,27 +27,35 @@
         FROM Users
         WHERE Username = '$username' AND Password = '$password'";
     }
-    else if($_GET["query"] === "get_user_favorited_list"){
+    else if($_GET["query"] === "getUserFavoritedList"){
         $key = $_GET["key"];
         
         $sql = "SELECT name
         FROM Favorites
         WHERE ID = '$key'";
     }
-    else if($_GET["query"] === "insert_name_favorited_list"){
+    else if($_GET["query"] === "insertNameFavoritedList"){
         $key = $_GET["key"];
         $name = $_GET["name"];
         
         $sql = "INSERT INTO Favorites
         VALUES ('$key', '$name')";
     }
-    else if($_GET["query"] === "delete_name_favorited_list"){
+    else if($_GET["query"] === "deleteNameFavoritedList"){
         $key = $_GET["key"];
         $name = $_GET["name"];
         
         $sql = "DELETE
         FROM Favorites
         WHERE ID = '$key' and name = '$name'";
+    }
+    else if($_GET["query"] === "updateUserPassword"){
+        $key = $_GET["key"];
+        $newPassword = $_GET["newPassword"];
+        
+        $sql = "UPDATE Users
+        SET Password='$newPassword'
+        WHERE ID = '$key'";
     }
     
     //Result of queries

@@ -15,21 +15,31 @@ class ChangePasswordViewController: UIViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    
 
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Change Password"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: #selector(saveButtonAction))
         makeBorder()
     }
 
-    @IBAction func saveButtonAction(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func changePasswordAction(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    @objc func saveButtonAction() {
+        if oldPasswordTextField.text!.isEmpty || newPasswordTextField.text!.isEmpty || confirmTextField.text!.isEmpty{
+            Utils.createAlertWith(message: "Fill in all fields", viewController: self)
+        }
+        else{
+            if newPasswordTextField.text != confirmTextField.text {
+                Utils.createAlertWith(message: "New passwords do not match", viewController: self)
+            }
+            else {
+                // Update password in SQL
+                DownloadData.updateUserPassword(key: currentUserID, newPassword: newPasswordTextField.text!)
+                dismiss(animated: true, completion: nil)
+            }
+        }
+    }    
     
     //MARK: - Helper Functions
     fileprivate func makeBorder() {
