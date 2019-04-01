@@ -6,13 +6,26 @@ user = "root"
 password = "374sucks"
 database = 'Stockopedia'
 
-def scrapeWebsitesForTopics():
+myDB = None
+cursor = None
+
+def initilizeDB():
+    myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
+    cursor = myDB.cursor()
+
+def getURLs(myDB):
+    cursor.execute("SELECT name FROM Stocks GROUP BY name;")
+    data = cursor.fetchall()
+    stocks = []
+    for d in data:
+        stocks.append(d)
+    return stocks
+
+def scrapeWebsitesForTopics(listOfURLs):
+    print(listOfURLs)
     return [("APPL", "Technology"), ("Ford", "Cars"), ("MCD", "Food")]
 
 def insertTopicsToDB(listOfTopics):
-    mydb = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
-    cursor = mydb.cursor()
-    
     for (stock, topic) in listOfTopics:
         sql = "INSERT INTO StockTopics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
@@ -21,5 +34,6 @@ def insertTopicsToDB(listOfTopics):
     mydb.close()
 
 if __name__ == '__main__':
-    listOfTopics = scrapeWebsitesForTopics()
+    initilizeDB()
+    listOfTopics = scrapeWebsitesForTopics(getURLs())
     insertTopicsToDB(listOfTopics)
