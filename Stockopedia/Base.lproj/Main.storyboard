@@ -273,11 +273,49 @@ https://icons8.com/ </string>
                                     <constraint firstItem="KXA-yO-E56" firstAttribute="centerX" secondItem="6kU-yQ-c7a" secondAttribute="centerX" id="vc1-Lj-xSF"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-KZ-F5B">
+                                <rect key="frame" x="10" y="98" width="375" height="641"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
+                                        <rect key="frame" x="8" y="44" width="338" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Stock Recommendations to Follow">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
+                                        <rect key="frame" x="8" y="200" width="338" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="I">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" constant="10" id="Dvz-h3-Yv1"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" constant="10" id="EDR-lo-C4j"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="trailing" secondItem="6kU-yQ-c7a" secondAttribute="trailing" id="Gby-3o-xCS"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="trailing" secondItem="jVq-t1-w87" secondAttribute="trailing" constant="10" id="Gw9-6U-wyB"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" id="RPe-rv-xk3"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="bottom" secondItem="jVq-t1-w87" secondAttribute="bottom" constant="10" id="l6e-fm-3cX"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="bottom" secondItem="6kU-yQ-c7a" secondAttribute="bottom" id="tMl-p7-Xl1"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" id="xlC-1Z-56G"/>
                         </constraints>
