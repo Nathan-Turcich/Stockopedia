@@ -32,10 +32,10 @@ def getURLs():
 def scrapeWebsitesForTopics(listOfURLs):
     topics = ((),)
     for url in listOfURLs:
-        print(url)
-	rawHTML = getURLData(url)
+        rawHTML = getURLData(url)
         if rawHTML != None:
-	    print("Success")
+            html = BeautifulSoup(rawHTML, 'html.parser')
+            print(html)
     # Get Topic
     return topics
 
