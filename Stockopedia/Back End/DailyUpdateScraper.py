@@ -1,6 +1,11 @@
 # Python code to demonstrate table creation and insertions with SQL
 import mysql.connector
 
+from requests import get
+from requests.exceptions import RequestException
+from contextlib import closing
+from bs4 import BeautifulSoup
+
 host = "sp19-cs411-49.cs.illinois.edu"
 user = "root"
 password = "374sucks"
@@ -21,13 +26,36 @@ def getURLs():
     urls = []
     for name in stockNames:
         url = baseURL + name + "/profile?p=" + name
-	urls.append(url)
+    urls.append(url)
     return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
-    for item in listOfURLs:
-        print(item)   
-    return [("APPL", "Technology"), ("Ford", "Cars"), ("MCD", "Food")]
+    topics = ((),)
+    for url in listOfURLs:
+        rawHTML = getURLData(url)
+        if rawHTML(url) != None:
+            print(rawHTML)
+    # Get Topic
+    return topics
+
+def getURLData(url):
+    try:
+        with closing(get(url, stream=True)) as resp:
+            if isGoodResponse(resp):
+                return resp.content
+            else:
+                return None
+
+    except RequestException as e:
+        print(e)
+        return None
+
+
+def isGoodResponse(resp):
+    content_type = resp.headers['Content-Type'].lower()
+    return (resp.status_code == 200
+            and content_type is not None
+            and content_type.find('html') > -1)
 
 def insertTopicsToDB(listOfTopics):
     for (stock, topic) in listOfTopics:
