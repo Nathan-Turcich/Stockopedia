@@ -358,6 +358,7 @@ https://icons8.com/ </string>
                     </navigationItem>
                     <connections>
                         <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
+                        <outlet property="profileView" destination="uEc-KZ-F5B" id="i70-L8-Jra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL8-vJ-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>

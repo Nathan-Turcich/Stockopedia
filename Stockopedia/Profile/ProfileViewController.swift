@@ -12,16 +12,19 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Variables
     @IBOutlet var loginView: UIView!
-    
+    @IBOutlet var profileView: UIView!
+
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         
-        if(UserDefaults.standard.string(forKey: "CurrentUser") != "" && UserDefaults.standard.string(forKey: "CurrentUser") != nil) {
-            loginView.isHidden = true
-        }else{
+        if(currentUserID == "") {
             loginView.isHidden = false
+            profileView.isHidden = true
+        }else{
+            loginView.isHidden = true
+            profileView.isHidden = false
         }
         
     }
