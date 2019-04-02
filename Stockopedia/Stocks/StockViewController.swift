@@ -8,8 +8,6 @@
 
 import UIKit
 
-var favoritedList:[String] = []
-
 class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate {
     
     //MARK: - Variables
@@ -17,6 +15,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
+    var favoritedList:[String] = []
     
     var stocks = [[String]]()
     var listOfStocks: [String] = []
@@ -147,7 +146,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if let names = stockNames {
                 if currentUserID != "" {
                     DownloadData.getUserFavoritedList(key: currentUserID, completion: { (favList) in
-                        favoritedList = favList!
+                        self.favoritedList = favList!
                         self.setData(names: names)
                     })
                 }
