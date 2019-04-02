@@ -66,8 +66,14 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     //MARK: - Tableview Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return favoritesList.count }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return favoritesList.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:FavoritesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell") as! FavoritesTableViewCell
         cell.favoritesStockLabel.text = favoritesList[indexPath.row]
@@ -78,7 +84,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             print(indexPath.row)
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: favoritedList[indexPath.row])
+            print(favoritesList[indexPath.row])
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: favoritesList[indexPath.row])
             favoritesList.remove(at: indexPath.row)
             tableView.reloadData()
         }
