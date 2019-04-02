@@ -8,10 +8,9 @@
 
 import UIKit
 
-class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, RecommendTableViewCellDelegate {
     
     //MARK: - Variables
-    
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var catagory1Label: UILabel!
     @IBOutlet weak var catagory2Label: UILabel!
@@ -20,35 +19,54 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noRecommendationsLabel: UILabel!
     let activityIndicator = UIActivityIndicatorView()
+    
     var recommendedStocks:[String] = []
     var topicsTuple:[(name: String, topic: String)] = []
     var topics:[String] = []
+    var currentPickerRow:Int = 0
+    
+    var favoritesList: [String] = []
+
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Stock Recommendations"
         loadData()
+        updateButtons()
+//        tableView.allowsSelection = false
     }
     
     //MARK: - Loading Data
     func loadData() {
         setViewNotLoaded()
-        DownloadData.getTopicData(completion: { data in
-            self.topicsTuple = data!
-            self.generateRecommendedStocks()
-            self.setViewLoaded()
-            print("YO")
+        DownloadData.getUserFavoritedList(key: currentUserID, completion: { list  in
+            self.favoritesList = list!
+            DownloadData.getTopicData(completion: { data in
+                self.topicsTuple = data!
+                self.generateRecommendedStocks()
+                self.setViewLoaded()
+            })
         })
     }
     
     func generateRecommendedStocks(){
-        for topic in topicsTuple {
-            if topic.topic == button1.titleLabel?.text || topic.topic == button2.titleLabel?.text || topic.topic == button3.titleLabel?.text {
-                recommendedStocks.append(topic.name)
+        DispatchQueue.main.async {
+            self.topics.removeAll()
+            self.recommendedStocks.removeAll()
+            for topic in self.topicsTuple {
+                    if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
+                    if !self.recommendedStocks.contains(topic.name){
+                        self.recommendedStocks.append(topic.name)
+                    }
+                }
+                self.topics.append(topic.topic)
             }
-            topics.append(topic.topic)
+            self.setTableViewEnabled()
+            self.tableView.reloadData()
+            self.updateButtons()
         }
     }
     
@@ -57,39 +75,55 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecommendTableViewCell = tableView.dequeueReusableCell(withIdentifier: "recommendCell") as! RecommendTableViewCell
         cell.nameLabel.text = recommendedStocks[indexPath.row]
+        if favoritesList.contains(recommendedStocks[indexPath.row]) {
+            cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
+        }
+        else { cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
+        cell.delegate = self
         return cell
     }
     
+    func starTapped(cell: RecommendTableViewCell) {
+        if cell.favortiesButton.currentImage == UIImage(named: "favoritesFilled") {
+            UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.nameLabel.text!)
+        }
+        else{
+            UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
+            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.nameLabel.text!)
+        }
+    }
     
     //MARK: - PickerView Methods
     @IBAction func buttonAction(_ sender: UIButton) {
-        let alert = UIAlertController(
-            title: "Select item from list",
-            message: "\n\n\n\n\n\n\n\n\n",
-            preferredStyle: .alert)
-        
-        let pickerView = UIPickerView(frame:
-            CGRect(x: 0, y: 50, width: 260, height: 162))
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        pickerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        let alert = UIAlertController(title: "Select item from list", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 50, width: 260, height: 162))
+        pickerView.dataSource = self; pickerView.delegate = self
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-            
+            let topic = self.topics[self.currentPickerRow]
+            if topic == self.button1.titleLabel?.text || topic == self.button2.titleLabel?.text || topic == self.button3.titleLabel?.text {
+                Utils.createAlertWith(message: "You already choose this topic.  Choose another", viewController: self)
+            }
+            else{
+                sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
+                sender.titleLabel?.adjustsFontSizeToFitWidth = true
+                sender.titleLabel?.numberOfLines = 2
+                UserDefaults.standard.set(self.topics[self.currentPickerRow], forKey: "Button" + String(sender.tag))
+                self.generateRecommendedStocks()
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
         }))
         alert.view.addSubview(pickerView)
-//        alert.present(self, animated: true, completion: nil)
         present(alert, animated: true, completion: nil)
-//        present(alertView, animated: true, completion: { _ in
-//            pickerView.frame.size.width = alert.view.frame.size.width
-//        })
     }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int { return 1 }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return topics.count }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return topics[row] }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) { currentPickerRow = row }
     
     //MARK: - Helper Functions
     func setViewLoaded(){
@@ -118,5 +152,30 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         activityIndicator.style = .gray
         activityIndicator.isHidden = false
         view.addSubview(activityIndicator)
+        noRecommendationsLabel.isHidden = true
+    }
+    
+    func setTableViewEnabled(){
+        if self.recommendedStocks.count == 0 {
+            self.noRecommendationsLabel.isHidden = false
+            self.tableView.isHidden = true
+            self.tableView.separatorStyle = .none
+            self.tableView.isScrollEnabled = false
+        }
+        else {
+            self.noRecommendationsLabel.isHidden = true
+            self.tableView.isHidden = false
+            self.tableView.separatorStyle = .singleLine
+            self.tableView.isScrollEnabled = true
+        }
+    }
+    
+    func updateButtons(){
+        if let title = UserDefaults.standard.string(forKey: "Button" + String(button1.tag)) { button1.setTitle(title, for: .normal)}
+        else { button1.setTitle("Choose", for: .normal)}
+        if let title = UserDefaults.standard.string(forKey: "Button" + String(button2.tag)) { button2.setTitle(title, for: .normal)}
+        else { button2.setTitle("Choose", for: .normal)}
+        if let title = UserDefaults.standard.string(forKey: "Button" + String(button3.tag)) { button3.setTitle(title, for: .normal)}
+        else { button3.setTitle("Choose", for: .normal)}
     }
 }

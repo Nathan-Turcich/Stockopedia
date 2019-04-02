@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
         let alert = UIAlertController(title: "Are you sure you want to log out?", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log out", style: .default, handler: { (action: UIAlertAction!) in
             UserDefaults.standard.set("", forKey: "CurrentUser")
+            currentUserID = ""
             self.setView()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -46,7 +47,7 @@ class ProfileViewController: UIViewController {
         }else{
             loginView.isHidden = true
             profileView.isHidden = false
-            self.logoutButton.title = ""
+            self.logoutButton.title = "Logout"
             self.logoutButton.isEnabled = true
         }
     }

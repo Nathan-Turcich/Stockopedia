@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol RecommendTableViewCellDelegate: AnyObject {
+    func starTapped(cell: RecommendTableViewCell)
+}
+
 class RecommendTableViewCell: UITableViewCell {
     
     //MARK: - Variables
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var favortiesButton: UIButton!
+    weak var delegate: RecommendTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,8 +26,10 @@ class RecommendTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func starTapped(sender: AnyObject) {
+        delegate?.starTapped(cell: self)
     }
 
 }

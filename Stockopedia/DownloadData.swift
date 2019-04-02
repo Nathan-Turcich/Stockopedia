@@ -72,7 +72,7 @@ class DownloadData {
     
     //Recommendations Functions
     static func getTopicData(completion:@escaping ([(name: String, topic: String)]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=getListOfTopics")!
+        let url: URL = URL(string: urlPath + "?query=getTopicData")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {

@@ -8,7 +8,6 @@
 
 import UIKit
 
-//1. delegate method
 protocol StockCellDelegate: AnyObject {
     func btnCloseTapped(cell: StockTableViewCell)
 }
