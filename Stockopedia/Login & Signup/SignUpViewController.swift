@@ -25,8 +25,8 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpButtonAction(_ sender: UIButton) {
         if(usernameTextField.text != "" && passwordTextField.text != "") {
             let key = Utils.randomString(length: 15)
-            
             DownloadData.createUser(key: key, username: usernameTextField.text!, password: passwordTextField.text!)
+            DownloadData.initilizeUsersRecomendations(key: key)
             currentUserID = key
             UserDefaults.standard.set(key, forKey: "CurrentUser")
             self.performSegue(withIdentifier: "fromCreateAccountToMain", sender: self)

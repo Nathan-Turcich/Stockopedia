@@ -30,7 +30,6 @@ class LoginViewController: UIViewController {
                 DispatchQueue.main.async(execute: {
                     currentUserID = user!.key
                     UserDefaults.standard.set(user?.key, forKey: "CurrentUser")
-                    DownloadData.initilizeUsersRecomendations(key: user!.key)
                     self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
                 })
             }

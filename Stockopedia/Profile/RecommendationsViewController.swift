@@ -111,8 +111,8 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
                 sender.titleLabel?.adjustsFontSizeToFitWidth = true
                 sender.titleLabel?.numberOfLines = 2
-                DownloadData.updateUserRecomendations(key: currentUserID, recomendation: self.topics[self.currentPickerRow])
-                self.generateRecommendedStocks(recommendations: self.topics[self.currentPickerRow])
+                DownloadData.updateUserRecomendations(key: currentUserID, recomendation: self.makeRecommendations(button: sender))
+                self.generateRecommendedStocks(recommendations: self.makeRecommendations(button: sender))
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -169,6 +169,15 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             self.tableView.separatorStyle = .singleLine
             self.tableView.isScrollEnabled = true
         }
+    }
+    
+    func makeRecommendations(button: UIButton) -> String {
+        let button1Text = button1.titleLabel?.text!
+        let button2Text = button2.titleLabel?.text!
+        let button3Text = button3.titleLabel?.text!
+        if button == button1 { return topics[currentPickerRow] + "/" + button2Text! + "/" + button3Text!}
+        else if button == button2 { return button1Text! + "/" + topics[currentPickerRow] + "/" + button3Text! }
+        else { return button1Text! + "/" + button2Text! + "/" + topics[currentPickerRow] }
     }
     
     func updateButtons(recommendations: String){
