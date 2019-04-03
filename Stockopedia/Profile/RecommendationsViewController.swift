@@ -175,13 +175,13 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         let button1Text = button1.titleLabel?.text!
         let button2Text = button2.titleLabel?.text!
         let button3Text = button3.titleLabel?.text!
-        if button == button1 { return topics[currentPickerRow] + "/" + button2Text! + "/" + button3Text!}
-        else if button == button2 { return button1Text! + "/" + topics[currentPickerRow] + "/" + button3Text! }
-        else { return button1Text! + "/" + button2Text! + "/" + topics[currentPickerRow] }
+        if button == button1 { return topics[currentPickerRow] + "|" + button2Text! + "|" + button3Text!}
+        else if button == button2 { return button1Text! + "|" + topics[currentPickerRow] + "|" + button3Text! }
+        else { return button1Text! + "|" + button2Text! + "|" + topics[currentPickerRow] }
     }
     
     func updateButtons(recommendations: String){
-        let array = recommendations.components(separatedBy: "/")
+        let array = recommendations.components(separatedBy: "|")
         button1.setTitle(array[0], for: .normal)
         button2.setTitle(array[1], for: .normal)
         button3.setTitle(array[2], for: .normal)
