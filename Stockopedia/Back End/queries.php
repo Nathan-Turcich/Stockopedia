@@ -47,7 +47,7 @@
    }
    else if($_GET["query"] === "initilizeUsersRecomendations"){
        $key = $_GET["key"];
-       $value = "Choose|Choose|Choose";
+       $value = "Choose_Choose_Choose";
 
        $sql = "INSERT INTO Recomendations
        VALUES ('$key', '$value')";
