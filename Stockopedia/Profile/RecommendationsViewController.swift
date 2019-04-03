@@ -105,7 +105,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             let topic = self.topics[self.currentPickerRow]
             if topic == self.button1.titleLabel?.text || topic == self.button2.titleLabel?.text || topic == self.button3.titleLabel?.text {
-                Utils.createAlertWith(message: "You already choose this topic.  Choose another", viewController: self)
+                Utils.createAlertWith(message: "You already chose this topic.  Choose another", viewController: self)
             }
             else{
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
@@ -175,15 +175,30 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         let button1Text = button1.titleLabel?.text!
         let button2Text = button2.titleLabel?.text!
         let button3Text = button3.titleLabel?.text!
-        if button == button1 { return topics[currentPickerRow] + "_" + button2Text! + "_" + button3Text!}
-        else if button == button2 { return button1Text! + "_" + topics[currentPickerRow] + "_" + button3Text! }
-        else { return button1Text! + "_" + button2Text! + "_" + topics[currentPickerRow] }
+        
+        if(topics.count > 0) {
+            if button == button1 { return topics[currentPickerRow] + "_" + button2Text! + "_" + button3Text!}
+            else if button == button2 { return button1Text! + "_" + topics[currentPickerRow] + "_" + button3Text! }
+            else { return button1Text! + "_" + button2Text! + "_" + topics[currentPickerRow] }
+        }
+        
+        return "Nil_Nil_Nil"
     }
     
     func updateButtons(recommendations: String){
         let array = recommendations.components(separatedBy: "_")
-        button1.setTitle(array[0], for: .normal)
-        button2.setTitle(array[1], for: .normal)
-        button3.setTitle(array[2], for: .normal)
+        
+        if(array.count >= 1) {
+            button1.setTitle(array[0], for: .normal)
+        }
+        
+        if(array.count >= 2) {
+            button2.setTitle(array[1], for: .normal)
+        }
+        
+        if(array.count >= 3) {
+            button3.setTitle(array[2], for: .normal)
+        }
+        
     }
 }

@@ -54,7 +54,7 @@
    }
    else if($_GET["query"] === "updateUserRecomendations"){
        $key = $_GET["key"];
-       $recomendation = $_GET["$recomendation"];
+       $recomendation = $_GET["recomendation"];
        
        $sql = "UPDATE Recomendations
        SET Recomendation = '$recomendation'
@@ -81,7 +81,7 @@
         $newPassword = $_GET["newPassword"];
         
         $sql = "UPDATE Users
-        SET Password='$newPassword'
+        SET Password = '$newPassword'
         WHERE ID = '$key'";
     }
     else if($_GET["query"] === "updateUsername"){
