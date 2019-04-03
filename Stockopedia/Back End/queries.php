@@ -59,7 +59,7 @@
        $value = "Choose/Choose/Choose";
        
        $sql = "INSERT INTO Recomendations
-       VALUES ('$key', '$$recomendation')";
+       VALUES ('$key', '$recomendation')";
        
 //       $sql = "UPDATE Recomendations
 //       SET Recomendation = '$recomendation'
