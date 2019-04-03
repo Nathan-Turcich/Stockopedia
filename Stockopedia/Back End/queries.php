@@ -35,8 +35,29 @@
    }
    else if($_GET["query"] === "getTopicData"){
        $sql = "SELECT *
-       FROM StockTopics
+       FROM Topics
        GROUP BY topic";
+   }
+   else if($_GET["query"] === "getUserRecommendations"){
+       $key = $_GET["key"];
+       
+       $sql = "SELECT Recomendation
+       FROM Recomendations
+       WHERE ID = '$key'";
+   }
+   else if($_GET["query"] === "initilizeUsersRecomendations"){
+       $key = $_GET["key"];
+       
+       $sql = "INSERT INTO Recomendations
+       VALUES ('$key', "Choose/Choose/Choose")";
+   }
+   else if($_GET["query"] === "updateUserRecomendations"){
+       $key = $_GET["key"];
+       $recomendation = $_GET["$recomendation"];
+       
+       $sql = "UPDATE Recomendations
+       SET Recomendation = '$recomendation'
+       WHERE ID = '$key'";
    }
    else if($_GET["query"] === "createUser"){
         $key = $_GET["key"];

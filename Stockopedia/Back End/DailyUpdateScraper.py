@@ -60,7 +60,7 @@ def isGoodResponse(resp):
 
 def insertTopicsToDB(listOfTopics):
     for (stock, topic) in listOfTopics:
-        sql = "INSERT INTO StockTopics (name, topic) VALUES (%s, %s)"
+        sql = "INSERT INTO Topics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
 
     myDB.commit()

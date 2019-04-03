@@ -36,7 +36,7 @@ class DownloadData {
         task.resume()
     }
     
-    //Favorties Methods
+    //Favorites Methods
     static func getUserFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=getUserFavoritedList&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
@@ -91,6 +91,43 @@ class DownloadData {
                 }
                 completion(topics)
             }
+        }
+        task.resume()
+    }
+    
+    static func getUserRecommendations(key: String, completion:@escaping (String) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getUserRecommendations&key=" + key)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion("")
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                let jsonElement = jsonResult[0] as! NSDictionary
+                completion(jsonElement["Recomendation"]! as! String)
+            }
+        }
+        task.resume()
+    }
+    
+    static func initilizeUsersRecomendations(key: String) {
+        let  url: URL = URL(string: urlPath + "?query=initilizeUsersRecomendations&key=" + key)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
+    
+    static func updateUserRecomendations(key: String, recomendation: String) {
+        let  url: URL = URL(string: urlPath + "?query=updateUserRecomendations&key=" + key + "&recomendation=" + recomendation)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
         }
         task.resume()
     }

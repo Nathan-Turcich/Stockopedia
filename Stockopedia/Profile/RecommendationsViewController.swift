@@ -35,8 +35,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         super.viewDidLoad()
         self.navigationItem.title = "Stock Recommendations"
         loadData()
-        updateButtons()
-//        tableView.allowsSelection = false
+        tableView.allowsSelection = false
     }
     
     //MARK: - Loading Data
@@ -44,15 +43,17 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         setViewNotLoaded()
         DownloadData.getUserFavoritedList(key: currentUserID, completion: { list  in
             self.favoritesList = list!
-            DownloadData.getTopicData(completion: { data in
-                self.topicsTuple = data!
-                self.generateRecommendedStocks()
-                self.setViewLoaded()
+            DownloadData.getUserRecommendations(key: currentUserID, completion: { recommendations in
+                DownloadData.getTopicData(completion: { data in
+                    self.topicsTuple = data!
+                    self.generateRecommendedStocks(recommendations: recommendations)
+                    self.setViewLoaded()
+                })
             })
         })
     }
     
-    func generateRecommendedStocks(){
+    func generateRecommendedStocks(recommendations: String){
         DispatchQueue.main.async {
             self.topics.removeAll()
             self.recommendedStocks.removeAll()
@@ -66,7 +67,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             }
             self.setTableViewEnabled()
             self.tableView.reloadData()
-            self.updateButtons()
+            self.updateButtons(recommendations: recommendations)
         }
     }
     
@@ -110,8 +111,8 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
                 sender.titleLabel?.adjustsFontSizeToFitWidth = true
                 sender.titleLabel?.numberOfLines = 2
-                UserDefaults.standard.set(self.topics[self.currentPickerRow], forKey: "Button" + String(sender.tag))
-                self.generateRecommendedStocks()
+                DownloadData.updateUserRecomendations(key: currentUserID, recomendation: self.topics[self.currentPickerRow])
+                self.generateRecommendedStocks(recommendations: self.topics[self.currentPickerRow])
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -170,12 +171,10 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func updateButtons(){
-        if let title = UserDefaults.standard.string(forKey: "Button" + String(button1.tag)) { button1.setTitle(title, for: .normal)}
-        else { button1.setTitle("Choose", for: .normal)}
-        if let title = UserDefaults.standard.string(forKey: "Button" + String(button2.tag)) { button2.setTitle(title, for: .normal)}
-        else { button2.setTitle("Choose", for: .normal)}
-        if let title = UserDefaults.standard.string(forKey: "Button" + String(button3.tag)) { button3.setTitle(title, for: .normal)}
-        else { button3.setTitle("Choose", for: .normal)}
+    func updateButtons(recommendations: String){
+        let array = recommendations.components(separatedBy: "/")
+        button1.setTitle(array[0], for: .normal)
+        button2.setTitle(array[1], for: .normal)
+        button3.setTitle(array[2], for: .normal)
     }
 }
