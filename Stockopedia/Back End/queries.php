@@ -56,14 +56,9 @@
        $key = $_GET["key"];
        $recomendation = $_GET["$recomendation"];
        
-       $value = "Choose/Choose/Choose";
-       
-       $sql = "INSERT INTO Recomendations
-       VALUES ('$key', '$recomendation')";
-       
-//       $sql = "UPDATE Recomendations
-//       SET Recomendation = '$recomendation'
-//       WHERE ID = '$key'";
+       $sql = "UPDATE Recomendations
+       SET Recomendation = '$recomendation'
+       WHERE ID = '$key'";
    }
    else if($_GET["query"] === "createUser"){
         $key = $_GET["key"];
