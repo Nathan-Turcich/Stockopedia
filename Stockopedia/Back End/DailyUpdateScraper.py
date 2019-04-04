@@ -83,9 +83,6 @@ def insertTopicsToDB(listOfTopics):
         sql = "INSERT INTO Topics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
 
-    myDB.commit()
-    myDB.close()
-
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
         sql = "DELETE FROM Stocks WHERE name = " + name
