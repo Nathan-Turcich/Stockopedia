@@ -35,8 +35,9 @@ def scrapeWebsitesForTopics(listOfURLs):
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
-            sector = html.find('span',class_='Fw(600)').get_text()
-            print(sector)
+            sector = html.find('span',class_='Fw(600)')
+            if sector is not None:
+                print(sector.get_text())
     # Get Topic
     return topics
 
