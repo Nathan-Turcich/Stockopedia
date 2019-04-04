@@ -39,9 +39,22 @@ def scrapeWebsitesForTopics(listOfURLs):
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             if sector is not None and company is not None:
                 company_text = company.get_text()
+                
+                symbol_string = ""
+                add = false
+                counter = 0
+                for x in range(len(company.text)):
+                    if(add):
+                        symbol_string[counter] = company_text[x]
+                        counter += 1
+                    if(company_text[x] == '('):
+                        add = true
+                    if(company_text[x + 1] == ')')
+                        add = false
+                
                 sector_text = sector.get_text()
-                print(company_text + ", " + sector_text)
-                topics.append((company_text, sector_text))
+                print(symbol_string + ", " + sector_text)
+                topics.append((symbol_string, sector_text))
     # Get Topic
     return topics
 
