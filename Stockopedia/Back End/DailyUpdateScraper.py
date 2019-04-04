@@ -35,10 +35,10 @@ def scrapeWebsitesForTopics(listOfURLs):
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
-            sector = html.find('span',class_='Fw(600)')
+            sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             deleteNames = []
-            if sector is not None and company is not None:
+            if sector[1] is not None and company is not None:
                 company_text = company.get_text()
                 
                 begin = 0
@@ -50,7 +50,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                         end = x
                         symbol_string = company_text[begin:end]
                 
-                sector_text = sector.get_text()
+                sector_text = sector[1].get_text()
                 print(company_text + ", " + sector_text)
                 topics.append((company_text, sector_text))
             else:
