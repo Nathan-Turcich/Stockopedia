@@ -43,7 +43,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 
                 begin = 0
                 end = 0
-                for x in range(len(company.text)):
+                for x in range(len(company_text)):
                     if(company_text[x] == '('):
                         begin = x + 1
                     if(company_text[x] == ')'):
@@ -51,8 +51,8 @@ def scrapeWebsitesForTopics(listOfURLs):
                         symbol_string = company_text[begin:end]
                 
                 sector_text = sector[1].get_text()
-                print(company_text + ", " + sector_text)
-                topics.append((company_text, sector_text))
+                print(symbol_string + ", " + sector_text)
+                topics.append((symbol_string, sector_text))
             else:
                 deleteNames.append(company)
                 print(company)
