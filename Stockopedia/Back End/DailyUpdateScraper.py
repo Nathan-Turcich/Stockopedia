@@ -86,13 +86,16 @@ def isGoodResponse(resp):
             and content_type.find('html') > -1)
 
 def insertTopicsToDB(listOfTopics):
+    
+    cursor.execute("DELETE FROM Topics")
+    
     for (stock, topic) in listOfTopics:
         sql = "INSERT INTO Topics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
-        sql = "DELETE FROM Stocks WHERE name = " + name
+        sql = "DELETE FROM Stocks WHERE name = '" + name + "'"
         cursor.execute(sql)
     
     myDB.commit()
