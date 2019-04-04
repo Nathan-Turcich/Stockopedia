@@ -30,6 +30,7 @@ def getURLs():
     return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
+    full_strings = list()
     topics = list()
     for url in listOfURLs:
         rawHTML = getURLData(url)
@@ -51,6 +52,10 @@ def scrapeWebsitesForTopics(listOfURLs):
                         symbol_string = company_text[begin:end]
                 
                 sector_text = sector[1].get_text()
+                
+                full_string = company_text[:begin - 2]
+                full_strings.append(full_string)
+                
                 print(symbol_string + ", " + sector_text)
                 topics.append((symbol_string, sector_text))
             else:
@@ -64,7 +69,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 deleteNames.append(symbol)
                 print("DELETE " + symbol)
     # Get Topic
-    return topics, deleteNames
+    return topics, deleteNames, full_strings
 
 def getURLData(url):
     try:
@@ -97,11 +102,21 @@ def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
         sql = "DELETE FROM Stocks WHERE name = '" + name + "'"
         cursor.execute(sql)
+
+def addFullNames(abbrs, full_strings):
     
+    index = 0
+    for (name, topic) in abbrs:
+        full_name = full_strings[index]
+        sql = "UPDATE Stocks SET fullname = '" + full_name + "' WHERE name = '" + name "'"
+        cursor.execute(sql)
+        index += 1
+
     myDB.commit()
     myDB.close()
 
 if __name__ == '__main__':
-    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs())
+    listOfTopics, deleteNames, full_strings = scrapeWebsitesForTopics(getURLs())
     insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
+    addFullNames(listOfTopics, full_strings)
