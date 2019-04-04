@@ -49,7 +49,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                         counter += 1
                     if(company_text[x] == '('):
                         add = true
-                    if(company_text[x + 1] == ')')
+                if(company_text[x + 1] == ')'):
                         add = false
                 
                 sector_text = sector.get_text()
