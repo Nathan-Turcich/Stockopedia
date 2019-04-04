@@ -37,13 +37,17 @@ def scrapeWebsitesForTopics(listOfURLs):
             html = BeautifulSoup(rawHTML, 'html.parser')
             sector = html.find('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
+            deleteNames = []
             if sector is not None and company is not None:
                 company_text = company.get_text()
                 sector_text = sector.get_text()
                 print(company_text + ", " + sector_text)
                 topics.append((company_text, sector_text))
+            else:
+                deleteNames.append(company)
+            print(company)
     # Get Topic
-    return topics
+    return topics, deleteNames
 
 def getURLData(url):
     try:
@@ -72,6 +76,15 @@ def insertTopicsToDB(listOfTopics):
     myDB.commit()
     myDB.close()
 
+def deleteNoIndustryNames(deleteNames):
+    for name in deleteNames:
+        sql = "DELETE FROM Stocks WHERE name = " + name
+        cursor.execute(sql)
+    
+    myDB.commit()
+    myDB.close()
+
 if __name__ == '__main__':
-    listOfTopics = scrapeWebsitesForTopics(getURLs())
+    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs())
     insertTopicsToDB(listOfTopics)
+    deleteNoIndustryNames(deleteNames)
