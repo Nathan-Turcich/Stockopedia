@@ -108,7 +108,7 @@ def addFullNames(abbrs, full_strings):
     index = 0
     for (name, topic) in abbrs:
         full_name = full_strings[index]
-        sql = "UPDATE Stocks SET fullname = '" + full_name + "' WHERE name = '" + name "'"
+        sql = "UPDATE Stocks SET fullname = '" + full_name + "' WHERE name = '" + name + "'"
         cursor.execute(sql)
         index += 1
 
