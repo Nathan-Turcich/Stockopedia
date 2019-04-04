@@ -41,16 +41,16 @@ def scrapeWebsitesForTopics(listOfURLs):
                 company_text = company.get_text()
                 
                 symbol_string = ""
-                add = false
+                add = False
                 counter = 0
                 for x in range(len(company.text)):
                     if(add):
                         symbol_string[counter] = company_text[x]
                         counter += 1
                     if(company_text[x] == '('):
-                        add = true
+                        add = True
                 if(company_text[x + 1] == ')'):
-                        add = false
+                        add = False
                 
                 sector_text = sector.get_text()
                 print(symbol_string + ", " + sector_text)
