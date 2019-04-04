@@ -30,7 +30,7 @@ def getURLs():
     return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
-    topics = ((),)
+    topics = list()
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
@@ -38,7 +38,10 @@ def scrapeWebsitesForTopics(listOfURLs):
             sector = html.find('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             if sector is not None and company is not None:
-                print(company.get_text() + ", " + sector.get_text())
+                company_text = company.get_text()
+                sector_text = sector.get_text()
+                print(company_text + ", " + sector_text)
+                topics.append((company_text, sector_text))
     # Get Topic
     return topics
 
@@ -71,4 +74,4 @@ def insertTopicsToDB(listOfTopics):
 
 if __name__ == '__main__':
     listOfTopics = scrapeWebsitesForTopics(getURLs())
-    #insertTopicsToDB(listOfTopics)
+    insertTopicsToDB(listOfTopics)
