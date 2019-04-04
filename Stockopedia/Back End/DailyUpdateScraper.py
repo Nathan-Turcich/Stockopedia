@@ -55,7 +55,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 topics.append((company_text, sector_text))
             else:
                 deleteNames.append(company)
-            print(company)
+                print(company)
     # Get Topic
     return topics, deleteNames
 
