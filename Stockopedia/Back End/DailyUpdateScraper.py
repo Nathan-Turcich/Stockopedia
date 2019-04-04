@@ -54,8 +54,15 @@ def scrapeWebsitesForTopics(listOfURLs):
                 print(symbol_string + ", " + sector_text)
                 topics.append((symbol_string, sector_text))
             else:
-                deleteNames.append(company)
-                print(company)
+                
+                begin = 0
+                for x in range(len(url)):
+                    if(url[x] == '='):
+                        begin = x + 1
+                symbol = url[begin:]
+                
+                deleteNames.append(symbol)
+                print("DELETE " + symbol)
     # Get Topic
     return topics, deleteNames
 
