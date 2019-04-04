@@ -40,6 +40,16 @@ def scrapeWebsitesForTopics(listOfURLs):
             deleteNames = []
             if sector is not None and company is not None:
                 company_text = company.get_text()
+                
+                begin = 0
+                end = 0
+                for x in range(len(company.text)):
+                    if(company_text[x] == '('):
+                        begin = x + 1
+                    if(company_text[x] == ')'):
+                        end = x
+                        symbol_string = company_text[begin:end]
+                
                 sector_text = sector.get_text()
                 print(company_text + ", " + sector_text)
                 topics.append((company_text, sector_text))
