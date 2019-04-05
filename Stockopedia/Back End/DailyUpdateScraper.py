@@ -57,14 +57,14 @@ def scrapeWebsitesForTopics(listOfURLs):
                 full_strings.append(full_string)
                 topics.append((symbol_string, sector_text))
             else:
-                
                 begin = 0
                 for x in range(len(url)):
                     if(url[x] == '='):
                         begin = x + 1
                 symbol = url[begin:]
-                
+                print(symbol)
                 deleteNames.append(symbol)
+
 
     # Get Topic
     return topics, deleteNames, full_strings
@@ -89,9 +89,7 @@ def isGoodResponse(resp):
             and content_type.find('html') > -1)
 
 def insertTopicsToDB(listOfTopics):
-    
     cursor.execute("DELETE FROM Topics")
-    
     for (stock, topic) in listOfTopics:
         sql = "INSERT INTO Topics (name, topic) VALUES (%s, %s)"
         cursor.execute(sql, (stock, topic))
