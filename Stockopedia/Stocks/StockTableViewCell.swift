@@ -15,7 +15,8 @@ protocol StockCellDelegate: AnyObject {
 class StockTableViewCell: UITableViewCell {
 
     //MARK: - Variables
-    @IBOutlet var stockNameLabel: UILabel!
+    @IBOutlet var stockAbbrLabel: UILabel!
+    @IBOutlet weak var stockNameLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     weak var delegate: StockCellDelegate?
     

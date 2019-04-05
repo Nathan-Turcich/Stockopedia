@@ -12,7 +12,7 @@ var urlPath:String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
 
 class DownloadData {
     
-    static func downloadUniqueStockNames(completion:@escaping ([String]?) -> Void) {
+    static func downloadUniqueStockNames(completion:@escaping ([Stock]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockNames")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -25,12 +25,12 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var stocks: [String] = []
+                var stocksArray = [Stock]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    stocks.append(jsonElement["name"]! as! String)
+                    stocksArray.append(Stock.init(abbr: jsonElement["name"]! as! String, fullName: jsonElement["fullname"]! as! String))
                 }
-                completion(stocks)
+                completion(stocksArray)
             }
         }
         task.resume()

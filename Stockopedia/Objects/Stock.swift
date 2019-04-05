@@ -11,19 +11,15 @@ import Foundation
 public class Stock: NSObject, URLSessionDataDelegate {
 
     //MARK: - Stock Variables
-    var name: String!
-    var date: String!
-    var open: Float!
-    var high: Float!
-    var low: Float!
-    var volume: Int!
+    var abbr: String!
+    var fullName: String!
 
-    init(name: String, date: String, open: Float, high: Float, low: Float, volume: Int) {
-        self.name = name
-        self.date = date
-        self.open = open
-        self.high = high
-        self.low = low
-        self.volume = volume
+    init(abbr: String, fullName: String) {
+        self.abbr = abbr
+        self.fullName = fullName
+    }
+    
+    override init() {
+        
     }
 }

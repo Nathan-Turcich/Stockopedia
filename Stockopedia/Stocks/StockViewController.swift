@@ -17,9 +17,10 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
     var favoritedList:[String] = []
     
-    var stocks = [[String]]()
-    var listOfStocks: [String] = []
-    var filteredStocks: [String] = []
+    var stocks = [[Stock]]()
+    var stocksArrayOnly: [Stock] = []
+    var filteredStocks: [Stock] = []
+    
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
@@ -62,18 +63,24 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
-        if isSearching { cell.stockNameLabel.text = filteredStocks[indexPath.row] }
-        else { cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row] }
+        if isSearching {
+            cell.stockAbbrLabel.text = filteredStocks[indexPath.row].abbr
+            cell.stockNameLabel.text = filteredStocks[indexPath.row].fullName
+        }
+        else {
+            cell.stockAbbrLabel.text = stocks[indexPath.section][indexPath.row].abbr
+            cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row].fullName
+        }
         if currentUserID != "" {
             cell.favoriteButton.isHidden = false; cell.favoriteButton.isEnabled = true
             if isSearching {
-                if favoritedList.contains(filteredStocks[indexPath.row]) {
+                if favoritedList.contains(filteredStocks[indexPath.row].abbr) {
                     cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
                 }
                 else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
             }
             else{
-                if favoritedList.contains(stocks[indexPath.section][indexPath.row]) {
+                if favoritedList.contains(stocks[indexPath.section][indexPath.row].abbr) {
                     cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
                 }
                 else { cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
@@ -91,12 +98,12 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockAbbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockNameLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockAbbrLabel.text!)
         }
     }
     
@@ -111,10 +118,10 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             isSearching = true
             searchBarCancelButton.isEnabled = true
             searchBarCancelButton.title = "Cancel"
-            filteredStocks = listOfStocks.filter { stock in
+            filteredStocks = stocksArrayOnly.filter { stock in
                 let wordsArray = searchText.split(separator: " ")
                 for word in wordsArray {
-                    if(stock.lowercased().contains(word.lowercased())){
+                    if(stock.abbr.lowercased().contains(word.lowercased())){
                         return true
                     }
                 }
@@ -142,24 +149,24 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK: - Loading Data
     func downloadStocks(){
-        DownloadData.downloadUniqueStockNames(completion: { stockNames in
-            if let names = stockNames {
+        DownloadData.downloadUniqueStockNames(completion: { s in
+            if let stockArray = s {
                 if currentUserID != "" {
                     DownloadData.getUserFavoritedList(key: currentUserID, completion: { (favList) in
                         self.favoritedList = favList!
-                        self.setData(names: names)
+                        self.setData(stockArray: stockArray)
                     })
                 }
-                else { self.setData(names: names)}
+                else { self.setData(stockArray: stockArray)}
             }
             else { print("Error getting data") }
         })
     }
     
-    func setData(names: [String]){
+    func setData(stockArray: [Stock]){
         DispatchQueue.main.async {
-            self.listOfStocks = names
-            self.generateSectionDic(items: names)
+            self.stocksArrayOnly = stockArray
+            self.generateSectionDic(stockArray: stockArray)
             self.tableView.reloadData()
             self.activityIndicator.stopAnimating()
             self.activityIndicator.hidesWhenStopped = true
@@ -184,11 +191,13 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.allowsSelection = false
     }
     
-    func generateSectionDic(items: [String]){
-        for _ in 0...25 { stocks.append(["!"]) }
+    func generateSectionDic(stockArray: [Stock]){
+        for _ in 0...25 {
+            stocks.append([Stock.init(abbr: "", fullName: "")])
+        }
 
-        for stock in items {
-            switch stock.prefix(1) {
+        for stock in stockArray {
+            switch stock.abbr.prefix(1) {
             case "A":
                 sectionDic[0] = sectionDic[0]! + 1
                 stocks[0].append(stock)
@@ -271,9 +280,9 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
         for (index, stockArray) in stocks.enumerated() {
-            var tempStocks:[String] = []
+            var tempStocks:[Stock] = []
             for stock in stockArray {
-                if stock != "!" { tempStocks.append(stock) }
+                if stock.abbr != "" { tempStocks.append(stock) }
             }
             stocks[index] = tempStocks
         }
@@ -288,8 +297,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
             lastIndexPath = tableView.indexPathForSelectedRow!
-            if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row] }
-            else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row] }
+            if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row].abbr }
+            else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].abbr }
         }
         else { lastIndexPath = nil }
     }

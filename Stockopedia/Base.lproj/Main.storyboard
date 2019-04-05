@@ -38,12 +38,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-An-ssc">
-                                                    <rect key="frame" x="14.999999999999996" y="27" width="51.666666666666657" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hUD-TC-rZN">
                                                     <rect key="frame" x="310" y="15" width="50" height="42"/>
                                                     <state key="normal" image="favoritesNotFilled"/>
@@ -51,12 +45,27 @@
                                                         <action selector="btnCloseTappedWithSender:" destination="Fho-jN-Wxt" eventType="touchUpInside" id="KwR-fP-0n2"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bU-Wq-8FE">
+                                                    <rect key="frame" x="14.999999999999996" y="40" width="40.666666666666657" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-An-ssc">
+                                                    <rect key="frame" x="14.999999999999996" y="11" width="51.666666666666657" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="hUD-TC-rZN" secondAttribute="trailing" constant="15" id="6bm-zR-rXg"/>
+                                                <constraint firstItem="2bU-Wq-8FE" firstAttribute="top" secondItem="cKA-An-ssc" secondAttribute="bottom" constant="5" id="DEY-Zz-9d4"/>
+                                                <constraint firstItem="2bU-Wq-8FE" firstAttribute="leading" secondItem="e9f-Ga-pKd" secondAttribute="leading" constant="15" id="EXU-qu-Rha"/>
+                                                <constraint firstAttribute="bottom" secondItem="2bU-Wq-8FE" secondAttribute="bottom" constant="10.666666666666671" id="FBx-zx-u8V"/>
                                                 <constraint firstItem="hUD-TC-rZN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cKA-An-ssc" secondAttribute="trailing" constant="8" symbolic="YES" id="KdK-jS-hBE"/>
-                                                <constraint firstAttribute="bottom" secondItem="cKA-An-ssc" secondAttribute="bottom" constant="26.666666666666671" id="O8K-Eo-l3s"/>
-                                                <constraint firstItem="cKA-An-ssc" firstAttribute="top" secondItem="e9f-Ga-pKd" secondAttribute="top" constant="27" id="VCm-QP-TXe"/>
+                                                <constraint firstItem="cKA-An-ssc" firstAttribute="top" secondItem="e9f-Ga-pKd" secondAttribute="top" constant="11" id="VCm-QP-TXe"/>
+                                                <constraint firstItem="hUD-TC-rZN" firstAttribute="leading" secondItem="2bU-Wq-8FE" secondAttribute="trailing" constant="254.33333333333334" id="VbO-r8-e3b"/>
                                                 <constraint firstItem="cKA-An-ssc" firstAttribute="leading" secondItem="e9f-Ga-pKd" secondAttribute="leading" constant="15" id="hbl-NN-EW5"/>
                                                 <constraint firstAttribute="bottom" secondItem="hUD-TC-rZN" secondAttribute="bottom" constant="17.666666666666671" id="ktu-r2-doq"/>
                                                 <constraint firstItem="hUD-TC-rZN" firstAttribute="top" secondItem="e9f-Ga-pKd" secondAttribute="top" constant="15" id="qOx-NZ-7De"/>
@@ -64,7 +73,8 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="favoriteButton" destination="hUD-TC-rZN" id="uky-hZ-5q3"/>
-                                            <outlet property="stockNameLabel" destination="cKA-An-ssc" id="IXt-yQ-npS"/>
+                                            <outlet property="stockAbbrLabel" destination="2bU-Wq-8FE" id="a38-Yz-3dd"/>
+                                            <outlet property="stockNameLabel" destination="2bU-Wq-8FE" id="d3E-Pl-Sjz"/>
                                             <segue destination="Iei-kJ-XMa" kind="show" identifier="stockDetailSegue" id="2GC-oe-rqf"/>
                                         </connections>
                                     </tableViewCell>
