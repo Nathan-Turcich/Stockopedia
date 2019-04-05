@@ -39,6 +39,7 @@ def scrapeWebsitesForTopics(listOfURLs):
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             deleteNames = []
+            print(company)
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 company_text = company.get_text()
                 
