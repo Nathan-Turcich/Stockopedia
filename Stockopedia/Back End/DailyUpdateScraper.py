@@ -32,16 +32,15 @@ def getURLs():
 def scrapeWebsitesForTopics(listOfURLs):
     full_strings = list()
     topics = list()
+    deleteNames = list()
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
-            deleteNames = []
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 company_text = company.get_text()
-                
                 begin = 0
                 end = 0
                 for x in range(len(company_text)):
@@ -56,15 +55,15 @@ def scrapeWebsitesForTopics(listOfURLs):
                 full_string = company_text[:begin - 2]
                 full_strings.append(full_string)
                 topics.append((symbol_string, sector_text))
+                print(symbol_string)
             else:
                 begin = 0
                 for x in range(len(url)):
                     if(url[x] == '='):
                         begin = x + 1
                 symbol = url[begin:]
-                print(symbol)
                 deleteNames.append(symbol)
-
+                print("DELETE: " + symbol)
 
     # Get Topic
     return topics, deleteNames, full_strings
@@ -81,7 +80,6 @@ def getURLData(url):
         print(e)
         return None
 
-
 def isGoodResponse(resp):
     content_type = resp.headers['Content-Type'].lower()
     return (resp.status_code == 200
@@ -91,22 +89,16 @@ def isGoodResponse(resp):
 def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
     for (stock, topic) in listOfTopics:
-        sql = "INSERT INTO Topics (name, topic) VALUES (%s, %s)"
-        cursor.execute(sql, (stock, topic))
+        cursor.execute("INSERT INTO Topics (name, topic) VALUES (%s, %s)", (stock, topic))
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
-        print(name)
-        sql = "DELETE FROM Stocks WHERE name = '" + name + "'"
-        cursor.execute(sql)
+        cursor.execute("DELETE FROM Stocks WHERE name = '" + name + "'")
 
 def addFullNames(abbrs, full_strings):
-    
     index = 0
     for (name, topic) in abbrs:
-        full_name = full_strings[index]
-        sql = "UPDATE Stocks SET fullname = '" + full_name.replace("'", "") + "' WHERE name = '" + name + "'"
-        cursor.execute(sql)
+        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "") + "' WHERE name = '" + name + "'")
         index += 1
 
     myDB.commit()
