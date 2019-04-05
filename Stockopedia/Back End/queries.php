@@ -7,7 +7,7 @@
     
     $sql = "";
    if($_GET["query"] === "downloadUniqueStockNames"){
-        $sql = "SELECT name
+        $sql = "SELECT name, fullname
         FROM Stocks
         GROUP BY name";
     }
