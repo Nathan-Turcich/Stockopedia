@@ -39,7 +39,6 @@ def scrapeWebsitesForTopics(listOfURLs):
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             deleteNames = []
-            print(company)
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 company_text = company.get_text()
                 
@@ -56,8 +55,6 @@ def scrapeWebsitesForTopics(listOfURLs):
                 
                 full_string = company_text[:begin - 2]
                 full_strings.append(full_string)
-                
-                print(symbol_string + ", " + sector_text)
                 topics.append((symbol_string, sector_text))
             else:
                 
@@ -68,7 +65,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 symbol = url[begin:]
                 
                 deleteNames.append(symbol)
-                print("DELETE " + symbol)
+
     # Get Topic
     return topics, deleteNames, full_strings
 
