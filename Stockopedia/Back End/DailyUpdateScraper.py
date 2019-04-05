@@ -101,6 +101,7 @@ def insertTopicsToDB(listOfTopics):
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
+        print(name)
         sql = "DELETE FROM Stocks WHERE name = '" + name + "'"
         cursor.execute(sql)
 
