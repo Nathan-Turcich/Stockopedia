@@ -26,7 +26,6 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     var topicsTuple:[(name: String, topic: String)] = []
     var topics:[String] = []
     var currentPickerRow:Int = 0
-    
     var favoritesList: [String] = []
 
     
@@ -34,6 +33,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Stock Recommendations"
+        setButtons()
         loadData()
         tableView.allowsSelection = false
     }
@@ -55,16 +55,17 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     
     func generateRecommendedStocks(recommendations: String){
         DispatchQueue.main.async {
-            self.topics.removeAll()
-            self.recommendedStocks.removeAll()
+        self.topics.removeAll()
+        self.recommendedStocks.removeAll()
             for topic in self.topicsTuple {
-                    if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
+                if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
                     if !self.recommendedStocks.contains(topic.name){
                         self.recommendedStocks.append(topic.name)
                     }
                 }
                 self.topics.append(topic.topic)
             }
+            self.setViewLoaded()
             self.setTableViewEnabled()
             self.tableView.reloadData()
             self.updateButtons(recommendations: recommendations)
@@ -109,14 +110,14 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             }
             else{
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
-                sender.titleLabel?.adjustsFontSizeToFitWidth = true
-                sender.titleLabel?.numberOfLines = 2
                 DownloadData.updateUserRecomendations(key: currentID, recomendation: self.makeRecommendations(button: sender))
                 self.generateRecommendedStocks(recommendations: self.makeRecommendations(button: sender))
             }
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-            alert.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Remove", style: .cancel, handler: { (action: UIAlertAction!) in
+            sender.setTitle("Choose", for: .normal)
+            DownloadData.updateUserRecomendations(key: currentID, recomendation: self.getRecommendationFromButtons())
+            self.generateRecommendedStocks(recommendations: self.getRecommendationFromButtons())
         }))
         alert.view.addSubview(pickerView)
         present(alert, animated: true, completion: nil)
@@ -171,6 +172,14 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    func getRecommendationFromButtons() -> String {
+        let button1Text = button1.titleLabel?.text!
+        let button2Text = button2.titleLabel?.text!
+        let button3Text = button3.titleLabel?.text!
+        let temp = button1Text! + "_" + button2Text! + "_" + button3Text!
+        return temp
+    }
+    
     func makeRecommendations(button: UIButton) -> String {
         let button1Text = button1.titleLabel?.text!
         let button2Text = button2.titleLabel?.text!
@@ -181,24 +190,25 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             else if button == button2 { return button1Text! + "_" + topics[currentPickerRow] + "_" + button3Text! }
             else { return button1Text! + "_" + button2Text! + "_" + topics[currentPickerRow] }
         }
-        
         return "Nil_Nil_Nil"
     }
     
     func updateButtons(recommendations: String){
         let array = recommendations.components(separatedBy: "_")
-        
-        if(array.count >= 1) {
-            button1.setTitle(array[0], for: .normal)
-        }
-        
-        if(array.count >= 2) {
-            button2.setTitle(array[1], for: .normal)
-        }
-        
-        if(array.count >= 3) {
-            button3.setTitle(array[2], for: .normal)
-        }
-        
+        if(array.count >= 1) { button1.setTitle(array[0].replacingOccurrences(of: "+", with: " "), for: .normal) }
+        if(array.count >= 2) { button2.setTitle(array[1].replacingOccurrences(of: "+", with: " "), for: .normal) }
+        if(array.count >= 3) { button3.setTitle(array[2].replacingOccurrences(of: "+", with: " "), for: .normal) }
+    }
+    
+    func setButtons(){
+        button1.titleLabel?.adjustsFontSizeToFitWidth = true
+        button1.titleLabel?.textAlignment = .center
+        button1.titleLabel?.numberOfLines = 2
+        button2.titleLabel?.adjustsFontSizeToFitWidth = true
+        button2.titleLabel?.textAlignment = .center
+        button2.titleLabel?.numberOfLines = 2
+        button3.titleLabel?.adjustsFontSizeToFitWidth = true
+        button3.titleLabel?.textAlignment = .center
+        button3.titleLabel?.numberOfLines = 2
     }
 }

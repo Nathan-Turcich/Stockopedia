@@ -124,8 +124,7 @@ class DownloadData {
     }
     
     static func updateUserRecomendations(key: String, recomendation: String) {
-        print(recomendation)
-        let  url: URL = URL(string: urlPath + "?query=updateUserRecomendations&key=" + key + "&recomendation=" + "Choose_Choose_Choose")!
+        let  url: URL = URL(string: urlPath + "?query=updateUserRecomendations&key=" + key + "&recomendation=" + recomendation.replacingOccurrences(of: " ", with: "+"))!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
