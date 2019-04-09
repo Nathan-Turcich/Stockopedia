@@ -495,44 +495,10 @@ https://icons8.com/ </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-KZ-F5B">
-                                <rect key="frame" x="10" y="98" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
-                                        <rect key="frame" x="8" y="44" width="338" height="121"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Stock Recommendations to Follow">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="CE9-T4-vk8" kind="show" id="Yqh-Hj-wR4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
-                                        <rect key="frame" x="8" y="200" width="338" height="121"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Which stocks to Buy &amp; Sell">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="lCQ-im-HuY" kind="show" id="sFW-NN-HHV"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4G-uh-l5q">
-                                        <rect key="frame" x="185" y="584" width="160" height="39"/>
+                                        <rect key="frame" x="195" y="588" width="160" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -549,7 +515,7 @@ https://icons8.com/ </string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-8D-fCz">
-                                        <rect key="frame" x="8" y="584" width="160" height="39"/>
+                                        <rect key="frame" x="18" y="588" width="160" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -565,18 +531,59 @@ https://icons8.com/ </string>
                                             <segue destination="M0c-vp-qA2" kind="show" id="w6U-iv-eJr"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as: Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-dX-U5w">
+                                        <rect key="frame" x="18" y="19" width="337" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
+                                        <rect key="frame" x="18" y="83" width="338" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Stock Recommendations to Follow">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="CE9-T4-vk8" kind="show" id="Yqh-Hj-wR4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
+                                        <rect key="frame" x="18" y="239" width="338" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <state key="normal" title="Which stocks to Buy &amp; Sell">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="lCQ-im-HuY" kind="show" id="sFW-NN-HHV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" constant="10" id="Dvz-h3-Yv1"/>
-                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" constant="10" id="EDR-lo-C4j"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" id="Dvz-h3-Yv1"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" id="EDR-lo-C4j"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="trailing" secondItem="6kU-yQ-c7a" secondAttribute="trailing" id="Gby-3o-xCS"/>
-                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="trailing" secondItem="jVq-t1-w87" secondAttribute="trailing" constant="10" id="Gw9-6U-wyB"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="trailing" secondItem="jVq-t1-w87" secondAttribute="trailing" id="Gw9-6U-wyB"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" id="RPe-rv-xk3"/>
-                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="bottom" secondItem="jVq-t1-w87" secondAttribute="bottom" constant="10" id="l6e-fm-3cX"/>
+                            <constraint firstItem="uEc-KZ-F5B" firstAttribute="bottom" secondItem="jVq-t1-w87" secondAttribute="bottom" id="l6e-fm-3cX"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="bottom" secondItem="6kU-yQ-c7a" secondAttribute="bottom" id="tMl-p7-Xl1"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" id="xlC-1Z-56G"/>
                         </constraints>
@@ -600,6 +607,7 @@ https://icons8.com/ </string>
                         <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
                         <outlet property="logoutButton" destination="qBB-N5-jjA" id="AFZ-Xu-oqK"/>
                         <outlet property="profileView" destination="uEc-KZ-F5B" id="i70-L8-Jra"/>
+                        <outlet property="usernameLabel" destination="wfj-dX-U5w" id="VLJ-bV-tju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL8-vJ-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -821,7 +829,7 @@ https://icons8.com/ </string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -835,7 +843,7 @@ https://icons8.com/ </string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -849,7 +857,7 @@ https://icons8.com/ </string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>

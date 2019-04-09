@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet var loginView: UIView!
     @IBOutlet var profileView: UIView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
@@ -28,7 +29,7 @@ class ProfileViewController: UIViewController {
         let alert = UIAlertController(title: "Are you sure you want to log out?", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log out", style: .default, handler: { (action: UIAlertAction!) in
             UserDefaults.standard.set("", forKey: "CurrentUser")
-            currentUserID = ""
+            currentUser = nil
             self.setView()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
@@ -39,12 +40,13 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Helper Functions
     func setView(){
-        if(currentUserID == "") {
+        if(currentUser == nil) {
             loginView.isHidden = false
             profileView.isHidden = true
             self.logoutButton.title = ""
             self.logoutButton.isEnabled = false
         }else{
+            usernameLabel.text = "Logged in as: " + currentUser.username
             loginView.isHidden = true
             profileView.isHidden = false
             self.logoutButton.title = "Logout"

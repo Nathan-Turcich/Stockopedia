@@ -22,8 +22,7 @@ class ChangeUsernameViewController: UIViewController {
     @objc func saveButtonAction() {
         if userNameTextField.text!.isEmpty { Utils.createAlertWith(message: "Fill in all fields", viewController: self) }
         else{
-            // Update password in SQL
-            DownloadData.updateUsername(key: currentUserID, newUsername: userNameTextField.text!)
+            DownloadData.updateUsername(key: currentUser.ID, newUsername: userNameTextField.text!)
             self.navigationController?.popViewController(animated: true)
         }
     }

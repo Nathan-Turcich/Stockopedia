@@ -32,8 +32,7 @@ class ChangePasswordViewController: UIViewController {
                 Utils.createAlertWith(message: "New passwords do not match", viewController: self)
             }
             else {
-                // Update password in SQL
-                DownloadData.updateUserPassword(key: currentUserID, newPassword: newPasswordTextField.text!)
+                DownloadData.updateUserPassword(key: currentUser.ID, newPassword: newPasswordTextField.text!)
                 self.navigationController?.popViewController(animated: true)
             }
         }

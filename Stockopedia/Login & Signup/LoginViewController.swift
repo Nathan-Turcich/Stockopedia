@@ -28,8 +28,8 @@ class LoginViewController: UIViewController {
                 })
             }else{
                 DispatchQueue.main.async(execute: {
-                    currentUserID = user!.key
-                    UserDefaults.standard.set(user?.key, forKey: "CurrentUser")
+                    currentUser = user
+                    UserDefaults.standard.set(currentUser.ID, forKey: "CurrentUser")
                     self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
                 })
             }

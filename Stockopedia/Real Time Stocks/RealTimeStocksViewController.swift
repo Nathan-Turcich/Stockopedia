@@ -20,9 +20,6 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-        if let val = UserDefaults.standard.string(forKey: "CurrentUser"){
-            currentUserID = val
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

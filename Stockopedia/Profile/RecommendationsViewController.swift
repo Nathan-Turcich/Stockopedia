@@ -41,9 +41,9 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     //MARK: - Loading Data
     func loadData() {
         setViewNotLoaded()
-        DownloadData.getUserFavoritedList(key: currentUserID, completion: { list  in
+        DownloadData.getUserFavoritedList(key: currentUser.ID, completion: { list  in
             self.favoritesList = list!
-            DownloadData.getUserRecommendations(key: currentUserID, completion: { recommendations in
+            DownloadData.getUserRecommendations(key: currentUser.ID, completion: { recommendations in
                 DownloadData.getTopicData(completion: { data in
                     self.topicsTuple = data!
                     self.generateRecommendedStocks(recommendations: recommendations)
@@ -88,12 +88,12 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         if cell.favortiesButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.nameLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentUser.ID, name: cell.nameLabel.text!)
         }
         else{
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.nameLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentUser.ID, name: cell.nameLabel.text!)
         }
     }
     
@@ -111,7 +111,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
                 sender.titleLabel?.adjustsFontSizeToFitWidth = true
                 sender.titleLabel?.numberOfLines = 2
-                DownloadData.updateUserRecomendations(key: currentUserID, recomendation: self.makeRecommendations(button: sender))
+                DownloadData.updateUserRecomendations(key: currentUser.ID, recomendation: self.makeRecommendations(button: sender))
                 self.generateRecommendedStocks(recommendations: self.makeRecommendations(button: sender))
             }
         }))

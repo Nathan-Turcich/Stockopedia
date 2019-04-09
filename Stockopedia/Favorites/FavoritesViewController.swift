@@ -25,7 +25,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         loadingStarted()
-        if currentUserID != "" {
+        if currentUser != nil {
             downloadFavortiesList()
         }
         else {
@@ -38,7 +38,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     func downloadFavortiesList(){
-        DownloadData.getUserFavoritedList(key: currentUserID, completion: { (list) in
+        DownloadData.getUserFavoritedList(key: currentUser.ID, completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
                     DispatchQueue.main.async {
@@ -86,7 +86,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             print(indexPath.row)
             print(favoritesList[indexPath.row])
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: favoritesList[indexPath.row])
+            DownloadData.deleteNameFavoritedList(key: currentUser.ID, name: favoritesList[indexPath.row])
             favoritesList.remove(at: indexPath.row)
             tableView.reloadData()
         }

@@ -71,7 +71,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.stockAbbrLabel.text = stocks[indexPath.section][indexPath.row].abbr
             cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row].fullName
         }
-        if currentUserID != "" {
+        if currentUser != nil {
             cell.favoriteButton.isHidden = false; cell.favoriteButton.isEnabled = true
             if isSearching {
                 if favoritedList.contains(filteredStocks[indexPath.row].abbr) {
@@ -98,12 +98,12 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentUserID, name: cell.stockAbbrLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentUser.ID, name: cell.stockAbbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentUserID, name: cell.stockAbbrLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentUser.ID, name: cell.stockAbbrLabel.text!)
         }
     }
     
@@ -151,8 +151,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func downloadStocks(){
         DownloadData.downloadUniqueStockNames(completion: { s in
             if let stockArray = s {
-                if currentUserID != "" {
-                    DownloadData.getUserFavoritedList(key: currentUserID, completion: { (favList) in
+                if currentUser != nil {
+                    DownloadData.getUserFavoritedList(key: currentUser.ID, completion: { (favList) in
                         self.favoritedList = favList!
                         self.setData(stockArray: stockArray)
                     })

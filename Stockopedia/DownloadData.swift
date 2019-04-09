@@ -161,9 +161,8 @@ class DownloadData {
                 var jsonElement = NSDictionary()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    user = User(key: jsonElement["ID"] as! String, username: jsonElement["Username"] as! String)
+                    user = User(ID: jsonElement["ID"] as! String, username: jsonElement["Username"] as! String)
                 }
-                
                 completion(user)
             }
         }
