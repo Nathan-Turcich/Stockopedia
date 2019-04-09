@@ -28,8 +28,10 @@ class LoginViewController: UIViewController {
                 })
             }else{
                 DispatchQueue.main.async(execute: {
-                    currentUser = user
-                    UserDefaults.standard.set(currentUser.ID, forKey: "CurrentUser")
+                    currentID = user!.ID
+                    currentUsername = user!.username
+                    UserDefaults.standard.set(currentID, forKey: "currentID")
+                    UserDefaults.standard.set(currentUsername, forKey: "currentUsername")
                     self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
                 })
             }
@@ -39,5 +41,4 @@ class LoginViewController: UIViewController {
     @IBAction func cancelButtonAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
 }

@@ -8,7 +8,8 @@
 
 import UIKit
 
-var currentUser:User!
+var currentID:String = ""
+var currentUsername:String = ""
 
 class SignUpViewController: UIViewController {
 
@@ -26,9 +27,11 @@ class SignUpViewController: UIViewController {
         if(usernameTextField.text != "" && passwordTextField.text != "") {
             let key = Utils.randomString(length: 15)
             DownloadData.createUser(key: key, username: usernameTextField.text!, password: passwordTextField.text!)
-            currentUser = User(ID: key, username: usernameTextField.text!)
-            DownloadData.initilizeUsersRecomendations(key: currentUser.ID)
-            UserDefaults.standard.set(currentUser, forKey: "CurrentUser")
+            currentID = key
+            currentUsername = usernameTextField.text!
+            DownloadData.initilizeUsersRecomendations(key: currentID)
+            UserDefaults.standard.set(currentID, forKey: "currentID")
+            UserDefaults.standard.set(currentUsername, forKey: "currentUsername")
             self.performSegue(withIdentifier: "fromCreateAccountToMain", sender: self)
         }
         else {

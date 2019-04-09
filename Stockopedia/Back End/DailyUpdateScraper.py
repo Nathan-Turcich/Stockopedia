@@ -98,7 +98,7 @@ def deleteNoIndustryNames(deleteNames):
 def addFullNames(abbrs, full_strings):
     index = 0
     for (name, topic) in abbrs:
-        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "") + "' WHERE name = '" + name + "'")
+        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "").replace("&", "and")+ "' WHERE name = '" + name + "'")
         index += 1
 
     myDB.commit()

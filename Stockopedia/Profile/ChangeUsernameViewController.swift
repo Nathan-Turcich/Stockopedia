@@ -22,7 +22,9 @@ class ChangeUsernameViewController: UIViewController {
     @objc func saveButtonAction() {
         if userNameTextField.text!.isEmpty { Utils.createAlertWith(message: "Fill in all fields", viewController: self) }
         else{
-            DownloadData.updateUsername(key: currentUser.ID, newUsername: userNameTextField.text!)
+            DownloadData.updateUsername(key: currentID, newUsername: userNameTextField.text!)
+            currentUsername = userNameTextField.text!
+            UserDefaults.standard.set(currentUsername, forKey: "currentUsername")
             self.navigationController?.popViewController(animated: true)
         }
     }

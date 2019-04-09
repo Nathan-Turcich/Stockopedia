@@ -34,6 +34,12 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
+            currentID = id; currentUsername = name
+        }
+        else { currentID = ""; currentUsername = "" }
+        
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
@@ -71,7 +77,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.stockAbbrLabel.text = stocks[indexPath.section][indexPath.row].abbr
             cell.stockNameLabel.text = stocks[indexPath.section][indexPath.row].fullName
         }
-        if currentUser != nil {
+        if currentID != ""{
             cell.favoriteButton.isHidden = false; cell.favoriteButton.isEnabled = true
             if isSearching {
                 if favoritedList.contains(filteredStocks[indexPath.row].abbr) {
@@ -98,12 +104,12 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentUser.ID, name: cell.stockAbbrLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentID, name: cell.stockAbbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentUser.ID, name: cell.stockAbbrLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentID, name: cell.stockAbbrLabel.text!)
         }
     }
     
@@ -151,8 +157,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func downloadStocks(){
         DownloadData.downloadUniqueStockNames(completion: { s in
             if let stockArray = s {
-                if currentUser != nil {
-                    DownloadData.getUserFavoritedList(key: currentUser.ID, completion: { (favList) in
+                if currentID != "" {
+                    DownloadData.getUserFavoritedList(key: currentID, completion: { (favList) in
                         self.favoritedList = favList!
                         self.setData(stockArray: stockArray)
                     })

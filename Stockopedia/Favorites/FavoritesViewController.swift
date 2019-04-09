@@ -24,8 +24,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
+            currentID = id; currentUsername = name
+        }
+        else { currentID = ""; currentUsername = "" }
         loadingStarted()
-        if currentUser != nil {
+        if currentID != "" {
             downloadFavortiesList()
         }
         else {
@@ -38,13 +42,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     func downloadFavortiesList(){
-        DownloadData.getUserFavoritedList(key: currentUser.ID, completion: { (list) in
+        DownloadData.getUserFavoritedList(key: currentID, completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
                     DispatchQueue.main.async {
                         self.tableView.isHidden = true
                         self.noFavoritesLabel.isHidden = false
-                        self.noFavoritesLabel.text = "You have not favorited any stocks"
+                        self.noFavoritesLabel.text = "You have no favorited stocks"
                         self.activityIndicator.stopAnimating()
                     }
                 }
@@ -86,9 +90,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             print(indexPath.row)
             print(favoritesList[indexPath.row])
-            DownloadData.deleteNameFavoritedList(key: currentUser.ID, name: favoritesList[indexPath.row])
+            DownloadData.deleteNameFavoritedList(key: currentID, name: favoritesList[indexPath.row])
             favoritesList.remove(at: indexPath.row)
             tableView.reloadData()
+            if favoritesList.count == 0 { viewWillAppear(false)}
         }
     }
     
