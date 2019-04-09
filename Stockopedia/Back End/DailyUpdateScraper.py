@@ -89,7 +89,7 @@ def isGoodResponse(resp):
 def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
     for (stock, topic) in listOfTopics:
-        cursor.execute("INSERT INTO Topics (name, topic) VALUES (%s, %s)", (stock, topic))
+        cursor.execute("INSERT INTO Topics (name, topic) VALUES (%s, %s)", (stock, topic.replace("&", "and")))
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
@@ -98,7 +98,7 @@ def deleteNoIndustryNames(deleteNames):
 def addFullNames(abbrs, full_strings):
     index = 0
     for (name, topic) in abbrs:
-        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "").replace("&", "and")+ "' WHERE name = '" + name + "'")
+        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "") + "' WHERE name = '" + name + "'")
         index += 1
 
     myDB.commit()
