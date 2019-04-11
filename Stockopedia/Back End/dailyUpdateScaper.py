@@ -48,13 +48,13 @@ def scrapeWebsitesForTopics(listOfURLs):
                         begin = x + 1
                     if(company_text[x] == ')'):
                         end = x
-                        symbol_string = company_text[begin:end]
+                        abbr = company_text[begin:end]
                 
-                sector_text = sector[1].get_text()
+                topic = sector[1].get_text()
                 
-                full_string = company_text[:begin - 2]
-                full_strings.append(full_string)
-                topics.append((symbol_string, sector_text))
+                fullName = company_text[:begin - 2]
+                full_strings.append(fullName)
+                topics.append((abbr, fullName, topic))
                 print(symbol_string)
             else:
                 begin = 0
