@@ -30,7 +30,6 @@ def getURLs():
     return urls
 
 def scrapeWebsitesForTopics(listOfURLs):
-    full_strings = list()
     topics = list()
     deleteNames = list()
     for url in listOfURLs:
@@ -53,7 +52,6 @@ def scrapeWebsitesForTopics(listOfURLs):
                 topic = sector[1].get_text()
                 
                 fullName = company_text[:begin - 2]
-                full_strings.append(fullName)
                 topics.append((abbr, fullName, topic))
                 print(abbr)
             else:
@@ -65,10 +63,9 @@ def scrapeWebsitesForTopics(listOfURLs):
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
         break
-        print("YO")
 
     # Get Topic
-    return topics, deleteNames, full_strings
+    return topics, deleteNames
 
 def getURLData(url):
     try:
@@ -88,26 +85,24 @@ def isGoodResponse(resp):
             and content_type is not None
             and content_type.find('html') > -1)
 
-def insertTopicsToDB(listOfTopics, full_strings):
+def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
-    for (abbr, topic, full_strings) in listOfTopics:
-        cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, full_strings, topic.replace("&", "and")))
+    for (abbr, fullName, topic) in listOfTopics:
+        cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, fullName, topic.replace("&", "and")))
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
         cursor.execute("DELETE FROM Stocks WHERE name = '" + name + "'")
 
-def addFullNames(abbrs, full_strings):
-    index = 0
-    for (name, topic) in abbrs:
-        cursor.execute("UPDATE Stocks SET fullname = '" + full_strings[index].replace("'", "") + "' WHERE name = '" + name + "'")
-        index += 1
+def addFullNames(listOfTopics):
+    for (abbr, fullName, topic) in listOfTopics:
+        cursor.execute("UPDATE Stocks SET fullname = '" + fullName.replace("'", "") + "' WHERE name = '" + abbr + "'")
 
     myDB.commit()
     myDB.close()
 
 if __name__ == '__main__':
-    listOfTopics, deleteNames, full_strings = scrapeWebsitesForTopics(getURLs())
-    insertTopicsToDB(listOfTopics, full_strings)
+    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs())
+    insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
-    addFullNames(listOfTopics, full_strings)
+    addFullNames(listOfTopics)
