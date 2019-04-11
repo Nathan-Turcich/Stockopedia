@@ -12,7 +12,7 @@
         GROUP BY name";
    }
    else if($_GET["query"] === "downloadPossibleMonths"){
-       $abbr = $_GET["abbr"]
+       $abbr = $_GET["abbr"];
        
        $sql = "SELECT date
        FROM Stocks
