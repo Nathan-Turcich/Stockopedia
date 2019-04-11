@@ -35,7 +35,7 @@
    }
    else if($_GET["query"] === "getTopicData"){
        $sql = "SELECT *
-       FROM Topics;
+       FROM Topics";
    }
    else if($_GET["query"] === "getUserRecommendations"){
        $key = $_GET["key"];
