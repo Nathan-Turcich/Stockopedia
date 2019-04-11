@@ -129,30 +129,85 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woS-rt-7al">
                                 <rect key="frame" x="16" y="148" width="343" height="142"/>
                                 <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsE-XG-FKD">
                                 <rect key="frame" x="16" y="313" width="30" height="30"/>
-                                <state key="normal" title="1D"/>
+                                <state key="normal" title="1D">
+                                    <color key="titleColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dayButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="ew0-DO-vdy"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-im-qrf">
-                                <rect key="frame" x="78" y="312" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-im-qrf">
+                                <rect key="frame" x="77" y="313" width="30" height="30"/>
                                 <state key="normal" title="1W"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="weekButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="l0I-5K-jXE"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wl-dd-ttE">
-                                <rect key="frame" x="141" y="312" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wl-dd-ttE">
+                                <rect key="frame" x="143" y="313" width="30" height="30"/>
                                 <state key="normal" title="1M"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="monthOneButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="W6e-1F-qEw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsP-Tc-t36">
                                 <rect key="frame" x="265" y="313" width="30" height="30"/>
                                 <state key="normal" title="6M"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="monthSixButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="JXv-LP-fRZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdL-Nk-iyA">
                                 <rect key="frame" x="329" y="313" width="30" height="30"/>
                                 <state key="normal" title="1Y"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="yearButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="scC-y6-Ha3"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfH-ah-MFj">
-                                <rect key="frame" x="205" y="312" width="24" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfH-ah-MFj">
+                                <rect key="frame" x="207" y="312" width="24" height="30"/>
                                 <state key="normal" title="3M"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="monthThreeButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="5g3-nq-ETZ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -161,7 +216,7 @@
                             <constraint firstItem="OsP-Tc-t36" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="6Jg-4A-ub4"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="12.666666666666657" id="8dT-o2-R2y"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Age-hW-fnP"/>
-                            <constraint firstItem="9Wl-dd-ttE" firstAttribute="leading" secondItem="IQy-im-qrf" secondAttribute="trailing" constant="37" id="CQa-R6-Q4b"/>
+                            <constraint firstItem="9Wl-dd-ttE" firstAttribute="leading" secondItem="IQy-im-qrf" secondAttribute="trailing" constant="36" id="CQa-R6-Q4b"/>
                             <constraint firstItem="hdL-Nk-iyA" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Ev7-UL-Trs"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" constant="386" id="GIn-AB-aEk"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="leading" secondItem="Frn-q0-Q9Y" secondAttribute="leading" id="GPi-uK-htU"/>
@@ -172,10 +227,10 @@
                             <constraint firstItem="hdL-Nk-iyA" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="SUG-m8-JTI"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" constant="16" id="Stv-6h-Dup"/>
                             <constraint firstItem="9Wl-dd-ttE" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="Vig-l6-lib"/>
-                            <constraint firstItem="IQy-im-qrf" firstAttribute="leading" secondItem="SsE-XG-FKD" secondAttribute="trailing" constant="37" id="XPg-SU-gqd"/>
+                            <constraint firstItem="IQy-im-qrf" firstAttribute="leading" secondItem="SsE-XG-FKD" secondAttribute="trailing" constant="31" id="XPg-SU-gqd"/>
                             <constraint firstItem="zfH-ah-MFj" firstAttribute="leading" secondItem="9Wl-dd-ttE" secondAttribute="trailing" constant="34" id="Xam-rv-So4"/>
                             <constraint firstItem="hdL-Nk-iyA" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="cQg-9W-O5Z"/>
-                            <constraint firstItem="OsP-Tc-t36" firstAttribute="leading" secondItem="zfH-ah-MFj" secondAttribute="trailing" constant="36" id="cdW-3N-yl7"/>
+                            <constraint firstItem="OsP-Tc-t36" firstAttribute="leading" secondItem="zfH-ah-MFj" secondAttribute="trailing" constant="34" id="cdW-3N-yl7"/>
                             <constraint firstItem="hdL-Nk-iyA" firstAttribute="leading" secondItem="OsP-Tc-t36" secondAttribute="trailing" constant="34" id="dRv-UA-W43"/>
                             <constraint firstItem="Frn-q0-Q9Y" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" constant="16" id="fJB-Xp-S1z"/>
                             <constraint firstItem="Frn-q0-Q9Y" firstAttribute="top" secondItem="pKJ-fB-3qE" secondAttribute="top" constant="22" id="gZ0-iD-Pjw"/>
@@ -185,6 +240,16 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pKJ-fB-3qE"/>
                     </view>
+                    <connections>
+                        <outlet property="dayButton" destination="SsE-XG-FKD" id="U2k-mp-mSw"/>
+                        <outlet property="graphView" destination="woS-rt-7al" id="e5M-aD-eDc"/>
+                        <outlet property="monthOneButton" destination="9Wl-dd-ttE" id="cE3-oW-aXv"/>
+                        <outlet property="monthSixButton" destination="OsP-Tc-t36" id="FaL-1c-1y7"/>
+                        <outlet property="monthThreeButton" destination="zfH-ah-MFj" id="8Gu-cU-hF1"/>
+                        <outlet property="nameLabel" destination="Frn-q0-Q9Y" id="HnY-zW-pQ5"/>
+                        <outlet property="weekButton" destination="IQy-im-qrf" id="fOp-tO-v3o"/>
+                        <outlet property="yearButton" destination="hdL-Nk-iyA" id="EO5-TL-7wb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvR-QD-wfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
