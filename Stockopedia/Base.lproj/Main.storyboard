@@ -720,13 +720,25 @@ https://icons8.com/ </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Stockopedia!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYk-m3-eUb">
-                                <rect key="frame" x="16" y="94" width="343" height="34.666666666666657"/>
+                                <rect key="frame" x="16" y="94" width="343" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzQ-WD-aOm">
+                                <rect key="frame" x="15" y="56" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zmO-bU-Lew"/>
+                                </constraints>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonAction:" destination="6dT-eM-c7U" eventType="touchUpInside" id="1ep-DY-Rzw"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zG2-qK-TN0">
-                                <rect key="frame" x="52" y="439" width="270" height="41"/>
+                                <rect key="frame" x="52" y="327" width="270" height="41"/>
                                 <color key="backgroundColor" red="0.95457249365482233" green="0.5870951454676564" blue="0.15113931144020318" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="mi4-W5-bhw"/>
@@ -745,7 +757,7 @@ https://icons8.com/ </string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAf-Ec-hgI">
-                                <rect key="frame" x="52" y="488" width="270" height="27"/>
+                                <rect key="frame" x="52" y="376" width="270" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
                                 <state key="normal" title="Don't have an account? Sign Up!">
@@ -755,27 +767,14 @@ https://icons8.com/ </string>
                                     <segue destination="710-9t-E5I" kind="presentation" id="wXr-6K-Sjs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzQ-WD-aOm">
-                                <rect key="frame" x="15" y="56" width="48" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="oG0-Sv-yqk"/>
-                                    <constraint firstAttribute="height" constant="30" id="zmO-bU-Lew"/>
-                                </constraints>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButtonAction:" destination="6dT-eM-c7U" eventType="touchUpInside" id="1ep-DY-Rzw"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="877-08-AFX">
-                                <rect key="frame" x="52" y="391" width="270" height="40"/>
+                                <rect key="frame" x="52" y="279" width="270" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iGa-92-Jeq">
                                         <rect key="frame" x="8" y="11.666666666666686" width="254" height="17"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -787,14 +786,14 @@ https://icons8.com/ </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIk-hY-aZR">
-                                <rect key="frame" x="52" y="343" width="270" height="40"/>
+                                <rect key="frame" x="52" y="231" width="270" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-fF-K6u">
-                                        <rect key="frame" x="8" y="11.666666666666686" width="254" height="17"/>
+                                        <rect key="frame" x="8" y="11.666666666666657" width="254" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" textContentType="username"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -821,9 +820,10 @@ https://icons8.com/ </string>
                             <constraint firstItem="zG2-qK-TN0" firstAttribute="leading" secondItem="OaZ-PZ-klr" secondAttribute="leading" constant="52" id="me9-TF-NPg"/>
                             <constraint firstItem="OaZ-PZ-klr" firstAttribute="trailing" secondItem="NYk-m3-eUb" secondAttribute="trailing" constant="16" id="ovW-4D-F5c"/>
                             <constraint firstItem="NYk-m3-eUb" firstAttribute="leading" secondItem="OaZ-PZ-klr" secondAttribute="leading" constant="16" id="rsX-0h-b4B"/>
-                            <constraint firstItem="877-08-AFX" firstAttribute="centerY" secondItem="OaZ-PZ-klr" secondAttribute="centerY" id="sZS-lr-dA2"/>
                             <constraint firstItem="OaZ-PZ-klr" firstAttribute="trailing" secondItem="zG2-qK-TN0" secondAttribute="trailing" constant="53" id="tDu-Bn-3ba"/>
                             <constraint firstItem="gAf-Ec-hgI" firstAttribute="leading" secondItem="OaZ-PZ-klr" secondAttribute="leading" constant="52" id="tdj-jd-6YA"/>
+                            <constraint firstItem="OaZ-PZ-klr" firstAttribute="bottom" secondItem="gAf-Ec-hgI" secondAttribute="bottom" constant="375" id="vpJ-ti-eeg"/>
+                            <constraint firstItem="OaZ-PZ-klr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="HzQ-WD-aOm" secondAttribute="trailing" symbolic="YES" id="wOf-vg-6k9"/>
                             <constraint firstItem="HzQ-WD-aOm" firstAttribute="top" secondItem="OaZ-PZ-klr" secondAttribute="top" constant="12" id="yEo-Mk-doA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OaZ-PZ-klr"/>
@@ -948,7 +948,6 @@ https://icons8.com/ </string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Izh-MB-Ob9">
                                 <rect key="frame" x="15" y="44" width="48" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="vgM-sw-l2c"/>
                                     <constraint firstAttribute="height" constant="30" id="z9O-AE-1XX"/>
                                 </constraints>
                                 <state key="normal" title="Cancel">
@@ -959,13 +958,13 @@ https://icons8.com/ </string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to see your customized stocks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C46-8T-qtU">
-                                <rect key="frame" x="15" y="82" width="343" height="64.666666666666686"/>
+                                <rect key="frame" x="15" y="82" width="343" height="65"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ScY-hd-YEQ">
-                                <rect key="frame" x="52" y="391" width="270" height="40"/>
+                                <rect key="frame" x="52" y="276" width="270" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="07E-Vf-cdB">
                                         <rect key="frame" x="8" y="11.666666666666686" width="254" height="17"/>
@@ -984,7 +983,7 @@ https://icons8.com/ </string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-5h-BpN">
-                                <rect key="frame" x="52" y="439" width="270" height="40"/>
+                                <rect key="frame" x="52" y="324" width="270" height="40"/>
                                 <color key="backgroundColor" red="0.95457249369999997" green="0.58709514549999997" blue="0.1511393114" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7DE-8z-R4D"/>
@@ -1004,10 +1003,10 @@ https://icons8.com/ </string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFa-Do-nIR">
-                                <rect key="frame" x="52" y="343" width="270" height="40"/>
+                                <rect key="frame" x="52" y="228" width="270" height="40"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kl-fW-3Be">
-                                        <rect key="frame" x="8" y="11.666666666666686" width="254" height="17"/>
+                                        <rect key="frame" x="8" y="11.666666666666657" width="254" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1029,13 +1028,15 @@ https://icons8.com/ </string>
                             <constraint firstItem="C46-8T-qtU" firstAttribute="leading" secondItem="FIp-Fl-X9R" secondAttribute="leading" constant="15" id="2Bs-cH-57Q"/>
                             <constraint firstItem="RXT-5h-BpN" firstAttribute="leading" secondItem="FIp-Fl-X9R" secondAttribute="leading" constant="52" id="40M-u0-LfZ"/>
                             <constraint firstItem="CFa-Do-nIR" firstAttribute="leading" secondItem="FIp-Fl-X9R" secondAttribute="leading" constant="52" id="9Ke-BC-6AP"/>
+                            <constraint firstItem="FIp-Fl-X9R" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Izh-MB-Ob9" secondAttribute="trailing" symbolic="YES" id="B1p-fm-9hQ"/>
                             <constraint firstItem="FIp-Fl-X9R" firstAttribute="trailing" secondItem="RXT-5h-BpN" secondAttribute="trailing" constant="53" id="ClN-25-PUV"/>
                             <constraint firstItem="ScY-hd-YEQ" firstAttribute="top" secondItem="CFa-Do-nIR" secondAttribute="bottom" constant="8" id="Ek6-Qd-2ku"/>
                             <constraint firstItem="FIp-Fl-X9R" firstAttribute="trailing" secondItem="CFa-Do-nIR" secondAttribute="trailing" constant="53" id="KqM-jX-FaR"/>
                             <constraint firstItem="ScY-hd-YEQ" firstAttribute="leading" secondItem="FIp-Fl-X9R" secondAttribute="leading" constant="52" id="NG7-8p-VyN"/>
-                            <constraint firstItem="ScY-hd-YEQ" firstAttribute="centerY" secondItem="FIp-Fl-X9R" secondAttribute="centerY" id="bzV-iX-Ugw"/>
+                            <constraint firstItem="FIp-Fl-X9R" firstAttribute="bottom" secondItem="RXT-5h-BpN" secondAttribute="bottom" constant="414" id="UrP-aE-Ukj"/>
                             <constraint firstItem="FIp-Fl-X9R" firstAttribute="trailing" secondItem="ScY-hd-YEQ" secondAttribute="trailing" constant="53" id="iNs-dh-biz"/>
                             <constraint firstItem="Izh-MB-Ob9" firstAttribute="leading" secondItem="FIp-Fl-X9R" secondAttribute="leading" constant="15" id="kDj-GI-bPq"/>
+                            <constraint firstItem="CFa-Do-nIR" firstAttribute="top" secondItem="C46-8T-qtU" secondAttribute="bottom" constant="81" id="n3K-hf-ZZu"/>
                             <constraint firstItem="C46-8T-qtU" firstAttribute="top" secondItem="Izh-MB-Ob9" secondAttribute="bottom" constant="8" id="ouO-uj-4a6"/>
                             <constraint firstItem="FIp-Fl-X9R" firstAttribute="trailing" secondItem="C46-8T-qtU" secondAttribute="trailing" constant="17" id="rSd-67-2EE"/>
                             <constraint firstItem="Izh-MB-Ob9" firstAttribute="top" secondItem="FIp-Fl-X9R" secondAttribute="top" id="trb-t1-t0O"/>
@@ -1173,7 +1174,7 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4HG-5Y-Uir"/>
+        <segue reference="5V4-Ew-0Kd"/>
         <segue reference="2GC-oe-rqf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.53333333329999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

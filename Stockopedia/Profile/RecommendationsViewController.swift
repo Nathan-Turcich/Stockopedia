@@ -38,6 +38,13 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         tableView.allowsSelection = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        let button1Text = button1.titleLabel?.text!
+        let button2Text = button2.titleLabel?.text!
+        let button3Text = button3.titleLabel?.text!
+        DownloadData.updateUserRecomendations(key: currentID, recomendation: button1Text! + "_" + button2Text! + "_" + button3Text!)
+    }
+    
     //MARK: - Loading Data
     func loadData() {
         setViewNotLoaded()
@@ -46,29 +53,30 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             DownloadData.getUserRecommendations(key: currentID, completion: { recommendations in
                 DownloadData.getTopicData(completion: { data in
                     self.topicsTuple = data!
-                    self.generateRecommendedStocks(recommendations: recommendations)
+                    self.calculateRecommendations(recommendations: recommendations)
                     self.setViewLoaded()
                 })
             })
         })
     }
     
-    func generateRecommendedStocks(recommendations: String){
+    func calculateRecommendations(recommendations: String){
         DispatchQueue.main.async {
-        self.topics.removeAll()
-        self.recommendedStocks.removeAll()
+            self.topics.removeAll()
+            self.recommendedStocks.removeAll()
+            self.updateButtons(recommendations: recommendations)
+            print(self.button1.currentTitle)
+            print(self.button2.currentTitle)
             for topic in self.topicsTuple {
-                if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
-                    if !self.recommendedStocks.contains(topic.name){
-                        self.recommendedStocks.append(topic.name)
-                    }
-                }
                 self.topics.append(topic.topic)
+                if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
+                    if !self.recommendedStocks.contains(topic.name){ self.recommendedStocks.append(topic.name) }
+                }
+                print(topic.name)
             }
             self.setViewLoaded()
             self.setTableViewEnabled()
             self.tableView.reloadData()
-            self.updateButtons(recommendations: recommendations)
         }
     }
     
@@ -103,6 +111,10 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         let alert = UIAlertController(title: "Select item from list", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 50, width: 260, height: 162))
         pickerView.dataSource = self; pickerView.delegate = self
+        alert.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: { (action: UIAlertAction!) in
+            sender.setTitle("Choose", for: .normal)
+            self.calculateRecommendations(recommendations: self.makeRecommendations(button: sender, text: "Choose"))
+        }))
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
             let topic = self.topics[self.currentPickerRow]
             if topic == self.button1.titleLabel?.text || topic == self.button2.titleLabel?.text || topic == self.button3.titleLabel?.text {
@@ -110,14 +122,8 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             }
             else{
                 sender.setTitle(self.topics[self.currentPickerRow], for: .normal)
-                DownloadData.updateUserRecomendations(key: currentID, recomendation: self.makeRecommendations(button: sender))
-                self.generateRecommendedStocks(recommendations: self.makeRecommendations(button: sender))
+                self.calculateRecommendations(recommendations: self.makeRecommendations(button: sender, text: self.topics[self.currentPickerRow]))
             }
-        }))
-        alert.addAction(UIAlertAction(title: "Remove", style: .cancel, handler: { (action: UIAlertAction!) in
-            sender.setTitle("Choose", for: .normal)
-            DownloadData.updateUserRecomendations(key: currentID, recomendation: self.getRecommendationFromButtons())
-            self.generateRecommendedStocks(recommendations: self.getRecommendationFromButtons())
         }))
         alert.view.addSubview(pickerView)
         present(alert, animated: true, completion: nil)
@@ -176,19 +182,17 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         let button1Text = button1.titleLabel?.text!
         let button2Text = button2.titleLabel?.text!
         let button3Text = button3.titleLabel?.text!
-        let temp = button1Text! + "_" + button2Text! + "_" + button3Text!
-        return temp
+        return button1Text! + "_" + button2Text! + "_" + button3Text!
     }
     
-    func makeRecommendations(button: UIButton) -> String {
+    func makeRecommendations(button: UIButton, text: String) -> String {
         let button1Text = button1.titleLabel?.text!
         let button2Text = button2.titleLabel?.text!
         let button3Text = button3.titleLabel?.text!
-        
         if(topics.count > 0) {
-            if button == button1 { return topics[currentPickerRow] + "_" + button2Text! + "_" + button3Text!}
-            else if button == button2 { return button1Text! + "_" + topics[currentPickerRow] + "_" + button3Text! }
-            else { return button1Text! + "_" + button2Text! + "_" + topics[currentPickerRow] }
+            if button == button1 { return text + "_" + button2Text! + "_" + button3Text!}
+            else if button == button2 { return button1Text! + "_" + text + "_" + button3Text! }
+            else { return button1Text! + "_" + button2Text! + "_" + text }
         }
         return "Nil_Nil_Nil"
     }
