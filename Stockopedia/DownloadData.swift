@@ -71,7 +71,7 @@ class DownloadData {
     }
     
     //Recommendations Functions
-    static func getTopicData(completion:@escaping ([(name: String, topic: String)]?) -> Void) {
+    static func getTopicData(completion:@escaping ([(abbr: String, fullName:String, topic: String)]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=getTopicData")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -84,10 +84,10 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var topics:[(name: String, topic: String)] = []
+                var topics:[(abbr: String, fullName: String, topic: String)] = []
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    topics.append((jsonElement["name"]! as! String, jsonElement["topic"]! as! String))
+                    topics.append((jsonElement["abbr"]! as! String, jsonElement["fullname"]! as! String, jsonElement["topic"]! as! String))
                 }
                 completion(topics)
             }

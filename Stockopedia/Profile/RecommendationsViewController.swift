@@ -22,8 +22,8 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var noRecommendationsLabel: UILabel!
     let activityIndicator = UIActivityIndicatorView()
     
-    var recommendedStocks:[String] = []
-    var topicsTuple:[(name: String, topic: String)] = []
+    var recommendedStocks:[(abbr: String, fullName: String)] = []
+    var topicsTuple:[(abbr: String, fullName: String, topic: String)] = []
     var topics:[String] = []
     var currentPickerRow:Int = 0
     var favoritesList: [String] = []
@@ -65,14 +65,11 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             self.topics.removeAll()
             self.recommendedStocks.removeAll()
             self.updateButtons(recommendations: recommendations)
-            print(self.button1.currentTitle)
-            print(self.button2.currentTitle)
             for topic in self.topicsTuple {
                 self.topics.append(topic.topic)
                 if topic.topic == self.button1.currentTitle || topic.topic == self.button2.currentTitle || topic.topic == self.button3.currentTitle {
-                    if !self.recommendedStocks.contains(topic.name){ self.recommendedStocks.append(topic.name) }
+                    if !self.contains(a: self.recommendedStocks, v: (topic.abbr, topic.fullName)) { self.recommendedStocks.append((topic.abbr, topic.fullName)) }
                 }
-                print(topic.name)
             }
             self.setViewLoaded()
             self.setTableViewEnabled()
@@ -84,8 +81,9 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return recommendedStocks.count }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: RecommendTableViewCell = tableView.dequeueReusableCell(withIdentifier: "recommendCell") as! RecommendTableViewCell
-        cell.nameLabel.text = recommendedStocks[indexPath.row]
-        if favoritesList.contains(recommendedStocks[indexPath.row]) {
+        cell.abbrLabel.text = recommendedStocks[indexPath.row].abbr
+        cell.fullNameLabel.text = recommendedStocks[indexPath.row].fullName
+        if favoritesList.contains(recommendedStocks[indexPath.row].abbr) {
             cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)
         }
         else { cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}
@@ -97,12 +95,12 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         if cell.favortiesButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentID, name: cell.nameLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentID, name: cell.abbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentID, name: cell.nameLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentID, name: cell.abbrLabel.text!)
         }
     }
     
@@ -214,5 +212,11 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         button3.titleLabel?.adjustsFontSizeToFitWidth = true
         button3.titleLabel?.textAlignment = .center
         button3.titleLabel?.numberOfLines = 2
+    }
+    
+    func contains(a:[(String, String)], v:(String,String)) -> Bool {
+        let (c1, c2) = v
+        for (v1, v2) in a { if v1 == c1 && v2 == c2 { return true } }
+        return false
     }
 }

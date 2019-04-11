@@ -86,10 +86,10 @@ def isGoodResponse(resp):
             and content_type is not None
             and content_type.find('html') > -1)
 
-def insertTopicsToDB(listOfTopics):
+def insertTopicsToDB(listOfTopics, full_strings):
     cursor.execute("DELETE FROM Topics")
-    for (stock, topic) in listOfTopics:
-        cursor.execute("INSERT INTO Topics (name, topic) VALUES (%s, %s)", (stock, topic.replace("&", "and")))
+    for (abbr, topic, full_strings) in listOfTopics:
+        cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, full_strings, topic.replace("&", "and")))
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
@@ -106,6 +106,6 @@ def addFullNames(abbrs, full_strings):
 
 if __name__ == '__main__':
     listOfTopics, deleteNames, full_strings = scrapeWebsitesForTopics(getURLs())
-    insertTopicsToDB(listOfTopics)
+    insertTopicsToDB(listOfTopics, full_strings)
     deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics, full_strings)

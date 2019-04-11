@@ -15,7 +15,8 @@ protocol RecommendTableViewCellDelegate: AnyObject {
 class RecommendTableViewCell: UITableViewCell {
     
     //MARK: - Variables
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var abbrLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var favortiesButton: UIButton!
     weak var delegate: RecommendTableViewCellDelegate?
 
