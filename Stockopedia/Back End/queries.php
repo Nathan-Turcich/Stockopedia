@@ -10,8 +10,32 @@
         $sql = "SELECT name, fullname
         FROM Stocks
         GROUP BY name";
-    }
-    else if($_GET["query"] === "getUserFavoritedList"){
+   }
+   else if($_GET["query"] === "downloadPossibleMonths"){
+       $abbr = $_GET["abbr"]
+       
+       $sql = "SELECT date
+       FROM Stocks
+       WHERE name = '$abbr'
+       AND date LIKE '%-01'";
+   }
+   else if($_GET["query"] === "downloadUniqueStockDataForMonth"){
+       $abbr = $_GET["abbr"];
+       $month = $_GET["month"];
+       
+       $sql = "SELECT name
+       FROM Favorites
+       WHERE ID = '$key'";
+   }
+   else if($_GET["query"] === "downloadUniqueStockDataForYear"){
+       $abbr = $_GET["abbr"];
+       $year = $_GET["year"];
+       
+       $sql = "SELECT name
+       FROM Favorites
+       WHERE ID = '$key'";
+   }
+   else if($_GET["query"] === "getUserFavoritedList"){
         $key = $_GET["key"];
        
         $sql = "SELECT name

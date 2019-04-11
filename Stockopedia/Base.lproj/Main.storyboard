@@ -141,9 +141,17 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="362" id="A1I-pr-J4d"/>
                                 </constraints>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="LCf-fC-p5X" userLabel="Seperator View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="yaR-gz-vg2"/>
+                                    </constraints>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stockDetailCell" rowHeight="50" id="AKe-do-Uqu" customClass="StockDetailTableViewCell" customModule="Stockopedia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="29" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AKe-do-Uqu" id="jfC-40-e1M">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
@@ -179,13 +187,22 @@
                                     <segment title="By Month"/>
                                     <segment title="By Year"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmantControlChanged:" destination="Iei-kJ-XMa" eventType="valueChanged" id="KiP-Im-rvX"/>
+                                </connections>
                             </segmentedControl>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-Vc-GFd">
+                                <rect key="frame" x="177.66666666666666" y="398.66666666666669" width="20" height="20"/>
+                                <color key="color" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="sXJ-XY-tWM" secondAttribute="bottom" constant="8" symbolic="YES" id="5My-mV-oeD"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Age-hW-fnP"/>
+                            <constraint firstItem="Bpc-Vc-GFd" firstAttribute="centerY" secondItem="pKJ-fB-3qE" secondAttribute="centerY" id="CqS-ft-WsM"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="leading" secondItem="Frn-q0-Q9Y" secondAttribute="leading" id="GPi-uK-htU"/>
+                            <constraint firstItem="Bpc-Vc-GFd" firstAttribute="centerX" secondItem="pKJ-fB-3qE" secondAttribute="centerX" id="PBZ-M9-bRR"/>
                             <constraint firstItem="sXJ-XY-tWM" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="15" id="RKW-Aa-YgC"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" constant="16" id="Stv-6h-Dup"/>
                             <constraint firstItem="bUE-7v-TmO" firstAttribute="top" secondItem="woS-rt-7al" secondAttribute="bottom" constant="17" id="Vj1-yG-NaX"/>
@@ -200,8 +217,10 @@
                         <viewLayoutGuide key="safeArea" id="pKJ-fB-3qE"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Bpc-Vc-GFd" id="79J-IZ-dYg"/>
                         <outlet property="graphView" destination="woS-rt-7al" id="e5M-aD-eDc"/>
                         <outlet property="nameLabel" destination="Frn-q0-Q9Y" id="HnY-zW-pQ5"/>
+                        <outlet property="segmantControl" destination="sXJ-XY-tWM" id="rY6-zp-DPp"/>
                         <outlet property="tableView" destination="bUE-7v-TmO" id="6tr-j7-reB"/>
                     </connections>
                 </viewController>
@@ -328,13 +347,6 @@
                                     <constraint firstAttribute="height" constant="114" id="aXr-ve-bgS"/>
                                 </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCf-fC-p5X" userLabel="Seperator View">
-                                <rect key="frame" x="0.0" y="268" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="yaR-gz-vg2"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ftj-Ua-gwb">
                                 <rect key="frame" x="-1" y="268" width="376" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -404,18 +416,15 @@
                             <constraint firstItem="m29-Ze-2zp" firstAttribute="bottom" secondItem="Ftj-Ua-gwb" secondAttribute="bottom" id="IzI-NY-Kiq"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="Ftj-Ua-gwb" secondAttribute="trailing" id="Kgv-CP-Ow0"/>
                             <constraint firstItem="DxO-fJ-wwg" firstAttribute="top" secondItem="gMe-74-gZ4" secondAttribute="bottom" constant="8.3333333333333428" id="MS3-fb-XUe"/>
-                            <constraint firstItem="Ftj-Ua-gwb" firstAttribute="top" secondItem="LCf-fC-p5X" secondAttribute="bottom" constant="-1" id="QNV-lF-TsL"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="bottom" secondItem="Ftj-Ua-gwb" secondAttribute="bottom" id="Qhh-hC-qUj"/>
                             <constraint firstItem="Ftj-Ua-gwb" firstAttribute="top" secondItem="DxO-fJ-wwg" secondAttribute="bottom" constant="8" id="XBR-ni-6w9"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="gMe-74-gZ4" secondAttribute="trailing" constant="16" id="Xm4-Pw-IWo"/>
                             <constraint firstItem="m29-Ze-2zp" firstAttribute="top" secondItem="Ftj-Ua-gwb" secondAttribute="top" id="YZ0-QH-6hQ"/>
-                            <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="LCf-fC-p5X" secondAttribute="trailing" id="ZDZ-Rv-YJI"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="leading" secondItem="Ftj-Ua-gwb" secondAttribute="leading" constant="1" id="a9I-6v-DWc"/>
                             <constraint firstItem="gMe-74-gZ4" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" constant="16" id="aJF-nK-Y2L"/>
                             <constraint firstItem="DxO-fJ-wwg" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" constant="16" id="dqb-yx-VBd"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="DxO-fJ-wwg" secondAttribute="trailing" constant="16" id="gKD-sQ-Nef"/>
                             <constraint firstItem="m29-Ze-2zp" firstAttribute="leading" secondItem="Ftj-Ua-gwb" secondAttribute="leading" id="gpa-eH-5Gk"/>
-                            <constraint firstItem="LCf-fC-p5X" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" id="htz-eK-rVU"/>
                             <constraint firstItem="gMe-74-gZ4" firstAttribute="top" secondItem="6mr-Pd-nin" secondAttribute="top" constant="9" id="yrc-up-KqB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6mr-Pd-nin"/>

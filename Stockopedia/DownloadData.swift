@@ -36,8 +36,56 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadUniqueStockData(abbr: String, completion:@escaping ([Stock]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=downloadUniqueStockData&abbr=" + abbr)!
+    static func downloadPossibleMonths(abbr: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadPossibleMonths&abbr=" + abbr)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var months = [String]()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    months.append(jsonElement["date"]! as! String)
+                }
+                completion(months)
+            }
+        }
+        task.resume()
+    }
+    
+    static func downloadUniqueStockDataForMonth(abbr: String, month: String, completion:@escaping ([Stock]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadUniqueStockDataForMonth&abbr=" + abbr + "&month=" + month)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var stocksArray = [Stock]()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    stocksArray.append(Stock.init(abbr: jsonElement["name"]! as! String, fullName: jsonElement["fullname"]! as! String))
+                }
+                completion(stocksArray)
+            }
+        }
+        task.resume()
+    }
+    
+    static func downloadUniqueStockDataForYear(abbr: String, year: String, completion:@escaping ([Stock]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadUniqueStockDataForYear&abbr=" + abbr + "&year=" + year)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
