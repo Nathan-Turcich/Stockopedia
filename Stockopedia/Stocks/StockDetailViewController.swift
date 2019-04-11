@@ -8,51 +8,35 @@
 
 import UIKit
 
-class StockDetailViewController: UIViewController {
+class StockDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Variables
     var stockName:String!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var graphView: UIView!
-    @IBOutlet weak var dayButton: UIButton!
-    @IBOutlet weak var weekButton: UIButton!
-    @IBOutlet weak var monthOneButton: UIButton!
-    @IBOutlet weak var monthThreeButton: UIButton!
-    @IBOutlet weak var monthSixButton: UIButton!
-    @IBOutlet weak var yearButton: UIButton!
-    var buttonArray:[UIButton] = []
+    @IBOutlet weak var tableView: UITableView!
+    var list:[String] = []
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = stockName
         nameLabel.text = stockName!
-        buttonArray = [dayButton, weekButton, monthOneButton, monthThreeButton, monthSixButton, yearButton]
-        updateButtons(button: dayButton)
+        loadData()
     }
     
-    //MARK: - Button Methods
-    @IBAction func dayButtonAction(_ sender: UIButton) { updateButtons(button: dayButton) }
-    @IBAction func weekButtonAction(_ sender: UIButton) { updateButtons(button: weekButton) }
-    @IBAction func monthOneButtonAction(_ sender: UIButton) { updateButtons(button: monthOneButton) }
-    @IBAction func monthThreeButtonAction(_ sender: UIButton) { updateButtons(button: monthThreeButton) }
-    @IBAction func monthSixButtonAction(_ sender: UIButton) { updateButtons(button: monthSixButton) }
-    @IBAction func yearButtonAction(_ sender: UIButton) { updateButtons(button: yearButton) }
-    
-    func updateButtons(button: UIButton){
-        for myButton in buttonArray{
-            unselectButton(button: myButton)
-        }
-        selectButton(button: button)
+    //MARK: - Loading Data
+    func loadData(){
+        
     }
     
-    func selectButton(button: UIButton){
-        button.backgroundColor = primaryColor
-        button.setTitleColor(UIColor.white, for: .normal)
+    //MARK: - TableView Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return list.count }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 50 }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: StockDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stockDetailCell") as! StockDetailTableViewCell
+        cell.dataLabel.text = list[indexPath.row]
+        return cell
     }
     
-    func unselectButton(button: UIButton){
-        button.backgroundColor = UIColor.white
-        button.setTitleColor(primaryColor, for: .normal)
-    }
 }

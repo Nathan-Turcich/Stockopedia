@@ -27,6 +27,7 @@
 		BCB00BDC224F05DF008E0C3F /* DownloadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB00BDB224F05DF008E0C3F /* DownloadData.swift */; };
 		BCB29D6D2238522A0007DC22 /* csvToMysql.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6B2238522A0007DC22 /* csvToMysql.php */; };
 		BCB29D6E2238522A0007DC22 /* queries.php in Resources */ = {isa = PBXBuildFile; fileRef = BCB29D6C2238522A0007DC22 /* queries.php */; };
+		BCC2CC03225FD6B9005147E0 /* StockDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2CC02225FD6B9005147E0 /* StockDetailTableViewCell.swift */; };
 		BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC45686224DA9EA004E40B2 /* LoginViewController.swift */; };
 		BCC45689224DACA2004E40B2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC45688224DACA2004E40B2 /* SignUpViewController.swift */; };
 		BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */; };
@@ -78,6 +79,7 @@
 		BCB00BDB224F05DF008E0C3F /* DownloadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadData.swift; sourceTree = "<group>"; };
 		BCB29D6B2238522A0007DC22 /* csvToMysql.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = csvToMysql.php; sourceTree = "<group>"; };
 		BCB29D6C2238522A0007DC22 /* queries.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = queries.php; sourceTree = "<group>"; };
+		BCC2CC02225FD6B9005147E0 /* StockDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDetailTableViewCell.swift; sourceTree = "<group>"; };
 		BCC45686224DA9EA004E40B2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BCC45688224DACA2004E40B2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BCC4568B224DAF45004E40B2 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -177,8 +179,9 @@
 			isa = PBXGroup;
 			children = (
 				BC9B6C722249D7A400F54B9E /* StockViewController.swift */,
-				BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */,
 				91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */,
+				BC9B6C742249D96200F54B9E /* StockDetailViewController.swift */,
+				BCC2CC02225FD6B9005147E0 /* StockDetailTableViewCell.swift */,
 			);
 			path = Stocks;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */,
 				BC9B6C752249D96200F54B9E /* StockDetailViewController.swift in Sources */,
 				BC6C6D7B2252B46800825EDA /* ChangeUsernameViewController.swift in Sources */,
+				BCC2CC03225FD6B9005147E0 /* StockDetailTableViewCell.swift in Sources */,
 				BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */,
 				BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */,
 				BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */,

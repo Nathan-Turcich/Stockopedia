@@ -120,14 +120,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frn-q0-Q9Y">
-                                <rect key="frame" x="16" y="110" width="343" height="25.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frn-q0-Q9Y">
+                                <rect key="frame" x="16" y="110" width="343" height="25"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woS-rt-7al">
-                                <rect key="frame" x="16" y="148" width="343" height="142"/>
+                                <rect key="frame" x="16" y="186" width="343" height="164"/>
                                 <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -135,120 +135,74 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsE-XG-FKD">
-                                <rect key="frame" x="16" y="313" width="30" height="30"/>
-                                <state key="normal" title="1D">
-                                    <color key="titleColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUE-7v-TmO">
+                                <rect key="frame" x="0.0" y="367" width="375" height="362"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="362" id="A1I-pr-J4d"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="stockDetailCell" rowHeight="50" id="AKe-do-Uqu" customClass="StockDetailTableViewCell" customModule="Stockopedia" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AKe-do-Uqu" id="jfC-40-e1M">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zuc-fb-tka">
+                                                    <rect key="frame" x="15" y="12" width="345" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Zuc-fb-tka" secondAttribute="bottom" constant="12.666666666666664" id="08d-S5-dkf"/>
+                                                <constraint firstItem="Zuc-fb-tka" firstAttribute="leading" secondItem="jfC-40-e1M" secondAttribute="leading" constant="15" id="JFD-ha-g8N"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zuc-fb-tka" secondAttribute="trailing" constant="15" id="RUR-I6-t1i"/>
+                                                <constraint firstItem="Zuc-fb-tka" firstAttribute="top" secondItem="jfC-40-e1M" secondAttribute="top" constant="12" id="pDn-dS-kL8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="Zuc-fb-tka" id="JRy-0Q-oHJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <action selector="dayButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="ew0-DO-vdy"/>
+                                    <outlet property="dataSource" destination="Iei-kJ-XMa" id="eGG-dO-d9E"/>
+                                    <outlet property="delegate" destination="Iei-kJ-XMa" id="Z60-rx-SPG"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-im-qrf">
-                                <rect key="frame" x="77" y="313" width="30" height="30"/>
-                                <state key="normal" title="1W"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="weekButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="l0I-5K-jXE"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wl-dd-ttE">
-                                <rect key="frame" x="143" y="313" width="30" height="30"/>
-                                <state key="normal" title="1M"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="monthOneButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="W6e-1F-qEw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OsP-Tc-t36">
-                                <rect key="frame" x="265" y="313" width="30" height="30"/>
-                                <state key="normal" title="6M"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="monthSixButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="JXv-LP-fRZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="754" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdL-Nk-iyA">
-                                <rect key="frame" x="329" y="313" width="30" height="30"/>
-                                <state key="normal" title="1Y"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="yearButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="scC-y6-Ha3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfH-ah-MFj">
-                                <rect key="frame" x="207" y="312" width="24" height="30"/>
-                                <state key="normal" title="3M"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="monthThreeButtonAction:" destination="Iei-kJ-XMa" eventType="touchUpInside" id="5g3-nq-ETZ"/>
-                                </connections>
-                            </button>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sXJ-XY-tWM">
+                                <rect key="frame" x="115" y="150" width="145" height="29"/>
+                                <segments>
+                                    <segment title="By Month"/>
+                                    <segment title="By Year"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IQy-im-qrf" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="3Cf-dN-zNB"/>
-                            <constraint firstItem="OsP-Tc-t36" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="6Jg-4A-ub4"/>
-                            <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="12.666666666666657" id="8dT-o2-R2y"/>
+                            <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="sXJ-XY-tWM" secondAttribute="bottom" constant="8" symbolic="YES" id="5My-mV-oeD"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Age-hW-fnP"/>
-                            <constraint firstItem="9Wl-dd-ttE" firstAttribute="leading" secondItem="IQy-im-qrf" secondAttribute="trailing" constant="36" id="CQa-R6-Q4b"/>
-                            <constraint firstItem="hdL-Nk-iyA" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Ev7-UL-Trs"/>
-                            <constraint firstItem="pKJ-fB-3qE" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" constant="386" id="GIn-AB-aEk"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="leading" secondItem="Frn-q0-Q9Y" secondAttribute="leading" id="GPi-uK-htU"/>
-                            <constraint firstItem="zfH-ah-MFj" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" constant="-1" id="Ix5-eS-qBa"/>
-                            <constraint firstItem="OsP-Tc-t36" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="L6t-Hc-FtS"/>
-                            <constraint firstItem="SsE-XG-FKD" firstAttribute="top" secondItem="woS-rt-7al" secondAttribute="bottom" constant="23" id="Ld7-dy-WpR"/>
-                            <constraint firstItem="IQy-im-qrf" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="NDD-vX-3au"/>
-                            <constraint firstItem="hdL-Nk-iyA" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="SUG-m8-JTI"/>
+                            <constraint firstItem="sXJ-XY-tWM" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="15" id="RKW-Aa-YgC"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" constant="16" id="Stv-6h-Dup"/>
-                            <constraint firstItem="9Wl-dd-ttE" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="Vig-l6-lib"/>
-                            <constraint firstItem="IQy-im-qrf" firstAttribute="leading" secondItem="SsE-XG-FKD" secondAttribute="trailing" constant="31" id="XPg-SU-gqd"/>
-                            <constraint firstItem="zfH-ah-MFj" firstAttribute="leading" secondItem="9Wl-dd-ttE" secondAttribute="trailing" constant="34" id="Xam-rv-So4"/>
-                            <constraint firstItem="hdL-Nk-iyA" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" id="cQg-9W-O5Z"/>
-                            <constraint firstItem="OsP-Tc-t36" firstAttribute="leading" secondItem="zfH-ah-MFj" secondAttribute="trailing" constant="34" id="cdW-3N-yl7"/>
-                            <constraint firstItem="hdL-Nk-iyA" firstAttribute="leading" secondItem="OsP-Tc-t36" secondAttribute="trailing" constant="34" id="dRv-UA-W43"/>
+                            <constraint firstItem="bUE-7v-TmO" firstAttribute="top" secondItem="woS-rt-7al" secondAttribute="bottom" constant="17" id="Vj1-yG-NaX"/>
                             <constraint firstItem="Frn-q0-Q9Y" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" constant="16" id="fJB-Xp-S1z"/>
                             <constraint firstItem="Frn-q0-Q9Y" firstAttribute="top" secondItem="pKJ-fB-3qE" secondAttribute="top" constant="22" id="gZ0-iD-Pjw"/>
-                            <constraint firstItem="SsE-XG-FKD" firstAttribute="leading" secondItem="Frn-q0-Q9Y" secondAttribute="leading" id="mfL-QK-GBg"/>
-                            <constraint firstItem="zfH-ah-MFj" firstAttribute="bottom" secondItem="SsE-XG-FKD" secondAttribute="bottom" constant="-1" id="rPa-a3-mb3"/>
-                            <constraint firstItem="9Wl-dd-ttE" firstAttribute="top" secondItem="SsE-XG-FKD" secondAttribute="top" id="tTF-4W-BgP"/>
+                            <constraint firstItem="bUE-7v-TmO" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" id="igu-yy-Lp3"/>
+                            <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="bUE-7v-TmO" secondAttribute="trailing" id="ms7-wO-zk1"/>
+                            <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="sXJ-XY-tWM" secondAttribute="trailing" constant="115" id="r2j-Ss-utN"/>
+                            <constraint firstItem="pKJ-fB-3qE" firstAttribute="bottom" secondItem="bUE-7v-TmO" secondAttribute="bottom" id="tdN-SA-Ab9"/>
+                            <constraint firstItem="sXJ-XY-tWM" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" constant="115" id="zaO-Bh-Uyj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pKJ-fB-3qE"/>
                     </view>
                     <connections>
-                        <outlet property="dayButton" destination="SsE-XG-FKD" id="U2k-mp-mSw"/>
                         <outlet property="graphView" destination="woS-rt-7al" id="e5M-aD-eDc"/>
-                        <outlet property="monthOneButton" destination="9Wl-dd-ttE" id="cE3-oW-aXv"/>
-                        <outlet property="monthSixButton" destination="OsP-Tc-t36" id="FaL-1c-1y7"/>
-                        <outlet property="monthThreeButton" destination="zfH-ah-MFj" id="8Gu-cU-hF1"/>
                         <outlet property="nameLabel" destination="Frn-q0-Q9Y" id="HnY-zW-pQ5"/>
-                        <outlet property="weekButton" destination="IQy-im-qrf" id="fOp-tO-v3o"/>
-                        <outlet property="yearButton" destination="hdL-Nk-iyA" id="EO5-TL-7wb"/>
+                        <outlet property="tableView" destination="bUE-7v-TmO" id="6tr-j7-reB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvR-QD-wfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
