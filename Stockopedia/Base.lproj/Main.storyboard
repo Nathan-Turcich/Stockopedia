@@ -198,6 +198,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 3 categories you are interested in for recommended stocks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMe-74-gZ4">
+                                <rect key="frame" x="16" y="97" width="343" height="40.666666666666657"/>
+                                <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="DxO-fJ-wwg">
                                 <rect key="frame" x="16" y="146" width="343" height="114"/>
                                 <subviews>
@@ -303,19 +316,17 @@
                                     <constraint firstAttribute="height" constant="1" id="yaR-gz-vg2"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select catagories to view recommended stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m29-Ze-2zp">
-                                <rect key="frame" x="0.0" y="268" width="375" height="461"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ftj-Ua-gwb">
                                 <rect key="frame" x="-1" y="268" width="376" height="461"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="Bkm-T3-RbH">
+                                    <rect key="frame" x="0.0" y="0.0" width="376" height="1"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="recommendCell" rowHeight="75" id="egJ-uf-l7h" customClass="RecommendTableViewCell" customModule="Stockopedia" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="376" height="75"/>
+                                        <rect key="frame" x="0.0" y="29" width="376" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="egJ-uf-l7h" id="0wY-KO-ToP">
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="74.666666666666671"/>
@@ -361,33 +372,30 @@
                                     <outlet property="delegate" destination="CE9-T4-vk8" id="1HF-dU-YLR"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 3 catorgies you are interested in for recommended stocks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMe-74-gZ4">
-                                <rect key="frame" x="16" y="97" width="343" height="40.666666666666657"/>
-                                <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Please select catagories to view recommended stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m29-Ze-2zp">
+                                <rect key="frame" x="-1" y="268" width="376" height="461"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="m29-Ze-2zp" firstAttribute="trailing" secondItem="Ftj-Ua-gwb" secondAttribute="trailing" id="5VZ-2j-ZlU"/>
+                            <constraint firstItem="m29-Ze-2zp" firstAttribute="bottom" secondItem="Ftj-Ua-gwb" secondAttribute="bottom" id="IzI-NY-Kiq"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="Ftj-Ua-gwb" secondAttribute="trailing" id="Kgv-CP-Ow0"/>
                             <constraint firstItem="DxO-fJ-wwg" firstAttribute="top" secondItem="gMe-74-gZ4" secondAttribute="bottom" constant="8.3333333333333428" id="MS3-fb-XUe"/>
                             <constraint firstItem="Ftj-Ua-gwb" firstAttribute="top" secondItem="LCf-fC-p5X" secondAttribute="bottom" constant="-1" id="QNV-lF-TsL"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="bottom" secondItem="Ftj-Ua-gwb" secondAttribute="bottom" id="Qhh-hC-qUj"/>
                             <constraint firstItem="Ftj-Ua-gwb" firstAttribute="top" secondItem="DxO-fJ-wwg" secondAttribute="bottom" constant="8" id="XBR-ni-6w9"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="gMe-74-gZ4" secondAttribute="trailing" constant="16" id="Xm4-Pw-IWo"/>
+                            <constraint firstItem="m29-Ze-2zp" firstAttribute="top" secondItem="Ftj-Ua-gwb" secondAttribute="top" id="YZ0-QH-6hQ"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="LCf-fC-p5X" secondAttribute="trailing" id="ZDZ-Rv-YJI"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="leading" secondItem="Ftj-Ua-gwb" secondAttribute="leading" constant="1" id="a9I-6v-DWc"/>
                             <constraint firstItem="gMe-74-gZ4" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" constant="16" id="aJF-nK-Y2L"/>
                             <constraint firstItem="DxO-fJ-wwg" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" constant="16" id="dqb-yx-VBd"/>
                             <constraint firstItem="6mr-Pd-nin" firstAttribute="trailing" secondItem="DxO-fJ-wwg" secondAttribute="trailing" constant="16" id="gKD-sQ-Nef"/>
+                            <constraint firstItem="m29-Ze-2zp" firstAttribute="leading" secondItem="Ftj-Ua-gwb" secondAttribute="leading" id="gpa-eH-5Gk"/>
                             <constraint firstItem="LCf-fC-p5X" firstAttribute="leading" secondItem="6mr-Pd-nin" secondAttribute="leading" id="htz-eK-rVU"/>
                             <constraint firstItem="gMe-74-gZ4" firstAttribute="top" secondItem="6mr-Pd-nin" secondAttribute="top" constant="9" id="yrc-up-KqB"/>
                         </constraints>
