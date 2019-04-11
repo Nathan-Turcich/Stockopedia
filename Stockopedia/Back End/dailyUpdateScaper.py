@@ -65,6 +65,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
         break
+        print("YO")
 
     # Get Topic
     return topics, deleteNames, full_strings
