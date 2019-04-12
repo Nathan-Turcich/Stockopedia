@@ -50,7 +50,6 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async {
                 self.dataList = data!
                 self.createGraph()
-                //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE MONTH
                 self.enableView()
             }
         })
@@ -62,7 +61,6 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async {
                 self.dataList = data!
                 self.createGraph()
-                //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE YEAR
                 self.enableView()
             }
         })
@@ -73,28 +71,6 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.monthList.append((month, stringToHumanDate(d: month)))
         }
         self.monthList.reverse()
-    }
-    
-    func createGraph() {
-        
-        //Set up chart
-        var dataEntries: [ChartDataEntry] = []
-        var i = 1
-        for _ in self.dataList {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.dataList[i - 1].close)!)
-            dataEntries.append(dataEntry)
-            i += 1
-        }
-        
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
-        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
-        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
-        //chartDataSet.colors = ChartColorTemplates.pastel()
-        let chartData = LineChartData(dataSet: chartDataSet)
-        self.graphView.data = chartData
-        self.graphView.chartDescription?.text = "Price"
-        
     }
     
     //MARK: - Segmented Control
@@ -123,6 +99,26 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         lastIndexPath = indexPath
         if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: String(monthList[indexPath.row].numberDate.dropLast(3))) }
         else { loadYearlyData(year: yearList[indexPath.row]) }
+    }
+    
+    //MARK: - Graph Methods
+    func createGraph() {
+        //Set up chart
+        var dataEntries: [ChartDataEntry] = []
+        var i = 1
+        for _ in self.dataList {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.dataList[i - 1].close)!)
+            dataEntries.append(dataEntry)
+            i += 1
+        }
+        
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
+        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
+        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
+        let chartData = LineChartData(dataSet: chartDataSet)
+        self.graphView.data = chartData
+        self.graphView.chartDescription?.text = "Price"
     }
     
     //MARK: - Helper Functions
