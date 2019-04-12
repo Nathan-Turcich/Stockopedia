@@ -115,6 +115,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let cell: StockDetailTableViewCell = tableView.dequeueReusableCell(withIdentifier: "stockDetailCell") as! StockDetailTableViewCell
         if segmantControl.selectedSegmentIndex == 0 { cell.dataLabel.text = monthList[indexPath.row].humanDate }
         else { cell.dataLabel.text = yearList[indexPath.row] }
+        createBackgroundColor(cell)
         return cell
     }
     
@@ -143,5 +144,11 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         self.tableView.separatorStyle = .singleLine
         self.tableView.reloadData()
         self.tableView.selectRow(at: self.lastIndexPath, animated: false, scrollPosition: .none)
+    }
+    
+    fileprivate func createBackgroundColor(_ cell: StockDetailTableViewCell) {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = primaryColor
+        cell.selectedBackgroundView = backgroundView
     }
 }

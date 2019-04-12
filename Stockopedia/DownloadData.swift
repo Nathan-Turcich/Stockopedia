@@ -134,7 +134,7 @@ class DownloadData {
     }
     
     static func insertNameFavoritedList(key: String, abbr: String, fullName: String) {
-        let  url: URL = URL(string: urlPath + "?query=insertNameFavoritedList&key=" + key + "&abbr=" + abbr + "&fullname=" + fullName)!
+        let  url: URL = URL(string: urlPath + "?query=insertNameFavoritedList&key=" + key + "&abbr=" + abbr + "&fullname=" + fullName.replacingOccurrences(of: " ", with: "_"))!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
@@ -238,8 +238,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func deleteNameFavoritedList(key: String, name: String) {
-        let  url: URL = URL(string: urlPath + "?query=deleteNameFavoritedList&key=" + key + "&name=" + name)!
+    static func deleteNameFavoritedList(key: String, abbr: String) {
+        let  url: URL = URL(string: urlPath + "?query=deleteNameFavoritedList&key=" + key + "&abbr=" + abbr)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             

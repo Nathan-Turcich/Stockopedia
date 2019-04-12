@@ -84,7 +84,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             print(indexPath.row)
             print(favoritesList[indexPath.row])
-            DownloadData.deleteNameFavoritedList(key: currentID, name: favoritesList[indexPath.row].abbr)
+            DownloadData.deleteNameFavoritedList(key: currentID, abbr: favoritesList[indexPath.row].abbr)
             favoritesList.remove(at: indexPath.row)
             tableView.reloadData()
             if favoritesList.count == 0 { viewWillAppear(false)}

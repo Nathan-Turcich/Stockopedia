@@ -96,7 +96,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         if cell.favortiesButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentID, name: cell.abbrLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentID, abbr: cell.abbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {

@@ -54,15 +54,15 @@
        $fullName = $_GET["fullname"];
        
        $sql = "INSERT INTO Favorites
-       VALUES ('$key', '$name', '$fullname')";
+       VALUES ('$key', '$abbr', '$fullname')";
    }
    else if($_GET["query"] === "deleteNameFavoritedList"){
        $key = $_GET["key"];
-       $name = $_GET["name"];
+       $abbr = $_GET["abbr"];
        
        $sql = "DELETE
        FROM Favorites
-       WHERE ID = '$key' and name = '$name'";
+       WHERE ID = '$key' and abbr = '$abbr'";
    }
    else if($_GET["query"] === "getTopicData"){
        $sql = "SELECT *

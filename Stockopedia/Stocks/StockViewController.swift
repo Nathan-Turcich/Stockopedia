@@ -58,14 +58,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     //MARK: - Tableview Methods
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? { return sectionHeader[section] }
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if isSearching { return 1 }
-        else { return 26 }
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching { return filteredStocks.count }
-        else { return sectionDic[section]! }
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { return (isSearching ? 1 : 26) }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return (isSearching ? filteredStocks.count : sectionDic[section]!) }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: StockTableViewCell = tableView.dequeueReusableCell(withIdentifier: "allStocksCell") as! StockTableViewCell
@@ -104,7 +98,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if cell.favoriteButton.currentImage == UIImage(named: "favoritesFilled") {
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesNotFilled"), for: .normal)}, completion: (nil))
-            DownloadData.deleteNameFavoritedList(key: currentID, name: cell.stockAbbrLabel.text!)
+            DownloadData.deleteNameFavoritedList(key: currentID, abbr: cell.stockAbbrLabel.text!)
         }
         else{
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
@@ -136,7 +130,6 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         self.tableView.reloadData()
     }
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBarCancelButton.isEnabled = true
         searchBarCancelButton.title = "Cancel"
