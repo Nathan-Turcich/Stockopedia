@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		683CAABD42ABDF23B027D702 /* Pods_Stockopedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C37D82D2123FCDC9A7D036 /* Pods_Stockopedia.framework */; };
+		8BC75248D2EF82BE128FB3A0 /* Pods_StockopediaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B1224E78DA7C039BB358DC /* Pods_StockopediaTests.framework */; };
 		91BD1E9E224FF93B00B94DF5 /* dailyUpdateScaper.py in Resources */ = {isa = PBXBuildFile; fileRef = 91BD1E9D224FF93B00B94DF5 /* dailyUpdateScaper.py */; };
 		91BD1EA0224FFBB900B94DF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BD1E9F224FFBB900B94DF5 /* User.swift */; };
 		91C629202235C6CC00543EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6291F2235C6CC00543EF0 /* AppDelegate.swift */; };
@@ -35,6 +37,7 @@
 		BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568F224DC642004E40B2 /* AboutViewController.swift */; };
 		BCE4D57722527E1D000DA0E2 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */; };
 		BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */; };
+		DAE2737D9C15C4B672AE7F9E /* Pods_StockopediaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA616E8809DA35DD522E9CBF /* Pods_StockopediaUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B3B1C08609E9AD05B64CDEE /* Pods-StockopediaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaTests/Pods-StockopediaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		15EF4ED06161B0014957C583 /* Pods-StockopediaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaUITests/Pods-StockopediaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1AAA8BBFC50DE6B18CC01BD5 /* Pods-StockopediaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaTests/Pods-StockopediaTests.release.xcconfig"; sourceTree = "<group>"; };
+		8ADAA8E4073253DFD1129AD4 /* Pods-Stockopedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stockopedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia.release.xcconfig"; sourceTree = "<group>"; };
 		91BD1E9D224FF93B00B94DF5 /* dailyUpdateScaper.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dailyUpdateScaper.py; sourceTree = "<group>"; };
 		91BD1E9F224FFBB900B94DF5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		91C6291C2235C6CC00543EF0 /* Stockopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +74,7 @@
 		91C6293B2235C6D100543EF0 /* StockopediaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockopediaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
 		91C629512235C88600543EF0 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		A778774150391D7F3AED8F03 /* Pods-Stockopedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stockopedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia.debug.xcconfig"; sourceTree = "<group>"; };
 		BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		BC6C6D7C2252B92800825EDA /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +95,10 @@
 		BCC4568F224DC642004E40B2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySellViewController.swift; sourceTree = "<group>"; };
+		E1B1224E78DA7C039BB358DC /* Pods_StockopediaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockopediaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3C37D82D2123FCDC9A7D036 /* Pods_Stockopedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stockopedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA616E8809DA35DD522E9CBF /* Pods_StockopediaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockopediaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACB63F084197101C76CE386 /* Pods-StockopediaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaUITests/Pods-StockopediaUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683CAABD42ABDF23B027D702 /* Pods_Stockopedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC75248D2EF82BE128FB3A0 /* Pods_StockopediaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,17 +122,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE2737D9C15C4B672AE7F9E /* Pods_StockopediaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		70CD644DD2D8B6670AE59DC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3C37D82D2123FCDC9A7D036 /* Pods_Stockopedia.framework */,
+				E1B1224E78DA7C039BB358DC /* Pods_StockopediaTests.framework */,
+				EA616E8809DA35DD522E9CBF /* Pods_StockopediaUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91C629132235C6CC00543EF0 = {
 			isa = PBXGroup;
 			children = (
 				91C6291E2235C6CC00543EF0 /* Stockopedia */,
 				91C6291D2235C6CC00543EF0 /* Products */,
+				AA4D4CD2DDBFC227D5F646FE /* Pods */,
+				70CD644DD2D8B6670AE59DC4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +178,19 @@
 				BCB29D6A223852060007DC22 /* Back End */,
 			);
 			path = Stockopedia;
+			sourceTree = "<group>";
+		};
+		AA4D4CD2DDBFC227D5F646FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A778774150391D7F3AED8F03 /* Pods-Stockopedia.debug.xcconfig */,
+				8ADAA8E4073253DFD1129AD4 /* Pods-Stockopedia.release.xcconfig */,
+				0B3B1C08609E9AD05B64CDEE /* Pods-StockopediaTests.debug.xcconfig */,
+				1AAA8BBFC50DE6B18CC01BD5 /* Pods-StockopediaTests.release.xcconfig */,
+				15EF4ED06161B0014957C583 /* Pods-StockopediaUITests.debug.xcconfig */,
+				FACB63F084197101C76CE386 /* Pods-StockopediaUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC9B6C5D2249BC5A00F54B9E /* Profile */ = {
@@ -231,9 +271,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91C629442235C6D100543EF0 /* Build configuration list for PBXNativeTarget "Stockopedia" */;
 			buildPhases = (
+				50CCE5761120AE2D6743066A /* [CP] Check Pods Manifest.lock */,
 				91C629182235C6CC00543EF0 /* Sources */,
 				91C629192235C6CC00543EF0 /* Frameworks */,
 				91C6291A2235C6CC00543EF0 /* Resources */,
+				8E985EB861AF830F4ACB4A42 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,6 +290,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91C629472235C6D100543EF0 /* Build configuration list for PBXNativeTarget "StockopediaTests" */;
 			buildPhases = (
+				401C4B1ECB2FF8769DC1B1E1 /* [CP] Check Pods Manifest.lock */,
 				91C6292C2235C6D100543EF0 /* Sources */,
 				91C6292D2235C6D100543EF0 /* Frameworks */,
 				91C6292E2235C6D100543EF0 /* Resources */,
@@ -266,6 +309,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91C6294A2235C6D100543EF0 /* Build configuration list for PBXNativeTarget "StockopediaUITests" */;
 			buildPhases = (
+				A8462D4049744B54C5FE9FED /* [CP] Check Pods Manifest.lock */,
 				91C629372235C6D100543EF0 /* Sources */,
 				91C629382235C6D100543EF0 /* Frameworks */,
 				91C629392235C6D100543EF0 /* Resources */,
@@ -352,6 +396,81 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		401C4B1ECB2FF8769DC1B1E1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StockopediaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50CCE5761120AE2D6743066A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Stockopedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8E985EB861AF830F4ACB4A42 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8462D4049744B54C5FE9FED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StockopediaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		91C629182235C6CC00543EF0 /* Sources */ = {
@@ -550,15 +669,13 @@
 		};
 		91C629452235C6D100543EF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A778774150391D7F3AED8F03 /* Pods-Stockopedia.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.Stockopedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -568,15 +685,13 @@
 		};
 		91C629462235C6D100543EF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8ADAA8E4073253DFD1129AD4 /* Pods-Stockopedia.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.Stockopedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -586,17 +701,14 @@
 		};
 		91C629482235C6D100543EF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B3B1C08609E9AD05B64CDEE /* Pods-StockopediaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -607,17 +719,14 @@
 		};
 		91C629492235C6D100543EF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AAA8BBFC50DE6B18CC01BD5 /* Pods-StockopediaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -628,16 +737,13 @@
 		};
 		91C6294B2235C6D100543EF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15EF4ED06161B0014957C583 /* Pods-StockopediaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -648,16 +754,13 @@
 		};
 		91C6294C2235C6D100543EF0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FACB63F084197101C76CE386 /* Pods-StockopediaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
