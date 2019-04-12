@@ -20,7 +20,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView: UITableView!
     var monthList:[(numberDate: String, humanDate: String)] = []
     var yearList:[String] = ["2018", "2017", "2016", "2015", "2014", "2013"]
-    var dataList:[String] = []
+    var dataList:[(date: String, close: String)] = []
     var lastIndexPath:IndexPath!
     
     //MARK: - Views Appearing
