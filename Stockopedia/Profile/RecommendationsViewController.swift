@@ -48,8 +48,8 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     //MARK: - Loading Data
     func loadData() {
         setViewNotLoaded()
-        DownloadData.getUserFavoritedList(key: currentID, completion: { list  in
-            self.favoritesList = list!
+        DownloadData.downloadUserFavoritedList(key: currentID, completion: { list  in
+            for item in list! { self.favoritesList.append(item.abbr)}
             DownloadData.getUserRecommendations(key: currentID, completion: { recommendations in
                 DownloadData.getTopicData(completion: { data in
                     self.topicsTuple = data!
@@ -101,7 +101,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         else{
             UIView.transition(with: cell.favortiesButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favortiesButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentID, name: cell.abbrLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentID, abbr: cell.abbrLabel.text!, fullName: cell.fullNameLabel.text!)
         }
     }
     

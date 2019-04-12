@@ -109,8 +109,8 @@ class DownloadData {
     }
     
     //Favorites Methods
-    static func getUserFavoritedList(key: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=getUserFavoritedList&key=" + key)!
+    static func downloadUserFavoritedList(key: String, completion:@escaping ([(abbr: String, fullName: String)]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadUserFavoritedList&key=" + key)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -122,19 +122,19 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var stocks: [String] = []
+                var favorites:[(abbr: String, fullName: String)] = []
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    stocks.append(jsonElement["name"]! as! String)
+                    favorites.append((jsonElement["abbr"]! as! String, jsonElement["fullname"]! as! String))
                 }
-                completion(stocks)
+                completion(favorites)
             }
         }
         task.resume()
     }
     
-    static func insertNameFavoritedList(key: String, name: String) {
-        let  url: URL = URL(string: urlPath + "?query=insertNameFavoritedList&key=" + key + "&name=" + name)!
+    static func insertNameFavoritedList(key: String, abbr: String, fullName: String) {
+        let  url: URL = URL(string: urlPath + "?query=insertNameFavoritedList&key=" + key + "&abbr=" + abbr + "&fullname=" + fullName)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             

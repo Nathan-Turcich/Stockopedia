@@ -15,7 +15,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
-    var favoritedList:[String] = []
+    var favoritedList:[(String)] = []
     
     var stocks = [[Stock]]()
     var stocksArrayOnly: [Stock] = []
@@ -109,7 +109,7 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         else{
             UIView.transition(with: cell.favoriteButton, duration: 0.5, options: .transitionCrossDissolve, animations: {
                 cell.favoriteButton.setImage(UIImage(named: "favoritesFilled"), for: .normal)}, completion: (nil))
-            DownloadData.insertNameFavoritedList(key: currentID, name: cell.stockAbbrLabel.text!)
+            DownloadData.insertNameFavoritedList(key: currentID, abbr: cell.stockAbbrLabel.text!, fullName: cell.stockNameLabel.text!)
         }
     }
     
@@ -158,8 +158,8 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         DownloadData.downloadUniqueStockNames(completion: { s in
             if let stockArray = s {
                 if currentID != "" {
-                    DownloadData.getUserFavoritedList(key: currentID, completion: { (favList) in
-                        self.favoritedList = favList!
+                    DownloadData.downloadUserFavoritedList(key: currentID, completion: { (favList) in
+                        for item in favList! { self.favoritedList.append(item.abbr) }
                         self.setData(stockArray: stockArray)
                     })
                 }

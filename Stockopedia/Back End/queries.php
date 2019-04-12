@@ -41,19 +41,20 @@
        WHERE name = '$abbr'
        AND date LIKE '$year'";
    }
-   else if($_GET["query"] === "getUserFavoritedList"){
+   else if($_GET["query"] === "downloadUserFavoritedList"){
         $key = $_GET["key"];
        
-        $sql = "SELECT name
+        $sql = "SELECT abbr, fullname
         FROM Favorites
         WHERE ID = '$key'";
     }
    else if($_GET["query"] === "insertNameFavoritedList"){
        $key = $_GET["key"];
-       $name = $_GET["name"];
+       $abbr = $_GET["abbr"];
+       $fullName = $_GET["fullname"];
        
        $sql = "INSERT INTO Favorites
-       VALUES ('$key', '$name')";
+       VALUES ('$key', '$name', '$fullname')";
    }
    else if($_GET["query"] === "deleteNameFavoritedList"){
        $key = $_GET["key"];

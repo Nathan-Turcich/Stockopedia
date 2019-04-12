@@ -758,21 +758,32 @@ https://icons8.com/ </string>
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogG-gJ-TCu">
+                                                    <rect key="frame" x="15" y="40" width="345" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZ6-rD-re7">
-                                                    <rect key="frame" x="15" y="25.333333333333329" width="345" height="24"/>
+                                                    <rect key="frame" x="15" y="11" width="345" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SZ6-rD-re7" firstAttribute="centerY" secondItem="X0E-Ff-1WS" secondAttribute="centerY" id="1MY-3i-ZT4"/>
+                                                <constraint firstItem="SZ6-rD-re7" firstAttribute="centerY" secondItem="X0E-Ff-1WS" secondAttribute="centerY" constant="-14.333333333333336" id="1MY-3i-ZT4"/>
+                                                <constraint firstAttribute="trailing" secondItem="ogG-gJ-TCu" secondAttribute="trailing" constant="15" id="54G-3L-Ikc"/>
+                                                <constraint firstAttribute="bottom" secondItem="ogG-gJ-TCu" secondAttribute="bottom" constant="10.666666666666671" id="KyD-4e-EtV"/>
                                                 <constraint firstAttribute="trailing" secondItem="SZ6-rD-re7" secondAttribute="trailing" constant="15" id="aoo-6f-gSb"/>
+                                                <constraint firstItem="ogG-gJ-TCu" firstAttribute="top" secondItem="SZ6-rD-re7" secondAttribute="bottom" constant="5" id="gz6-sn-c8U"/>
                                                 <constraint firstItem="SZ6-rD-re7" firstAttribute="leading" secondItem="X0E-Ff-1WS" secondAttribute="leading" constant="15" id="jUs-eA-61N"/>
+                                                <constraint firstItem="ogG-gJ-TCu" firstAttribute="leading" secondItem="X0E-Ff-1WS" secondAttribute="leading" constant="15" id="r90-s0-xLT"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="favoritesStockLabel" destination="SZ6-rD-re7" id="oWa-aK-ecG"/>
+                                            <outlet property="favoritesAbbrLabel" destination="SZ6-rD-re7" id="oWa-aK-ecG"/>
+                                            <outlet property="favoritesFullNameLabel" destination="ogG-gJ-TCu" id="nip-n7-oWI"/>
                                             <segue destination="Iei-kJ-XMa" kind="show" identifier="stockDetailSegue" id="Nj4-Oy-wsn"/>
                                         </connections>
                                     </tableViewCell>
@@ -1276,7 +1287,7 @@ https://icons8.com/ </string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5V4-Ew-0Kd"/>
-        <segue reference="2GC-oe-rqf"/>
+        <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.53333333329999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

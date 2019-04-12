@@ -11,8 +11,9 @@ import UIKit
 class FavoritesTableViewCell: UITableViewCell {
     
     //MARK: - Variables
-    @IBOutlet weak var favoritesStockLabel: UILabel!
-    
+    @IBOutlet weak var favoritesAbbrLabel: UILabel!
+    @IBOutlet weak var favoritesFullNameLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

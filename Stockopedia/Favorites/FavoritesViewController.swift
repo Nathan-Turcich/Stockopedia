@@ -15,7 +15,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var noFavoritesLabel: UILabel!
     let activityIndicator = UIActivityIndicatorView()
-    var favoritesList: [String] = []
+    var favoritesList: [(abbr: String, fullName: String)] = []
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
@@ -42,7 +42,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
     
     func downloadFavortiesList(){
-        DownloadData.getUserFavoritedList(key: currentID, completion: { (list) in
+        DownloadData.downloadUserFavoritedList(key: currentID, completion: { (list) in
             if let favs = list {
                 if list?.count == 0 {
                     DispatchQueue.main.async {
@@ -70,18 +70,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     //MARK: - Tableview Methods
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritesList.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
-    }
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { return favoritesList.count }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { return 75 }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:FavoritesTableViewCell = tableView.dequeueReusableCell(withIdentifier: "favoritesCell") as! FavoritesTableViewCell
-
-        cell.favoritesStockLabel.text = favoritesList[indexPath.row]
+        cell.favoritesAbbrLabel.text = favoritesList[indexPath.row].abbr
+        cell.favoritesFullNameLabel.text = favoritesList[indexPath.row].fullName
         return cell
     }
     
@@ -90,7 +84,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         if editingStyle == .delete {
             print(indexPath.row)
             print(favoritesList[indexPath.row])
-            DownloadData.deleteNameFavoritedList(key: currentID, name: favoritesList[indexPath.row])
+            DownloadData.deleteNameFavoritedList(key: currentID, name: favoritesList[indexPath.row].abbr)
             favoritesList.remove(at: indexPath.row)
             tableView.reloadData()
             if favoritesList.count == 0 { viewWillAppear(false)}
@@ -116,7 +110,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
-            destination.stockName = favoritesList[tableView.indexPathForSelectedRow!.row]
+            destination.stockAbbr = favoritesList[(tableView.indexPathForSelectedRow?.row)!].abbr
+            destination.stockName = favoritesList[(tableView.indexPathForSelectedRow?.row)!].fullName
         }
     }
 }
