@@ -36,7 +36,7 @@
        $percentage = '%';
        $year = $year.$percentage;
        
-       $sql = "SELECT close
+       $sql = "SELECT date, close
        FROM Stocks
        WHERE name = '$abbr'
        AND date LIKE '$year'";

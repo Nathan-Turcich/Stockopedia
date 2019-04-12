@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class StockDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,8 +17,8 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var stockName:String!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var segmantControl: UISegmentedControl!
-    @IBOutlet weak var graphView: UIView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var graphView: LineChartView!
     var monthList:[(numberDate: String, humanDate: String)] = []
     var yearList:[String] = ["2018", "2017", "2016", "2015", "2014", "2013"]
     var dataList:[(date: String, close: String)] = []
@@ -48,6 +49,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         DownloadData.downloadUniqueStockDataForMonth(abbr: stockAbbr, month: month, completion: { data in
             DispatchQueue.main.async {
                 self.dataList = data!
+                self.createGraph()
                 //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE MONTH
                 self.enableView()
             }
@@ -59,6 +61,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         DownloadData.downloadUniqueStockDataForYear(abbr: stockAbbr, year: year, completion: { data in
             DispatchQueue.main.async {
                 self.dataList = data!
+                self.createGraph()
                 //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE YEAR
                 self.enableView()
             }
@@ -70,6 +73,28 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
             self.monthList.append((month, stringToHumanDate(d: month)))
         }
         self.monthList.reverse()
+    }
+    
+    func createGraph() {
+        
+        //Set up chart
+        var dataEntries: [ChartDataEntry] = []
+        var i = 1
+        for _ in self.dataList {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.dataList[i - 1].close)!)
+            dataEntries.append(dataEntry)
+            i += 1
+        }
+        
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
+        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
+        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
+        //chartDataSet.colors = ChartColorTemplates.pastel()
+        let chartData = LineChartData(dataSet: chartDataSet)
+        self.graphView.data = chartData
+        self.graphView.chartDescription?.text = "Price"
+        
     }
     
     //MARK: - Segmented Control
