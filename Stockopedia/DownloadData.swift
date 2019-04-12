@@ -60,7 +60,7 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadUniqueStockDataForMonth(abbr: String, month: String, completion:@escaping ([String]?) -> Void) {
+    static func downloadUniqueStockDataForMonth(abbr: String, month: String, completion:@escaping ([(date: String, close: String)]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockDataForMonth&abbr=" + abbr + "&month=" + month)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -73,10 +73,10 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var data = [String]()
+                var data = [(date: String, close: String)]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    data.append(jsonElement["close"]! as! String)
+                    data.append((jsonElement["date"]! as! String, jsonElement["close"]! as! String))
                 }
                 completion(data)
             }
@@ -84,7 +84,7 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadUniqueStockDataForYear(abbr: String, year: String, completion:@escaping ([String]?) -> Void) {
+    static func downloadUniqueStockDataForYear(abbr: String, year: String, completion:@escaping ([(date: String, close: String)]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockDataForYear&abbr=" + abbr + "&year=" + year)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -97,10 +97,10 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var data = [String]()
+                var data = [(date: String, close: String)]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    data.append(jsonElement["close"]! as! String)
+                    data.append((jsonElement["date"]! as! String, jsonElement["close"]! as! String))
                 }
                 completion(data)
             }
