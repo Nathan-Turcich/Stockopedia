@@ -45,14 +45,14 @@
                                                         <action selector="btnCloseTappedWithSender:" destination="Fho-jN-Wxt" eventType="touchUpInside" id="KwR-fP-0n2"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="2bU-Wq-8FE">
-                                                    <rect key="frame" x="15" y="40" width="287" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="2bU-Wq-8FE">
+                                                    <rect key="frame" x="14.999999999999996" y="40" width="51.666666666666657" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-An-ssc">
-                                                    <rect key="frame" x="15" y="11" width="287" height="24"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKA-An-ssc">
+                                                    <rect key="frame" x="14.999999999999996" y="11" width="51.666666666666657" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -572,10 +572,9 @@ https://icons8.com/ </string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXA-yO-E56">
-                                        <rect key="frame" x="112.66666666666669" y="377" width="150" height="40"/>
+                                        <rect key="frame" x="160.66666666666666" y="377" width="54" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="Sqk-4t-jpg"/>
                                             <constraint firstAttribute="height" constant="40" id="iZ9-Ym-Jav"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -604,29 +603,11 @@ https://icons8.com/ </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uEc-KZ-F5B">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4G-uh-l5q">
-                                        <rect key="frame" x="195" y="588" width="160" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-8D-fCz">
+                                        <rect key="frame" x="18" y="593" width="160" height="34"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Change Password">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="58C-b4-3kF" kind="show" id="VMe-k1-eOd"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-8D-fCz">
-                                        <rect key="frame" x="18" y="588" width="160" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Change Username">
+                                        <state key="normal" title=" Change Username ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -638,16 +619,14 @@ https://icons8.com/ </string>
                                             <segue destination="M0c-vp-qA2" kind="show" id="w6U-iv-eJr"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as: Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-dX-U5w">
-                                        <rect key="frame" x="18" y="19" width="337" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logged in as: Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="wfj-dX-U5w">
+                                        <rect key="frame" x="18" y="19" width="337" height="25"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
-                                        <rect key="frame" x="18" y="83" width="338" height="121"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
+                                        <rect key="frame" x="18" y="67" width="337" height="206"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Stock Recommendations to Follow">
@@ -662,9 +641,8 @@ https://icons8.com/ </string>
                                             <segue destination="CE9-T4-vk8" kind="show" id="Yqh-Hj-wR4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
-                                        <rect key="frame" x="18" y="239" width="338" height="121"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
+                                        <rect key="frame" x="18" y="298" width="337" height="206"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Which stocks to Buy &amp; Sell">
@@ -679,17 +657,53 @@ https://icons8.com/ </string>
                                             <segue destination="lCQ-im-HuY" kind="show" id="sFW-NN-HHV"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4G-uh-l5q">
+                                        <rect key="frame" x="195" y="593" width="160" height="34"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title=" Change Password ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="58C-b4-3kF" kind="show" id="VMe-k1-eOd"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="leading" secondItem="4u2-8D-fCz" secondAttribute="trailing" constant="17" id="72j-kk-gow"/>
+                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="height" secondItem="HSv-oV-bPQ" secondAttribute="height" id="Ahu-1J-QFk"/>
+                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="trailing" secondItem="wfj-dX-U5w" secondAttribute="trailing" id="IlT-XV-Go3"/>
+                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="top" secondItem="wfj-dX-U5w" secondAttribute="bottom" constant="23" id="Nhk-hA-85o"/>
+                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="trailing" secondItem="wfj-dX-U5w" secondAttribute="trailing" id="Nkt-fh-UDh"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="bottom" secondItem="4u2-8D-fCz" secondAttribute="bottom" id="Rwl-Dy-zzM"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="top" secondItem="4u2-8D-fCz" secondAttribute="top" id="SjB-8f-ve1"/>
+                                    <constraint firstAttribute="bottom" secondItem="4u2-8D-fCz" secondAttribute="bottom" constant="14" id="Tqd-vZ-urA"/>
+                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="width" secondItem="HSv-oV-bPQ" secondAttribute="width" id="VgQ-9r-8fq"/>
+                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="top" secondItem="HSv-oV-bPQ" secondAttribute="bottom" constant="25" id="WHy-GW-g2l"/>
+                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="leading" secondItem="wfj-dX-U5w" secondAttribute="leading" id="hTh-vW-eVE"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="top" secondItem="VKK-L6-Yyv" secondAttribute="bottom" constant="89" id="kaB-hM-fdG"/>
+                                    <constraint firstAttribute="trailing" secondItem="w4G-uh-l5q" secondAttribute="trailing" constant="20" id="nSR-TD-u2t"/>
+                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="leading" secondItem="wfj-dX-U5w" secondAttribute="leading" id="t8D-7p-Vxc"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uEc-KZ-F5B" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" id="Dvz-h3-Yv1"/>
                             <constraint firstItem="uEc-KZ-F5B" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" id="EDR-lo-C4j"/>
+                            <constraint firstItem="wfj-dX-U5w" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" constant="19" id="GQz-UV-od4"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="trailing" secondItem="6kU-yQ-c7a" secondAttribute="trailing" id="Gby-3o-xCS"/>
                             <constraint firstItem="uEc-KZ-F5B" firstAttribute="trailing" secondItem="jVq-t1-w87" secondAttribute="trailing" id="Gw9-6U-wyB"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" id="RPe-rv-xk3"/>
+                            <constraint firstItem="jVq-t1-w87" firstAttribute="trailing" secondItem="wfj-dX-U5w" secondAttribute="trailing" constant="20" id="aLG-0a-L7X"/>
+                            <constraint firstItem="4u2-8D-fCz" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" constant="18" id="grK-Cu-diD"/>
+                            <constraint firstItem="wfj-dX-U5w" firstAttribute="leading" secondItem="jVq-t1-w87" secondAttribute="leading" constant="18" id="k0U-Za-QQw"/>
                             <constraint firstItem="uEc-KZ-F5B" firstAttribute="bottom" secondItem="jVq-t1-w87" secondAttribute="bottom" id="l6e-fm-3cX"/>
                             <constraint firstItem="jVq-t1-w87" firstAttribute="bottom" secondItem="6kU-yQ-c7a" secondAttribute="bottom" id="tMl-p7-Xl1"/>
                             <constraint firstItem="6kU-yQ-c7a" firstAttribute="top" secondItem="jVq-t1-w87" secondAttribute="top" id="xlC-1Z-56G"/>
@@ -711,9 +725,13 @@ https://icons8.com/ </string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buySellButton" destination="VKK-L6-Yyv" id="dxy-Q7-HSs"/>
+                        <outlet property="changePasswordButton" destination="w4G-uh-l5q" id="FiI-PS-sg4"/>
+                        <outlet property="changeUserNameButton" destination="4u2-8D-fCz" id="cSU-Nk-ipj"/>
                         <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
                         <outlet property="logoutButton" destination="qBB-N5-jjA" id="AFZ-Xu-oqK"/>
                         <outlet property="profileView" destination="uEc-KZ-F5B" id="i70-L8-Jra"/>
+                        <outlet property="recommendationsButton" destination="HSv-oV-bPQ" id="Nxg-5z-4Ns"/>
                         <outlet property="usernameLabel" destination="wfj-dX-U5w" id="VLJ-bV-tju"/>
                     </connections>
                 </viewController>

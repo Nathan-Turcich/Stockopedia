@@ -12,13 +12,19 @@ class ProfileViewController: UIViewController {
     
     //MARK: - Variables
     @IBOutlet var loginView: UIView!
+    @IBOutlet weak var recommendationsButton: UIButton!
+    @IBOutlet weak var buySellButton: UIButton!
     @IBOutlet var profileView: UIView!
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    @IBOutlet weak var changeUserNameButton: UIButton!
+    @IBOutlet weak var changePasswordButton: UIButton!
+
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpButtons()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,5 +67,12 @@ class ProfileViewController: UIViewController {
             self.logoutButton.title = "Logout"
             self.logoutButton.isEnabled = true
         }
+    }
+    
+    func setUpButtons() {
+        recommendationsButton.layer.borderColor = UIColor.black.cgColor; recommendationsButton.layer.borderWidth = 1
+        buySellButton.layer.borderColor = UIColor.black.cgColor; buySellButton.layer.borderWidth = 1
+        changeUserNameButton.layer.borderColor = UIColor.black.cgColor; changeUserNameButton.layer.borderWidth = 1
+        changePasswordButton.layer.borderColor = UIColor.black.cgColor; changePasswordButton.layer.borderWidth = 1
     }
 }

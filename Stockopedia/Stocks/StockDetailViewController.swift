@@ -21,19 +21,22 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     var monthList:[(numberDate: String, humanDate: String)] = []
     var yearList:[String] = ["2018", "2017", "2016", "2015", "2014", "2013"]
     var dataList:[String] = []
+    var lastIndexPath:IndexPath!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = stockAbbr
         nameLabel.text = stockName!
-        graphView.layer.borderColor = UIColor.black.cgColor; graphView.layer.borderWidth = 1
+        graphView.layer.borderColor = UIColor.black.cgColor;
+        graphView.layer.borderWidth = 1
+        lastIndexPath = IndexPath(row: 0, section: 0)
         segmantControl.setEnabled(true, forSegmentAt: 0)
+        disableView()
         DownloadData.downloadPossibleMonths(abbr: stockAbbr, completion: { m in
             DispatchQueue.main.async {
                 self.generateMonthList(m: m!)
                 self.tableView.reloadData()
-                self.tableView.selectRow(at: IndexPath(row: 1, section: 0), animated: false, scrollPosition: .none)
                 self.loadMonthlyData(month: String(self.monthList[0].numberDate.dropLast(3)))
             }
         })
@@ -41,27 +44,23 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - Loading Data
     func loadMonthlyData(month: String){
-        activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+        disableView()
         DownloadData.downloadUniqueStockDataForMonth(abbr: stockAbbr, month: month, completion: { data in
             DispatchQueue.main.async {
                 self.dataList = data!
-                self.activityIndicator.stopAnimating()
-                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
+                //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE MONTH
+                self.enableView()
             }
         })
     }
     
     func loadYearlyData(year: String){
-        activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+        disableView()
         DownloadData.downloadUniqueStockDataForYear(abbr: stockAbbr, year: year, completion: { data in
             DispatchQueue.main.async {
                 self.dataList = data!
-                self.activityIndicator.stopAnimating()
-                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
+                //JOEY THIS IS WHERE YOU NEED TO MAKE THE GRAPH WITH THIS DATA THIS IS THE CLOSING TIME FOR EACH DAY IN THE YEAR
+                self.enableView()
             }
         })
     }
@@ -75,6 +74,8 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - Segmented Control
     @IBAction func segmantControlChanged(_ sender: UISegmentedControl) {
+        lastIndexPath = IndexPath(row: 0, section: 0)
+        tableView.scrollToRow(at: lastIndexPath, at: .top, animated: false)
         if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: String(monthList[0].numberDate.dropLast(3))) }
         else{ loadYearlyData(year: yearList[0]) }
     }
@@ -92,8 +93,8 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        print(monthList[indexPath.row].humanDate)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        lastIndexPath = indexPath
         if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: String(monthList[indexPath.row].numberDate.dropLast(3))) }
         else { loadYearlyData(year: yearList[indexPath.row]) }
     }
@@ -103,5 +104,19 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         let dateFormatterGet = DateFormatter(); dateFormatterGet.dateFormat = "yyyy-MM-dd"
         let dateFormatterPrint = DateFormatter(); dateFormatterPrint.dateFormat = "YYYY - MMMM"
         return dateFormatterPrint.string(from: dateFormatterGet.date(from: d)!)
+    }
+    
+    func disableView(){
+        activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+    }
+    
+    func enableView() {
+        self.activityIndicator.stopAnimating()
+        self.tableView.isHidden = false; self.tableView.isScrollEnabled = true;
+        self.tableView.separatorStyle = .singleLine
+        self.tableView.reloadData()
+        self.tableView.selectRow(at: self.lastIndexPath, animated: false, scrollPosition: .none)
     }
 }
