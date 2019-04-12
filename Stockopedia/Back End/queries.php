@@ -52,9 +52,10 @@
        $key = $_GET["key"];
        $abbr = $_GET["abbr"];
        $fullName = $_GET["fullname"];
+       $fullName = str_replace('_', ' ', $fullName)
        
        $sql = "INSERT INTO Favorites
-       VALUES ('$key', '$abbr', '$fullname')";
+       VALUES ('$key', '$abbr', '$fullName')";
    }
    else if($_GET["query"] === "deleteNameFavoritedList"){
        $key = $_GET["key"];

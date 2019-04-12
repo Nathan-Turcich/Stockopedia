@@ -142,6 +142,15 @@ class DownloadData {
         task.resume()
     }
     
+    static func deleteNameFavoritedList(key: String, abbr: String) {
+        let  url: URL = URL(string: urlPath + "?query=deleteNameFavoritedList&key=" + key + "&abbr=" + abbr)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            
+        }
+        task.resume()
+    }
+    
     //Recommendations Functions
     static func getTopicData(completion:@escaping ([(abbr: String, fullName:String, topic: String)]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=getTopicData")!
@@ -234,15 +243,6 @@ class DownloadData {
                 }
                 completion(user)
             }
-        }
-        task.resume()
-    }
-    
-    static func deleteNameFavoritedList(key: String, abbr: String) {
-        let  url: URL = URL(string: urlPath + "?query=deleteNameFavoritedList&key=" + key + "&abbr=" + abbr)!
-        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
-        let task = defaultSession.dataTask(with: url) { (data, response, error) in
-            
         }
         task.resume()
     }
