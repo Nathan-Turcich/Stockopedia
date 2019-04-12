@@ -22,11 +22,13 @@
    else if($_GET["query"] === "downloadUniqueStockDataForMonth"){
        $abbr = $_GET["abbr"];
        $month = $_GET["month"];
+       $percentage = '%';
+       $month = $month.$percentage;
        
-       $sql = "SELECT date
+       $sql = "SELECT close
        FROM Stocks
        WHERE name = '$abbr'
-       AND date LIKE '$month'";
+       AND date LIKE '$month';
    }
    else if($_GET["query"] === "downloadUniqueStockDataForYear"){
        $abbr = $_GET["abbr"];

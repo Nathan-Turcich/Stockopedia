@@ -42,16 +42,15 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     func loadMonthlyData(month: String){
         activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
-        tableView.isHidden = true; tableView.isScrollEnabled = false
+        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
         DownloadData.downloadUniqueStockDataForMonth(abbr: stockAbbr, month: month, completion: { data in
             DispatchQueue.main.async {
                 self.dataList = data!
                 self.activityIndicator.stopAnimating()
-                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true
+                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
                 self.tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
             }
         })
-        self.tableView.reloadData()
     }
     
     func loadYearlyData(year: String){
@@ -77,7 +76,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: - Segmented Control
     @IBAction func segmantControlChanged(_ sender: UISegmentedControl) {
-        if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: monthList[0].numberDate) }
+        if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: String(monthList[0].numberDate.dropLast(3))) }
         else{ loadYearlyData(year: yearList[0]) }
     }
     
