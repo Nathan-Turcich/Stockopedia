@@ -303,8 +303,14 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if segue.identifier == "stockDetailSegue" {
             let destination = segue.destination as! StockDetailViewController
             lastIndexPath = tableView.indexPathForSelectedRow!
-            if isSearching { destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row].abbr }
-            else{ destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].abbr }
+            if isSearching {
+                destination.stockAbbr = filteredStocks[tableView.indexPathForSelectedRow!.row].abbr
+                destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row].fullName
+            }
+            else{
+                destination.stockAbbr = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].abbr
+                destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].fullName
+            }
         }
         else { lastIndexPath = nil }
     }

@@ -23,9 +23,10 @@
        $abbr = $_GET["abbr"];
        $month = $_GET["month"];
        
-       $sql = "SELECT name
-       FROM Favorites
-       WHERE ID = '$key'";
+       $sql = "SELECT date
+       FROM Stocks
+       WHERE name = '$abbr'
+       AND date LIKE '$month'";
    }
    else if($_GET["query"] === "downloadUniqueStockDataForYear"){
        $abbr = $_GET["abbr"];
