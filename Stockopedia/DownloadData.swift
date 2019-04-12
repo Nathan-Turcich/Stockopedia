@@ -76,7 +76,6 @@ class DownloadData {
                 var data = [String]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    print(jsonElement["close"]! as! String)
                     data.append(jsonElement["close"]! as! String)
                 }
                 completion(data)
@@ -85,7 +84,7 @@ class DownloadData {
         task.resume()
     }
     
-    static func downloadUniqueStockDataForYear(abbr: String, year: String, completion:@escaping ([Stock]?) -> Void) {
+    static func downloadUniqueStockDataForYear(abbr: String, year: String, completion:@escaping ([String]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockDataForYear&abbr=" + abbr + "&year=" + year)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
@@ -98,12 +97,12 @@ class DownloadData {
                 } catch let error as NSError { print(error) }
                 
                 var jsonElement = NSDictionary()
-                var stocksArray = [Stock]()
+                var data = [String]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    stocksArray.append(Stock.init(abbr: jsonElement["name"]! as! String, fullName: jsonElement["fullname"]! as! String))
+                    data.append(jsonElement["close"]! as! String)
                 }
-                completion(stocksArray)
+                completion(data)
             }
         }
         task.resume()

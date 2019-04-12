@@ -33,6 +33,7 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
             DispatchQueue.main.async {
                 self.generateMonthList(m: m!)
                 self.tableView.reloadData()
+                self.tableView.selectRow(at: IndexPath(row: 1, section: 0), animated: false, scrollPosition: .none)
                 self.loadMonthlyData(month: String(self.monthList[0].numberDate.dropLast(3)))
             }
         })
@@ -48,23 +49,21 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
                 self.dataList = data!
                 self.activityIndicator.stopAnimating()
                 self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
-                self.tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: .none)
             }
         })
     }
     
     func loadYearlyData(year: String){
-//        activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
-//        activityIndicator.startAnimating()
-//        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
-//        DownloadData.downloadUniqueStockDataForYear(abbr: stockAbbr, year: year, completion: { val in
-//            DispatchQueue.main.async {
-//                self.activityIndicator.stopAnimating()
-//                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
-//                self.tableView.reloadData()
-//            }
-//        })
-//        self.tableView.reloadData()
+        activityIndicator.isHidden = false; activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+        DownloadData.downloadUniqueStockDataForYear(abbr: stockAbbr, year: year, completion: { data in
+            DispatchQueue.main.async {
+                self.dataList = data!
+                self.activityIndicator.stopAnimating()
+                self.tableView.isHidden = false; self.tableView.isScrollEnabled = true; self.tableView.separatorStyle = .singleLine
+            }
+        })
     }
     
     func generateMonthList(m: [String]){
@@ -93,10 +92,16 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        print(monthList[indexPath.row].humanDate)
+        if segmantControl.selectedSegmentIndex == 0 { loadMonthlyData(month: String(monthList[indexPath.row].numberDate.dropLast(3))) }
+        else { loadYearlyData(year: yearList[indexPath.row]) }
+    }
+    
     //MARK: - Helper Functions
     func stringToHumanDate(d: String) -> String {
         let dateFormatterGet = DateFormatter(); dateFormatterGet.dateFormat = "yyyy-MM-dd"
-        let dateFormatterPrint = DateFormatter(); dateFormatterPrint.dateFormat = "YYYY-MMMM"
+        let dateFormatterPrint = DateFormatter(); dateFormatterPrint.dateFormat = "YYYY - MMMM"
         return dateFormatterPrint.string(from: dateFormatterGet.date(from: d)!)
     }
 }

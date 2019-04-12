@@ -33,10 +33,13 @@
    else if($_GET["query"] === "downloadUniqueStockDataForYear"){
        $abbr = $_GET["abbr"];
        $year = $_GET["year"];
+       $percentage = '%';
+       $year = $year.$percentage;
        
-       $sql = "SELECT name
-       FROM Favorites
-       WHERE ID = '$key'";
+       $sql = "SELECT close
+       FROM Stocks
+       WHERE name = '$abbr'
+       AND date LIKE '$year'";
    }
    else if($_GET["query"] === "getUserFavoritedList"){
         $key = $_GET["key"];
