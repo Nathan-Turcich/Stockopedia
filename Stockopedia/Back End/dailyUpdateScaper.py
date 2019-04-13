@@ -14,6 +14,7 @@ database = 'Stockopedia'
 myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
 cursor = myDB.cursor()
 
+# URL FUNCTIONS
 def getURLs():
     cursor.execute("SELECT name FROM Stocks GROUP BY name;")
     data = cursor.fetchall()
@@ -29,6 +30,26 @@ def getURLs():
     	urls.append(url)
     return urls
 
+def getURLData(url):
+    try:
+        with closing(get(url, stream=True)) as resp:
+            if isGoodResponse(resp):
+                return resp.content
+            else:
+                return None
+
+    except RequestException as e:
+        print(e)
+        return None
+
+def isGoodResponse(resp):
+    content_type = resp.headers['Content-Type'].lower()
+    return (resp.status_code == 200
+            and content_type is not None
+            and content_type.find('html') > -1)
+
+
+# TOPICS
 def scrapeWebsitesForTopics(listOfURLs):
     topics = list()
     deleteNames = list()
@@ -63,26 +84,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
 
-    # Get Topic
     return topics, deleteNames
-
-def getURLData(url):
-    try:
-        with closing(get(url, stream=True)) as resp:
-            if isGoodResponse(resp):
-                return resp.content
-            else:
-                return None
-
-    except RequestException as e:
-        print(e)
-        return None
-
-def isGoodResponse(resp):
-    content_type = resp.headers['Content-Type'].lower()
-    return (resp.status_code == 200
-            and content_type is not None
-            and content_type.find('html') > -1)
 
 def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
@@ -100,8 +102,32 @@ def addFullNames(listOfTopics):
     myDB.commit()
     myDB.close()
 
+
+# REAL TIME STOCKS
+def scrapeWebsitesForRealTimeData(listOfURLs):
+    realTimeStocks = list()
+
+    for url in listOfURLs:
+    # JOEY SCRAP EACH URL FOR THE DATA BELOW FOR REAL TIME DATA
+    
+    
+    return realTimeStocks
+
+def insertRealTimeStocksToDB(listOfRealTimeStocks):
+    for (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff) in listOfRealTimeStocks:
+        cursor.execute("INSERT INTO RealTimeStocks (abbr, fullname, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
+
+
+
 if __name__ == '__main__':
-    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs())
+    urls = getURLs()
+    
+    # TOPICS
+    listOfTopics, deleteNames = scrapeWebsitesForTopics(urls)
     insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics)
+
+    # REAL TIME STOCKS
+    listOfRealTimeStocks = scrapeWebsitesForRealTimeData(urls)
+    insertRealTimeStocksToDB(listOfRealTimeStocks)
