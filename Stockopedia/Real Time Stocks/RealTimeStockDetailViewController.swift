@@ -7,16 +7,55 @@
 //
 
 import UIKit
+import Charts
 
 class RealTimeStockDetailViewController: UIViewController {
 
     //MARK: - Variables
-    var stockAbbr:String!
-    var stockName:String!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var graphView: LineChartView!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var closeLabel: UILabel!
+    @IBOutlet weak var lowLabel: UILabel!
+    @IBOutlet weak var highLabel: UILabel!
+    @IBOutlet weak var volumeLabel: UILabel!
+    @IBOutlet weak var marketCapLabel: UILabel!
+    @IBOutlet weak var percentDiffLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
+    var stock:RealTimeStock!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = stockAbbr
+        setLabels()
+        favoriteButton.layer.borderColor = primaryColor.cgColor; favoriteButton.layer.borderWidth = 2
+    }
+    
+    //MARK: - Helper Functions
+    func setLabels(){
+        navigationItem.title = stock.abbr
+        fullNameLabel.text = stock.fullName
+        dateLabel.text = stock.date
+        openLabel.text = stock.open
+        closeLabel.text = stock.close
+        lowLabel.text = stock.low
+        highLabel.text = stock.high
+        volumeLabel.text = stock.volume
+        marketCapLabel.text = stock.mkrtCap
+        percentDiffLabel.text = stock.diff
+    }
+    
+    @IBAction func favoritesButtonAction(_ sender: UIButton) {
+        if favoriteButton.backgroundColor == UIColor.white { //Insert to User Favorite List
+            DownloadData.insertNameFavoritedList(key: currentID, abbr: stock.abbr, fullName: stock.fullName)
+            favoriteButton.backgroundColor = primaryColor; favoriteButton.setTitleColor(UIColor.white, for: .normal)
+        }
+        else { //Delete to User Favorite List
+            DownloadData.deleteNameFavoritedList(key: currentID, abbr: stock.abbr)
+            favoriteButton.backgroundColor = UIColor.white; favoriteButton.setTitleColor(primaryColor, for: .normal)
+        }
     }
 }

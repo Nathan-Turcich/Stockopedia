@@ -7,7 +7,7 @@
     
     $sql = "";
     if($_GET["query"] === "downloadRealTimeData"){
-        $sql = "SELECT abbr, fullname, open, close, diff, date
+        $sql = "SELECT *
         FROM RealTimeStocks
         GROUP BY date";
    }

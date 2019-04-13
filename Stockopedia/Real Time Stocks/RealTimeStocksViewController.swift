@@ -11,8 +11,9 @@ import UIKit
 var primaryColor:UIColor = #colorLiteral(red: 1, green: 0.50186795, blue: 0, alpha: 1)
 
 class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-
+    
     //MARK: - Variables
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
     @IBOutlet var tableView: UITableView!
@@ -33,6 +34,12 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
 
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+        dateLabel.backgroundColor = primaryColor
+        
+        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
+            currentID = id; currentUsername = name
+        }
+        else { currentID = ""; currentUsername = "" }        
         
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
@@ -45,7 +52,15 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         searchBarCancelButton.isEnabled = false
         searchBarCancelButton.title = ""
         loadingStarted()
-        downloadStocks()
+        
+        if currentID != "" {
+            tableView.isHidden = false; tableView.isScrollEnabled = true; tableView.separatorStyle = .singleLine
+            downloadStocks()
+        }
+        else {
+            noStockDataLabel.isHidden = false
+            tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+        }
     }
     
     //MARK: - Tableview Methods
@@ -154,7 +169,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     func generateSectionDic(stockArray: [RealTimeStock]){
         for _ in 0...25 {
-            stocks.append([RealTimeStock.init(a: "", fn: "", o: "", c: "", d: "", date: "")])
+            stocks.append([RealTimeStock.init(abbr: "", fullName: "", date: "", open: "", close: "", low: "", high: "", volume: "", mrktCap: "", diff: "")])
         }
         
         for stock in stockArray {
@@ -258,14 +273,8 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "realTimeStockDetailSegue" {
             let destination = segue.destination as! RealTimeStockDetailViewController
             lastIndexPath = tableView.indexPathForSelectedRow!
-            if isSearching {
-                destination.stockAbbr = filteredStocks[tableView.indexPathForSelectedRow!.row].abbr
-                destination.stockName = filteredStocks[tableView.indexPathForSelectedRow!.row].fullName
-            }
-            else{
-                destination.stockAbbr = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].abbr
-                destination.stockName = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row].fullName
-            }
+            if isSearching { destination.stock = filteredStocks[tableView.indexPathForSelectedRow!.row] }
+            else { destination.stock = stocks[tableView.indexPathForSelectedRow!.section][tableView.indexPathForSelectedRow!.row] }
         }
         else { lastIndexPath = nil }
     }
