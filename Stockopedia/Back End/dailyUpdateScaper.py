@@ -155,7 +155,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                         amount += 1
                     if(range_text[x] == ' ' and amount == 1):
                         end = x
-                            amount += 1
+                        amount += 1
             
                 low = range_text[0: begin]
                 high = range_text[end: len(range_text)]
