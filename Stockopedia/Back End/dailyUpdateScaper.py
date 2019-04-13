@@ -1,5 +1,6 @@
 # Python code to demonstrate table creation and insertions with SQL
 import mysql.connector
+import datetime
 
 from requests import get
 from requests.exceptions import RequestException
@@ -15,18 +16,22 @@ myDB = mysql.connector.connect(host = host, user = user, passwd = password, data
 cursor = myDB.cursor()
 
 # URL FUNCTIONS
-def getURLs():
+def getURLs(isRealTime):
     cursor.execute("SELECT name FROM Stocks GROUP BY name;")
     data = cursor.fetchall()
     stockNames = []
     for d in data:
         stockNames.append(d[0])
     
-    # Sample: https://finance.yahoo.com/quote/AAPL/profile?p=AAPL
+    # Sample Topic: https://finance.yahoo.com/quote/AAPL/profile?p=AAPL
+    # Sample RealTime: https://finance.yahoo.com/quote/AAPL?p=AAPL
     baseURL = "https://finance.yahoo.com/quote/"
     urls = []
     for name in stockNames:
-        url = baseURL + name + "/profile?p=" + name
+        if isRealTime:
+            url = baseURL + name + "?p=" + name
+        else:
+            url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
     return urls
 
@@ -108,25 +113,38 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
     realTimeStocks = list()
 
     for url in listOfURLs:
-    # JOEY SCRAP EACH URL FOR THE DATA BELOW FOR REAL TIME DATA
-   	print(url) 
+        rawHTML = getURLData(url)
+        if rawHTML != None:
+            html = BeautifulSoup(rawHTML, 'html.parser')
+            
+            abbr = ""
+            fullName = ""
+            date = getCurrentTime()
+            open = ""
+            close = ""
+            low = ""
+            high = ""
+            volume = ""
+            mrktcap = ""
+            diff = ""
+            realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
+
     return realTimeStocks
 
 def insertRealTimeStocksToDB(listOfRealTimeStocks):
     for (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff) in listOfRealTimeStocks:
         cursor.execute("INSERT INTO RealTimeStocks (abbr, fullname, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
-
+def getCurrentTime():
+    return datetime.datetime.now().strftime("%a, %b %d, %Y")
 
 if __name__ == '__main__':
-    urls = getURLs()
-    
     # TOPICS
-    listOfTopics, deleteNames = scrapeWebsitesForTopics(urls)
+    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
     insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
-    listOfRealTimeStocks = scrapeWebsitesForRealTimeData(urls)
+    listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
     insertRealTimeStocksToDB(listOfRealTimeStocks)
