@@ -157,6 +157,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             mrktcap = html.find('span', attrs={"data-reactid": "82"})
             diff = html.find('span', attrs={"data-reactid": "35"})
 
+            print(abbr)
+            
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
     return realTimeStocks
