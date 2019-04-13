@@ -104,9 +104,6 @@ def addFullNames(listOfTopics):
     for (abbr, fullName, topic) in listOfTopics:
         cursor.execute("UPDATE Stocks SET fullname = '" + fullName.replace("'", "") + "' WHERE name = '" + abbr + "'")
 
-    myDB.commit()
-    myDB.close()
-
 
 # REAL TIME STOCKS
 def scrapeWebsitesForRealTimeData(listOfURLs):
@@ -117,16 +114,49 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
             
+            company = html.find('h1', class_ = 'D(ib) Fz(18px)')
+            
             abbr = ""
             fullName = ""
+            
+            company_text = company.get_text()
+                begin = 0
+                end = 0
+                for x in range(len(company_text)):
+                    if(company_text[x] == '('):
+                        begin = x + 1
+                    if(company_text[x] == ')'):
+                        end = x
+                        abbr = company_text[begin:end]
+                
+            fullName = company_text[:begin - 2]
+            
             date = getCurrentTime()
-            open = ""
-            close = ""
-            low = ""
-            high = ""
-            volume = ""
-            mrktcap = ""
-            diff = ""
+            
+            open = html.find('span', attrs={"data-reactid": "57"})
+            close = html.find('span', attrs={"data-reactid": "41"})
+
+            range = html.find('td', attrs={"data-reactid": "60"})
+            
+            range_text = range.get_text()
+                begin = 0
+                end = 0
+                amount = 0
+                for x in range(len(range_text)):
+                    if(range_text[x] == ' ' and amount == 0):
+                        begin = x
+                        amount += 1
+                    if(range_text[x] == ' ' and amount == 1):
+                        end = x
+                        amount += 1
+            
+            low = range_text[0: begin]
+            high = range_text[end: len(range_text)]
+
+            volume = html.find('span', attrs={"data-reactid": "69"})
+            mrktcap = html.find('span', attrs={"data-reactid": "82"})
+            diff = html.find('span', attrs={"data-reactid": "35"})
+
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
     return realTimeStocks
@@ -140,11 +170,14 @@ def getCurrentTime():
 
 if __name__ == '__main__':
     # TOPICS
-    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
-    insertTopicsToDB(listOfTopics)
-    deleteNoIndustryNames(deleteNames)
-    addFullNames(listOfTopics)
+    #listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+    #insertTopicsToDB(listOfTopics)
+    #deleteNoIndustryNames(deleteNames)
+    #addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
     listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
     insertRealTimeStocksToDB(listOfRealTimeStocks)
+
+    myDB.commit()
+    myDB.close()
