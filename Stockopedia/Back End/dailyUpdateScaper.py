@@ -136,9 +136,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             open = html.find('span', attrs={"data-reactid": "57"})
             close = html.find('span', attrs={"data-reactid": "41"})
 
-            range = html.find('td', attrs={"data-reactid": "60"})
+            low_high = html.find('td', attrs={"data-reactid": "60"})
             
-            range_text = range.get_text()
+            range_text = low_high.get_text()
             begin = 0
             end = 0
             amount = 0
