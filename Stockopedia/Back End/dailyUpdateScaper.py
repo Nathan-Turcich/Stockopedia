@@ -120,14 +120,14 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             fullName = ""
             
             company_text = company.get_text()
-                begin = 0
-                end = 0
-                for x in range(len(company_text)):
-                    if(company_text[x] == '('):
-                        begin = x + 1
-                    if(company_text[x] == ')'):
-                        end = x
-                        abbr = company_text[begin:end]
+            begin = 0
+            end = 0
+            for x in range(len(company_text)):
+                if(company_text[x] == '('):
+                    begin = x + 1
+                if(company_text[x] == ')'):
+                    end = x
+                    abbr = company_text[begin:end]
                 
             fullName = company_text[:begin - 2]
             
@@ -139,16 +139,16 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             range = html.find('td', attrs={"data-reactid": "60"})
             
             range_text = range.get_text()
-                begin = 0
-                end = 0
-                amount = 0
-                for x in range(len(range_text)):
-                    if(range_text[x] == ' ' and amount == 0):
-                        begin = x
-                        amount += 1
-                    if(range_text[x] == ' ' and amount == 1):
-                        end = x
-                        amount += 1
+            begin = 0
+            end = 0
+            amount = 0
+            for x in range(len(range_text)):
+                if(range_text[x] == ' ' and amount == 0):
+                    begin = x
+                    amount += 1
+                if(range_text[x] == ' ' and amount == 1):
+                    end = x
+                    amount += 1
             
             low = range_text[0: begin]
             high = range_text[end: len(range_text)]
