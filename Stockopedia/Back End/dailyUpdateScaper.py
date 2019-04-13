@@ -109,8 +109,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
 
     for url in listOfURLs:
     # JOEY SCRAP EACH URL FOR THE DATA BELOW FOR REAL TIME DATA
-    
-    
+   	print(url) 
     return realTimeStocks
 
 def insertRealTimeStocksToDB(listOfRealTimeStocks):
