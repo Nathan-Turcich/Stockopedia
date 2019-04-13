@@ -121,8 +121,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             
             if(company is not None):
                 company_text = company.get_text()
-                    begin = 0
-                        end = 0
+                begin = 0
+                end = 0
                 for x in range(len(company_text)):
                     if(company_text[x] == '('):
                         begin = x + 1
