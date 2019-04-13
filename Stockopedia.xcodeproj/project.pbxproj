@@ -37,6 +37,8 @@
 		BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC4568F224DC642004E40B2 /* AboutViewController.swift */; };
 		BCE4D57722527E1D000DA0E2 /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */; };
 		BCE4D57922527E2D000DA0E2 /* BuySellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */; };
+		BCEC74C122617094004B2308 /* RealTimeStock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEC74C022617094004B2308 /* RealTimeStock.swift */; };
+		BCEC74C3226177EB004B2308 /* RealTimeStockDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEC74C2226177EB004B2308 /* RealTimeStockDetailViewController.swift */; };
 		DAE2737D9C15C4B672AE7F9E /* Pods_StockopediaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA616E8809DA35DD522E9CBF /* Pods_StockopediaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		BCC4568F224DC642004E40B2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		BCE4D57622527E1D000DA0E2 /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		BCE4D57822527E2D000DA0E2 /* BuySellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuySellViewController.swift; sourceTree = "<group>"; };
+		BCEC74C022617094004B2308 /* RealTimeStock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStock.swift; sourceTree = "<group>"; };
+		BCEC74C2226177EB004B2308 /* RealTimeStockDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeStockDetailViewController.swift; sourceTree = "<group>"; };
 		E1B1224E78DA7C039BB358DC /* Pods_StockopediaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockopediaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C37D82D2123FCDC9A7D036 /* Pods_Stockopedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stockopedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA616E8809DA35DD522E9CBF /* Pods_StockopediaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StockopediaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +233,7 @@
 		BC9B6C642249BCB600F54B9E /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				BCEC74C022617094004B2308 /* RealTimeStock.swift */,
 				91C629512235C88600543EF0 /* Stock.swift */,
 				91BD1E9F224FFBB900B94DF5 /* User.swift */,
 			);
@@ -239,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				BC9B6C662249BD5400F54B9E /* RealTimeStocksViewController.swift */,
+				BCEC74C2226177EB004B2308 /* RealTimeStockDetailViewController.swift */,
 				BC9B6C702249C78900F54B9E /* RealTimeStockTableViewCell.swift */,
 			);
 			path = "Real Time Stocks";
@@ -483,6 +489,7 @@
 				BCC2CC03225FD6B9005147E0 /* StockDetailTableViewCell.swift in Sources */,
 				BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */,
 				BC9B6C732249D7A400F54B9E /* StockViewController.swift in Sources */,
+				BCEC74C122617094004B2308 /* RealTimeStock.swift in Sources */,
 				BCC45690224DC642004E40B2 /* AboutViewController.swift in Sources */,
 				BCC4568E224DBFEF004E40B2 /* Utils.swift in Sources */,
 				BC9B6C612249BC9700F54B9E /* FavoritesViewController.swift in Sources */,
@@ -495,6 +502,7 @@
 				BC6C6D7D2252B92800825EDA /* RecommendTableViewCell.swift in Sources */,
 				91C629522235C88600543EF0 /* Stock.swift in Sources */,
 				BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */,
+				BCEC74C3226177EB004B2308 /* RealTimeStockDetailViewController.swift in Sources */,
 				BC9B6C712249C78900F54B9E /* RealTimeStockTableViewCell.swift in Sources */,
 				BCE4D57722527E1D000DA0E2 /* RecommendationsViewController.swift in Sources */,
 				BCC45687224DA9EA004E40B2 /* LoginViewController.swift in Sources */,
@@ -675,7 +683,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.Stockopedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -691,7 +702,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BFHHZ66KNU;
 				INFOPLIST_FILE = Stockopedia/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.Stockopedia;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -708,7 +722,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -726,7 +744,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -743,7 +765,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -760,7 +786,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N4N8XCQ6H7;
 				INFOPLIST_FILE = StockopediaUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.chung.StockopediaUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

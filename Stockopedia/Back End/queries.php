@@ -6,7 +6,12 @@
     //All Queries
     
     $sql = "";
-   if($_GET["query"] === "downloadUniqueStockNames"){
+    if($_GET["query"] === "downloadRealTimeData"){
+        $sql = "SELECT abbr, fullname, open, close, diff, date
+        FROM RealTimeStocks
+        GROUP BY date";
+   }
+   else if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name, fullname
         FROM Stocks
         GROUP BY name";

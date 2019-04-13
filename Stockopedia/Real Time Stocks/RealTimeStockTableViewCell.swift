@@ -11,17 +11,18 @@ import UIKit
 class RealTimeStockTableViewCell: UITableViewCell {
     
     //MARK: - Variables
-    @IBOutlet weak var stockNameLabel: UILabel!
+    @IBOutlet weak var abbrLabel: UILabel!
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var closeLabel: UILabel!
+    @IBOutlet weak var diffLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
 }

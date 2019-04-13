@@ -12,6 +12,30 @@ var urlPath:String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
 
 class DownloadData {
     
+    static func downloadRealTimeData(completion:@escaping ([RealTimeStock]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadRealTimeData")!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var realStocks = [RealTimeStock]()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    realStocks.append(RealTimeStock.init(a: jsonElement["abbr"]! as! String, fn: jsonElement["fullname"]! as! String, o: jsonElement["open"]! as! String, c: jsonElement["close"]! as! String, d: jsonElement["diff"]! as! String, date: jsonElement["date"]! as! String))
+                }
+                completion(realStocks)
+            }
+        }
+        task.resume()
+    }
+    
     static func downloadUniqueStockNames(completion:@escaping ([Stock]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockNames")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
