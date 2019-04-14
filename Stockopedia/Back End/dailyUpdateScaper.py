@@ -179,7 +179,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             diff = html.find('span', attrs={"data-reactid": "35"})
             if(diff is not None):
                 diff = diff.get_text()
-                diff = diff[diff.find("(")+1:myString.find(")")]
+                diff = diff[diff.find("(")+1:diff.find(")")]
 
             print(abbr)
             
