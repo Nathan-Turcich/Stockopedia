@@ -11,6 +11,11 @@
         FROM RealTimeStocks
         GROUP BY abbr";
    }
+    else if($_GET["query"] === "downloadRealTimeClosesForAbbr"){
+        $sql = "SELECT close
+        FROM RealTimeStocks
+        GROUP BY abbr";
+    }
    else if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name, fullname
         FROM Stocks

@@ -36,6 +36,30 @@ class DownloadData {
         task.resume()
     }
     
+    static func downloadRealTimeClosesForAbbr(abbr: String, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadRealTimeClosesForAbbr&abbr=" + abbr)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var closes = [String]()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    closes.append(jsonElement["close"] as! String)
+                }
+                completion(closes)
+            }
+        }
+        task.resume()
+    }
+    
     static func downloadUniqueStockNames(completion:@escaping ([Stock]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadUniqueStockNames")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
