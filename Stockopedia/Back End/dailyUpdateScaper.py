@@ -2,6 +2,7 @@
 import mysql.connector
 import datetime
 from random import random
+import time
 
 from requests import get
 from requests.exceptions import RequestException
