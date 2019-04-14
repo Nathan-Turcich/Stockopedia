@@ -39,12 +39,13 @@ class RealTimeStockDetailViewController: UIViewController {
         navigationItem.title = stock.abbr
         fullNameLabel.text = stock.fullName
         dateLabel.text = stock.date
-        openLabel.text = stock.open
-        closeLabel.text = stock.close
-        lowLabel.text = stock.low
-        highLabel.text = stock.high
-        volumeLabel.text = stock.volume
-        marketCapLabel.text = stock.mkrtCap
+        openLabel.text = "Open: " + stock.open
+        closeLabel.text = "Close: " + stock.close
+        lowLabel.text = "Low: " + stock.low
+        highLabel.text = "High: " + stock.high
+        volumeLabel.text = "Volume: " + stock.volume
+        marketCapLabel.text = "Market Cap: " + stock.mkrtCap
+        percentDiffLabel.backgroundColor = stock.diff.contains("-") ? .red : .green
         percentDiffLabel.text = stock.diff
     }
     
