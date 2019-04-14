@@ -138,7 +138,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             date = getCurrentTime()
 
             # OPEN
-            open = html.find('span', attrs={"data-reactid": "57"})
+            open = html.find('span', attrs={"data-reactid": "46"})
             if(open is not None):
                 open = open.get_text()
 
