@@ -187,7 +187,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
 
 def insertRealTimeStocksToDB(listOfRealTimeStocks):
     for (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff) in listOfRealTimeStocks:
-        cursor.execute("INSERT INTO RealTimeStocks (abbr, fullname, topic) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
+        cursor.execute("INSERT INTO RealTimeStocks (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
 def getCurrentTime():
     return datetime.datetime.now().strftime("%a, %b %d, %Y")
