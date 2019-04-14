@@ -1,6 +1,7 @@
 # Python code to demonstrate table creation and insertions with SQL
 import mysql.connector
 import datetime
+from random import random
 
 from requests import get
 from requests.exceptions import RequestException
@@ -176,6 +177,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             print(abbr)
             
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
+
+            # RANDOM
+            time.sleep(random.uniform(0.0, 2.0))
 
     return realTimeStocks
 
