@@ -134,6 +134,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                         abbr = company_text[begin:end]
                 
                 fullName = company_text[:begin - 2]
+            else:
+                fullname = "None"
+                abbr = "None"
             
             date = getCurrentTime()
 
@@ -141,11 +144,15 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             open = html.find('span', attrs={"data-reactid": "46"})
             if(open is not None):
                 open = open.get_text()
+            else:
+                open = "0"
 
             # CLOSE
             close = html.find('span', attrs={"data-reactid": "41"})
             if(close is not None):
                 close = close.get_text()
+            else:
+                close = "0"
     
             # LOW - HIGH
             low_high = html.find('td', attrs={"data-reactid": "60"})
@@ -164,22 +171,31 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             
                 low = range_text[0: begin]
                 high = range_text[end: len(range_text)]
+            else:
+                low = "0"
+                high = "0"
 
             # VOLUME
             volume = html.find('span', attrs={"data-reactid": "69"})
             if(volume is not None):
                 volume = volume.get_text()
+            else:
+                volume = "0"
 
             # MARKET CAP
             mrktcap = html.find('span', attrs={"data-reactid": "82"})
             if(mrktcap is not None):
                 mrktcap = mrktcap.get_text()
+            else:
+                mrktcap = "0"
 
             # DIFF
             diff = html.find('span', attrs={"data-reactid": "35"})
             if(diff is not None):
                 diff = diff.get_text()
                 diff = diff[diff.find("(")+1:diff.find(")")]
+            else:
+                diff = "0"
 
             print(abbr)
             
