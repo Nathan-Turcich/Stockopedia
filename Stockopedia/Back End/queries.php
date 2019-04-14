@@ -9,7 +9,7 @@
     if($_GET["query"] === "downloadRealTimeData"){
         $sql = "SELECT *
         FROM RealTimeStocks
-        GROUP BY date";
+        GROUP BY abbr";
    }
    else if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name, fullname
