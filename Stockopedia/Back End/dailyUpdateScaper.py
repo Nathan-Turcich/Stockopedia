@@ -138,7 +138,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             date = getCurrentTime()
 
             # OPEN
-            open = html.find('span', attrs={"data-test": "OPEN-value"})
+            open = html.find('span', attrs={"data-reactid": "57"})
             if(open is not None):
                 open = open.get_text()
 
@@ -186,8 +186,6 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
             # RANDOM
-            if abbr == "AAPL":
-                break
             time.sleep(random.uniform(0.0, 2.0))
 
     return realTimeStocks
