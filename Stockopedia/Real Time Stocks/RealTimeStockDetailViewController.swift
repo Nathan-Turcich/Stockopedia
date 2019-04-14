@@ -25,7 +25,7 @@ class RealTimeStockDetailViewController: UIViewController {
     @IBOutlet weak var marketCapLabel: UILabel!
     @IBOutlet weak var percentDiffLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    var activityIndicator:UIActivityIndicatorView!
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var stock:RealTimeStock!
     var closes:[String]!
     

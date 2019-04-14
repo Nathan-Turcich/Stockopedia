@@ -146,6 +146,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 open = open.get_text()
             else:
                 open = "0"
+            open.replace("+", "")
 
             # CLOSE
             close = html.find('span', attrs={"data-reactid": "41"})
@@ -171,9 +172,12 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             
                 low = range_text[0: begin]
                 high = range_text[end: len(range_text)]
+                if high == " Week Range":
+                    high = "0"
             else:
                 low = "0"
                 high = "0"
+            high.replace(" - ", "")
 
             # VOLUME
             volume = html.find('span', attrs={"data-reactid": "69"})
