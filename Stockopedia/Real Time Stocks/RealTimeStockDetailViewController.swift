@@ -27,45 +27,49 @@ class RealTimeStockDetailViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var stock:RealTimeStock!
-    var closes:[String]!
+    var closesList:[String]!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setNotLoaded()
         loadData()
     }
     
     //MARK: - Load Data
     func loadData(){
-        
+        hideObjects()
         DownloadData.downloadRealTimeClosesForAbbr(abbr: stock.abbr, completion: { c in
             DispatchQueue.main.async {
-                self.closes = c!
+                self.closesList = c!
                 self.setLoaded()
-                
             }
         })
     }
     
-    func makeGraph(){
-        
+    func createGraph() {
+//        var dataEntries: [ChartDataEntry] = []
+//        var i = 1
+//        for _ in self.closesList {
+//            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.closesList[i - 1])!)
+//            dataEntries.append(dataEntry)
+//            i += 1
+//        }
+//
+//        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
+//        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+//        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
+//        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
+//        let chartData = LineChartData(dataSet: chartDataSet)
+//        self.graphView.data = chartData
+//        self.graphView.chartDescription?.text = "Price"
     }
     
     //MARK: - Helper Functions
     func setLoaded(){
         self.setLabels()
-        self.makeGraph()
+        self.createGraph()
         self.activityIndicator.stopAnimating()
         self.unHideObjects()
-    }
-    
-    func setNotLoaded(){
-        favoriteButton.layer.borderColor = primaryColor.cgColor; favoriteButton.layer.borderWidth = 2
-        activityIndicator.center = self.view.center; activityIndicator.hidesWhenStopped = true; activityIndicator.isHidden = true
-        activityIndicator.style = .gray
-        self.hideObjects()
     }
     
     func setLabels(){
@@ -73,18 +77,21 @@ class RealTimeStockDetailViewController: UIViewController {
             self.navigationItem.title = self.stock.abbr
             self.fullNameLabel.text = self.stock.fullName
             self.dateLabel.text = self.stock.date
-            self.openLabel.text = "Open: " + self.stock.open
-            self.closeLabel.text = "Close: " + self.stock.close
-            self.lowLabel.text = "Low: " + self.stock.low
-            self.highLabel.text = "High: " + self.stock.high
-            self.volumeLabel.text = "Volume: " + self.stock.volume
-            self.marketCapLabel.text = "Market Cap: " + self.stock.mkrtCap
+            self.openLabel.text = " Open: " + self.stock.open + " "
+            self.closeLabel.text = " Close: " + self.stock.close + " "
+            self.lowLabel.text = " Low: " + self.stock.low + " "
+            self.highLabel.text = " High: " + self.stock.high + " "
+            self.volumeLabel.text = " Volume: " + self.stock.volume + " "
+            self.marketCapLabel.text = " Market Cap: " + self.stock.mkrtCap + " "
             self.percentDiffLabel.backgroundColor = self.stock.diff.contains("-") ? .red : .green
             self.percentDiffLabel.text = self.stock.diff
         }
     }
     
     func hideObjects(){
+        favoriteButton.layer.borderColor = primaryColor.cgColor; favoriteButton.layer.borderWidth = 2
+        activityIndicator.center = self.view.center; activityIndicator.hidesWhenStopped = true; activityIndicator.isHidden = true
+        activityIndicator.style = .gray
         fullNameLabel.isHidden = true
         graphView.isHidden = true
         sevenDaysLabel.isHidden = true
@@ -116,10 +123,12 @@ class RealTimeStockDetailViewController: UIViewController {
     
     @IBAction func favoritesButtonAction(_ sender: UIButton) {
         if favoriteButton.backgroundColor == UIColor.white { //Insert to User Favorite List
+            print("Favortied")
             DownloadData.insertNameFavoritedList(key: currentID, abbr: stock.abbr, fullName: stock.fullName)
             favoriteButton.backgroundColor = primaryColor; favoriteButton.setTitleColor(UIColor.white, for: .normal)
         }
         else { //Delete to User Favorite List
+            print("Not favorited")
             DownloadData.deleteNameFavoritedList(key: currentID, abbr: stock.abbr)
             favoriteButton.backgroundColor = UIColor.white; favoriteButton.setTitleColor(primaryColor, for: .normal)
         }

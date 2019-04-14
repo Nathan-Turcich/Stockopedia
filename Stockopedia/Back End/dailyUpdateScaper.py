@@ -177,7 +177,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             else:
                 low = "0"
                 high = "0"
-            high.replace(" - ", "")
+            high.replace("- ", "")
 
             # VOLUME
             volume = html.find('span', attrs={"data-reactid": "69"})
