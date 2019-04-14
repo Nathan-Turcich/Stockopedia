@@ -1,7 +1,7 @@
 # Python code to demonstrate table creation and insertions with SQL
 import mysql.connector
 import datetime
-from random import random
+import random
 import time
 
 from requests import get
