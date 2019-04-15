@@ -39,7 +39,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
             currentID = id; currentUsername = name
         }
-        else { currentID = ""; currentUsername = "" }        
+        else { currentID = ""; currentUsername = "" }
         
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
@@ -55,11 +55,14 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         
         if currentID != "" {
             tableView.isHidden = false; tableView.isScrollEnabled = true; tableView.separatorStyle = .singleLine
+            dateLabel.textColor = UIColor.white
             downloadStocks()
         }
         else {
+            activityIndicator.stopAnimating()
             noStockDataLabel.isHidden = false
             tableView.isHidden = true; tableView.isScrollEnabled = false; tableView.separatorStyle = .none
+            dateLabel.textColor = primaryColor
         }
     }
     
@@ -151,6 +154,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             self.tableView.separatorStyle = .singleLine
             self.tableView.allowsSelection = true
             if self.lastIndexPath != nil { self.tableView.scrollToRow(at: self.lastIndexPath, at: .middle, animated: false) }
+            self.dateLabel.text = "Last Updated: " + self.stocksArrayOnly[self.stocksArrayOnly.count - 1].date
         }
     }
     

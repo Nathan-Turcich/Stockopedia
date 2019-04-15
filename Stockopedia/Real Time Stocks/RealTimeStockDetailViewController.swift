@@ -28,24 +28,31 @@ class RealTimeStockDetailViewController: UIViewController {
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var stock:RealTimeStock!
     var closesList:[String]!
+    var favoritedList:[(abbr: String, fullName: String)]!
     
     //MARK: - Views Appearing
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad() { super.viewDidLoad() }
+    
+    override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
     
     //MARK: - Load Data
     func loadData(){
         hideObjects()
-        DownloadData.downloadRealTimeClosesForAbbr(abbr: stock.abbr, completion: { c in
-            DispatchQueue.main.async {
-                self.closesList = c!
-                self.setLoaded()
-            }
+        DownloadData.downloadUserFavoritedList(key: currentID, completion: { favList in
+            DownloadData.downloadRealTimeClosesForAbbr(abbr: self.stock.abbr, completion: { c in
+                DispatchQueue.main.async {
+                    self.favoritedList = favList
+                    self.closesList = c!
+                    self.setLoaded()
+                    self.checkIfStockIsFavorited()
+                }
+            })
         })
     }
     
+    //CAN MAYBE DO A JOIN WHEN WE GET TO SEE IF THERE IS A FAVORITE HERE WE CAN DO A JOIN ON THE FAVORITE TABLE?
     func createGraph() {
 //        var dataEntries: [ChartDataEntry] = []
 //        var i = 1
@@ -64,12 +71,42 @@ class RealTimeStockDetailViewController: UIViewController {
 //        self.graphView.chartDescription?.text = "Price"
     }
     
+    @IBAction func favoritesButtonAction(_ sender: UIButton) {
+        if favoriteButton.backgroundColor == UIColor.white { //Insert to User Favorite List
+            DownloadData.insertNameFavoritedList(key: currentID, abbr: stock.abbr, fullName: stock.fullName)
+            favoriteButton.backgroundColor = primaryColor; favoriteButton.setTitleColor(UIColor.white, for: .normal)
+            favoriteButton.setTitle("Favorited!", for: .normal)
+        }
+        else { //Delete to User Favorite List
+            DownloadData.deleteNameFavoritedList(key: currentID, abbr: stock.abbr)
+            favoriteButton.backgroundColor = UIColor.white; favoriteButton.setTitleColor(primaryColor, for: .normal)
+            favoriteButton.setTitle("Favorite", for: .normal)
+        }
+    }
+    
     //MARK: - Helper Functions
+    fileprivate func checkIfStockIsFavorited() {
+        var isFavorited = false
+        for tuple in favoritedList! {
+            if tuple.abbr == self.stock.abbr {
+                self.favoriteButton.backgroundColor = primaryColor; self.favoriteButton.setTitleColor(UIColor.white, for: .normal)
+                self.favoriteButton.setTitle("Favorited!", for: .normal)
+                isFavorited = true
+                break
+            }
+        }
+        if !isFavorited {
+            self.favoriteButton.backgroundColor = UIColor.white; self.favoriteButton.setTitleColor(primaryColor, for: .normal)
+            self.favoriteButton.setTitle("Favorite", for: .normal)
+        }
+    }
+    
     func setLoaded(){
         self.setLabels()
         self.createGraph()
         self.activityIndicator.stopAnimating()
         self.unHideObjects()
+        self.favoriteButton.backgroundColor = UIColor.white
     }
     
     func setLabels(){
@@ -119,18 +156,5 @@ class RealTimeStockDetailViewController: UIViewController {
         marketCapLabel.isHidden = false
         percentDiffLabel.isHidden = false
         favoriteButton.isHidden = false; favoriteButton.isEnabled = true
-    }
-    
-    @IBAction func favoritesButtonAction(_ sender: UIButton) {
-        if favoriteButton.backgroundColor == UIColor.white { //Insert to User Favorite List
-            print("Favortied")
-            DownloadData.insertNameFavoritedList(key: currentID, abbr: stock.abbr, fullName: stock.fullName)
-            favoriteButton.backgroundColor = primaryColor; favoriteButton.setTitleColor(UIColor.white, for: .normal)
-        }
-        else { //Delete to User Favorite List
-            print("Not favorited")
-            DownloadData.deleteNameFavoritedList(key: currentID, abbr: stock.abbr)
-            favoriteButton.backgroundColor = UIColor.white; favoriteButton.setTitleColor(primaryColor, for: .normal)
-        }
     }
 }
