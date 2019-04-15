@@ -208,7 +208,6 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
             # RANDOM
-            break
             time.sleep(random.uniform(0.0, 2.0))
 
     return realTimeStocks
