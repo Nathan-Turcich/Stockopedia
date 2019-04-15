@@ -110,7 +110,7 @@ def addFullNames(listOfTopics):
 # REAL TIME STOCKS
 def scrapeWebsitesForRealTimeData(listOfURLs):
     realTimeStocks = list()
-
+    counter = 0
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
@@ -206,7 +206,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             print(abbr)
             
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
-
+            counter += 1
+            if counter == 10:
+                break
             # RANDOM
             time.sleep(random.uniform(0.0, 2.0))
 
