@@ -167,7 +167,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                         begin = x
                         amount += 1
                     elif(range_text[x] == ' ' and amount == 1):
-                        end = x
+                        end = x + 1
                         amount += 1
             
                 low = range_text[0: begin]
