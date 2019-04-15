@@ -178,7 +178,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 low = "0"
                 high = "0"
             print(high)
-            high.replace(" - ", "")
+            high.replace("-", "")
             print(high)
 
             # VOLUME
