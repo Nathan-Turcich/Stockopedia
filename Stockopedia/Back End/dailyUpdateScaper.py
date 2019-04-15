@@ -166,7 +166,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                     if(range_text[x] == ' ' and amount == 0):
                         begin = x
                         amount += 1
-                    if(range_text[x] == ' ' and amount == 1):
+                    else if(range_text[x] == ' ' and amount == 1):
                         end = x
                         amount += 1
             
@@ -177,13 +177,6 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             else:
                 low = "0"
                 high = "0"
-            temp = "BLAH"
-            print(type(temp))
-            print(type(high))
-            high = str(high)
-            print(high)
-            high.replace("-", "")
-            print(high)
 
             # VOLUME
             volume = html.find('span', attrs={"data-reactid": "69"})
