@@ -177,6 +177,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             else:
                 low = "0"
                 high = "0"
+            print(type(high))
+            high = str(high)
             print(high)
             high.replace("-", "")
             print(high)
