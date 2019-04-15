@@ -149,14 +149,14 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             open.replace("+", "")
 
             # CLOSE
-            close = html.find('span', attrs={"data-reactid": "41"})
+            close = html.find('td', attrs={"data-test": "PREV_CLOSE-value"})
             if(close is not None):
                 close = close.get_text()
             else:
                 close = "0"
     
             # LOW - HIGH
-            low_high = html.find('td', attrs={"data-reactid": "60"})
+            low_high = html.find('td', attrs={"data-test": "DAYS_RANGE-value"})
             if(low_high is not None):
                 range_text = low_high.get_text()
                 begin = 0
@@ -179,14 +179,14 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 high = "0"
 
             # VOLUME
-            volume = html.find('span', attrs={"data-reactid": "69"})
+            volume = html.find('td', attrs={"data-test": "TD_VOLUME-value"})
             if(volume is not None):
                 volume = volume.get_text()
             else:
                 volume = "0"
 
             # MARKET CAP
-            mrktcap = html.find('span', attrs={"data-reactid": "82"})
+            mrktcap = html.find('td', attrs={"data-test": "MARKET_CAP-value"})
             if(mrktcap is not None):
                 mrktcap = mrktcap.get_text()
             else:
