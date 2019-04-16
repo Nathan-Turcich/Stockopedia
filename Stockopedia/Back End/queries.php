@@ -23,9 +23,11 @@
         AND Favorites.abbr ='$abbr'";
     }
     else if($_GET["query"] === "downloadRealTimeClosesForAbbr"){
+        $abbr = $_GET["abbr"];
+
         $sql = "SELECT close
         FROM RealTimeStocks
-        GROUP BY abbr";
+        WHERE abbr = '$abbr'";
     }
    else if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name, fullname

@@ -49,21 +49,21 @@ class RealTimeStockDetailViewController: UIViewController {
     }
     
     func createGraph() {
-//        var dataEntries: [ChartDataEntry] = []
-//        var i = 1
-//        for _ in self.closesList {
-//            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.closesList[i - 1])!)
-//            dataEntries.append(dataEntry)
-//            i += 1
-//        }
-//
-//        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
-//        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-//        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
-//        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
-//        let chartData = LineChartData(dataSet: chartDataSet)
-//        self.graphView.data = chartData
-//        self.graphView.chartDescription?.text = "Price"
+        var dataEntries: [ChartDataEntry] = []
+        var i = 1
+        for _ in self.closesList {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.closesList[i - 1])!)
+            dataEntries.append(dataEntry)
+            i += 1
+        }
+
+        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
+        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
+        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
+        let chartData = LineChartData(dataSet: chartDataSet)
+        self.graphView.data = chartData
+        self.graphView.chartDescription?.text = "Price"
     }
     
     @IBAction func favoritesButtonAction(_ sender: UIButton) {
@@ -81,13 +81,17 @@ class RealTimeStockDetailViewController: UIViewController {
     
     //MARK: - Helper Functions
     func checkIsFavorited(_ isFavorited: Bool) {
-        if isFavorited {
-            self.favoriteButton.backgroundColor = primaryColor; self.favoriteButton.setTitleColor(UIColor.white, for: .normal)
-            self.favoriteButton.setTitle("Favorited!", for: .normal)
-        }
-        else{
-            self.favoriteButton.backgroundColor = UIColor.white; self.favoriteButton.setTitleColor(primaryColor, for: .normal)
-            self.favoriteButton.setTitle("Favorite", for: .normal)
+        DispatchQueue.main.async {
+            if isFavorited {
+                self.favoriteButton.backgroundColor = primaryColor
+                self.favoriteButton.setTitleColor(.white, for: .normal)
+                self.favoriteButton.setTitle("Favorited!", for: .normal)
+            }
+            else{
+                self.favoriteButton.backgroundColor = UIColor.white
+                self.favoriteButton.setTitleColor(primaryColor, for: .normal)
+                self.favoriteButton.setTitle("Favorite", for: .normal)
+            }
         }
     }
     
@@ -96,7 +100,6 @@ class RealTimeStockDetailViewController: UIViewController {
         self.createGraph()
         self.activityIndicator.stopAnimating()
         self.unHideObjects()
-        self.favoriteButton.backgroundColor = UIColor.white
     }
     
     func setLabels(){

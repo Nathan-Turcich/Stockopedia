@@ -52,7 +52,13 @@ class DownloadData {
                 var isFavorited:Bool = false
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    if (jsonElement["abbr"] as? String) != nil { isFavorited = true }
+                    if (jsonElement["abbr"] as? String) != nil {
+                        print("TRUE")
+                        isFavorited = true
+                    }
+                    else{
+                        print("FALSE")
+                    }
                 }
                 completion(isFavorited)
             }
