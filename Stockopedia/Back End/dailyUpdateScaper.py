@@ -3,6 +3,7 @@ import mysql.connector
 import datetime
 import random
 import time
+from pymouse import PyMouse # Mouse move
 
 from requests import get
 from requests.exceptions import RequestException
@@ -110,6 +111,7 @@ def addFullNames(listOfTopics):
 # REAL TIME STOCKS
 def scrapeWebsitesForRealTimeData(listOfURLs):
     realTimeStocks = list()
+    counter = 0
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
@@ -202,8 +204,19 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             print(abbr)
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
-            # RANDOM SLEEP TO AVOID Being Blacklisted
-            time.sleep(random.uniform(0.0, 2.0))
+            
+            # DIFFERENT FORMS OF WEB SCRAPING TO MINIMIZE GETTING BLACKLISTED ALSO MAKES WEB SCRAPER ROBUST
+            time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
+
+            counter += 1
+            if counter % 7 == 0:
+                time.sleep(60) # Sleep for 60 seconds every 7 website requests
+
+            if counter % 4 = 0:
+                m = PyMouse()
+                m.position() #gets mouse current position coordinates
+                m.move(random.uniform(5.0, 10.0), random.uniform(3.0, 7.0))
+                m.click(random.uniform(0.0, 15.0), random.uniform(11.0, 19.0))
 
     return realTimeStocks
 
