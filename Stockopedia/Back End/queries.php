@@ -11,6 +11,17 @@
         FROM RealTimeStocks
         GROUP BY abbr";
    }
+    else if($_GET["query"] === "downloadFavoritesJoinRealTime"){
+        $key = $_GET["key"];
+        $abbr = $_GET["abbr"];
+        
+        $sql = "SELECT Favorites.abbr
+        FROM Favorites
+        INNER JOIN RealTimeStocks
+        ON Favorites.abbr = RealTimeStocks.abbr
+        WHERE Favorites.ID = '$key'
+        AND Favorites.abbr ='$abbr'";
+    }
     else if($_GET["query"] === "downloadRealTimeClosesForAbbr"){
         $sql = "SELECT close
         FROM RealTimeStocks

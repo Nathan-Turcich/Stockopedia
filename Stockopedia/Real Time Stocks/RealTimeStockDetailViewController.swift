@@ -28,31 +28,26 @@ class RealTimeStockDetailViewController: UIViewController {
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var stock:RealTimeStock!
     var closesList:[String]!
-    var favoritedList:[(abbr: String, fullName: String)]!
     
     //MARK: - Views Appearing
     override func viewDidLoad() { super.viewDidLoad() }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadData()
-    }
+    override func viewWillAppear(_ animated: Bool) { loadData() }
     
     //MARK: - Load Data
     func loadData(){
         hideObjects()
-        DownloadData.downloadUserFavoritedList(key: currentID, completion: { favList in
+        DownloadData.downloadFavoritesJoinRealTime(key: currentID, abbr: stock.abbr, completion: { isFavorited in
+            self.checkIsFavorited(isFavorited)
             DownloadData.downloadRealTimeClosesForAbbr(abbr: self.stock.abbr, completion: { c in
                 DispatchQueue.main.async {
-                    self.favoritedList = favList
                     self.closesList = c!
                     self.setLoaded()
-                    self.checkIfStockIsFavorited()
                 }
             })
         })
     }
     
-    //CAN MAYBE DO A JOIN WHEN WE GET TO SEE IF THERE IS A FAVORITE HERE WE CAN DO A JOIN ON THE FAVORITE TABLE?
     func createGraph() {
 //        var dataEntries: [ChartDataEntry] = []
 //        var i = 1
@@ -85,17 +80,12 @@ class RealTimeStockDetailViewController: UIViewController {
     }
     
     //MARK: - Helper Functions
-    fileprivate func checkIfStockIsFavorited() {
-        var isFavorited = false
-        for tuple in favoritedList! {
-            if tuple.abbr == self.stock.abbr {
-                self.favoriteButton.backgroundColor = primaryColor; self.favoriteButton.setTitleColor(UIColor.white, for: .normal)
-                self.favoriteButton.setTitle("Favorited!", for: .normal)
-                isFavorited = true
-                break
-            }
+    func checkIsFavorited(_ isFavorited: Bool) {
+        if isFavorited {
+            self.favoriteButton.backgroundColor = primaryColor; self.favoriteButton.setTitleColor(UIColor.white, for: .normal)
+            self.favoriteButton.setTitle("Favorited!", for: .normal)
         }
-        if !isFavorited {
+        else{
             self.favoriteButton.backgroundColor = UIColor.white; self.favoriteButton.setTitleColor(primaryColor, for: .normal)
             self.favoriteButton.setTitle("Favorite", for: .normal)
         }

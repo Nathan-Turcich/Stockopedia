@@ -36,6 +36,30 @@ class DownloadData {
         task.resume()
     }
     
+    static func downloadFavoritesJoinRealTime(key: String, abbr: String, completion:@escaping (Bool) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=downloadFavoritesJoinRealTime&key=" + key + "&abbr=" + abbr)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var isFavorited:Bool = false
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    if (jsonElement["abbr"] as? String) != nil { isFavorited = true }
+                }
+                completion(isFavorited)
+            }
+        }
+        task.resume()
+    }
+    
     static func downloadRealTimeClosesForAbbr(abbr: String, completion:@escaping ([String]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadRealTimeClosesForAbbr&abbr=" + abbr)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
