@@ -3,7 +3,6 @@ import mysql.connector
 import datetime
 import random
 import time
-import pyautogui
 
 from requests import get
 from requests.exceptions import RequestException
