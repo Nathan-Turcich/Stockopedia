@@ -212,7 +212,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             if counter % 7 == 0:
                 time.sleep(60) # Sleep for 60 seconds every 7 website requests
 
-            if counter % 4 = 0:
+            if counter % 4 == 0:
                 m = PyMouse()
                 m.position() #gets mouse current position coordinates
                 m.move(random.uniform(5.0, 10.0), random.uniform(3.0, 7.0))
