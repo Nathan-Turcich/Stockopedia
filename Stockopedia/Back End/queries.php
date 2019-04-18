@@ -145,12 +145,8 @@
         $sql = "UPDATE Users
         SET Username='$newUsername'
         WHERE ID = '$key'";
-    }else if($_GET["query"] === "getBuyOrSell"){
-        $abbr = $_GET["abbr"];
-        
-        $sql = "SELECT S.abbr
-                FROM Stockopedia.aboveAvgDiff as S
-        WHERE EXISTS (SELECT abbr FROM Stockopedia.aboveAvgDiff WHERE abbr = '$abbr' AND S.abbr = '$abbr')";
+    }else if($_GET["query"] === "getBuys"){        
+        $sql = "SELECT abbr FROM Stockopedia.aboveAvgDiff";
     }
     
     //Result of queries
