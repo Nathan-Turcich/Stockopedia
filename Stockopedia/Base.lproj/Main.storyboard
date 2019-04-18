@@ -803,8 +803,8 @@ https://icons8.com/ </string>
                                                         <constraint firstAttribute="height" constant="46" id="bKE-4H-g8X"/>
                                                     </constraints>
                                                 </stackView>
-                                                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSg-FB-I8a">
-                                                    <rect key="frame" x="280" y="11" width="80" height="35"/>
+                                                <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSg-FB-I8a">
+                                                    <rect key="frame" x="291" y="4" width="80" height="35"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aC4-Gp-5bT">
                                                             <rect key="frame" x="8" y="7.3333333333333339" width="64" height="20.333333333333329"/>
@@ -815,11 +815,11 @@ https://icons8.com/ </string>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="aC4-Gp-5bT" firstAttribute="leading" secondItem="ZSg-FB-I8a" secondAttribute="leading" constant="8" id="BLA-Mo-9la"/>
-                                                        <constraint firstAttribute="height" constant="35" id="SQY-oT-nH1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="aC4-Gp-5bT" secondAttribute="trailing" constant="8" id="arH-yx-jJV"/>
-                                                        <constraint firstItem="aC4-Gp-5bT" firstAttribute="centerY" secondItem="ZSg-FB-I8a" secondAttribute="centerY" id="bdA-Q0-wHh"/>
-                                                        <constraint firstAttribute="width" constant="80" id="dGz-JL-uu0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aC4-Gp-5bT" secondAttribute="trailing" constant="8" id="49b-Lg-og8"/>
+                                                        <constraint firstAttribute="height" constant="35" id="CNc-zo-I5J"/>
+                                                        <constraint firstItem="aC4-Gp-5bT" firstAttribute="leading" secondItem="ZSg-FB-I8a" secondAttribute="leading" constant="8" id="FSg-ea-xOX"/>
+                                                        <constraint firstItem="aC4-Gp-5bT" firstAttribute="centerY" secondItem="ZSg-FB-I8a" secondAttribute="centerY" id="Ron-Gi-jbc"/>
+                                                        <constraint firstAttribute="width" constant="80" id="pl3-ng-XrC"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -830,7 +830,6 @@ https://icons8.com/ </string>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pWb-kH-j2M" firstAttribute="leading" secondItem="lTg-F3-Lrj" secondAttribute="leading" constant="15" id="2Qa-ll-aRD"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZSg-FB-I8a" secondAttribute="trailing" constant="15" id="2Si-jc-GDE"/>
                                                 <constraint firstItem="pWb-kH-j2M" firstAttribute="top" secondItem="1yn-Y2-4kM" secondAttribute="bottom" constant="4.6666666666666572" id="5Zp-eS-36W"/>
                                                 <constraint firstItem="Af4-Tb-6iw" firstAttribute="leading" secondItem="lTg-F3-Lrj" secondAttribute="leading" constant="15" id="GP9-YY-erR"/>
                                                 <constraint firstAttribute="trailing" secondItem="pWb-kH-j2M" secondAttribute="trailing" constant="15" id="JHS-si-jEh"/>
@@ -839,7 +838,8 @@ https://icons8.com/ </string>
                                                 <constraint firstItem="1yn-Y2-4kM" firstAttribute="leading" secondItem="lTg-F3-Lrj" secondAttribute="leading" constant="15" id="Nv0-AG-CVU"/>
                                                 <constraint firstItem="1yn-Y2-4kM" firstAttribute="top" secondItem="xGH-6z-nTu" secondAttribute="bottom" constant="5.3333333333333357" id="PWd-Qb-jrI"/>
                                                 <constraint firstItem="xGH-6z-nTu" firstAttribute="leading" secondItem="lTg-F3-Lrj" secondAttribute="leading" constant="15" id="SQb-ng-ohq"/>
-                                                <constraint firstItem="ZSg-FB-I8a" firstAttribute="top" secondItem="lTg-F3-Lrj" secondAttribute="top" constant="11" id="X96-aB-SLS"/>
+                                                <constraint firstItem="ZSg-FB-I8a" firstAttribute="top" secondItem="lTg-F3-Lrj" secondAttribute="top" constant="4" id="bcQ-Un-gXC"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZSg-FB-I8a" secondAttribute="trailing" constant="4" id="dvd-Ng-VAE"/>
                                                 <constraint firstAttribute="trailing" secondItem="Af4-Tb-6iw" secondAttribute="trailing" constant="15" id="mqV-fG-D4R"/>
                                                 <constraint firstAttribute="trailing" secondItem="xGH-6z-nTu" secondAttribute="trailing" constant="15" id="t3p-Dj-ci1"/>
                                                 <constraint firstItem="xGH-6z-nTu" firstAttribute="top" secondItem="Af4-Tb-6iw" secondAttribute="bottom" constant="2.6666666666666643" id="t4M-5y-Qy0"/>
