@@ -24,6 +24,8 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     var stocksArrayOnly: [RealTimeStock] = []
     var filteredStocks: [RealTimeStock] = []
     
+    var aboveAverageList: [String] = []
+    
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
@@ -80,6 +82,16 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             cell.closeLabel.text = filteredStocks[indexPath.row].close
             cell.diffLabel.text = filteredStocks[indexPath.row].diff
             cell.arrowImage.image = (filteredStocks[indexPath.row].diff.contains("-") ? UIImage(named: "redArrow") : UIImage(named: "greenArrow"))
+            
+            if aboveAverageList.contains(filteredStocks[indexPath.row].abbr){
+                cell.buyOrSellView.backgroundColor = UIColor.green
+                cell.buyOrSellLabel.text = "BUY"
+            }
+            else{
+                cell.buyOrSellView.backgroundColor = UIColor.red
+                cell.buyOrSellLabel.text = "SELL"
+            }
+            
         }
         else {
             cell.abbrLabel.text = stocks[indexPath.section][indexPath.row].abbr
@@ -88,6 +100,16 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             cell.closeLabel.text = stocks[indexPath.section][indexPath.row].close
             cell.diffLabel.text = stocks[indexPath.section][indexPath.row].diff
             cell.arrowImage.image = (stocks[indexPath.section][indexPath.row].diff.contains("-") ? UIImage(named: "redArrow") : UIImage(named: "greenArrow"))
+            
+            if aboveAverageList.contains(stocks[indexPath.section][indexPath.row].abbr){
+                cell.buyOrSellView.backgroundColor = UIColor.green
+                cell.buyOrSellLabel.text = "BUY"
+            }
+            else{
+                cell.buyOrSellView.backgroundColor = UIColor.red
+                cell.buyOrSellLabel.text = "SELL"
+            }
+            
         }
         return cell
     }
@@ -137,7 +159,14 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     //MARK: - Loading Data
     func downloadStocks(){
         DownloadData.downloadRealTimeData(completion: { s in
-            if let stockArray = s { self.setData(stockArray: stockArray) }
+            if let stockArray = s {
+                DownloadData.isBuy(completion: { buyStocks in
+                    DispatchQueue.main.async {
+                        self.aboveAverageList = buyStocks
+                        self.setData(stockArray: stockArray)
+                    }
+                })
+            }
             else { print("Error getting data") }
         })
     }
@@ -173,7 +202,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     func generateSectionDic(stockArray: [RealTimeStock]){
         for _ in 0...25 {
-            stocks.append([RealTimeStock.init(abbr: "", fullName: "", date: "", open: "", close: "", low: "", high: "", volume: "", mrktCap: "", diff: "")])
+            stocks.append([RealTimeStock.init(abbr: "", fullName: "", date: "", open: "", close: "", low: "", high: "", volume: "", mrktCap: "", diff: "", isBuy: false)])
         }
         
         for stock in stockArray {

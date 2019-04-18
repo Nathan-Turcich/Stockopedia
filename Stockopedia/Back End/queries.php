@@ -145,6 +145,8 @@
         $sql = "UPDATE Users
         SET Username='$newUsername'
         WHERE ID = '$key'";
+    }else if($_GET["query"] === "getBuys"){        
+        $sql = "SELECT abbr FROM Stockopedia.aboveAvgDiff";
     }
     
     //Result of queries

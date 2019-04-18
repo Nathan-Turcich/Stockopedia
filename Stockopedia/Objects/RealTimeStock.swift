@@ -21,8 +21,9 @@ class RealTimeStock {
     var volume:String!
     var mkrtCap:String!
     var diff:String!
+    var isBuy: Bool!
 
-    init(abbr: String, fullName: String, date: String, open: String, close: String, low: String, high: String, volume: String, mrktCap: String, diff: String) {
+    init(abbr: String, fullName: String, date: String, open: String, close: String, low: String, high: String, volume: String, mrktCap: String, diff: String, isBuy: Bool) {
         self.abbr = abbr
         self.fullName = fullName
         self.date = date
@@ -33,5 +34,6 @@ class RealTimeStock {
         self.volume = volume
         self.mkrtCap = mrktCap
         self.diff = diff
+        self.isBuy = isBuy
     }
 }

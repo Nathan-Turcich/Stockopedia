@@ -28,7 +28,7 @@ class DownloadData {
                 var realStocks = [RealTimeStock]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    realStocks.append(RealTimeStock.init(abbr: jsonElement["abbr"]! as! String, fullName: jsonElement["fullname"]! as! String, date: jsonElement["date"]! as! String, open: jsonElement["open"]! as! String, close: jsonElement["close"]! as! String, low: jsonElement["low"]! as! String, high: jsonElement["high"]! as! String, volume: jsonElement["volume"]! as! String, mrktCap: jsonElement["mrktcap"]! as! String, diff: jsonElement["diff"]! as! String))
+                    realStocks.append(RealTimeStock.init(abbr: jsonElement["abbr"]! as! String, fullName: jsonElement["fullname"]! as! String, date: jsonElement["date"]! as! String, open: jsonElement["open"]! as! String, close: jsonElement["close"]! as! String, low: jsonElement["low"]! as! String, high: jsonElement["high"]! as! String, volume: jsonElement["volume"]! as! String, mrktCap: jsonElement["mrktcap"]! as! String, diff: jsonElement["diff"]! as! String, isBuy: false))
                 }
                 completion(realStocks)
             }
@@ -339,6 +339,31 @@ class DownloadData {
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             
+        }
+        task.resume()
+    }
+    
+    static func isBuy(completion:@escaping ([String]) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getBuys")!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var array: [String] = []
+                var jsonElement = NSDictionary()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    if (jsonElement["abbr"] as? String) != nil {
+                        array.append((jsonElement["abbr"] as? String)!)
+                    }
+                }
+                completion(array)
+            }
         }
         task.resume()
     }

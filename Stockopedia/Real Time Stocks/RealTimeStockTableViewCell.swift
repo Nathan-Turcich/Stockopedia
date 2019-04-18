@@ -17,6 +17,8 @@ class RealTimeStockTableViewCell: UITableViewCell {
     @IBOutlet weak var closeLabel: UILabel!
     @IBOutlet weak var diffLabel: UILabel!
     @IBOutlet weak var arrowImage: UIImageView!
+    @IBOutlet var buyOrSellLabel: UILabel!
+    @IBOutlet var buyOrSellView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
