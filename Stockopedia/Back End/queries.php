@@ -150,7 +150,7 @@
         
         $sql = "SELECT S.abbr
                 FROM Stockopedia.aboveAvgDiff as S
-                WHERE EXISTS (SELECT abbr FROM Stockopedia.aboveAvgDiff WHERE abbr = '$abbr' AND S.abbr = '$abbr');"
+        WHERE EXISTS (SELECT abbr FROM Stockopedia.aboveAvgDiff WHERE abbr = '$abbr' AND S.abbr = '$abbr')";
     }
     
     //Result of queries
