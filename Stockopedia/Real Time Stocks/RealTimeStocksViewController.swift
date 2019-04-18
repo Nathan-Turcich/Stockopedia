@@ -80,6 +80,17 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             cell.closeLabel.text = filteredStocks[indexPath.row].close
             cell.diffLabel.text = filteredStocks[indexPath.row].diff
             cell.arrowImage.image = (filteredStocks[indexPath.row].diff.contains("-") ? UIImage(named: "redArrow") : UIImage(named: "greenArrow"))
+            
+            DownloadData.isBuy(abbr: filteredStocks[indexPath.row].abbr, completion: { isBuy in
+                if(isBuy){
+                    cell.buyOrSellView.backgroundColor = UIColor.green
+                    cell.buyOrSellLabel.text = "BUY"
+                }else{
+                    cell.buyOrSellView.backgroundColor = UIColor.red
+                    cell.buyOrSellLabel.text = "SELL"
+                }
+            })
+            
         }
         else {
             cell.abbrLabel.text = stocks[indexPath.section][indexPath.row].abbr
@@ -88,6 +99,17 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             cell.closeLabel.text = stocks[indexPath.section][indexPath.row].close
             cell.diffLabel.text = stocks[indexPath.section][indexPath.row].diff
             cell.arrowImage.image = (stocks[indexPath.section][indexPath.row].diff.contains("-") ? UIImage(named: "redArrow") : UIImage(named: "greenArrow"))
+            
+            DownloadData.isBuy(abbr: stocks[indexPath.section][indexPath.row].abbr, completion: { isBuy in
+                if(isBuy){
+                    cell.buyOrSellView.backgroundColor = UIColor.green
+                    cell.buyOrSellLabel.text = "BUY"
+                }else{
+                    cell.buyOrSellView.backgroundColor = UIColor.red
+                    cell.buyOrSellLabel.text = "SELL"
+                }
+            })
+            
         }
         return cell
     }

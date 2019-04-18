@@ -342,4 +342,31 @@ class DownloadData {
         }
         task.resume()
     }
+    
+    static func isBuy(abbr: String, completion:@escaping (Bool) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getBuyOrSell&abbr=" + abbr)!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(false)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    if (jsonElement["abbr"] as? String) != nil {
+                        completion(true)
+                    }
+                    else{
+                        completion(false)
+                    }
+                }
+            }
+        }
+        task.resume()
+    }
 }
