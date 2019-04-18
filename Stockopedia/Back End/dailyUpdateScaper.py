@@ -208,16 +208,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
 
             counter += 1
-            if counter % 7 == 0:
-                time.sleep(60) # Sleep for 60 seconds every 7 website requests
-
-            if counter % 4 == 0:
-                pyautogui.click(random.uniform(5.0, 10.0), random.uniform(3.0, 7.0))
-                pyautogui.moveTo(random.uniform(0.0, 13.0), random.uniform(11.0, 19.0))
-                
-            if counter % 9 == 0:
-                pyautogui.moveTo(random.uniform(0.0, 50.0), random.uniform(19.0, 19.0))
-                pyautogui.click(random.uniform(5.4, 12.0), random.uniform(2.0, 10.0))
+            if counter % 15 == 0:
+                time.sleep(30) # Sleep for 60 seconds every 7 website requests
 
     return realTimeStocks
 
@@ -230,10 +222,10 @@ def getCurrentTime():
 
 if __name__ == '__main__':
     # TOPICS
-    #listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
-    #insertTopicsToDB(listOfTopics)
-    #deleteNoIndustryNames(deleteNames)
-    #addFullNames(listOfTopics)
+    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+    insertTopicsToDB(listOfTopics)
+    deleteNoIndustryNames(deleteNames)
+    addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
     listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
