@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		683CAABD42ABDF23B027D702 /* Pods_Stockopedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3C37D82D2123FCDC9A7D036 /* Pods_Stockopedia.framework */; };
 		8BC75248D2EF82BE128FB3A0 /* Pods_StockopediaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1B1224E78DA7C039BB358DC /* Pods_StockopediaTests.framework */; };
+		9127F50F226A54B200B13A43 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9127F50E226A54B200B13A43 /* Test.swift */; };
 		91BD1E9E224FF93B00B94DF5 /* dailyUpdateScaper.py in Resources */ = {isa = PBXBuildFile; fileRef = 91BD1E9D224FF93B00B94DF5 /* dailyUpdateScaper.py */; };
 		91BD1EA0224FFBB900B94DF5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BD1E9F224FFBB900B94DF5 /* User.swift */; };
 		91C629202235C6CC00543EF0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6291F2235C6CC00543EF0 /* AppDelegate.swift */; };
@@ -63,6 +64,7 @@
 		15EF4ED06161B0014957C583 /* Pods-StockopediaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaUITests/Pods-StockopediaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1AAA8BBFC50DE6B18CC01BD5 /* Pods-StockopediaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockopediaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StockopediaTests/Pods-StockopediaTests.release.xcconfig"; sourceTree = "<group>"; };
 		8ADAA8E4073253DFD1129AD4 /* Pods-Stockopedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stockopedia.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia.release.xcconfig"; sourceTree = "<group>"; };
+		9127F50E226A54B200B13A43 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		91BD1E9D224FF93B00B94DF5 /* dailyUpdateScaper.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = dailyUpdateScaper.py; sourceTree = "<group>"; };
 		91BD1E9F224FFBB900B94DF5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		91C6291C2235C6CC00543EF0 /* Stockopedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockopedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 		9127F50D226A546E00B13A43 /* Exports */ = {
 			isa = PBXGroup;
 			children = (
+				9127F50E226A54B200B13A43 /* Test.swift */,
 			);
 			path = Exports;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				BC9B6C672249BD5400F54B9E /* RealTimeStocksViewController.swift in Sources */,
 				BC9B6C6E2249C75200F54B9E /* FavoritesTableViewCell.swift in Sources */,
 				BC6C6D7D2252B92800825EDA /* RecommendTableViewCell.swift in Sources */,
+				9127F50F226A54B200B13A43 /* Test.swift in Sources */,
 				91C629522235C88600543EF0 /* Stock.swift in Sources */,
 				BCC4568C224DAF45004E40B2 /* ChangePasswordViewController.swift in Sources */,
 				BCEC74C3226177EB004B2308 /* RealTimeStockDetailViewController.swift in Sources */,
