@@ -5,7 +5,8 @@ import time
 from selenium import webdriver
 
 from sklearn.linear_model import LinearRegression
-from sklearn import preprocessing, cross_validation, svm
+from sklearn import preprocessing, svm
+from sklearn.model_selection import train_test_split
 
 from iexfinance import Stock
 from iexfinance import get_historical_data
@@ -27,10 +28,13 @@ def predictData(stock, days):
     X = preprocessing.scale(X)
     X_prediction = X[-forecast_time:]
 
-    X_train, X_test, Y_train, Y_test = cross_validation.train_test_split(X, Y, test_size = 0.5)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.5)
 
     clf = LinearRegression()
     clf.fit(X_train, Y_train)
     prediction = (clf.predict(X_prediction))
 
     print(prediction)
+
+if __name__ == '__main__':
+    predictData('AAPL', 5)
