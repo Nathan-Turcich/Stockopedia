@@ -8,8 +8,8 @@ from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing, svm
 from sklearn.model_selection import train_test_split
 
-#from iexfinance import Stock
-from iexfinance import get_historical_data
+from iexfinance.stocks import Stock
+from iexfinance.stocks import get_historical_data
 
 def predictData(stock, days):
     start = datetime(2017, 1, 1)
