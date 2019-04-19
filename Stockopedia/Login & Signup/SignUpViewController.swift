@@ -32,11 +32,9 @@ class SignUpViewController: UIViewController {
             DownloadData.initilizeUsersRecomendations(key: currentID)
             UserDefaults.standard.set(currentID, forKey: "currentID")
             UserDefaults.standard.set(currentUsername, forKey: "currentUsername")
-            self.performSegue(withIdentifier: "fromCreateAccountToMain", sender: self)
+            self.dismiss(animated: true, completion: nil)
         }
-        else {
-            Utils.createAlertWith(message: "Fill in all fields.", viewController: self)
-        }
+        else { Utils.createAlertWith(message: "Fill in all fields.", viewController: self) }
     }
     
     @IBAction func cancelButtonAction(_ sender: UIButton) {

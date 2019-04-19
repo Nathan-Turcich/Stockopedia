@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
                     currentUsername = user!.username
                     UserDefaults.standard.set(currentID, forKey: "currentID")
                     UserDefaults.standard.set(currentUsername, forKey: "currentUsername")
-                    self.performSegue(withIdentifier: "fromLoginToMain", sender: self)
+                    self.dismiss(animated: true, completion: nil)
                 })
             }
         })

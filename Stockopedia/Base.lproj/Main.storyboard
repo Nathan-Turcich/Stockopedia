@@ -466,7 +466,7 @@
             </objects>
             <point key="canvasLocation" x="677.60000000000002" y="2062.3152709359606"/>
         </scene>
-        <!--Recommendations View Controller-->
+        <!--Recommendations-->
         <scene sceneID="tdo-cu-b93">
             <objects>
                 <viewController id="CE9-T4-vk8" customClass="RecommendationsViewController" customModule="Stockopedia" customModuleProvider="target" sceneMemberID="viewController">
@@ -672,6 +672,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6mr-Pd-nin"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Recommendations" id="NmU-qx-B7c"/>
                     <connections>
                         <outlet property="button1" destination="qgK-HE-YxH" id="feu-ly-tWR"/>
                         <outlet property="button2" destination="27f-tu-WLl" id="yhb-ZP-AAm"/>
@@ -686,44 +687,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6OG-lg-0rR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1950" y="2028"/>
-        </scene>
-        <!--About View Controller-->
-        <scene sceneID="84Y-FA-RGA">
-            <objects>
-                <viewController id="kfq-8z-CwR" customClass="AboutViewController" customModule="Stockopedia" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bx2-eL-Stj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-SP-IuD">
-                                <rect key="frame" x="29" y="165" width="317" height="106"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text"> Icons are provided by Icons8
-https://icons8.com/ </string>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wg9-kv-PQh">
-                                <rect key="frame" x="34" y="44" width="57" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="doneButtonAction:" destination="kfq-8z-CwR" eventType="touchUpInside" id="geT-z4-BAD"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <viewLayoutGuide key="safeArea" id="taM-Jh-R3T"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xg8-Vp-5Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3318" y="1298"/>
+            <point key="canvasLocation" x="1838" y="1297"/>
         </scene>
         <!--Real Time-->
         <scene sceneID="ggK-iT-I97">
@@ -920,7 +884,7 @@ https://icons8.com/ </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kU-yQ-c7a">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" You are currently not logged in.  Log in to view your profile! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7b-5H-2qN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" You are currently not logged in.  Log in to view your data! " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7b-5H-2qN">
                                         <rect key="frame" x="18" y="292" width="339" height="57.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
@@ -959,9 +923,9 @@ https://icons8.com/ </string>
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-8D-fCz">
-                                        <rect key="frame" x="18" y="593" width="160" height="34"/>
+                                        <rect key="frame" x="18" y="69" width="327" height="96"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title=" Change Username ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -980,42 +944,10 @@ https://icons8.com/ </string>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSv-oV-bPQ">
-                                        <rect key="frame" x="18" y="67" width="337" height="206"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Stock Recommendations to Follow">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="CE9-T4-vk8" kind="show" id="Yqh-Hj-wR4"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKK-L6-Yyv">
-                                        <rect key="frame" x="18" y="298" width="337" height="206"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="Which stocks to Buy &amp; Sell">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="lCQ-im-HuY" kind="show" id="sFW-NN-HHV"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4G-uh-l5q">
-                                        <rect key="frame" x="195" y="593" width="160" height="34"/>
+                                        <rect key="frame" x="18" y="209" width="327" height="96"/>
                                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title=" Change Password ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -1028,23 +960,58 @@ https://icons8.com/ </string>
                                             <segue destination="58C-b4-3kF" kind="show" id="VMe-k1-eOd"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cgc-um-mY4">
+                                        <rect key="frame" x="18" y="349" width="327" height="96"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="logOutButtonAction:" destination="rAY-dv-knj" eventType="touchUpInside" id="bhV-zb-hfn"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EL-EA-GHx">
+                                        <rect key="frame" x="18" y="495" width="327" height="96"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <string key="text"> Icons are provided by Icons8
+https://icons8.com/ </string>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="leading" secondItem="4u2-8D-fCz" secondAttribute="trailing" constant="17" id="72j-kk-gow"/>
-                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="height" secondItem="HSv-oV-bPQ" secondAttribute="height" id="Ahu-1J-QFk"/>
-                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="trailing" secondItem="wfj-dX-U5w" secondAttribute="trailing" id="IlT-XV-Go3"/>
-                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="top" secondItem="wfj-dX-U5w" secondAttribute="bottom" constant="23" id="Nhk-hA-85o"/>
-                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="trailing" secondItem="wfj-dX-U5w" secondAttribute="trailing" id="Nkt-fh-UDh"/>
-                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="bottom" secondItem="4u2-8D-fCz" secondAttribute="bottom" id="Rwl-Dy-zzM"/>
-                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="top" secondItem="4u2-8D-fCz" secondAttribute="top" id="SjB-8f-ve1"/>
-                                    <constraint firstAttribute="bottom" secondItem="4u2-8D-fCz" secondAttribute="bottom" constant="14" id="Tqd-vZ-urA"/>
-                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="width" secondItem="HSv-oV-bPQ" secondAttribute="width" id="VgQ-9r-8fq"/>
-                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="top" secondItem="HSv-oV-bPQ" secondAttribute="bottom" constant="25" id="WHy-GW-g2l"/>
-                                    <constraint firstItem="VKK-L6-Yyv" firstAttribute="leading" secondItem="wfj-dX-U5w" secondAttribute="leading" id="hTh-vW-eVE"/>
-                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="top" secondItem="VKK-L6-Yyv" secondAttribute="bottom" constant="89" id="kaB-hM-fdG"/>
-                                    <constraint firstAttribute="trailing" secondItem="w4G-uh-l5q" secondAttribute="trailing" constant="20" id="nSR-TD-u2t"/>
-                                    <constraint firstItem="HSv-oV-bPQ" firstAttribute="leading" secondItem="wfj-dX-U5w" secondAttribute="leading" id="t8D-7p-Vxc"/>
+                                    <constraint firstItem="Cgc-um-mY4" firstAttribute="height" secondItem="4u2-8D-fCz" secondAttribute="height" id="6kh-mH-AHu"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="width" secondItem="4u2-8D-fCz" secondAttribute="width" id="D3y-vY-luD"/>
+                                    <constraint firstItem="Cgc-um-mY4" firstAttribute="trailing" secondItem="4u2-8D-fCz" secondAttribute="trailing" id="Emd-ev-t8Q"/>
+                                    <constraint firstAttribute="bottom" secondItem="9EL-EA-GHx" secondAttribute="bottom" constant="50" id="FEG-9J-AAP"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="top" secondItem="4u2-8D-fCz" secondAttribute="bottom" constant="44" id="LBk-NI-D5f"/>
+                                    <constraint firstItem="9EL-EA-GHx" firstAttribute="trailing" secondItem="4u2-8D-fCz" secondAttribute="trailing" id="MRS-3f-xXn"/>
+                                    <constraint firstItem="Cgc-um-mY4" firstAttribute="top" secondItem="w4G-uh-l5q" secondAttribute="bottom" constant="44" id="Ptq-YN-BtE"/>
+                                    <constraint firstItem="9EL-EA-GHx" firstAttribute="width" secondItem="4u2-8D-fCz" secondAttribute="width" id="aQZ-Tb-5Pb"/>
+                                    <constraint firstItem="Cgc-um-mY4" firstAttribute="leading" secondItem="4u2-8D-fCz" secondAttribute="leading" id="b3N-El-bxk"/>
+                                    <constraint firstAttribute="trailing" secondItem="4u2-8D-fCz" secondAttribute="trailing" constant="30" id="boT-iE-Sb4"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="leading" secondItem="4u2-8D-fCz" secondAttribute="leading" id="g8b-H6-3Ma"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="trailing" secondItem="4u2-8D-fCz" secondAttribute="trailing" id="gyE-FZ-miN"/>
+                                    <constraint firstItem="4u2-8D-fCz" firstAttribute="top" secondItem="wfj-dX-U5w" secondAttribute="bottom" constant="25" id="sPt-Sk-2oR"/>
+                                    <constraint firstItem="Cgc-um-mY4" firstAttribute="width" secondItem="4u2-8D-fCz" secondAttribute="width" id="t0u-0r-MWM"/>
+                                    <constraint firstItem="9EL-EA-GHx" firstAttribute="height" secondItem="4u2-8D-fCz" secondAttribute="height" id="vLU-pT-njR"/>
+                                    <constraint firstItem="w4G-uh-l5q" firstAttribute="height" secondItem="4u2-8D-fCz" secondAttribute="height" id="vjX-EF-fnm"/>
+                                    <constraint firstItem="9EL-EA-GHx" firstAttribute="leading" secondItem="4u2-8D-fCz" secondAttribute="leading" id="xbV-mD-qRZ"/>
+                                    <constraint firstItem="9EL-EA-GHx" firstAttribute="top" secondItem="Cgc-um-mY4" secondAttribute="bottom" constant="50" id="zZC-Ez-wtn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1065,34 +1032,20 @@ https://icons8.com/ </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jVq-t1-w87"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Profile" id="9Pv-wR-WRi">
-                        <barButtonItem key="leftBarButtonItem" image="questionMark" id="RCY-rY-Zis">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="kfq-8z-CwR" kind="presentation" id="ORD-Ff-TTC"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Log out" id="qBB-N5-jjA">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="logOutButtonAction:" destination="rAY-dv-knj" id="roK-AZ-IEk"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="My Profile" id="9Pv-wR-WRi"/>
                     <connections>
-                        <outlet property="buySellButton" destination="VKK-L6-Yyv" id="dxy-Q7-HSs"/>
+                        <outlet property="aboutLabel" destination="9EL-EA-GHx" id="Eze-r6-dC7"/>
                         <outlet property="changePasswordButton" destination="w4G-uh-l5q" id="FiI-PS-sg4"/>
                         <outlet property="changeUserNameButton" destination="4u2-8D-fCz" id="cSU-Nk-ipj"/>
+                        <outlet property="logOutButton" destination="Cgc-um-mY4" id="hpJ-Yt-j78"/>
                         <outlet property="loginView" destination="6kU-yQ-c7a" id="A2J-7G-NCy"/>
-                        <outlet property="logoutButton" destination="qBB-N5-jjA" id="AFZ-Xu-oqK"/>
                         <outlet property="profileView" destination="uEc-KZ-F5B" id="i70-L8-Jra"/>
-                        <outlet property="recommendationsButton" destination="HSv-oV-bPQ" id="Nxg-5z-4Ns"/>
                         <outlet property="usernameLabel" destination="wfj-dX-U5w" id="VLJ-bV-tju"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fL8-vJ-uFK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949.5999999999999" y="1297.536945812808"/>
+            <point key="canvasLocation" x="2592.8000000000002" y="1296.7980295566504"/>
         </scene>
         <!--Favorties-->
         <scene sceneID="L5V-d0-GXK">
@@ -1299,12 +1252,11 @@ https://icons8.com/ </string>
                         <outlet property="loginButton" destination="zG2-qK-TN0" id="FkE-m6-6te"/>
                         <outlet property="passwordTextField" destination="iGa-92-Jeq" id="y5V-hH-KY2"/>
                         <outlet property="usernameTextField" destination="e2w-fF-K6u" id="aK1-yH-IIm"/>
-                        <segue destination="z1N-r8-UGy" kind="show" identifier="fromLoginToMain" id="5V4-Ew-0Kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CbU-Xr-GrO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2640.8000000000002" y="586.69950738916259"/>
+            <point key="canvasLocation" x="3294" y="1296"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="iI3-3l-DKv">
@@ -1368,7 +1320,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nT6-vB-BoD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3318" y="2028"/>
+            <point key="canvasLocation" x="3097" y="2050"/>
         </scene>
         <!--Change Username View Controller-->
         <scene sceneID="8M2-wh-w9S">
@@ -1378,10 +1330,13 @@ https://icons8.com/ </string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" Enter New Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-eh-8n0">
-                                <rect key="frame" x="70" y="99" width="258" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" Enter New Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gHo-eh-8n0">
+                                <rect key="frame" x="58" y="119" width="258" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="cLU-GJ-a3I"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="oi4-kw-5j9"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1394,6 +1349,12 @@ https://icons8.com/ </string>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="gHo-eh-8n0" firstAttribute="top" secondItem="xo7-gb-NSq" secondAttribute="top" constant="31" id="66P-Ow-h2b"/>
+                            <constraint firstItem="xo7-gb-NSq" firstAttribute="trailing" secondItem="gHo-eh-8n0" secondAttribute="trailing" constant="59" id="aaP-vb-M8B"/>
+                            <constraint firstItem="gHo-eh-8n0" firstAttribute="leading" secondItem="xo7-gb-NSq" secondAttribute="leading" constant="58" id="ejo-EE-ZSe"/>
+                            <constraint firstItem="xo7-gb-NSq" firstAttribute="bottom" secondItem="gHo-eh-8n0" secondAttribute="bottom" constant="566" id="jOZ-Ic-l1C"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xo7-gb-NSq"/>
                     </view>
                     <connections>
@@ -1402,7 +1363,7 @@ https://icons8.com/ </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b9b-rC-riL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3318" y="2693"/>
+            <point key="canvasLocation" x="2390" y="2050"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="2oL-4g-UPc">
@@ -1514,12 +1475,11 @@ https://icons8.com/ </string>
                         <outlet property="passwordTextField" destination="07E-Vf-cdB" id="ydq-Vn-fCK"/>
                         <outlet property="signUpButton" destination="RXT-5h-BpN" id="bYm-kQ-WF0"/>
                         <outlet property="usernameTextField" destination="5kl-fW-3Be" id="Fov-F0-NiD"/>
-                        <segue destination="z1N-r8-UGy" kind="show" identifier="fromCreateAccountToMain" id="4HG-5Y-Uir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F6t-TO-uXA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3317.5999999999999" y="585.96059113300498"/>
+            <point key="canvasLocation" x="4001" y="1297"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="F4b-RI-3ho">
@@ -1534,7 +1494,8 @@ https://icons8.com/ </string>
                         <segue destination="3tT-Uj-ltP" kind="relationship" relationship="viewControllers" id="9eh-0q-4o9"/>
                         <segue destination="0aY-Qi-gxs" kind="relationship" relationship="viewControllers" id="Vbf-ir-cvB"/>
                         <segue destination="aEU-3J-Bb7" kind="relationship" relationship="viewControllers" id="pQK-oe-bOM"/>
-                        <segue destination="3Mz-Zu-GJA" kind="relationship" relationship="viewControllers" id="S83-PH-Ozr"/>
+                        <segue destination="ux8-5U-Aor" kind="relationship" relationship="viewControllers" id="MQw-6h-WbY"/>
+                        <segue destination="5s7-wX-ooD" kind="relationship" relationship="viewControllers" id="Qcb-mn-kaX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bgc-qK-dw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1579,25 +1540,6 @@ https://icons8.com/ </string>
             </objects>
             <point key="canvasLocation" x="402" y="597"/>
         </scene>
-        <!--Profile-->
-        <scene sceneID="HSQ-LM-Uzk">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Mz-Zu-GJA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profileImage" id="M3D-Sv-i5J"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d2C-2k-fWV">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rAY-dv-knj" kind="relationship" relationship="rootViewController" id="WK9-87-P2g"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Je-0R-fyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1950" y="596"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="e2l-y6-wBq">
             <objects>
@@ -1617,32 +1559,54 @@ https://icons8.com/ </string>
             </objects>
             <point key="canvasLocation" x="1124" y="596"/>
         </scene>
-        <!--Buy Sell View Controller-->
-        <scene sceneID="jKs-1H-7oU">
+        <!--Recommendation-->
+        <scene sceneID="2Vu-Tb-ACb">
             <objects>
-                <viewController id="lCQ-im-HuY" customClass="BuySellViewController" customModule="Stockopedia" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ro1-C0-dF3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="TOf-EK-dju"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AtX-L7-w62" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ux8-5U-Aor" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Recommendation" image="RecommendationsIcon" id="aIB-Qv-ysD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bJj-kD-tO4">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CE9-T4-vk8" kind="relationship" relationship="rootViewController" id="iJg-0t-9vV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yEf-th-NyF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2641" y="2028"/>
+            <point key="canvasLocation" x="1839" y="596"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="5e6-Ur-NkS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5s7-wX-ooD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileImage" id="daA-6x-FPX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mjI-ia-48h">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="rAY-dv-knj" kind="relationship" relationship="rootViewController" id="ch7-8N-wk9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kWI-xN-QTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2594" y="596"/>
         </scene>
     </scenes>
     <resources>
+        <image name="RecommendationsIcon" width="18" height="18"/>
         <image name="favoritesNotFilled" width="50" height="50"/>
         <image name="profileImage" width="25" height="25"/>
-        <image name="questionMark" width="25" height="25"/>
         <image name="realTimeStockImage" width="25" height="25"/>
         <image name="redArrow" width="50" height="50"/>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5V4-Ew-0Kd"/>
         <segue reference="2GC-oe-rqf"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.53333333329999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

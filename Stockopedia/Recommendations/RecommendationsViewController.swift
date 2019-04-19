@@ -32,6 +32,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
+        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         self.navigationItem.title = "Stock Recommendations"
         setButtons()
         loadData()
