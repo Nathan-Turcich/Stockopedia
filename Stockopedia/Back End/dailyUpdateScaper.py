@@ -97,7 +97,7 @@ def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
     for (abbr, fullName, topic) in listOfTopics:
         cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, fullName, topic.replace("&", "and")))
-        print(abbr)
+        print("HI2: " + abbr)
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
