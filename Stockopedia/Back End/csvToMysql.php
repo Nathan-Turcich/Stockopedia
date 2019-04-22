@@ -14,10 +14,10 @@ $ext = substr($filename, strrpos($filename, "."), (strlen($filename) - strrpos($
 //we check,file must be have csv extention
 {
   $file = fopen($filename, "r");
-         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
-         {
+         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE) {
             $sql = "INSERT into Stocks(date, open, high, low, close, volume, name) values('$emapData[0]', '$emapData[1]', '$emapData[2]', '$emapData[3]', '$emapData[4]', '$emapData[5]', '$emapData[6]')";
             mysql_query($sql);
+             echo $emapData[6];
          }
          fclose($file);
          echo "CSV File has been successfully Imported.";
