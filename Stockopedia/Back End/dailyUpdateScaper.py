@@ -79,6 +79,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 fullName = company_text[end + 2: len(company_text)]
                 topic = sector[1].get_text()
                 topics.append((abbr, fullName, topic))
+                print(abbr)
             else:
                 begin = 0
                 for x in range(len(url)):
