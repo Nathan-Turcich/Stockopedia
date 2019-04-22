@@ -116,7 +116,6 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
-            
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             
             abbr = ""
@@ -201,7 +200,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             else:
                 diff = "0"
 
-            print(abbr)
+            print("YO" + abbr)
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
 
             
