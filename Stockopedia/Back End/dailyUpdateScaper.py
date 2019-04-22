@@ -125,7 +125,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 for x in range(len(company_text)):
                     if(company_text[x] == '-'):
                         end = x
-                abbr = company_text[0:end - 1]
+                            abbr = company_text[0:end - 1]
                 fullName = company_text[end + 2:len(company_text)]
             else:
                 fullname = "None"
