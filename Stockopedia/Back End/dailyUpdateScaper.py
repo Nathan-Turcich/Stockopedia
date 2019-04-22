@@ -76,18 +76,16 @@ def scrapeWebsitesForTopics(listOfURLs):
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 print(company)
                 company_text = company.get_text()
-                begin = 0
                 end = 0
                 for x in range(len(company_text)):
-                    if(company_text[x] == '('):
-                        begin = x + 1
-                    if(company_text[x] == ')'):
+                    if(company_text[x] == ' '):
                         end = x
-                        abbr = company_text[begin:end]
-                
+        
+                abbr = company_text[0: end]
+                fullName = company_text[end + 3: len(company_text)]
+        
                 topic = sector[1].get_text()
                 
-                fullName = company_text[:begin - 2]
                 topics.append((abbr, fullName, topic))
                 print("HI: " + abbr)
             else:
