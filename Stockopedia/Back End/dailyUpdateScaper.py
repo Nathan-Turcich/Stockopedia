@@ -82,7 +82,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 
                 fullName = company_text[:begin - 2]
                 topics.append((abbr, fullName, topic))
-                print(abbr)
+                print("HI: " + abbr)
             else:
                 begin = 0
                 for x in range(len(url)):
