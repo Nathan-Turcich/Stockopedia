@@ -79,7 +79,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 end = 0
                 for x in range(len(company_text)):
                     print("X" + str(x))
-                    if(company_text[x] == ' '):
+                    if(company_text[x] == '-'):
                         end = x
         
                 abbr = company_text[0: end]
