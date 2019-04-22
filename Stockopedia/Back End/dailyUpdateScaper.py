@@ -186,16 +186,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 mrktcap = "0"
 
             # DIFF
-            diff = html.find('span', class_='Trsdu(0.3s) Fw(500) Pstart(10px) Fz(24px) C($dataGreen)')
-            if(diff is not None):
-                diff = diff.get_text()
-                diff = diff[diff.find("(")+1:diff.find(")")]
-            else:
-                diff = "0"
+            diff = (close - open) / close
 
-            print("YO" + abbr)
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
-
             
             # DIFFERENT FORMS OF WEB SCRAPING TO MINIMIZE GETTING BLACKLISTED ALSO MAKES WEB SCRAPER ROBUST
             time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
