@@ -82,8 +82,8 @@ def scrapeWebsitesForTopics(listOfURLs):
                     if(company_text[x] == '-'):
                         end = x
         
-                abbr = company_text[0: end]
-                fullName = company_text[end + 3: len(company_text)]
+                abbr = company_text[0: end - 1]
+                fullName = company_text[end + 2: len(company_text)]
         
                 topic = sector[1].get_text()
                 
