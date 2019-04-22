@@ -72,6 +72,7 @@ def scrapeWebsitesForTopics(listOfURLs):
             print("LEngth: " + str(len(sector)))
             print("SECGTOR:  " + str(sector[1].get_text()))
             print("company: " + company.get_text())
+            abbr = ""
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 company_text = company.get_text()
                 begin = 0
