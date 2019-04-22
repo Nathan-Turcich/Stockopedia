@@ -66,6 +66,7 @@ def scrapeWebsitesForTopics(listOfURLs):
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
+            print(html)
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
             if len(sector) > 1 and sector[1] is not None and company is not None:
