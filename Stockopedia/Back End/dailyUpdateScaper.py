@@ -68,7 +68,7 @@ def scrapeWebsitesForTopics(listOfURLs):
             html = BeautifulSoup(rawHTML, 'html.parser')
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', class_ = 'D(ib) Fz(18px)')
-            print("LEngth: " + len(sector))
+            print("LEngth: " + str(len(sector)))
             print("SECGTOR:  " + sector[1])
             print("company: " + company.get_text())
             if len(sector) > 1 and sector[1] is not None and company is not None:
