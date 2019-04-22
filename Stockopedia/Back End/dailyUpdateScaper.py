@@ -78,6 +78,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 company_text = company.get_text()
                 end = 0
                 for x in range(len(company_text)):
+                    print("X" + x)
                     if(company_text[x] == ' '):
                         end = x
         
