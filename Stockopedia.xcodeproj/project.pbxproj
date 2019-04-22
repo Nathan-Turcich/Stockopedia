@@ -19,6 +19,7 @@
 		91C6294F2235C80B00543EF0 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C6294E2235C80B00543EF0 /* StockTableViewCell.swift */; };
 		91C629522235C88600543EF0 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C629512235C88600543EF0 /* Stock.swift */; };
 		91D5221522690EF400942D46 /* Prediction.py in Resources */ = {isa = PBXBuildFile; fileRef = 91D5221422690EF300942D46 /* Prediction.py */; };
+		BC3F3BED226E4BF800CD00CF /* all_stocks_5yr.csv in Resources */ = {isa = PBXBuildFile; fileRef = BC3F3BEC226E4BF800CD00CF /* all_stocks_5yr.csv */; };
 		BC6C6D7B2252B46800825EDA /* ChangeUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */; };
 		BC6C6D7D2252B92800825EDA /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6C6D7C2252B92800825EDA /* RecommendTableViewCell.swift */; };
 		BC9B6C5C2249BC1F00F54B9E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */; };
@@ -79,6 +80,7 @@
 		91C629512235C88600543EF0 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		91D5221422690EF300942D46 /* Prediction.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = Prediction.py; sourceTree = "<group>"; };
 		A778774150391D7F3AED8F03 /* Pods-Stockopedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stockopedia.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stockopedia/Pods-Stockopedia.debug.xcconfig"; sourceTree = "<group>"; };
+		BC3F3BEC226E4BF800CD00CF /* all_stocks_5yr.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = all_stocks_5yr.csv; sourceTree = "<group>"; };
 		BC6C6D7A2252B46800825EDA /* ChangeUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeUsernameViewController.swift; sourceTree = "<group>"; };
 		BC6C6D7C2252B92800825EDA /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		BC9B6C5B2249BC1F00F54B9E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				9127F50D226A546E00B13A43 /* Exports */,
+				BC3F3BEC226E4BF800CD00CF /* all_stocks_5yr.csv */,
 				BCB29D6B2238522A0007DC22 /* csvToMysql.php */,
 				BCB29D6C2238522A0007DC22 /* queries.php */,
 				91BD1E9D224FF93B00B94DF5 /* dailyUpdateScaper.py */,
@@ -396,6 +399,7 @@
 			files = (
 				91D5221522690EF400942D46 /* Prediction.py in Resources */,
 				BCB29D6E2238522A0007DC22 /* queries.php in Resources */,
+				BC3F3BED226E4BF800CD00CF /* all_stocks_5yr.csv in Resources */,
 				91C6292A2235C6D100543EF0 /* LaunchScreen.storyboard in Resources */,
 				BCB29D6D2238522A0007DC22 /* csvToMysql.php in Resources */,
 				91C629272235C6D100543EF0 /* Assets.xcassets in Resources */,
