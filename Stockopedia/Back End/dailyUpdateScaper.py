@@ -36,6 +36,7 @@ def getURLs(isRealTime):
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
         print(url)
+    if name == 'AAPL':
         break
     return urls
 
@@ -68,7 +69,9 @@ def scrapeWebsitesForTopics(listOfURLs):
             html = BeautifulSoup(rawHTML, 'html.parser')
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', attrs={"data-reactid": "7"})
-            abbr = ""
+            print("LEngth: " + str(len(sector)))
+            print("SECGTOR:  " + str(sector[1].get_text()))
+            print("company: " + company.get_text())
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 company_text = company.get_text()
                 begin = 0
@@ -81,6 +84,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                         abbr = company_text[begin:end]
                 
                 topic = sector[1].get_text()
+                
                 fullName = company_text[:begin - 2]
                 topics.append((abbr, fullName, topic))
                 print("HI: " + abbr)
