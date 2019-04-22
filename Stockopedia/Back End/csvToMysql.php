@@ -8,7 +8,7 @@ $conn = mysql_connect($host,$db_user,$db_password) or die (mysql_error());
 mysql_select_db($db) or die (mysql_error());
 
 
-echo $filename = "stock_data/all_stocks_5yr.csv";
+echo $filename = "all_stocks_5yr.csv";
 $ext = substr($filename, strrpos($filename, "."), (strlen($filename) - strrpos($filename, ".")));
 
 //we check,file must be have csv extention
