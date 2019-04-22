@@ -19,6 +19,7 @@ cursor = myDB.cursor()
 
 # URL FUNCTIONS
 def getURLs(isRealTime):
+    print("HERE")
     cursor.execute("SELECT name FROM Stocks GROUP BY name;")
     data = cursor.fetchall()
     stockNames = []
@@ -35,6 +36,7 @@ def getURLs(isRealTime):
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
+	print(url)
     return urls
 
 def getURLData(url):
@@ -90,7 +92,6 @@ def scrapeWebsitesForTopics(listOfURLs):
                 symbol = url[begin:]
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
-
     return topics, deleteNames
 
 def insertTopicsToDB(listOfTopics):
