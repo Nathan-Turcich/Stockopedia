@@ -35,7 +35,6 @@ def getURLs(isRealTime):
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
-        print(url)
         if name == 'AAPL':
             break
     return urls
@@ -70,7 +69,6 @@ def scrapeWebsitesForTopics(listOfURLs):
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', attrs={"data-reactid": "7"})
             if len(sector) > 1 and sector[1] is not None and company is not None:
-                print(company)
                 company_text = company.get_text()
                 end = 0
                 for x in range(len(company_text)):
