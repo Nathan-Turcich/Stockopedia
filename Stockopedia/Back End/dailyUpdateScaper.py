@@ -69,26 +69,18 @@ def scrapeWebsitesForTopics(listOfURLs):
             html = BeautifulSoup(rawHTML, 'html.parser')
             sector = html.findAll('span',class_='Fw(600)')
             company = html.find('h1', attrs={"data-reactid": "7"})
-            print("LEngth: " + str(len(sector)))
-            print("SECGTOR:  " + str(sector[1].get_text()))
-            print("company: " + company.get_text())
-            abbr = ""
             if len(sector) > 1 and sector[1] is not None and company is not None:
                 print(company)
                 company_text = company.get_text()
                 end = 0
                 for x in range(len(company_text)):
-                    print("X" + str(x))
                     if(company_text[x] == '-'):
                         end = x
         
                 abbr = company_text[0: end - 1]
                 fullName = company_text[end + 2: len(company_text)]
-        
                 topic = sector[1].get_text()
-                
                 topics.append((abbr, fullName, topic))
-                print("HI: " + abbr)
             else:
                 begin = 0
                 for x in range(len(url)):
@@ -103,7 +95,6 @@ def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
     for (abbr, fullName, topic) in listOfTopics:
         cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, fullName, topic.replace("&", "and")))
-        print("HI2: " + abbr)
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
@@ -122,24 +113,20 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
         rawHTML = getURLData(url)
         if rawHTML != None:
             html = BeautifulSoup(rawHTML, 'html.parser')
-            company = html.find('h1', class_ = 'D(ib) Fz(18px)')
-            
+            company = html.find('h1', attrs={"data-reactid": "7"})
+
             abbr = ""
             fullName = ""
             
             # ABBR - FULLNAME
             if(company is not None):
                 company_text = company.get_text()
-                begin = 0
                 end = 0
                 for x in range(len(company_text)):
-                    if(company_text[x] == '('):
-                        begin = x + 1
-                    if(company_text[x] == ')'):
+                    if(company_text[x] == '-'):
                         end = x
-                        abbr = company_text[begin:end]
-                
-                fullName = company_text[:begin - 2]
+                abbr = company_text[0:end - 1]
+                fullName = company_text[end + 2:len(company_text)]
             else:
                 fullname = "None"
                 abbr = "None"
@@ -230,7 +217,7 @@ if __name__ == '__main__':
     # TOPICS
     listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
     insertTopicsToDB(listOfTopics)
-    #deleteNoIndustryNames(deleteNames)
+    deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
