@@ -72,6 +72,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 for x in range(len(company_text)):
                     if(company_text[x] == '-'):
                         end = x
+                        break
         
                 abbr = company_text[0: end - 1]
                 fullName = company_text[end + 2: len(company_text)]
@@ -91,6 +92,7 @@ def scrapeWebsitesForTopics(listOfURLs):
 def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
     for (abbr, fullName, topic) in listOfTopics:
+        print("Inserting: " + abbr)
         cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, fullName, topic.replace("&", "and")))
 
 def deleteNoIndustryNames(deleteNames):
@@ -123,6 +125,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                     if(company_text[x] == '-'):
                         end = x
                         abbr = company_text[0:end - 1]
+                        break
+                            
                 fullName = company_text[end + 2:len(company_text)]
             else:
                 fullname = "None"
@@ -210,6 +214,7 @@ if __name__ == '__main__':
     # TOPICS
     print("Starting Script")
     listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+    
     print("Inserting Topics Into DB")
     insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
@@ -218,6 +223,7 @@ if __name__ == '__main__':
     # REAL TIME STOCKS
     print("Starting RealTime")
     listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
+    
     print("Inserting RealTimeStocks Into DB")
     insertRealTimeStocksToDB(listOfRealTimeStocks)
 
