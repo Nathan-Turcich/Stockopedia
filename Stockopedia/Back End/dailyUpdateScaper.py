@@ -186,7 +186,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 mrktcap = "0"
 
             # DIFF
-            diff = html.find('span', class_='rsdu(0.3s) Fw(500) Pstart(10px) Fz(24px) C($dataGreen)')
+            diff = html.find('span', class_='Trsdu(0.3s) Fw(500) Pstart(10px) Fz(24px) C($dataGreen)')
             if(diff is not None):
                 diff = diff.get_text()
                 diff = diff[diff.find("(")+1:diff.find(")")]
