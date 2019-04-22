@@ -183,7 +183,9 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 mrktcap = "0"
 
             # DIFF
-            diff = (float(open) - float(close)) / float(open) * 100
+            commaFreeOpen = float(open.replace(",", ""))
+            commaFreeClose = float(close.replace(",", ""))
+            diff = (commaFreeOpen - commaFreeClose) / commaFreeOpen * 100
             diff = round(diff, 2)
 
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
@@ -206,13 +208,17 @@ def getCurrentTime():
 
 if __name__ == '__main__':
     # TOPICS
+    print("Starting Script")
     listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+    print("Inserting Topics Into DB")
     insertTopicsToDB(listOfTopics)
     deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
+    print("Starting RealTime")
     listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
+    print("Inserting RealTimeStocks Into DB")
     insertRealTimeStocksToDB(listOfRealTimeStocks)
 
     myDB.commit()
