@@ -35,6 +35,7 @@ def getURLs(isRealTime):
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
+        print(url)
         break
     return urls
 
