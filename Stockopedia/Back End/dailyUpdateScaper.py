@@ -36,7 +36,7 @@ def getURLs(isRealTime):
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
-        print(url)
+        break
     return urls
 
 def getURLData(url):
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     # TOPICS
     listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
     insertTopicsToDB(listOfTopics)
-    deleteNoIndustryNames(deleteNames)
+    #deleteNoIndustryNames(deleteNames)
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
