@@ -35,8 +35,6 @@ def getURLs(isRealTime):
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
-        if name == 'AAPL':
-            break
     return urls
 
 def getURLData(url):
@@ -196,7 +194,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             counter += 1
             if counter % 15 == 0:
                 time.sleep(30) # Sleep for 60 seconds every 7 website requests
-
+            print(abbr)
     return realTimeStocks
 
 def insertRealTimeStocksToDB(listOfRealTimeStocks):
