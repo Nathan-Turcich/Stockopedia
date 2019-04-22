@@ -95,9 +95,9 @@ def scrapeWebsitesForTopics(listOfURLs):
 
 def insertTopicsToDB(listOfTopics):
     cursor.execute("DELETE FROM Topics")
-    print("YO")
     for (abbr, fullName, topic) in listOfTopics:
         cursor.execute("INSERT INTO Topics (abbr, fullname, topic) VALUES (%s, %s, %s)", (abbr, fullName, topic.replace("&", "and")))
+        print(abbr)
 
 def deleteNoIndustryNames(deleteNames):
     for name in deleteNames:
