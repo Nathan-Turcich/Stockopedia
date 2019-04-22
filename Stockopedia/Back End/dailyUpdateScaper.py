@@ -186,7 +186,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
                 mrktcap = "0"
 
             # DIFF
-            diff = (float(close) - float(open)) / float(close)
+            diff = (float(open) - float(close)) / float(open) * 100
 
             realTimeStocks.append((abbr, fullName, date, open, close, low, high, volume, mrktcap, diff))
             
