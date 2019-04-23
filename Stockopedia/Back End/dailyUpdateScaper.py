@@ -119,7 +119,7 @@ def scrapeWebsitesForTopics(listOfURLs):
 
             # Random sleeps to decrease chance of being black listed with webscraper
             randomizeLoop(counter)
-            counter += 1
+        counter += 1
 
     return topics, deleteNames
 
@@ -269,7 +269,7 @@ def randomizeLoop(counter):
     # DIFFERENT FORMS OF WEB SCRAPING TO MINIMIZE GETTING BLACKLISTED ALSO MAKES WEB SCRAPER ROBUST
 
     # Sleep 7 seconds every request
-    time.sleep(7.0)
+    time.sleep(5.0)
     
     time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
     
@@ -327,7 +327,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
 
             # Random sleeps to decrease chance of being black listed with webscraper
             randomizeLoop()
-            counter += 1
+        counter += 1
     
     return realTimeStocks
 
