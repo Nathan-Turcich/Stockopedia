@@ -88,6 +88,7 @@ def isGoodResponse(resp):
 def scrapeWebsitesForTopics(listOfURLs):
     topics = list()
     deleteNames = list()
+    counter = 0
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
@@ -117,7 +118,8 @@ def scrapeWebsitesForTopics(listOfURLs):
                 print("DELETE: " + symbol)
 
             # Random sleeps to decrease chance of being black listed with webscraper
-            randomizeLoop()
+            randomizeLoop(counter)
+            counter += 1
 
     return topics, deleteNames
 
@@ -271,7 +273,6 @@ def randomizeLoop(counter):
     
     time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
     
-    counter += 1
     if counter % 15 == 0:
         time.sleep(30) # Sleep for 60 seconds every 7 website requests
 
@@ -326,6 +327,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
 
             # Random sleeps to decrease chance of being black listed with webscraper
             randomizeLoop()
+            counter += 1
     
     return realTimeStocks
 
