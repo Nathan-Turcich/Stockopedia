@@ -12,6 +12,7 @@ from iexfinance.stocks import Stock
 from iexfinance.stocks import get_historical_data
 
 def predictData(stock, days):
+    
     start = datetime(2017, 1, 1)
     end = datetime.now()
 
@@ -37,4 +38,11 @@ def predictData(stock, days):
     print(prediction)
 
 if __name__ == '__main__':
-    predictData('AAPL', 5)
+    
+    #company = 'AAPL'
+    #timeframe = 7
+    #if request.method == 'GET':
+    #    company = request.GET.get('company')
+    #    timeframe = request.GET.get('timeframe')
+    
+    predictData('AAPL', 30)
