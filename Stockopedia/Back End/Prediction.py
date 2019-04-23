@@ -25,9 +25,12 @@ def predictData(stock, days):
     forecast_time = int(days)
 
     X = np.array(df.drop(['prediction'], 1))
-    Y = np.array(df['prediction'])
     X = preprocessing.scale(X)
     X_prediction = X[-forecast_time:]
+    X = X[:-forecast_time]
+    
+    Y = np.array(df['prediction'])
+    Y = Y[:-forecast_time]
 
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.5)
 
@@ -45,4 +48,4 @@ if __name__ == '__main__':
     #    company = request.GET.get('company')
     #    timeframe = request.GET.get('timeframe')
     
-    predictData('AAPL', 60)
+    predictData('AAPL', 30)
