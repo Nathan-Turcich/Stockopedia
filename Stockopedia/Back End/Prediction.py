@@ -32,7 +32,7 @@ def predictData(stock, days):
     Y = np.array(df['prediction'])
     Y = Y[:-forecast_time]
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2)
 
     clf = LinearRegression()
     clf.fit(X_train, Y_train)
@@ -50,4 +50,4 @@ if __name__ == '__main__':
     #    company = request.GET.get('company')
     #    timeframe = request.GET.get('timeframe')
     
-    predictData('AAPL', 30)
+    predictData('AMZN', 7)
