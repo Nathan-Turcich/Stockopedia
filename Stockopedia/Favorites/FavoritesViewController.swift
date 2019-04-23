@@ -12,8 +12,9 @@ import UIKit
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     //MARK: - Variables
+    @IBOutlet weak var logInView: UIView!
+    @IBOutlet weak var loggedInView: UIView!
     @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var noFavoritesLabel: UILabel!
     let activityIndicator = UIActivityIndicatorView()
     var favoritesList: [(abbr: String, fullName: String)] = []
     
@@ -24,18 +25,15 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
-            currentID = id; currentUsername = name
-        }
-        else { currentID = ""; currentUsername = "" }
-        loadingStarted()
         if currentID != "" {
+            logInView.isHidden = true; logInView.isUserInteractionEnabled = false
+            loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
             downloadFavortiesList()
+            loadingStarted()
         }
         else {
-            noFavoritesLabel.isHidden = false
-            self.tableView.isHidden = true
-            self.activityIndicator.stopAnimating()
+            logInView.isHidden = false; logInView.isUserInteractionEnabled = true
+            loggedInView.isHidden = true; loggedInView.isUserInteractionEnabled = false
         }
     }
     
@@ -47,8 +45,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                 if list?.count == 0 {
                     DispatchQueue.main.async {
                         self.tableView.isHidden = true
-                        self.noFavoritesLabel.isHidden = false
-                        self.noFavoritesLabel.text = "You have no favorited stocks"
                         self.activityIndicator.stopAnimating()
                     }
                 }
@@ -60,7 +56,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.tableView.allowsSelection = true
                         self.tableView.separatorStyle = .singleLine
                         self.tableView.isScrollEnabled = true
-                        self.noFavoritesLabel.isHidden = true
                         self.activityIndicator.stopAnimating()
                     }
                 }
@@ -103,7 +98,6 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.isScrollEnabled = false
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
-        self.noFavoritesLabel.isHidden = true
     }
     
     //MARK: - Navigation

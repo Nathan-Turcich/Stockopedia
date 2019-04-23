@@ -11,6 +11,8 @@ import UIKit
 class RecommendationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource, RecommendTableViewCellDelegate {
     
     //MARK: - Variables
+    @IBOutlet weak var logInView: UIView!
+    @IBOutlet weak var loggedInView: UIView!
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var catagory1Label: UILabel!
     @IBOutlet weak var catagory2Label: UILabel!
@@ -19,7 +21,6 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var button2: UIButton!
     @IBOutlet weak var button3: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var noRecommendationsLabel: UILabel!
     let activityIndicator = UIActivityIndicatorView()
     
     var recommendedStocks:[(abbr: String, fullName: String)] = []
@@ -28,15 +29,24 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     var currentPickerRow:Int = 0
     var favoritesList: [String] = []
 
-    
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         self.navigationItem.title = "Stock Recommendations"
         setButtons()
-        loadData()
-        tableView.allowsSelection = false
+        Utils.getPossibleUser()
+        
+        if currentID != "" {
+            logInView.isHidden = true; logInView.isUserInteractionEnabled = false
+            loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
+            loadData()
+        }
+        else {
+            logInView.isHidden = false; logInView.isUserInteractionEnabled = true
+            loggedInView.isHidden = true; loggedInView.isUserInteractionEnabled = false
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -160,18 +170,15 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         activityIndicator.style = .gray
         activityIndicator.isHidden = false
         view.addSubview(activityIndicator)
-        noRecommendationsLabel.isHidden = true
     }
     
     func setTableViewEnabled(){
         if self.recommendedStocks.count == 0 {
-            self.noRecommendationsLabel.isHidden = false
             self.tableView.isHidden = true
             self.tableView.separatorStyle = .none
             self.tableView.isScrollEnabled = false
         }
         else {
-            self.noRecommendationsLabel.isHidden = true
             self.tableView.isHidden = false
             self.tableView.separatorStyle = .singleLine
             self.tableView.isScrollEnabled = true

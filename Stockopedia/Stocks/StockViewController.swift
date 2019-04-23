@@ -11,6 +11,8 @@ import UIKit
 class StockViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, StockCellDelegate {
     
     //MARK: - Variables
+    @IBOutlet weak var logInView: UIView!
+    @IBOutlet weak var loggedInView: UIView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
@@ -29,29 +31,23 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //MARK: - Views Appearing
     override func viewDidLoad() {
         super.viewDidLoad()
-        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         lastIndexPath = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
-            currentID = id; currentUsername = name
-        }
-        else { currentID = ""; currentUsername = "" }
-        
-        for i in 0...25 { sectionDic[i] = 0 }
-        generateSectionHeader()
-        if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
-        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
-        searchBar.barTintColor = primaryColor
+        Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+        setUpStuff()
+        if currentID != "" {
+            logInView.isHidden = true; logInView.isUserInteractionEnabled = false
+            loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
+            downloadStocks()
+            loadingStarted()
 
-        loadingStarted()
-        downloadStocks()
-        tableView.sectionIndexColor = primaryColor
-        tableView.reloadData()
-        searchBarCancelButton.isEnabled = false
-        searchBarCancelButton.title = ""
+        }
+        else { //Give option to log in
+            logInView.isHidden = false; logInView.isUserInteractionEnabled = true
+            loggedInView.isHidden = true; loggedInView.isUserInteractionEnabled = false
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
@@ -289,6 +285,18 @@ class StockViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func generateSectionHeader(){
         sectionHeader = [0 : "A", 1 : "B", 2: "C", 3 : "D", 4 : "E", 5 : "F", 6 : "G", 7 : "H", 8 : "I", 9 : "J", 10 : "K", 11 : "L", 12 : "M", 13 : "N", 14 : "O", 15 : "P", 16 : "Q", 17 : "R", 18 : "S", 19 : "T", 20 : "U", 21 : "V", 22 : "W", 23 : "X", 24 : "Y", 25 : "Z"]
+    }
+    
+    func setUpStuff(){
+        for i in 0...25 { sectionDic[i] = 0 }
+        generateSectionHeader()
+        if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
+        tableView.setContentOffset(CGPoint(x: 0, y: searchBar.frame.height), animated: true)
+        tableView.sectionIndexColor = primaryColor
+        tableView.reloadData()
+        searchBar.barTintColor = primaryColor
+        searchBarCancelButton.isEnabled = false
+        searchBarCancelButton.title = ""
     }
     
     //MARK: - Navigation

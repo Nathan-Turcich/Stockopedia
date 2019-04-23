@@ -11,8 +11,8 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     //MARK: - Variables
-    @IBOutlet var loginView: UIView!
-    @IBOutlet var profileView: UIView!
+    @IBOutlet weak var logInView: UIView!
+    @IBOutlet weak var loggedInView: UIView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var changeUserNameButton: UIButton!
     @IBOutlet weak var changePasswordButton: UIButton!
@@ -27,11 +27,17 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
-            currentID = id; currentUsername = name
+        Utils.getPossibleUser()
+        
+        if currentID != "" {
+            logInView.isHidden = true; logInView.isUserInteractionEnabled = false
+            loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
+            usernameLabel.text = "Logged in as: " + currentUsername
         }
-        else { currentID = ""; currentUsername = "" }
-        setView()
+        else {
+            logInView.isHidden = false; logInView.isUserInteractionEnabled = true
+            loggedInView.isHidden = true; loggedInView.isUserInteractionEnabled = false
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
@@ -43,7 +49,6 @@ class ProfileViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "currentUsername")
             currentID = ""
             currentUsername = ""
-            self.setView()
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
@@ -52,17 +57,6 @@ class ProfileViewController: UIViewController {
     }
     
     //MARK: - Helper Functions
-    func setView(){
-        if(currentID == "") {
-            loginView.isHidden = false
-            profileView.isHidden = true
-        }else{
-            usernameLabel.text = "Logged in as: " + currentUsername
-            loginView.isHidden = true
-            profileView.isHidden = false
-        }
-    }
-    
     func setUpButtons() {
         changeUserNameButton.layer.borderColor = UIColor.black.cgColor; changeUserNameButton.layer.borderWidth = 1
         changePasswordButton.layer.borderColor = UIColor.black.cgColor; changePasswordButton.layer.borderWidth = 1

@@ -11,6 +11,13 @@ import Foundation
 
 class Utils {
     
+    static func getPossibleUser(){
+        if let id = UserDefaults.standard.string(forKey: "currentID"), let name = UserDefaults.standard.string(forKey: "currentUsername"){
+            currentID = id; currentUsername = name
+        }
+        else { currentID = ""; currentUsername = "" }
+    }
+    
     static func setBars(navBar: UINavigationBar, tabBar: UITabBar){
         navBar.isTranslucent = false
         navBar.barTintColor = primaryColor
