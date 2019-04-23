@@ -13,14 +13,14 @@ from iexfinance.stocks import get_historical_data
 
 def predictData(stock, days):
     
-    start = datetime(2019, 1, 1)
+    start = datetime(2016, 1, 1)
     end = datetime.now()
 
     df = get_historical_data(stock, start = start, end = end, output_format = 'pandas')
 
     csv_name = ('Exports/' + stock + '_Export.csv')
     df.to_csv(csv_name)
-    #df.dropna(inplace = True)
+    df.dropna(inplace = True)
     forecast_time = int(days)
     df['prediction'] = df['close'].shift(-forecast_time)
 
