@@ -13,7 +13,7 @@ from iexfinance.stocks import get_historical_data
 
 def predictData(stock, days):
     
-    start = datetime(2016, 1, 1)
+    start = datetime(2015, 1, 1)
     end = datetime.now()
 
     df = get_historical_data(stock, start = start, end = end, output_format = 'pandas')
