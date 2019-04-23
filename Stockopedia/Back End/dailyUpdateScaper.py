@@ -116,9 +116,9 @@ def scrapeWebsitesForTopics(listOfURLs):
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
 
-                # Random sleeps to decrease chance of being black listed with webscraper
-                randomizeLoop()
-                
+            # Random sleeps to decrease chance of being black listed with webscraper
+            randomizeLoop()
+
     return topics, deleteNames
 
 # Function that will insert all the topics previously collected and put them in to the DB
