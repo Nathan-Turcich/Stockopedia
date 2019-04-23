@@ -354,7 +354,7 @@ if __name__ == '__main__':
     print("Deleting names with invalid names")
     deleteNoIndustryNames(deleteNames)
     
-    print("Adding Fullnames to Stocks)
+    print("Adding Fullnames to Stocks")
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
