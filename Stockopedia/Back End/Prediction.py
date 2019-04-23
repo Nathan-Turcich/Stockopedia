@@ -32,7 +32,7 @@ def predictData(stock, days):
     Y = np.array(df['prediction'])
     Y = Y[:-forecast_time]
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.8)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.1)
 
     clf = LinearRegression()
     clf.fit(X_train, Y_train)
