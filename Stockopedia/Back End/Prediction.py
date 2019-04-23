@@ -20,9 +20,9 @@ def predictData(stock, days):
 
     csv_name = ('Exports/' + stock + '_Export.csv')
     df.to_csv(csv_name)
-    df['prediction'] = df['close'].shift(-30)
-    df.dropna(inplace = True)
+    #df.dropna(inplace = True)
     forecast_time = int(days)
+    df['prediction'] = df['close'].shift(-forecast_time)
 
     X = np.array(df.drop(['prediction'], 1))
     X = preprocessing.scale(X)
@@ -32,12 +32,14 @@ def predictData(stock, days):
     Y = np.array(df['prediction'])
     Y = Y[:-forecast_time]
 
-    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.5)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2)
 
     clf = LinearRegression()
     clf.fit(X_train, Y_train)
+    confidence = clf.score(X_test, Y_test)
     prediction = (clf.predict(X_prediction))
 
+    print(confidence)
     print(prediction)
 
 if __name__ == '__main__':
