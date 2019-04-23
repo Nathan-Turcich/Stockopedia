@@ -101,7 +101,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                     if(company_text[x] == '-'):
                         end = x
                         break
-        
+            
                 abbr = company_text[0: end - 1]
                 fullName = company_text[end + 2: len(company_text)]
                 topic = sector[1].get_text()
@@ -235,7 +235,7 @@ def getVolumeRT(html):
 # Function that takes the HTML and parses it to find the market cap
 # Returns the market cap as a string
 def getMRKTCap(html):
-mrktcap = html.find('td', attrs={"data-test": "MARKET_CAP-value"})
+    mrktcap = html.find('td', attrs={"data-test": "MARKET_CAP-value"})
     if(mrktcap is not None):
         mrktcap = mrktcap.get_text()
     else:
