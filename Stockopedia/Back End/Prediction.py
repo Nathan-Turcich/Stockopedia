@@ -20,7 +20,7 @@ def predictData(stock, days):
 
     csv_name = ('Exports/' + stock + '_Export.csv')
     df.to_csv(csv_name)
-    df['prediction'] = df['close'].shift(1)
+    df['prediction'] = df['close'].shift(-30)
     df.dropna(inplace = True)
     forecast_time = int(days)
 
