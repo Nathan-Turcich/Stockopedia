@@ -45,4 +45,4 @@ if __name__ == '__main__':
     #    company = request.GET.get('company')
     #    timeframe = request.GET.get('timeframe')
     
-    predictData('AAPL', 30)
+    predictData('AAPL', 60)
