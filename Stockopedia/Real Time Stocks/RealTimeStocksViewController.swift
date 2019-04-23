@@ -20,13 +20,10 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
-
     var stocks = [[RealTimeStock]]()
     var stocksArrayOnly: [RealTimeStock] = []
     var filteredStocks: [RealTimeStock] = []
-    
     var aboveAverageList: [String] = []
-    
     var sectionDic:[Int : Int] = [:]
     var sectionHeader:[Int : String] = [:]
     var isSearching:Bool = false
