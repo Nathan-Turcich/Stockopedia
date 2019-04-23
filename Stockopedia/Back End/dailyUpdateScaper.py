@@ -88,6 +88,7 @@ def isGoodResponse(resp):
 def scrapeWebsitesForTopics(listOfURLs):
     topics = list()
     deleteNames = list()
+    counter = 0
     for url in listOfURLs:
         rawHTML = getURLData(url)
         if rawHTML != None:
@@ -101,7 +102,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                     if(company_text[x] == '-'):
                         end = x
                         break
-        
+            
                 abbr = company_text[0: end - 1]
                 fullName = company_text[end + 2: len(company_text)]
                 topic = sector[1].get_text()
@@ -115,6 +116,11 @@ def scrapeWebsitesForTopics(listOfURLs):
                 symbol = url[begin:]
                 deleteNames.append(symbol)
                 print("DELETE: " + symbol)
+
+            # Random sleeps to decrease chance of being black listed with webscraper
+            randomizeLoop(counter)
+        counter += 1
+
     return topics, deleteNames
 
 # Function that will insert all the topics previously collected and put them in to the DB
@@ -235,7 +241,7 @@ def getVolumeRT(html):
 # Function that takes the HTML and parses it to find the market cap
 # Returns the market cap as a string
 def getMRKTCap(html):
-mrktcap = html.find('td', attrs={"data-test": "MARKET_CAP-value"})
+    mrktcap = html.find('td', attrs={"data-test": "MARKET_CAP-value"})
     if(mrktcap is not None):
         mrktcap = mrktcap.get_text()
     else:
@@ -263,11 +269,10 @@ def randomizeLoop(counter):
     # DIFFERENT FORMS OF WEB SCRAPING TO MINIMIZE GETTING BLACKLISTED ALSO MAKES WEB SCRAPER ROBUST
 
     # Sleep 7 seconds every request
-    time.sleep(7.0)
+    time.sleep(5.0)
     
     time.sleep(random.uniform(0.0, 2.0)) # Random Sleep
     
-    counter += 1
     if counter % 15 == 0:
         time.sleep(30) # Sleep for 60 seconds every 7 website requests
 
@@ -322,6 +327,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
 
             # Random sleeps to decrease chance of being black listed with webscraper
             randomizeLoop()
+        counter += 1
     
     return realTimeStocks
 
@@ -354,7 +360,7 @@ if __name__ == '__main__':
     print("Deleting names with invalid names")
     deleteNoIndustryNames(deleteNames)
     
-    print("Adding Fullnames to Stocks)
+    print("Adding Fullnames to Stocks")
     addFullNames(listOfTopics)
 
     # REAL TIME STOCKS
