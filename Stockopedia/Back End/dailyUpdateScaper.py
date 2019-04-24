@@ -64,8 +64,6 @@ def getURLs(isRealTime):
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
         counter += 1
-        if counter == 5:
-            break
     return urls
 
 # Function that gets the URL data

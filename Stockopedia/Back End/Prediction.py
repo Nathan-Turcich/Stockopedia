@@ -74,6 +74,9 @@ if __name__ == '__main__':
         stockNames.append(d[0])
     
     print("Creating Predictions")
+
+    # Delete Predictions everynight to get new predictions
+    cursor.execute("DELETE FROM Predictions")
     
     #Create 30-day predictions for every stock
     for company in stockNames:
