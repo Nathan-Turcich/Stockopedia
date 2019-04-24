@@ -31,7 +31,6 @@
     }
     else if($_GET["query"] === "getPrediction"){
         $abbr = $_GET["abbr"];
-        $length = $_GET["length"];
 
         $sql = "SELECT *
         FROM Predictions

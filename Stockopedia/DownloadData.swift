@@ -90,8 +90,8 @@ class DownloadData {
         task.resume()
     }
     
-    static func getPrediction(abbr: String, length: String, completion:@escaping ([String]?) -> Void) {
-        let url: URL = URL(string: urlPath + "?query=getPrediction&abbr=" + abbr + "&length=" + length)!
+    static func getPrediction(abbr: String, length: Int, completion:@escaping ([String]?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getPrediction&abbr=" + abbr)!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
         let task = defaultSession.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -104,7 +104,7 @@ class DownloadData {
                 
                 var jsonElement = NSDictionary()
                 var predictions = [String]()
-                for i in 0 ..< jsonResult.count {
+                for i in 0 ..< length - 1 {
                     jsonElement = jsonResult[i] as! NSDictionary
                     predictions.append(jsonElement["day" + String(i + 1)]! as! String)
                 }

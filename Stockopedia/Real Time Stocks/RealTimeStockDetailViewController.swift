@@ -29,6 +29,7 @@ class RealTimeStockDetailViewController: UIViewController {
     var predictButton = UIBarButtonItem()
     var stock:RealTimeStock!
     var closesList:[String]!
+    var predictions:[String]!
     
     //MARK: - Views Appearing
     override func viewDidLoad() {
@@ -87,7 +88,10 @@ class RealTimeStockDetailViewController: UIViewController {
     @objc func makePrediction(){
         let alert = UIAlertController(title: "How long in the future would you like to predict this stock?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "1 day", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 1, completion: { p in
+                self.predictions = p
+                print(self.predictions)
+            })
         }))
         
         alert.addAction(UIAlertAction(title: "2 days", style: .default , handler:{ (UIAlertAction) in
