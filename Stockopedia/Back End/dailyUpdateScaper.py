@@ -122,7 +122,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 print("DELETE: " + symbol)
 
             # Random sleeps to decrease chance of being black listed with webscraper
-            randomizeLoop(counter)
+        randomizeLoop(counter)
         counter += 1
 
     return topics, deleteNames
@@ -332,7 +332,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             print(abbr)
 
             # Random sleeps to decrease chance of being black listed with webscraper
-            randomizeLoop()
+        randomizeLoop(counter)
         counter += 1
     
     return realTimeStocks
