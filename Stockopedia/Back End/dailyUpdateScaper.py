@@ -298,6 +298,8 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             abbrFullname = html.find('h1', attrs={"data-reactid": "7"})
             
             # Get ABBR - FULLNAME
+            abbr = ""
+            fullname = ""
             if(abbrFullname is not None):
                 abbr, fullname = getAbbrFullnameRT(abbrFullname.get_text())
             else:
