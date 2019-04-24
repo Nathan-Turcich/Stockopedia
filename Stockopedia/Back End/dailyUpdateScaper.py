@@ -55,12 +55,16 @@ def getURLs(isRealTime):
 
     # Creates all the URLs and returns them
     urls = []
+    counter = 0
     for name in stockNames:
         if isRealTime:
             url = baseURL + name + "?p=" + name
         else:
             url = baseURL + name + "/profile?p=" + name
     	urls.append(url)
+        counter += 1
+        if counter == 5:
+            break
     return urls
 
 # Function that gets the URL data
