@@ -12,6 +12,13 @@ from sklearn.model_selection import train_test_split
 from iexfinance.stocks import Stock
 from iexfinance.stocks import get_historical_data
 
+import mysql.connector
+
+host = "sp19-cs411-49.cs.illinois.edu"
+user = "root"
+password = "374sucks"
+database = 'Stockopedia'
+
 def predictData(stock, days):
     
     start = datetime(2014, 1, 1)
@@ -45,11 +52,26 @@ def predictData(stock, days):
 
 if __name__ == '__main__':
     
-    company = 'AAPL'
-    timeframe = 7
-    if request.method == 'GET':
-        company = request.GET.get('company')
-        timeframe = request.GET.get('timeframe')
+    # Connects to the DB
+    # Creates a cursor object to apply SQL Queries
+    myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
+    cursor = myDB.cursor()
     
-    encoded = json.dumps(predictData(company, timeframe))
-    print(encoded)
+    print("Retrieving Stocks")
+    
+    #Get all company abbreviations from database
+    cursor.execute("SELECT name FROM Stocks GROUP BY name;")
+    data = cursor.fetchall()
+    
+    # Create an array with unique Stocks
+    stockNames = []
+    for d in data:
+        stockNames.append(d[0])
+    
+    print("Creating Predictions")
+    
+    #Create 30-day predictions for every stock
+    for company in stockNames:
+        print(company)
+        predictions = predictData(company, 30)
+        cursor.execute("INSERT INTO Predictions (abbr, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28, day29, day30) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (company, predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0]))
