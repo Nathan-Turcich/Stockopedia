@@ -50,7 +50,7 @@ def predictData(stock, days):
     #print(confidence)
     #print(prediction)
 
-    return prediction
+    return prediction.astype(np.string)
 
 if __name__ == '__main__':
     
