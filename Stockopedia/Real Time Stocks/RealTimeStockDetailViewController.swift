@@ -26,11 +26,15 @@ class RealTimeStockDetailViewController: UIViewController {
     @IBOutlet weak var percentDiffLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var predictButton = UIBarButtonItem()
     var stock:RealTimeStock!
     var closesList:[String]!
     
     //MARK: - Views Appearing
-    override func viewDidLoad() { super.viewDidLoad() }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setUpPredictButton()
+    }
     
     override func viewWillAppear(_ animated: Bool) { loadData() }
     
@@ -79,7 +83,32 @@ class RealTimeStockDetailViewController: UIViewController {
         }
     }
     
+    //MARK: - Prediction
+    @objc func makePrediction(){
+        let alert = UIAlertController(title: "How long in the future would you like to predict this stock?", message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "0 minutes", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "5 minutes", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "10 minutes", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction) in }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     //MARK: - Helper Functions
+    fileprivate func setUpPredictButton() {
+        predictButton = UIBarButtonItem(title: "Predict", style: .plain, target: self, action: #selector(makePrediction))
+        predictButton.tintColor = UIColor.white
+        navigationItem.rightBarButtonItem = predictButton
+    }
+    
     func checkIsFavorited(_ isFavorited: Bool) {
         DispatchQueue.main.async {
             if isFavorited {

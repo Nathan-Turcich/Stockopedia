@@ -49,6 +49,7 @@ class ProfileViewController: UIViewController {
             UserDefaults.standard.removeObject(forKey: "currentUsername")
             currentID = ""
             currentUsername = ""
+            self.viewWillAppear(true)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
             alert.dismiss(animated: true, completion: nil)
