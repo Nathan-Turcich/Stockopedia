@@ -88,33 +88,25 @@ class RealTimeStockDetailViewController: UIViewController {
     @objc func makePrediction(){
         let alert = UIAlertController(title: "How long in the future would you like to predict this stock?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "1 day", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 1, completion: { p in
-                self.predictions = p
-                print(self.predictions)
-            })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 1, completion: { p in self.predictions = p })
         }))
-        
         alert.addAction(UIAlertAction(title: "2 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 2, completion: { p in
-                self.predictions = p
-                print(self.predictions)
-            })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 2, completion: { p in self.predictions = p })
         }))
-        
         alert.addAction(UIAlertAction(title: "3 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 3, completion: { p in self.predictions = p })
         }))
         alert.addAction(UIAlertAction(title: "5 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 5, completion: { p in self.predictions = p })
         }))
         alert.addAction(UIAlertAction(title: "7 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 7, completion: { p in self.predictions = p })
         }))
         alert.addAction(UIAlertAction(title: "15 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 15, completion: { p in self.predictions = p })
         }))
         alert.addAction(UIAlertAction(title: "30 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 30, completion: { p in self.predictions = p })
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction) in }))
