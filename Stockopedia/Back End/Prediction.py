@@ -49,8 +49,11 @@ def predictData(stock, days):
 
     #print(confidence)
     #print(prediction)
+    strPrediction = []
+    for p in prediction:
+	strPrediction.append(str(p))
 
-    return prediction.astype(np.string)
+    return strPrediction
 
 if __name__ == '__main__':
     
