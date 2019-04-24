@@ -3,6 +3,7 @@ from datetime import datetime
 import smtplib
 import time
 from selenium import webdriver
+import json
 
 from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing, svm
@@ -44,10 +45,11 @@ def predictData(stock, days):
 
 if __name__ == '__main__':
     
-    #company = 'AAPL'
-    #timeframe = 7
-    #if request.method == 'GET':
-    #    company = request.GET.get('company')
-    #    timeframe = request.GET.get('timeframe')
+    company = 'AAPL'
+    timeframe = 7
+    if request.method == 'GET':
+        company = request.GET.get('company')
+        timeframe = request.GET.get('timeframe')
     
-    predictData('CDW', 7)
+    encoded = json.dumps(predictData(company, timeframe))
+    print(encoded)
