@@ -51,7 +51,7 @@ def predictData(stock, days):
     #print(prediction)
     strPrediction = []
     for p in prediction:
-	strPrediction.append(str(p))
+        strPrediction.append(str(p))
 
     return strPrediction
 
