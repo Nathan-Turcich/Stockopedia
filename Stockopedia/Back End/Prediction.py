@@ -73,6 +73,11 @@ if __name__ == '__main__':
     #Create 30-day predictions for every stock
     for company in stockNames:
         if(company == "AAPL"):
-            print(company)
+            
             predictions = predictData('AAPL', 30)
+            print(company)
+            print(type(company))
+            print(type('AAPL'))
+            print(type(predictions))
+
             cursor.execute("INSERT INTO Predictions (abbr, day1, day2, day3, day4, day5, day6, day7, day8, day9, day10, day11, day12, day13, day14, day15, day16, day17, day18, day19, day20, day21, day22, day23, day24, day25, day26, day27, day28, day29, day30) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (company, predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0], predictions[0]))
