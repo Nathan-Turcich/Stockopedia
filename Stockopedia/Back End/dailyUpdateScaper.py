@@ -122,7 +122,7 @@ def scrapeWebsitesForTopics(listOfURLs):
                 print("DELETE: " + symbol)
 
             # Random sleeps to decrease chance of being black listed with webscraper
-            randomizeLoop(counter)
+        randomizeLoop(counter)
         counter += 1
 
     return topics, deleteNames
@@ -298,10 +298,12 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             abbrFullname = html.find('h1', attrs={"data-reactid": "7"})
             
             # Get ABBR - FULLNAME
+            abbr = ""
+            fullName = ""
             if(abbrFullname is not None):
-                abbr, fullname = getAbbrFullnameRT(abbrFullname.get_text())
+                abbr, fullName = getAbbrFullnameRT(abbrFullname.get_text())
             else:
-                fullname = "None"
+                fullName = "None"
                 abbr = "None"
             
             # Get the current time through the use of the helper function getCurrentTime()
@@ -330,7 +332,7 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             print(abbr)
 
             # Random sleeps to decrease chance of being black listed with webscraper
-            randomizeLoop()
+        randomizeLoop(counter)
         counter += 1
     
     return realTimeStocks
