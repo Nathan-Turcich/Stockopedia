@@ -299,11 +299,11 @@ def scrapeWebsitesForRealTimeData(listOfURLs):
             
             # Get ABBR - FULLNAME
             abbr = ""
-            fullname = ""
+            fullName = ""
             if(abbrFullname is not None):
-                abbr, fullname = getAbbrFullnameRT(abbrFullname.get_text())
+                abbr, fullName = getAbbrFullnameRT(abbrFullname.get_text())
             else:
-                fullname = "None"
+                fullName = "None"
                 abbr = "None"
             
             # Get the current time through the use of the helper function getCurrentTime()
