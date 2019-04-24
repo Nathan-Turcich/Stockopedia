@@ -377,10 +377,10 @@ if __name__ == '__main__':
     print("Inserting RealTimeStocks Into DB")
     insertRealTimeStocksToDB(listOfRealTimeStocks)
     
-    #########################################################################################################################################
-    # RUNNING PREDICTION SCRIPT NOW
-    exec(open("Prediction.py").read())
-    
     # Commits all changes to maria DB and the closes the connection
     myDB.commit()
     myDB.close()
+    
+    #########################################################################################################################################
+    # RUNNING PREDICTION SCRIPT NOW
+    exec(open("Prediction.py").read())

@@ -86,15 +86,27 @@ class RealTimeStockDetailViewController: UIViewController {
     //MARK: - Prediction
     @objc func makePrediction(){
         let alert = UIAlertController(title: "How long in the future would you like to predict this stock?", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "0 minutes", style: .default , handler:{ (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "1 day", style: .default , handler:{ (UIAlertAction) in
             
         }))
         
-        alert.addAction(UIAlertAction(title: "5 minutes", style: .default , handler:{ (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "2 days", style: .default , handler:{ (UIAlertAction) in
             
         }))
         
-        alert.addAction(UIAlertAction(title: "10 minutes", style: .default , handler:{ (UIAlertAction) in
+        alert.addAction(UIAlertAction(title: "3 days", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "5 days", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "7 days", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "15 days", style: .default , handler:{ (UIAlertAction) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: "30 days", style: .default , handler:{ (UIAlertAction) in
             
         }))
         

@@ -29,6 +29,15 @@
         FROM RealTimeStocks
         WHERE abbr = '$abbr'";
     }
+    else if($_GET["query"] === "getPrediction"){
+        $abbr = $_GET["abbr"];
+        $length = $_GET["length"];
+
+        $sql = "SELECT *
+        FROM Predictions
+        WHERE abbr = '$abbr'";
+    }
+    
    else if($_GET["query"] === "downloadUniqueStockNames"){
         $sql = "SELECT name, fullname
         FROM Stocks
