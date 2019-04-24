@@ -95,7 +95,10 @@ class RealTimeStockDetailViewController: UIViewController {
         }))
         
         alert.addAction(UIAlertAction(title: "2 days", style: .default , handler:{ (UIAlertAction) in
-            
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 2, completion: { p in
+                self.predictions = p
+                print(self.predictions)
+            })
         }))
         
         alert.addAction(UIAlertAction(title: "3 days", style: .default , handler:{ (UIAlertAction) in

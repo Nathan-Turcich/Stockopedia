@@ -104,8 +104,8 @@ class DownloadData {
                 
                 var jsonElement = NSDictionary()
                 var predictions = [String]()
-                for i in 0 ..< length - 1 {
-                    jsonElement = jsonResult[i] as! NSDictionary
+                for i in 0 ..< length {
+                    jsonElement = jsonResult[0] as! NSDictionary
                     predictions.append(jsonElement["day" + String(i + 1)]! as! String)
                 }
                 completion(predictions)
