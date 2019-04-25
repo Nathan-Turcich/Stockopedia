@@ -381,4 +381,4 @@ if __name__ == '__main__':
     
     #########################################################################################################################################
     # RUNNING PREDICTION SCRIPT NOW
-    exec(open("Prediction.py").read())
+    exec(open("/home/Stockopedia/Stockopedia/Back\ End/Prediction.py").read())
