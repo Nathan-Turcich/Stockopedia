@@ -54,6 +54,9 @@ class RealTimeStockDetailViewController: UIViewController {
     }
     
     func createGraph() {
+        
+        var chartData:LineChartData!
+        
         var dataEntries: [ChartDataEntry] = []
         var i = 1
         for _ in self.closesList {
@@ -62,24 +65,29 @@ class RealTimeStockDetailViewController: UIViewController {
             i += 1
         }
         
-        var predictionDataEntries: [ChartDataEntry] = []
-        for _ in self.predictions {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[i - 1])!)
-            predictionDataEntries.append(dataEntry)
-            i += 1
-        }
-
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
         chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
         chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
         chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
         
-        let predictionDataSet = LineChartDataSet(values: predictionDataEntries, label: "Day")
-        predictionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-        predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
-        predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+        if(self.predictions != nil) {
+            var predictionDataEntries: [ChartDataEntry] = []
+            for _ in self.predictions {
+                let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[i - 1])!)
+                predictionDataEntries.append(dataEntry)
+                i += 1
+            }
+            
+            let predictionDataSet = LineChartDataSet(values: predictionDataEntries, label: "Day")
+            predictionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+            predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
+            predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+            
+            chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
+        }else{
+            chartData = LineChartData(dataSet: chartDataSet)
+        }
         
-        let chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
         self.graphView.data = chartData
         self.graphView.chartDescription?.text = "Price"
     }
