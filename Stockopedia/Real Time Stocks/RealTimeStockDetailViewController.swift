@@ -14,7 +14,6 @@ class RealTimeStockDetailViewController: UIViewController {
     //MARK: - Variables
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
-    @IBOutlet weak var sevenDaysLabel: UILabel!
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
@@ -27,6 +26,7 @@ class RealTimeStockDetailViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var predictButton = UIBarButtonItem()
+    var infoButton = UIBarButtonItem()
     var stock:RealTimeStock!
     var closesList:[String]!
     var predictions:[String]!
@@ -54,42 +54,45 @@ class RealTimeStockDetailViewController: UIViewController {
     }
     
     func createGraph() {
-        
-        var chartData:LineChartData!
-        
-        var dataEntries: [ChartDataEntry] = []
-        var i = 1
-        for _ in self.closesList {
-            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.closesList[i - 1])!)
-            dataEntries.append(dataEntry)
-            i += 1
-        }
-        
-        let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
-        chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-        chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
-        chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
-        
-        if(self.predictions != nil) {
-            var predictionDataEntries: [ChartDataEntry] = []
-            for _ in self.predictions {
-                let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[i - 1])!)
-                predictionDataEntries.append(dataEntry)
+        DispatchQueue.main.async {
+            var chartData:LineChartData!
+            
+            var dataEntries: [ChartDataEntry] = []
+            var i = 1
+            for _ in self.closesList {
+                let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.closesList[i - 1].replacingOccurrences(of: ",", with: ""))!)
+                dataEntries.append(dataEntry)
                 i += 1
             }
             
-            let predictionDataSet = LineChartDataSet(values: predictionDataEntries, label: "Day")
-            predictionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-            predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
-            predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+            let chartDataSet = LineChartDataSet(values: dataEntries, label: "Actual")
+            chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+            chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
+            chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
             
-            chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
-        }else{
-            chartData = LineChartData(dataSet: chartDataSet)
+            if(self.predictions != nil) {
+                var x = 1
+                var predictionDataEntries: [ChartDataEntry] = []
+                for _ in self.predictions {
+                    let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[x - 1])!)
+                    predictionDataEntries.append(dataEntry)
+                    i += 1
+                    x += 1
+                }
+                
+                let predictionDataSet = LineChartDataSet(values: predictionDataEntries, label: "Predicted")
+                predictionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+                predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
+                predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+                
+                chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
+            }else{
+                chartData = LineChartData(dataSet: chartDataSet)
+            }
+            
+            self.graphView.data = chartData
+            self.graphView.chartDescription?.text = "Price"
         }
-        
-        self.graphView.data = chartData
-        self.graphView.chartDescription?.text = "Price"
     }
     
     @IBAction func favoritesButtonAction(_ sender: UIButton) {
@@ -159,7 +162,11 @@ class RealTimeStockDetailViewController: UIViewController {
     fileprivate func setUpPredictButton() {
         predictButton = UIBarButtonItem(title: "Predict", style: .plain, target: self, action: #selector(makePrediction))
         predictButton.tintColor = UIColor.white
-        navigationItem.rightBarButtonItem = predictButton
+        infoButton = UIBarButtonItem(title: "?     ", style: .plain, target: self, action: #selector(showInfo))
+        navigationItem.rightBarButtonItems = [predictButton, infoButton]
+    }
+    @objc func showInfo(){
+        Utils.createAlertWith(message: "This graph will show the last 7 days of real time data!", viewController: self)
     }
     
     func checkIsFavorited(_ isFavorited: Bool) {
@@ -206,7 +213,6 @@ class RealTimeStockDetailViewController: UIViewController {
         activityIndicator.style = .gray
         fullNameLabel.isHidden = true
         graphView.isHidden = true
-        sevenDaysLabel.isHidden = true
         dateLabel.isHidden = true
         openLabel.isHidden = true
         closeLabel.isHidden = true
@@ -221,7 +227,6 @@ class RealTimeStockDetailViewController: UIViewController {
     func unHideObjects(){
         fullNameLabel.isHidden = false
         graphView.isHidden = false
-        sevenDaysLabel.isHidden = false
         dateLabel.isHidden = false
         openLabel.isHidden = false
         closeLabel.isHidden = false
