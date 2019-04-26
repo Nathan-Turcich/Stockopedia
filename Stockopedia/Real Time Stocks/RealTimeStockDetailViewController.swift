@@ -71,7 +71,7 @@ class RealTimeStockDetailViewController: UIViewController {
             
             if(self.predictions != nil) {
                 var x = 1
-                var predictionDataEntries: [ChartDataEntry] = []
+                var predictionDataEntries: [ChartDataEntry] = [dataEntries[dataEntries.count - 1]]
                 for _ in self.predictions {
                     let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[x - 1])!)
                     predictionDataEntries.append(dataEntry)
@@ -84,13 +84,7 @@ class RealTimeStockDetailViewController: UIViewController {
                 predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
                 predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
                 
-                let connectionDataEntries: [ChartDataEntry] = [dataEntries[dataEntries.count - 1], predictionDataEntries[0]]
-                let connectionDataSet = LineChartDataSet(values: connectionDataEntries, label: "")
-                connectionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
-                connectionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
-                connectionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
-                
-                chartData = LineChartData(dataSets: [connectionDataSet, chartDataSet, predictionDataSet])
+                chartData = LineChartData(dataSets: [predictionDataSet, chartDataSet])
             }else{
                 chartData = LineChartData(dataSet: chartDataSet)
             }
