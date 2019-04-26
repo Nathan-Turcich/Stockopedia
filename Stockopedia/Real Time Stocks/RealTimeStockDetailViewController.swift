@@ -85,7 +85,13 @@ class RealTimeStockDetailViewController: UIViewController {
                 predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
                 predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
                 
-                chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
+                let connectionDataEntries: [ChartDataEntry] = [dataEntries[dataEntries.count - 1], predictionDataEntries[0]]
+                let connectionDataSet = LineChartDataSet(values: connectionDataEntries, label: "")
+                connectionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+                connectionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
+                connectionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+                
+                chartData = LineChartData(dataSets: [connectionDataSet, chartDataSet, predictionDataSet])
             }else{
                 chartData = LineChartData(dataSet: chartDataSet)
             }
