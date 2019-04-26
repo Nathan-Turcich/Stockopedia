@@ -162,7 +162,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             self.tableView.separatorStyle = .singleLine
             self.tableView.allowsSelection = true
             if self.lastIndexPath != nil { self.tableView.scrollToRow(at: self.lastIndexPath, at: .middle, animated: false) }
-            self.dateLabel.text = "Last Updated: " + self.stocksArrayOnly[self.stocksArrayOnly.count - 1].date
+            self.dateLabel.text = "Last Updated: " + self.stocksArrayOnly[0].date
         }
     }
     
