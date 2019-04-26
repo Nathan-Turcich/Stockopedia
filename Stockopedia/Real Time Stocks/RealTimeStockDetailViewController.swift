@@ -15,7 +15,6 @@ class RealTimeStockDetailViewController: UIViewController {
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var seperatorView: UIView!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var closeLabel: UILabel!
     @IBOutlet weak var lowLabel: UILabel!
@@ -201,7 +200,6 @@ class RealTimeStockDetailViewController: UIViewController {
         DispatchQueue.main.async {
             self.navigationItem.title = self.stock.abbr
             self.fullNameLabel.text = self.stock.fullName
-            self.dateLabel.text = self.stock.date
             self.openLabel.text = " Open: " + self.stock.open + " "
             self.closeLabel.text = " Close: " + self.stock.close + " "
             self.lowLabel.text = " Low: " + self.stock.low + " "
@@ -219,7 +217,6 @@ class RealTimeStockDetailViewController: UIViewController {
         activityIndicator.style = .gray
         fullNameLabel.isHidden = true
         graphView.isHidden = true
-        dateLabel.isHidden = true
         openLabel.isHidden = true
         closeLabel.isHidden = true
         lowLabel.isHidden = true
@@ -233,7 +230,6 @@ class RealTimeStockDetailViewController: UIViewController {
     func unHideObjects(){
         fullNameLabel.isHidden = false
         graphView.isHidden = false
-        dateLabel.isHidden = false
         openLabel.isHidden = false
         closeLabel.isHidden = false
         lowLabel.isHidden = false
