@@ -61,12 +61,25 @@ class RealTimeStockDetailViewController: UIViewController {
             dataEntries.append(dataEntry)
             i += 1
         }
+        
+        var predictionDataEntries: [ChartDataEntry] = []
+        for _ in self.predictions {
+            let dataEntry = ChartDataEntry(x: Double(i), y: Double(self.predictions[i - 1])!)
+            predictionDataEntries.append(dataEntry)
+            i += 1
+        }
 
         let chartDataSet = LineChartDataSet(values: dataEntries, label: "Day")
         chartDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
         chartDataSet.circleHoleColor = NSUIColor(cgColor: primaryColor.cgColor)
         chartDataSet.setColors(NSUIColor(cgColor: primaryColor.cgColor))
-        let chartData = LineChartData(dataSet: chartDataSet)
+        
+        let predictionDataSet = LineChartDataSet(values: predictionDataEntries, label: "Day")
+        predictionDataSet.setCircleColor(NSUIColor(cgColor: UIColor.clear.cgColor))
+        predictionDataSet.circleHoleColor = NSUIColor(cgColor: UIColor.black.cgColor)
+        predictionDataSet.setColors(NSUIColor(cgColor: UIColor.black.cgColor))
+        
+        let chartData = LineChartData(dataSets: [chartDataSet, predictionDataSet])
         self.graphView.data = chartData
         self.graphView.chartDescription?.text = "Price"
     }
@@ -88,25 +101,46 @@ class RealTimeStockDetailViewController: UIViewController {
     @objc func makePrediction(){
         let alert = UIAlertController(title: "How long in the future would you like to predict this stock?", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "1 day", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 1, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 1, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "2 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 2, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 2, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "3 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 3, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 3, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "5 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 5, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 5, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "7 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 7, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 7, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "15 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 15, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 15, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         alert.addAction(UIAlertAction(title: "30 days", style: .default , handler:{ (UIAlertAction) in
-            DownloadData.getPrediction(abbr: self.stock.abbr, length: 30, completion: { p in self.predictions = p })
+            DownloadData.getPrediction(abbr: self.stock.abbr, length: 30, completion: {
+                p in self.predictions = p
+                self.createGraph()
+            })
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction) in }))
