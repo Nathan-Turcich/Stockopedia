@@ -396,13 +396,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frn-q0-Q9Y">
-                                <rect key="frame" x="16" y="110" width="343" height="25"/>
+                                <rect key="frame" x="16" y="98" width="343" height="25"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="woS-rt-7al" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="186" width="343" height="164"/>
+                                <rect key="frame" x="16" y="163" width="343" height="256"/>
                                 <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -412,10 +412,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bUE-7v-TmO">
-                                <rect key="frame" x="0.0" y="367" width="375" height="362"/>
+                                <rect key="frame" x="0.0" y="427" width="375" height="302"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="362" id="A1I-pr-J4d"/>
+                                    <constraint firstAttribute="height" constant="302" id="A1I-pr-J4d"/>
                                 </constraints>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="LCf-fC-p5X" userLabel="Seperator View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -457,8 +457,12 @@
                                     <outlet property="delegate" destination="Iei-kJ-XMa" id="Z60-rx-SPG"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-Vc-GFd">
+                                <rect key="frame" x="177.66666666666666" y="398.66666666666669" width="20" height="20"/>
+                                <color key="color" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </activityIndicatorView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="sXJ-XY-tWM">
-                                <rect key="frame" x="115" y="150" width="145" height="29"/>
+                                <rect key="frame" x="115" y="127" width="145" height="29"/>
                                 <segments>
                                     <segment title="By Month"/>
                                     <segment title="By Year"/>
@@ -467,23 +471,19 @@
                                     <action selector="segmantControlChanged:" destination="Iei-kJ-XMa" eventType="valueChanged" id="KiP-Im-rvX"/>
                                 </connections>
                             </segmentedControl>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Bpc-Vc-GFd">
-                                <rect key="frame" x="177.66666666666666" y="398.66666666666669" width="20" height="20"/>
-                                <color key="color" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="sXJ-XY-tWM" secondAttribute="bottom" constant="8" symbolic="YES" id="5My-mV-oeD"/>
+                            <constraint firstItem="woS-rt-7al" firstAttribute="top" secondItem="sXJ-XY-tWM" secondAttribute="bottom" constant="8" id="5My-mV-oeD"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" id="Age-hW-fnP"/>
                             <constraint firstItem="Bpc-Vc-GFd" firstAttribute="centerY" secondItem="pKJ-fB-3qE" secondAttribute="centerY" id="CqS-ft-WsM"/>
                             <constraint firstItem="woS-rt-7al" firstAttribute="leading" secondItem="Frn-q0-Q9Y" secondAttribute="leading" id="GPi-uK-htU"/>
                             <constraint firstItem="Bpc-Vc-GFd" firstAttribute="centerX" secondItem="pKJ-fB-3qE" secondAttribute="centerX" id="PBZ-M9-bRR"/>
-                            <constraint firstItem="sXJ-XY-tWM" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="15" id="RKW-Aa-YgC"/>
+                            <constraint firstItem="sXJ-XY-tWM" firstAttribute="top" secondItem="Frn-q0-Q9Y" secondAttribute="bottom" constant="4" id="RKW-Aa-YgC"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="Frn-q0-Q9Y" secondAttribute="trailing" constant="16" id="Stv-6h-Dup"/>
-                            <constraint firstItem="bUE-7v-TmO" firstAttribute="top" secondItem="woS-rt-7al" secondAttribute="bottom" constant="17" id="Vj1-yG-NaX"/>
+                            <constraint firstItem="bUE-7v-TmO" firstAttribute="top" secondItem="woS-rt-7al" secondAttribute="bottom" constant="8" id="Vj1-yG-NaX"/>
                             <constraint firstItem="Frn-q0-Q9Y" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" constant="16" id="fJB-Xp-S1z"/>
-                            <constraint firstItem="Frn-q0-Q9Y" firstAttribute="top" secondItem="pKJ-fB-3qE" secondAttribute="top" constant="22" id="gZ0-iD-Pjw"/>
+                            <constraint firstItem="Frn-q0-Q9Y" firstAttribute="top" secondItem="pKJ-fB-3qE" secondAttribute="top" constant="10" id="gZ0-iD-Pjw"/>
                             <constraint firstItem="bUE-7v-TmO" firstAttribute="leading" secondItem="pKJ-fB-3qE" secondAttribute="leading" id="igu-yy-Lp3"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="bUE-7v-TmO" secondAttribute="trailing" id="ms7-wO-zk1"/>
                             <constraint firstItem="pKJ-fB-3qE" firstAttribute="trailing" secondItem="sXJ-XY-tWM" secondAttribute="trailing" constant="115" id="r2j-Ss-utN"/>

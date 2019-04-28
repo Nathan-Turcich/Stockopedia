@@ -350,35 +350,39 @@ def getCurrentTime():
 # MAIN
 if __name__ == '__main__':
     
-    # Connects to the DB
-    # Creates a cursor object to apply SQL Queries
-    myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
-    cursor = myDB.cursor()
+    # We only run the scraper on the week days because the stock market is closed on the weekends
+    if datetime.date.today().isoweekday() is not 7 and datetime.date.today().isoweekday() is not 1:
+        # Connects to the DB
+        # Creates a cursor object to apply SQL Queries
+        myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
+        cursor = myDB.cursor()
         
-    # TOPICS
-    print("Starting Script")
-    listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
-    
-    print("Inserting Topics Into DB")
-    insertTopicsToDB(listOfTopics)
-    
-    print("Deleting names with invalid names")
-    deleteNoIndustryNames(deleteNames)
-    
-    print("Adding Fullnames to Stocks")
-    addFullNames(listOfTopics)
+        # TOPICS
+        print("Starting Script")
+        listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+        
+        print("Inserting Topics Into DB")
+        insertTopicsToDB(listOfTopics)
+        
+        print("Deleting names with invalid names")
+        deleteNoIndustryNames(deleteNames)
+        
+        print("Adding Fullnames to Stocks")
+        addFullNames(listOfTopics)
 
-    # REAL TIME STOCKS
-    print("Starting RealTime")
-    listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
-    
-    print("Inserting RealTimeStocks Into DB")
-    insertRealTimeStocksToDB(listOfRealTimeStocks)
-    
-    # Commits all changes to maria DB and the closes the connection
-    myDB.commit()
-    myDB.close()
-    
-    #########################################################################################################################################
-    # RUNNING PREDICTION SCRIPT NOW
-    exec(open("/home/Stockopedia/Stockopedia/Back\ End/Prediction.py").read())
+        # REAL TIME STOCKS
+        print("Starting RealTime")
+        listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
+        
+        print("Inserting RealTimeStocks Into DB")
+        insertRealTimeStocksToDB(listOfRealTimeStocks)
+        
+        # Update the date in the Date Table to be the most current
+        cursor.execute("UPDATE Date SET date = " + getCurrentTime)
+
+        # Commits all changes to maria DB and the closes the connection
+        myDB.commit()
+        myDB.close()
+        #########################################################################################################################################
+        # RUNNING PREDICTION SCRIPT NOW
+        exec(open("/home/Stockopedia/Stockopedia/Back\ End/Prediction.py").read())

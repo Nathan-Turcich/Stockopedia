@@ -29,8 +29,6 @@ class StockDetailViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         navigationItem.title = stockAbbr
         nameLabel.text = stockName!
-        graphView.layer.borderColor = UIColor.black.cgColor;
-        graphView.layer.borderWidth = 1
         lastIndexPath = IndexPath(row: 0, section: 0)
         segmantControl.setEnabled(true, forSegmentAt: 0)
         disableView()

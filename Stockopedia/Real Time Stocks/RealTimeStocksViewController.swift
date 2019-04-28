@@ -138,16 +138,19 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     //MARK: - Loading Data
     func downloadStocks(){
         loadingStarted()
-        DownloadData.downloadRealTimeData(completion: { s in
-            if let stockArray = s {
-                DownloadData.isBuy(completion: { buyStocks in
-                    DispatchQueue.main.async {
-                        self.aboveAverageList = buyStocks
-                        self.setData(stockArray: stockArray)
-                    }
-                })
-            }
-            else { print("Error getting data") }
+        DownloadData.getLatestDate(completion: { date in
+            self.dateLabel.text = "Last Updated: " + (date ?? "N/A")
+            DownloadData.downloadRealTimeData(completion: { s in
+                if let stockArray = s {
+                    DownloadData.isBuy(completion: { buyStocks in
+                        DispatchQueue.main.async {
+                            self.aboveAverageList = buyStocks
+                            self.setData(stockArray: stockArray)
+                        }
+                    })
+                }
+                else { print("Error getting data") }
+            })
         })
     }
     
@@ -163,7 +166,6 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
             self.tableView.separatorStyle = .singleLine
             self.tableView.allowsSelection = true
             if self.lastIndexPath != nil { self.tableView.scrollToRow(at: self.lastIndexPath, at: .middle, animated: false) }
-            self.dateLabel.text = "Last Updated: " + self.stocksArrayOnly[0].date
         }
     }
     

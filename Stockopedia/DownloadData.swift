@@ -12,6 +12,30 @@ var urlPath:String = "http://sp19-cs411-49.cs.illinois.edu/queries.php"
 
 class DownloadData {
     
+    static func getLatestDate(completion:@escaping (String?) -> Void) {
+        let url: URL = URL(string: urlPath + "?query=getLatestDate")!
+        let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)
+        let task = defaultSession.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                completion(nil)
+            }else {
+                var jsonResult = NSArray()
+                do {jsonResult = try JSONSerialization.jsonObject(with: data!, options:JSONSerialization.ReadingOptions.allowFragments) as! NSArray
+                } catch let error as NSError { print(error) }
+                
+                var jsonElement = NSDictionary()
+                var date:String?
+                for i in 0 ..< jsonResult.count {
+                    jsonElement = jsonResult[i] as! NSDictionary
+                    date = jsonElement["date"]! as? String ?? nil
+                }
+                completion(date)
+            }
+        }
+        task.resume()
+    }
+    
     static func downloadRealTimeData(completion:@escaping ([RealTimeStock]?) -> Void) {
         let url: URL = URL(string: urlPath + "?query=downloadRealTimeData")!
         let defaultSession = Foundation.URLSession(configuration: URLSessionConfiguration.default)

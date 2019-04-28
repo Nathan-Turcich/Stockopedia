@@ -6,7 +6,11 @@
     //All Queries
     
     $sql = "";
-    if($_GET["query"] === "downloadRealTimeData"){
+    else if($_GET["query"] === "getLatestDate"){
+        $sql = "SELECT date
+        FROM Date";
+    }
+    else if($_GET["query"] === "downloadRealTimeData"){
         $sql = "SELECT *
         FROM RealTimeStocks
         GROUP BY abbr";
