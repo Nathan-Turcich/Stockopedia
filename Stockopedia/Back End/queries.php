@@ -6,7 +6,7 @@
     //All Queries
     
     $sql = "";
-    else if($_GET["query"] === "getLatestDate"){
+    if($_GET["query"] === "getLatestDate"){
         $sql = "SELECT date
         FROM Date";
     }
