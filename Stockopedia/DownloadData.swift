@@ -32,7 +32,7 @@ class DownloadData {
                     let s = jsonElement["fullname"] as! String
                     let i = s.firstIndex(of: "-")
                     let d = s.distance(from: s.startIndex, to: i!)
-                    let fullName = s.dropFirst(d + 1)
+                    let fullName = s.dropFirst(d + 2)
                     
                     realStocks.append(RealTimeStock.init(abbr: jsonElement["abbr"]! as! String, fullName: String(fullName), date: jsonElement["date"]! as! String, open: jsonElement["open"]! as! String, close: jsonElement["close"]! as! String, low: jsonElement["low"]! as! String, high: jsonElement["high"]! as! String, volume: jsonElement["volume"]! as! String, mrktCap: jsonElement["mrktcap"]! as! String, diff: jsonElement["diff"]! as! String, isBuy: false))
                 }
