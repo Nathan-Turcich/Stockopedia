@@ -28,7 +28,13 @@ class DownloadData {
                 var realStocks = [RealTimeStock]()
                 for i in 0 ..< jsonResult.count {
                     jsonElement = jsonResult[i] as! NSDictionary
-                    realStocks.append(RealTimeStock.init(abbr: jsonElement["abbr"]! as! String, fullName: jsonElement["fullname"]! as! String, date: jsonElement["date"]! as! String, open: jsonElement["open"]! as! String, close: jsonElement["close"]! as! String, low: jsonElement["low"]! as! String, high: jsonElement["high"]! as! String, volume: jsonElement["volume"]! as! String, mrktCap: jsonElement["mrktcap"]! as! String, diff: jsonElement["diff"]! as! String, isBuy: false))
+                    
+                    let s = jsonElement["fullname"] as! String
+                    let i = s.firstIndex(of: "-")
+                    let d = s.distance(from: s.startIndex, to: i!)
+                    let fullName = s.dropFirst(d + 1)
+                    
+                    realStocks.append(RealTimeStock.init(abbr: jsonElement["abbr"]! as! String, fullName: String(fullName), date: jsonElement["date"]! as! String, open: jsonElement["open"]! as! String, close: jsonElement["close"]! as! String, low: jsonElement["low"]! as! String, high: jsonElement["high"]! as! String, volume: jsonElement["volume"]! as! String, mrktCap: jsonElement["mrktcap"]! as! String, diff: jsonElement["diff"]! as! String, isBuy: false))
                 }
                 completion(realStocks)
             }
