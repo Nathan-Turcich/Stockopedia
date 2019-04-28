@@ -38,9 +38,10 @@
     }
     
    else if($_GET["query"] === "downloadUniqueStockNames"){
-        $sql = "SELECT name, fullname
+        /*$sql = "SELECT name, fullname
         FROM Stocks
-        GROUP BY name";
+        GROUP BY name";*/
+       $sql = "CALL getAllUniqueStocks()";
    }
    else if($_GET["query"] === "downloadPossibleMonths"){
        $abbr = $_GET["abbr"];
