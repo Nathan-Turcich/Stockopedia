@@ -137,6 +137,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     //MARK: - Loading Data
     func downloadStocks(){
+        loadingStarted()
         DownloadData.downloadRealTimeData(completion: { s in
             if let stockArray = s {
                 DownloadData.isBuy(completion: { buyStocks in

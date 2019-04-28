@@ -1293,12 +1293,22 @@ https://icons8.com/ </string>
                                             <outlet property="delegate" destination="gia-c4-24T" id="hgl-Fa-Oon"/>
                                         </connections>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have no favorited stocks" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf7-2O-DMp">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Uf7-2O-DMp" secondAttribute="trailing" id="6IH-sS-qOu"/>
                                     <constraint firstAttribute="bottom" secondItem="ZK3-sP-Z1H" secondAttribute="bottom" id="BIy-t4-eqa"/>
+                                    <constraint firstItem="Uf7-2O-DMp" firstAttribute="top" secondItem="L0a-oH-KlF" secondAttribute="top" id="DJe-UK-Ta7"/>
                                     <constraint firstItem="ZK3-sP-Z1H" firstAttribute="leading" secondItem="L0a-oH-KlF" secondAttribute="leading" id="Wak-qD-Kr3"/>
                                     <constraint firstAttribute="trailing" secondItem="ZK3-sP-Z1H" secondAttribute="trailing" id="YoK-ps-6cx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uf7-2O-DMp" secondAttribute="bottom" id="agl-pN-nfd"/>
+                                    <constraint firstItem="Uf7-2O-DMp" firstAttribute="leading" secondItem="L0a-oH-KlF" secondAttribute="leading" id="jDO-as-TQT"/>
                                     <constraint firstItem="ZK3-sP-Z1H" firstAttribute="top" secondItem="L0a-oH-KlF" secondAttribute="top" id="jJr-NA-u2m"/>
                                 </constraints>
                             </view>
@@ -1320,6 +1330,7 @@ https://icons8.com/ </string>
                     <connections>
                         <outlet property="logInView" destination="EtQ-ni-0wi" id="8GD-xy-YvO"/>
                         <outlet property="loggedInView" destination="L0a-oH-KlF" id="4Q6-1M-So9"/>
+                        <outlet property="noFavoritesLabel" destination="Uf7-2O-DMp" id="P6Q-dh-k0F"/>
                         <outlet property="tableView" destination="ZK3-sP-Z1H" id="4QY-1T-edk"/>
                     </connections>
                 </viewController>
@@ -1803,8 +1814,8 @@ https://icons8.com/ </string>
         <image name="stocksImage" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mHk-3P-hgH"/>
-        <segue reference="2GC-oe-rqf"/>
+        <segue reference="vsh-GM-I0u"/>
+        <segue reference="Nj4-Oy-wsn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="1" green="0.53333333329999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

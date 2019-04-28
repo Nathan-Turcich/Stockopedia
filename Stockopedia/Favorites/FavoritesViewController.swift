@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     //MARK: - Variables
     @IBOutlet weak var logInView: UIView!
     @IBOutlet weak var loggedInView: UIView!
+    @IBOutlet weak var noFavoritesLabel: UILabel!
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
     var favoritesList: [(abbr: String, fullName: String)] = []
@@ -47,6 +48,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                     DispatchQueue.main.async {
                         self.tableView.isHidden = true
                         self.activityIndicator.stopAnimating()
+                        self.noFavoritesLabel.isHidden = false
                     }
                 }
                 else{
@@ -58,6 +60,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.tableView.separatorStyle = .singleLine
                         self.tableView.isScrollEnabled = true
                         self.activityIndicator.stopAnimating()
+                        self.noFavoritesLabel.isHidden = true
                     }
                 }
             }

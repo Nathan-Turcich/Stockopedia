@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        view.endEditing(true)
+    }
+    
     @IBAction func loginButtonAction(_ sender: UIButton) {
         DownloadData.getUser(username: usernameTextField.text!, password: passwordTextField.text!, completion: { user in
             if(user == nil) {
