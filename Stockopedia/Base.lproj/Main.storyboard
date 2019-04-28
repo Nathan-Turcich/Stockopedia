@@ -512,6 +512,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-jH-dZx" userLabel="Login View">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVk-O5-2b5">
+                                        <rect key="frame" x="23" y="360" width="328" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ff4-af-Dps"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title=" Log In ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="6dT-eM-c7U" kind="presentation" id="mHk-3P-hgH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" You are currently not logged in.  Log in to access Stockopedia!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9t-Vk-efB">
+                                        <rect key="frame" x="23" y="289" width="328" height="63"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="AVk-O5-2b5" secondAttribute="bottom" constant="241" id="47f-PI-tEu"/>
+                                    <constraint firstItem="K9t-Vk-efB" firstAttribute="leading" secondItem="qvn-jH-dZx" secondAttribute="leading" constant="23" id="4gk-Nk-zh4"/>
+                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="leading" secondItem="K9t-Vk-efB" secondAttribute="leading" id="GBZ-jR-7cT"/>
+                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="top" secondItem="K9t-Vk-efB" secondAttribute="bottom" constant="8" id="h5v-PN-4bX"/>
+                                    <constraint firstAttribute="trailing" secondItem="K9t-Vk-efB" secondAttribute="trailing" constant="24" id="khx-ok-Ag6"/>
+                                    <constraint firstItem="K9t-Vk-efB" firstAttribute="centerY" secondItem="qvn-jH-dZx" secondAttribute="centerY" id="vwn-oa-ZGa"/>
+                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="trailing" secondItem="K9t-Vk-efB" secondAttribute="trailing" id="xf8-Ew-m78"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3l0-mn-asH" userLabel="Logged In View">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
@@ -690,6 +730,12 @@
                                             <constraint firstAttribute="height" constant="114" id="aXr-ve-bgS"/>
                                         </constraints>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a catagory to see recommended stocks!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbC-dc-Hxr">
+                                        <rect key="frame" x="0.0" y="196" width="375" height="445"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -697,52 +743,16 @@
                                     <constraint firstItem="DxO-fJ-wwg" firstAttribute="leading" secondItem="gMe-74-gZ4" secondAttribute="leading" id="3DO-9x-XCZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Ftj-Ua-gwb" secondAttribute="trailing" id="4AC-Ap-BqS"/>
                                     <constraint firstAttribute="trailing" secondItem="gMe-74-gZ4" secondAttribute="trailing" constant="16" id="5XR-mG-PeK"/>
+                                    <constraint firstItem="wbC-dc-Hxr" firstAttribute="leading" secondItem="3l0-mn-asH" secondAttribute="leading" id="5a6-ty-OYa"/>
                                     <constraint firstItem="Ftj-Ua-gwb" firstAttribute="top" secondItem="DxO-fJ-wwg" secondAttribute="bottom" constant="16" id="Gu7-TQ-Iy4"/>
                                     <constraint firstItem="Ftj-Ua-gwb" firstAttribute="leading" secondItem="3l0-mn-asH" secondAttribute="leading" constant="-1" id="Jws-s0-d3h"/>
                                     <constraint firstItem="gMe-74-gZ4" firstAttribute="leading" secondItem="3l0-mn-asH" secondAttribute="leading" constant="16" id="PDH-ZL-xUQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="wbC-dc-Hxr" secondAttribute="bottom" id="XpU-Dt-IEl"/>
                                     <constraint firstItem="DxO-fJ-wwg" firstAttribute="top" secondItem="gMe-74-gZ4" secondAttribute="bottom" constant="7.3333333333333428" id="eaf-gh-M6s"/>
+                                    <constraint firstAttribute="trailing" secondItem="wbC-dc-Hxr" secondAttribute="trailing" id="ihe-n1-4iu"/>
+                                    <constraint firstItem="wbC-dc-Hxr" firstAttribute="top" secondItem="3l0-mn-asH" secondAttribute="top" constant="196" id="via-5C-gs1"/>
                                     <constraint firstItem="gMe-74-gZ4" firstAttribute="top" secondItem="3l0-mn-asH" secondAttribute="top" constant="10" id="y2g-wk-HNE"/>
                                     <constraint firstAttribute="bottom" secondItem="Ftj-Ua-gwb" secondAttribute="bottom" id="yX9-Cr-eC2"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvn-jH-dZx" userLabel="Login View">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVk-O5-2b5">
-                                        <rect key="frame" x="23" y="360" width="328" height="40"/>
-                                        <color key="backgroundColor" red="1" green="0.53450241220000005" blue="0.10931874129999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Ff4-af-Dps"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title=" Log In ">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <segue destination="6dT-eM-c7U" kind="presentation" id="mHk-3P-hgH"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" You are currently not logged in.  Log in to access Stockopedia!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9t-Vk-efB">
-                                        <rect key="frame" x="23" y="289" width="328" height="63"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="AVk-O5-2b5" secondAttribute="bottom" constant="241" id="47f-PI-tEu"/>
-                                    <constraint firstItem="K9t-Vk-efB" firstAttribute="leading" secondItem="qvn-jH-dZx" secondAttribute="leading" constant="23" id="4gk-Nk-zh4"/>
-                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="leading" secondItem="K9t-Vk-efB" secondAttribute="leading" id="GBZ-jR-7cT"/>
-                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="top" secondItem="K9t-Vk-efB" secondAttribute="bottom" constant="8" id="h5v-PN-4bX"/>
-                                    <constraint firstAttribute="trailing" secondItem="K9t-Vk-efB" secondAttribute="trailing" constant="24" id="khx-ok-Ag6"/>
-                                    <constraint firstItem="K9t-Vk-efB" firstAttribute="centerY" secondItem="qvn-jH-dZx" secondAttribute="centerY" id="vwn-oa-ZGa"/>
-                                    <constraint firstItem="AVk-O5-2b5" firstAttribute="trailing" secondItem="K9t-Vk-efB" secondAttribute="trailing" id="xf8-Ew-m78"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -770,6 +780,7 @@
                         <outlet property="logInView" destination="qvn-jH-dZx" id="AP2-5c-Ekp"/>
                         <outlet property="loggedInView" destination="3l0-mn-asH" id="79v-cc-uhC"/>
                         <outlet property="mainLabel" destination="gMe-74-gZ4" id="xkM-3Z-D0v"/>
+                        <outlet property="noDataLabel" destination="wbC-dc-Hxr" id="HDe-r9-9T4"/>
                         <outlet property="tableView" destination="Ftj-Ua-gwb" id="phx-bx-7rg"/>
                     </connections>
                 </viewController>

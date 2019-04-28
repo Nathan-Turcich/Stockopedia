@@ -14,6 +14,7 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
     @IBOutlet weak var logInView: UIView!
     @IBOutlet weak var loggedInView: UIView!
     @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var noDataLabel: UILabel!
     @IBOutlet weak var catagory1Label: UILabel!
     @IBOutlet weak var catagory2Label: UILabel!
     @IBOutlet weak var catagory3Label: UILabel!
@@ -35,8 +36,10 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
         self.navigationItem.title = "Stock Recommendations"
         setButtons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         Utils.getPossibleUser()
-        
         if currentID != "" {
             logInView.isHidden = true; logInView.isUserInteractionEnabled = false
             loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
@@ -46,7 +49,6 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
             logInView.isHidden = false; logInView.isUserInteractionEnabled = true
             loggedInView.isHidden = true; loggedInView.isUserInteractionEnabled = false
         }
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -82,9 +84,23 @@ class RecommendationsViewController: UIViewController, UITableViewDelegate, UITa
                     if !self.contains(a: self.recommendedStocks, v: (topic.abbr, topic.fullName)) { self.recommendedStocks.append((topic.abbr, topic.fullName)) }
                 }
             }
+            self.checkIfThereAreAnyRecommendations(recommendations: recommendations)
             self.setViewLoaded()
             self.setTableViewEnabled()
             self.tableView.reloadData()
+        }
+    }
+    
+    func checkIfThereAreAnyRecommendations(recommendations: String){
+        if recommendations == "Choose_Choose_Choose" {
+            self.noDataLabel.isHidden = false
+            self.tableView.isHidden = true
+            self.tableView.isScrollEnabled = false
+        }
+        else {
+            self.noDataLabel.isHidden = true
+            self.tableView.isHidden = false
+            self.tableView.isScrollEnabled = true
         }
     }
     

@@ -25,6 +25,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
+        Utils.getPossibleUser()
         if currentID != "" {
             logInView.isHidden = true; logInView.isUserInteractionEnabled = false
             loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true

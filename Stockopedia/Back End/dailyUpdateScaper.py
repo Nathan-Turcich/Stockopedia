@@ -162,7 +162,7 @@ def getAbbrFullnameRT(company_text):
             abbr = company_text[0:end - 1]
             break
             
-        fullName = company_text[end + 2:len(company_text)]
+    fullName = company_text[end + 2:len(company_text)]
     return abbr, fullName
 
 
