@@ -1,3 +1,13 @@
+'''
+This Python script creates 30-day prections for every stock in our database using more than 5 years of historical data.
+Using this historical data, we perform a linear regression to create an array that contains the stock's predicted prices for
+the next 30 days. We then have a specific Prediction table to hold our predictions for each stock. Every night, this script
+is run using a Cron Job to use the latest prices and get the most accurate data for users.
+'''
+
+#########################################################################################################################################
+
+#Imports for math, dates, json, and webscraping
 import numpy as np
 from datetime import datetime
 import smtplib
@@ -5,50 +15,67 @@ import time
 from selenium import webdriver
 import json
 
+#Imports to perform linear regression on data
 from sklearn.linear_model import LinearRegression
 from sklearn import preprocessing, svm
 from sklearn.model_selection import train_test_split
 
+#imports to help retrieve historical data
 from iexfinance.stocks import Stock
 from iexfinance.stocks import get_historical_data
 
+#Import for connecting to database
 import mysql.connector
+
+#########################################################################################################################################
+# Constants to connect to the Database
 
 host = "sp19-cs411-49.cs.illinois.edu"
 user = "root"
 password = "374sucks"
 database = 'Stockopedia'
 
+#########################################################################################################################################
+
+#Function to create a 30-day outlook prediction on a single stock.
+#The function uses Linear Regression and 5 years of historical data
+#to create the predictions.
 def predictData(stock, days):
     
+    #Determine how much historical data to use in prediction
     start = datetime(2014, 1, 1)
     end = datetime.now()
 
+    #Retrieve the historical data
     df = get_historical_data(stock, start = start, end = end, output_format = 'pandas')
 
+    #Create a CSV file of historical data to use for Linear Regression later
     csv_name = ('Exports/' + stock + '_Export.csv')
     df.to_csv(csv_name)
     df.dropna(inplace = True)
     forecast_time = int(days)
     df['prediction'] = df['close'].shift(-forecast_time)
 
+    #Create numpy arrays to use for Linear Regression
     X = np.array(df.drop(['prediction'], 1))
     X = preprocessing.scale(X)
     X_prediction = X[-forecast_time:]
     X = X[:-forecast_time]
     
+    #Create numpy arrays to use for Linear Regression
     Y = np.array(df['prediction'])
     Y = Y[:-forecast_time]
 
+    #Create training and test sets to use for Linear Regression
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.3)
 
+    #Perform Linear regression and create 30 predictions
     clf = LinearRegression()
     clf.fit(X_train, Y_train)
     confidence = clf.score(X_test, Y_test)
     prediction = (clf.predict(X_prediction))
 
-    #print(confidence)
-    #print(prediction)
+    #Format predictions to be strings so they can be easily stored in our database
     strPrediction = []
     for p in prediction:
         strPrediction.append(str(p))
@@ -75,7 +102,7 @@ if __name__ == '__main__':
     
     print("Creating Predictions")
 
-    # Delete Predictions everynight to get new predictions
+    # Delete Predictions every night to get new predictions
     cursor.execute("DELETE FROM Predictions")
     
     #Create 30-day predictions for every stock
