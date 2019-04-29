@@ -20,6 +20,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var searchBarCancelButton: UIBarButtonItem!
     @IBOutlet var tableView: UITableView!
     let activityIndicator = UIActivityIndicatorView()
+    var infoButton:UIBarButtonItem!
     var stocks = [[RealTimeStock]]()
     var stocksArrayOnly: [RealTimeStock] = []
     var filteredStocks: [RealTimeStock] = []
@@ -29,6 +30,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     var isSearching:Bool = false
     var lastIndexPath:IndexPath!
     
+    //MARK: - Views Appearing
     override func viewDidLoad() { super.viewDidLoad() }
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
 
@@ -285,7 +287,13 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         sectionHeader = [0 : "A", 1 : "B", 2: "C", 3 : "D", 4 : "E", 5 : "F", 6 : "G", 7 : "H", 8 : "I", 9 : "J", 10 : "K", 11 : "L", 12 : "M", 13 : "N", 14 : "O", 15 : "P", 16 : "Q", 17 : "R", 18 : "S", 19 : "T", 20 : "U", 21 : "V", 22 : "W", 23 : "X", 24 : "Y", 25 : "Z"]
     }
     
+    @objc func showInfo(){
+        Utils.createAlertWith(message: "Buy/Sell uses average price differences to predict wheather or not you a stock should be baught or sold!", viewController: self)
+    }
+    
     func setUpStuff(){
+        infoButton = UIBarButtonItem(title: "?     ", style: .plain, target: self, action: #selector(showInfo))
+        navigationItem.rightBarButtonItem = infoButton
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
