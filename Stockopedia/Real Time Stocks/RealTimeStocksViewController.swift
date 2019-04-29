@@ -139,7 +139,9 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     func downloadStocks(){
         loadingStarted()
         DownloadData.getLatestDate(completion: { date in
-            self.dateLabel.text = "Last Updated: " + (date ?? "N/A")
+            DispatchQueue.main.async {
+                self.dateLabel.text = "Last Updated: " + (date ?? "N/A")
+            }
             DownloadData.downloadRealTimeData(completion: { s in
                 if let stockArray = s {
                     DownloadData.isBuy(completion: { buyStocks in
