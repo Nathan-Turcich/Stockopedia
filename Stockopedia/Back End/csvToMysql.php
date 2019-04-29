@@ -1,5 +1,7 @@
+// This file takes our kaggle dataset which is in the form of a CSV file and inserts that into our Maria DB
 <?php
 
+//Constants that are used to connect to the database
 $host = "sp19-cs411-49.cs.illinois.edu"; // Host name.
 $db_user = "root"; //mysql user
 $db_password = "374sucks"; //mysql pass
@@ -12,6 +14,7 @@ echo $filename = "all_stocks_5yr.csv";
 $ext = substr($filename, strrpos($filename, "."), (strlen($filename) - strrpos($filename, ".")));
 
 //we check,file must be have csv extention
+//Open the CSV file and insert into database
 {
   $file = fopen($filename, "r");
          while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE) {
