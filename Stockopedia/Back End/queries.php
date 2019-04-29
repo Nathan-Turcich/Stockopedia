@@ -1,20 +1,25 @@
 <?php
+    //Connects to Maria DB
     $con=mysqli_connect("sp19-cs411-49.cs.illinois.edu","root","374sucks","Stockopedia");   // Create connection
 
+    //Checks if there was an error connecting to MariaDB
     if (mysqli_connect_errno()) { echo "Failed to connect to MySQL: " . mysqli_connect_error(); }
     
     //All Queries
+    //Make the sql query based on the query in the URL
     
     $sql = "";
     if($_GET["query"] === "getLatestDate"){
         $sql = "SELECT date
         FROM Date";
     }
+    
     else if($_GET["query"] === "downloadRealTimeData"){
         $sql = "SELECT *
         FROM RealTimeStocks
         GROUP BY abbr";
    }
+    
     else if($_GET["query"] === "downloadFavoritesJoinRealTime"){
         $key = $_GET["key"];
         $abbr = $_GET["abbr"];
@@ -26,6 +31,7 @@
         WHERE Favorites.ID = '$key'
         AND Favorites.abbr ='$abbr'";
     }
+    
     else if($_GET["query"] === "downloadRealTimeClosesForAbbr"){
         $abbr = $_GET["abbr"];
 
@@ -33,6 +39,7 @@
         FROM RealTimeStocks
         WHERE abbr = '$abbr'";
     }
+    
     else if($_GET["query"] === "getPrediction"){
         $abbr = $_GET["abbr"];
 
@@ -42,11 +49,9 @@
     }
     
    else if($_GET["query"] === "downloadUniqueStockNames"){
-        /*$sql = "SELECT name, fullname
-        FROM Stocks
-        GROUP BY name";*/
        $sql = "CALL getAllUniqueStocks()";
    }
+    
    else if($_GET["query"] === "downloadPossibleMonths"){
        $abbr = $_GET["abbr"];
        
@@ -55,6 +60,7 @@
        WHERE name = '$abbr'
        AND date LIKE '%-01'";
    }
+    
    else if($_GET["query"] === "downloadUniqueStockDataForMonth"){
        $abbr = $_GET["abbr"];
        $month = $_GET["month"];
@@ -66,6 +72,7 @@
        WHERE name = '$abbr'
        AND date LIKE '$month'";
    }
+    
    else if($_GET["query"] === "downloadUniqueStockDataForYear"){
        $abbr = $_GET["abbr"];
        $year = $_GET["year"];
@@ -77,6 +84,7 @@
        WHERE name = '$abbr'
        AND date LIKE '$year'";
    }
+    
    else if($_GET["query"] === "downloadUserFavoritedList"){
         $key = $_GET["key"];
        
@@ -84,6 +92,7 @@
         FROM Favorites
         WHERE ID = '$key'";
     }
+    
    else if($_GET["query"] === "insertNameFavoritedList"){
        $key = $_GET["key"];
        $abbr = $_GET["abbr"];
@@ -93,6 +102,7 @@
        $sql = "INSERT INTO Favorites
        VALUES ('$key', '$abbr', '$fullName')";
    }
+    
    else if($_GET["query"] === "deleteNameFavoritedList"){
        $key = $_GET["key"];
        $abbr = $_GET["abbr"];
@@ -101,10 +111,12 @@
        FROM Favorites
        WHERE ID = '$key' and abbr = '$abbr'";
    }
+    
    else if($_GET["query"] === "getTopicData"){
        $sql = "SELECT *
        FROM Topics";
    }
+    
    else if($_GET["query"] === "getUserRecommendations"){
        $key = $_GET["key"];
        
@@ -112,6 +124,7 @@
        FROM Recomendations
        WHERE ID = '$key'";
    }
+    
    else if($_GET["query"] === "initilizeUsersRecomendations"){
        $key = $_GET["key"];
        $value = "Choose_Choose_Choose";
@@ -119,6 +132,7 @@
        $sql = "INSERT INTO Recomendations
        VALUES ('$key', '$value')";
    }
+    
    else if($_GET["query"] === "updateUserRecomendations"){
        $key = $_GET["key"];
        $recomendation = $_GET["recomendation"];
@@ -127,6 +141,7 @@
        SET Recomendation = '$recomendation'
        WHERE ID = '$key'";
    }
+    
    else if($_GET["query"] === "createUser"){
         $key = $_GET["key"];
         $username = $_GET["username"];
@@ -135,6 +150,7 @@
         $sql = "INSERT INTO Users
         VALUES ('$key', '$username', '$password')";
     }
+    
     else if($_GET["query"] === "getUser"){
         $username = $_GET["username"];
         $password = $_GET["password"];
@@ -143,6 +159,7 @@
         FROM Users
         WHERE Username = '$username' AND Password = '$password'";
     }
+    
     else if($_GET["query"] === "updateUserPassword"){
         $key = $_GET["key"];
         $newPassword = $_GET["newPassword"];
@@ -151,6 +168,7 @@
         SET Password = '$newPassword'
         WHERE ID = '$key'";
     }
+    
     else if($_GET["query"] === "updateUsername"){
         $key = $_GET["key"];
         $newUsername = $_GET["newUsername"];
@@ -158,7 +176,9 @@
         $sql = "UPDATE Users
         SET Username='$newUsername'
         WHERE ID = '$key'";
-    }else if($_GET["query"] === "getBuys"){        
+    }
+    
+    else if($_GET["query"] === "getBuys"){
         $sql = "SELECT abbr FROM Stockopedia.aboveAvgDiff";
     }
     
