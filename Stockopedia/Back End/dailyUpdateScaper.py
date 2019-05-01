@@ -359,26 +359,26 @@ if __name__ == '__main__':
         
         # TOPICS
         print("Starting Script")
-        listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
-        
+#        listOfTopics, deleteNames = scrapeWebsitesForTopics(getURLs(False))
+
         print("Inserting Topics Into DB")
-        insertTopicsToDB(listOfTopics)
-        
+#        insertTopicsToDB(listOfTopics)
+
         print("Deleting names with invalid names")
-        deleteNoIndustryNames(deleteNames)
-        
+#        deleteNoIndustryNames(deleteNames)
+
         print("Adding Fullnames to Stocks")
-        addFullNames(listOfTopics)
+#        addFullNames(listOfTopics)
 
         # REAL TIME STOCKS
         print("Starting RealTime")
-        listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
-        
+#        listOfRealTimeStocks = scrapeWebsitesForRealTimeData(getURLs(True))
+
         print("Inserting RealTimeStocks Into DB")
-        insertRealTimeStocksToDB(listOfRealTimeStocks)
-        
+#        insertRealTimeStocksToDB(listOfRealTimeStocks)
+
         # Update the date in the Date Table to be the most current
-        cursor.execute("UPDATE Date SET date = " + getCurrentTime)
+        cursor.execute("UPDATE Date SET date = " + getCurrentTime())
 
         # Commits all changes to maria DB and the closes the connection
         myDB.commit()
