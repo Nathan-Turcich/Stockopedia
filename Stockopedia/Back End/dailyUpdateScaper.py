@@ -385,4 +385,4 @@ if __name__ == '__main__':
         myDB.close()
         #########################################################################################################################################
         # RUNNING PREDICTION SCRIPT NOW
-        exec(open("/home/Stockopedia/Stockopedia/Back\ End/Prediction.py").read())
+        exec(open("/home/Stockopedia/Stockopedia/Back End/Prediction.py").read())
