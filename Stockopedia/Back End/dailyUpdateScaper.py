@@ -378,6 +378,7 @@ if __name__ == '__main__':
 #        insertRealTimeStocksToDB(listOfRealTimeStocks)
 
         # Update the date in the Date Table to be the most current
+        print(type(getCurrentTime()))
         cursor.execute("UPDATE Date SET date = " + getCurrentTime())
 
         # Commits all changes to maria DB and the closes the connection
