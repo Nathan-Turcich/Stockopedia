@@ -351,7 +351,7 @@ def getCurrentTime():
 if __name__ == '__main__':
     
     # We only run the scraper on the week days because the stock market is closed on the weekends
-    if datetime.date.today().isoweekday() is not 7 and datetime.date.today().isoweekday() is not 1:
+    if datetime.date.today().isoweekday() is not 7 or datetime.date.today().isoweekday() is not 1:
         # Connects to the DB
         # Creates a cursor object to apply SQL Queries
         myDB = mysql.connector.connect(host = host, user = user, passwd = password, database = database)
