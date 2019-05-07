@@ -295,7 +295,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     
     func setUpStuff(){
         infoButton = UIBarButtonItem(title: "?     ", style: .plain, target: self, action: #selector(showInfo))
-        navigationItem.rightBarButtonItem = infoButton
+        navigationItem.leftBarButtonItem = infoButton
         for i in 0...25 { sectionDic[i] = 0 }
         generateSectionHeader()
         if tableView.indexPathForSelectedRow != nil { tableView.deselectRow(at: tableView.indexPathForSelectedRow!, animated: true) }
