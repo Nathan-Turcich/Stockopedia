@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Stockopedia/Real Time Stocks/RealTimeStocksViewController.swift"
-            timestampString = "578257255.550674"
+            timestampString = "578939629.5642771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "searchBar(_:textDidChange:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,6 +74,22 @@
             startingLineNumber = "268"
             endingLineNumber = "268"
             landmarkName = "insertNameFavoritedList(key:abbr:fullName:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stockopedia/Real Time Stocks/RealTimeStocksViewController.swift"
+            timestampString = "578939629.564615"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "308"
+            endingLineNumber = "308"
+            landmarkName = "setUpStuff()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

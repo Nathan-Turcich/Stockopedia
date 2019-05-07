@@ -31,13 +31,15 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
     var lastIndexPath:IndexPath!
     
     //MARK: - Views Appearing
-    override func viewDidLoad() { super.viewDidLoad() }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle{ return .lightContent }
 
     override func viewWillAppear(_ animated: Bool) {
         Utils.setBars(navBar: (navigationController?.navigationBar)!, tabBar: (tabBarController?.tabBar)!)
-        setUpStuff()
         Utils.getPossibleUser()
+        setUpStuff()
         if currentID != "" {
             logInView.isHidden = true; logInView.isUserInteractionEnabled = false
             loggedInView.isHidden = false; loggedInView.isUserInteractionEnabled = true
@@ -302,6 +304,7 @@ class RealTimeStocksViewController: UIViewController, UITableViewDelegate, UITab
         
         tableView.sectionIndexColor = primaryColor
         tableView.reloadData()
+        var blah = searchBarCancelButton
         searchBarCancelButton.isEnabled = false
         searchBarCancelButton.title = ""
     }
